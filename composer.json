@@ -4,12 +4,16 @@
   "autoload": {
     "psr-0": {
       "Apipa\\TelegramS\\": "src/"
+    },
+    "psr-4": {
+      "App\\": "src/app/",
+      "App\\Traits\\": "src/app/Traits"
     }
   },
   "authors": [
     {
-      "name": "Andrey Palenov",
-      "email": "api.palenov@gmail.com"
+      "name": "Timur Latfullin",
+      "email": "kilkenny116@gmail.com"
     }
   ],
   "require": {
@@ -19,5 +23,6 @@
     "allow-plugins": {
       "phabel/phabel": true
     }
-  }
+  },
+  "optimize-autoloader": true 
 }
