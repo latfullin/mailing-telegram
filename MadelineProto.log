@@ -1,0 +1,694 @@
+Logger, 5463589574:         	Automatically truncated logfile to 1048576
+CheckLoop, 5463589574:      	We did not receive a response for 2 seconds: reconnecting and exiting check loop on DC 5.0
+Connection, 5463589574:     	Reconnecting DC 5.0
+Connection, 5463589574:     	Disconnecting from DC 5.0
+Connection, 5463589574:     	Disconnected from DC 5.0
+DataCenter, 5463589574:     	Reconnecting to DC 5 (0) from existing
+DataCenterConnection, 5463589574: 	Trying shared connection via tcp://91.108.56.158:443 main DC 5, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection, 5463589574:     	Connecting to DC 5.0
+Connection, 5463589574:     	Connected to DC 5.0!
+DataCenter, 5463589574:     	OK!
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 2 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 2.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+PingLoop, 5463589574:       	Ping DC 4.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 1.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 3.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+PingLoop, 5463589574:       	Ping DC 5.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 2 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 2.0
+Session, 5463589574:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+PingLoop, 5463589574:       	Ping DC 4.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+ReadLoop, 5463589574:       	danog\MadelineProto\NothingInTheSocketException in /home/timur/www/spam/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator()
+#1 /home/timur/www/spam/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send()
+#2 /home/timur/www/spam/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}()
+#3 /home/timur/www/spam/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve()
+#4 /home/timur/www/spam/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve()
+#5 /home/timur/www/spam/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}()
+#6 /home/timur/www/spam/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams()
+#7 /home/timur/www/spam/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch()
+#8 /home/timur/www/spam/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /home/timur/www/spam/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /home/timur/www/spam/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run()
+#11 /home/timur/www/spam/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait()
+#12 /home/timur/www/spam/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5463589574:       	Got nothing in the socket in DC 1.0, reconnecting...
+Connection, 5463589574:     	Reconnecting DC 1.0
+Connection, 5463589574:     	Disconnecting from DC 1.0
+Connection, 5463589574:     	Disconnected from DC 1.0
+DataCenter, 5463589574:     	Reconnecting to DC 1 (0) from existing
+DataCenterConnection, 5463589574: 	Trying shared connection via tcp://149.154.175.56:443 main DC 1, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection, 5463589574:     	Connecting to DC 1.0
+Connection, 5463589574:     	Connected to DC 1.0!
+DataCenter, 5463589574:     	OK!
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 2 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 3.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+PingLoop, 5463589574:       	Ping DC 5.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+MTProto, 5463589574:        	Accepted IPC client connection!
+MTProto, 5463589574:        	Got error while calling IPC method: Telegram returned an RPC error: The invite link has expired (400) (INVITE_HASH_EXPIRED), caused by /home/timur/www/spam/vendor/danog/madelineproto/src/danog/MadelineProto/MTProtoSession/ResponseHandler.php:394
+
+
+TL trace:
+['messages.checkChatInvite']
+CallHandler.php(61):	methodCallAsyncRead("messages.checkChatInvite",{"hash":"79270370406"},{"msg_id":null})
+PeerHandler.php(648):	methodCallAsyncRead("messages.checkChatInvite",{"hash":"79270370406"})
+TL.php(546):        	getInfo("https:\/\/t.me\/+79270370406",1)
+While serializing:  	channels.inviteToChannel['users']['0']
+Connection.php(502):	serializeMethod("channels.inviteToChannel",{"channel":"https:\/\/t.me\/dhxhxjidjjd","users":["https:\/\/t.me\/+79270370406"]})
+CallHandler.php(192):	sendMessage({},true)
+CallHandler.php(99):	methodCallAsyncWrite("channels.inviteToChannel",{"channel":"https:\/\/t.me\/dhxhxjidjjd","users":["https:\/\/t.me\/+79270370406"]},{"apifactory":true,"postpone":false})
+CallHandler.php(61):	methodCallAsyncRead("channels.inviteToChannel",{"channel":"https:\/\/t.me\/dhxhxjidjjd","users":["https:\/\/t.me\/+79270370406"]},{"apifactory":true})
+Server.php(254):    	methodCallAsyncRead("channels.inviteToChannel",{"channel":"https:\/\/t.me\/dhxhxjidjjd","users":["https:\/\/t.me\/+79270370406"]},{"apifactory":true})
+clientRequest()
+
+Previous TL trace:
+['messages.checkChatInvite']
+ResponseHandler.php(194):	handleRpcError()
+ResponseHandler.php(73):	handleResponse()
+Driver.php(119):    	handleMessages()
+Driver.php(72):     	tick()
+Loop.php(95):       	run()
+Tools.php(294):     	run()
+entry.php(110):     	wait()
+entry.php(134):     	{closure}()
+
+Server, 5463589574:         	Exception in IPC connection: Amp\Ipc\Sync\ChannelException: The channel closed unexpectedly. Did the context die? in /home/timur/www/spam/vendor/danog/ipc/lib/Sync/ChannelledStream.php:72
+Stack trace:
+#0 [internal function]: Amp\Ipc\Sync\ChannelledStream->Amp\Ipc\Sync\{closure}()
+#1 /home/timur/www/spam/vendor/amphp/amp/lib/Coroutine.php(118): Generator->send()
+#2 /home/timur/www/spam/vendor/amphp/amp/lib/Internal/Placeholder.php(149): Amp\Coroutine->Amp\{closure}()
+#3 /home/timur/www/spam/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve()
+#4 /home/timur/www/spam/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve()
+#5 /home/timur/www/spam/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}()
+#6 /home/timur/www/spam/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams()
+#7 /home/timur/www/spam/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch()
+#8 /home/timur/www/spam/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /home/timur/www/spam/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /home/timur/www/spam/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run()
+#11 /home/timur/www/spam/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait()
+#12 /home/timur/www/spam/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 2.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+PingLoop, 5463589574:       	Ping DC 4.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 1.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 3.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+PingLoop, 5463589574:       	Ping DC 5.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 2 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 2.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+PingLoop, 5463589574:       	Ping DC 4.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 1.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 2 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 3.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+PingLoop, 5463589574:       	Ping DC 5.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 2 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 2.0
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 1 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 2 left
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 2, 2 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+PingLoop, 5463589574:       	Ping DC 4.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 2 left
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 2, 2 left
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 2, 2 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 1.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 3.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 2 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 5.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+UpdateHandler, 5463589574:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, 5463589574:       	Resumed update feed loop generic
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+UpdateHandler, 5463589574:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, 5463589574:       	Resumed update feed loop generic
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 2.0
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 1 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+PingLoop, 5463589574:       	Ping DC 4.0
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 1.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 3.0
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 5.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 2 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 2.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+PingLoop, 5463589574:       	Ping DC 4.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 1.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 3.0
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 2 left
+PingLoop, 5463589574:       	Ping DC 5.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 2.0
+Session, 5463589574:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+PingLoop, 5463589574:       	Ping DC 4.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+UpdateHandler, 5463589574:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, 5463589574:       	Resumed update feed loop generic
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 1.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+UpdateHandler, 5463589574:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, 5463589574:       	Resumed update feed loop generic
+UpdateHandler, 5463589574:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, 5463589574:       	Resumed update feed loop generic
+Session, 5463589574:        	Garbage collected 2 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 3.0
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+PingLoop, 5463589574:       	Ping DC 5.0
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 2 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+UpdateHandler, 5463589574:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, 5463589574:       	Resumed update feed loop generic
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 2.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+MTProto, 5463589574:        	Accepted IPC client connection!
+MTProto, 5463589574:        	Got error while calling IPC method: Telegram returned an RPC error: Invalid user provided (403) (USER_INVALID), caused by /home/timur/www/spam/vendor/danog/madelineproto/src/danog/MadelineProto/MTProtoSession/ResponseHandler.php:394
+
+
+TL trace:
+['help.getUserInfo']
+CallHandler.php(61):	methodCallAsyncRead("help.getUserInfo",[],{"apifactory":true})
+Server.php(254):    	methodCallAsyncRead("help.getUserInfo",[],{"apifactory":true})
+clientRequest()
+
+Previous TL trace:
+['help.getUserInfo']
+ResponseHandler.php(194):	handleRpcError()
+ResponseHandler.php(73):	handleResponse()
+Driver.php(119):    	handleMessages()
+Driver.php(72):     	tick()
+Loop.php(95):       	run()
+Tools.php(294):     	run()
+entry.php(110):     	wait()
+entry.php(134):     	{closure}()
+
+Server, 5463589574:         	Exception in IPC connection: Amp\Ipc\Sync\ChannelException: The channel closed unexpectedly. Did the context die? in /home/timur/www/spam/vendor/danog/ipc/lib/Sync/ChannelledStream.php:72
+Stack trace:
+#0 [internal function]: Amp\Ipc\Sync\ChannelledStream->Amp\Ipc\Sync\{closure}()
+#1 /home/timur/www/spam/vendor/amphp/amp/lib/Coroutine.php(118): Generator->send()
+#2 /home/timur/www/spam/vendor/amphp/amp/lib/Internal/Placeholder.php(149): Amp\Coroutine->Amp\{closure}()
+#3 /home/timur/www/spam/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve()
+#4 /home/timur/www/spam/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve()
+#5 /home/timur/www/spam/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}()
+#6 /home/timur/www/spam/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams()
+#7 /home/timur/www/spam/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch()
+#8 /home/timur/www/spam/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /home/timur/www/spam/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /home/timur/www/spam/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run()
+#11 /home/timur/www/spam/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait()
+#12 /home/timur/www/spam/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 4.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 1.0
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+MTProto, 5463589574:        	Accepted IPC client connection!
+PeerHandler, 5463589574:    	Try fetching 1147860595 with access hash 0
+Exception, 5463589574:      	This peer is not present in the internal peer database in PeerHandler.php:643
+MTProto, 5463589574:        	Got error while calling IPC method: \danog\MadelineProto\Exception: This peer is not present in the internal peer database in /home/timur/www/spam/vendor/danog/madelineproto/src/danog/MadelineProto/MTProtoTools/PeerHandler.php:643
+
+TL Trace:
+
+TL.php(546):        	getInfo()
+Connection.php(502):	serializeMethod()
+CallHandler.php(192):	sendMessage()
+CallHandler.php(99):	methodCallAsyncWrite()
+CallHandler.php(61):	methodCallAsyncRead()
+Server.php(254):    	methodCallAsyncRead()
+clientRequest()
+Coroutine.php(112): 	send()
+Placeholder.php(149):	danog\MadelineProto\{closure}()
+Deferred.php(53):   	resolve()
+OutgoingMessage.php(209):	resolve()
+Driver.php(119):    	danog\MadelineProto\MTProto\{closure}()
+Driver.php(72):     	tick()
+Loop.php(95):       	run()
+Tools.php(294):     	run()
+entry.php(110):     	wait()
+entry.php(134):     	{closure}()
+Server, 5463589574:         	Exception in IPC connection: Amp\Ipc\Sync\ChannelException: The channel closed unexpectedly. Did the context die? in /home/timur/www/spam/vendor/danog/ipc/lib/Sync/ChannelledStream.php:72
+Stack trace:
+#0 [internal function]: Amp\Ipc\Sync\ChannelledStream->Amp\Ipc\Sync\{closure}()
+#1 /home/timur/www/spam/vendor/amphp/amp/lib/Coroutine.php(118): Generator->send()
+#2 /home/timur/www/spam/vendor/amphp/amp/lib/Internal/Placeholder.php(149): Amp\Coroutine->Amp\{closure}()
+#3 /home/timur/www/spam/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve()
+#4 /home/timur/www/spam/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve()
+#5 /home/timur/www/spam/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}()
+#6 /home/timur/www/spam/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams()
+#7 /home/timur/www/spam/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch()
+#8 /home/timur/www/spam/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /home/timur/www/spam/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /home/timur/www/spam/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run()
+#11 /home/timur/www/spam/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait()
+#12 /home/timur/www/spam/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 2 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+PingLoop, 5463589574:       	Ping DC 3.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+PingLoop, 5463589574:       	Ping DC 5.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 2.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+PingLoop, 5463589574:       	Ping DC 4.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 2 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 1.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+UpdateHandler, 5463589574:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, 5463589574:       	Resumed update feed loop generic
+PingLoop, 5463589574:       	Ping DC 3.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+PingLoop, 5463589574:       	Ping DC 5.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 2.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 2 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+PingLoop, 5463589574:       	Ping DC 4.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+UpdateHandler, 5463589574:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, 5463589574:       	Resumed update feed loop generic
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 1.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+PingLoop, 5463589574:       	Ping DC 3.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+PingLoop, 5463589574:       	Ping DC 5.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 2.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 2 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+PingLoop, 5463589574:       	Ping DC 4.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 1.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+PingLoop, 5463589574:       	Ping DC 3.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+PingLoop, 5463589574:       	Ping DC 5.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 2.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.safe.php.lock...
+SessionPaths, 5463589574:   	Waiting for exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+SessionPaths, 5463589574:   	Got exclusive lock of /home/timur/www/spam/session.madeline.lightState.php.lock...
+APIWrapper, 5463589574:     	Saved session!
+PingLoop, 5463589574:       	Ping DC 4.0
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 2, 2 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+PingLoop, 5463589574:       	Ping DC 1.0
+Session, 5463589574:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session, 5463589574:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, 5463589574:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5463589574:        	Garbage collected 3 outgoing messages in DC 2, 0 left

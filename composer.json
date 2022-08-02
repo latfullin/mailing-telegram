@@ -1,0 +1,23 @@
+{
+  "name": "apipa/telegram-s",
+  "type": "project",
+  "autoload": {
+    "psr-0": {
+      "Apipa\\TelegramS\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Andrey Palenov",
+      "email": "api.palenov@gmail.com"
+    }
+  ],
+  "require": {
+    "danog/madelineproto": "7.0.114.9999"
+  },
+  "config": {
+    "allow-plugins": {
+      "phabel/phabel": true
+    }
+  }
+}
