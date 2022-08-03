@@ -2,13 +2,15 @@
 
 namespace App\Services\Authorization;
 
+use App\Traits\Channels\ChannelsMethodsTelegram;
 use App\Traits\Message\MessageMethodsTelegram;
 
 class LoginTelegram
 {
   use MessageMethodsTelegram;
+  use ChannelsMethodsTelegram;
 
-  protected $phone;
+  protected int $phone;
   protected $telegram;
 
   public function __construct($phone, $async = false)
@@ -36,10 +38,10 @@ class LoginTelegram
 
   private function pathSession()
   {
-    if (is_dir("src/storage/session/{$this->phone})")) {
+    if (is_dir("src/storage/session/{$this->phone}")) {
       return "src/storage/session/{$this->phone}/{$this->phone}";
     } else {
-      mkdir("src/storage/session/{$this->phone}", 0644);
+      mkdir("src/storage/session/{$this->phone}", 0755);
       return "src/storage/session/{$this->phone}/{$this->phone}";
     }
   }
