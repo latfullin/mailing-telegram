@@ -16,14 +16,21 @@ trait ChannelsMethodsTelegram
     return $this->telegram->channels->getGroupsForDiscussion();
   }
 
-  public function joinChannel($link)
+  public function joinChannel($link): object
   {
     $this->telegram->channels->joinChannel(channel: $link);
 
     return $this;
   }
 
-  public function inviteToChannel($channel, $users)
+  public function leaveChannel($link): object
+  {
+    $this->telegram->channels->leaveChannel(channel: $link);
+
+    return $this;
+  }
+
+  public function inviteToChannel($channel, $users): object
   {
     $this->telegram->channels->inviteToChannel(channel: $channel, users: $users);
 

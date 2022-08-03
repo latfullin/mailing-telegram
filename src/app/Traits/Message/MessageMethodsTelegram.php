@@ -13,7 +13,7 @@ trait MessageMethodsTelegram
     return $this;
   }
 
-  public function sendFoto(string $peer, string $pathFoto, string $msg): object
+  public function sendFoto(string $peer, string $pathFoto, string $msg = ''): object
   {
     if (is_file($pathFoto)) {
       $this->telegram->messages->sendMedia([
@@ -32,7 +32,7 @@ trait MessageMethodsTelegram
     return $this;
   }
 
-  public function sendVideo(string $peer, string $pathVideo, string $msg, string $renameFile = ''): object
+  public function sendVideo(string $peer, string $pathVideo, string $msg = '', string $renameFile = ''): object
   {
     if (is_file($pathVideo)) {
       $this->telegram->messages->sendMedia([

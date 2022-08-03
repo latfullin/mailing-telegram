@@ -5,7 +5,7 @@ namespace App\Services\Authorization;
 use App\Traits\Channels\ChannelsMethodsTelegram;
 use App\Traits\Message\MessageMethodsTelegram;
 
-class LoginTelegram
+class Telegram
 {
   use MessageMethodsTelegram;
   use ChannelsMethodsTelegram;
@@ -13,7 +13,7 @@ class LoginTelegram
   protected int $phone;
   protected $telegram;
 
-  public function __construct($phone, $async = false)
+  public function __construct($phone, $async = true)
   {
     $this->phone = $phone;
     $this->telegram = new \danog\MadelineProto\API($this->pathSession($phone));
