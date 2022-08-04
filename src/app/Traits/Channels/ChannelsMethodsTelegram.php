@@ -13,7 +13,8 @@ trait ChannelsMethodsTelegram
 
   public function getGroupsForDiscussion(): array
   {
-    return $this->telegram->channels->getGroupsForDiscussion();
+    print_r($this->telegram->channels->getGroupsForDiscussion());
+    return $this;
   }
 
   public function joinChannel($link): object

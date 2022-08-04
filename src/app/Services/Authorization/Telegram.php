@@ -13,7 +13,7 @@ class Telegram
   protected int $phone;
   protected $telegram;
 
-  public function __construct($phone, $async = true)
+  public function __construct($phone, $async)
   {
     $this->phone = $phone;
     $this->telegram = new \danog\MadelineProto\API($this->pathSession($phone));
@@ -26,9 +26,9 @@ class Telegram
     $this->telegram->start();
   }
 
-  public static function instance($phone)
+  public static function instance($phone, $async = false)
   {
-    return new self($phone);
+    return new self($phone, $async);
   }
 
   public function echo($type)
