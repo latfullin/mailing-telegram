@@ -10,25 +10,16 @@ use Exception;
 class MailingMessagesController extends Controller
 {
   private static ?MailingMessagesController $instance = null;
-  protected array $usersList = [];
   protected string $msg;
-  protected array $sessionList;
   protected array $skipUsers = [];
-  public int $successMsg = 0;
-  public int $amoutError = 0;
 
-  public static function init()
+  public static function instance()
   {
     if (self::$instance === null) {
       self::$instance = new self();
     }
 
     return self::$instance;
-  }
-
-  private function __construct()
-  {
-    $this->sessionList = WorkingFileHelper::initSessionList();
   }
 
   private function getStart($maxMsg = 10)
@@ -53,7 +44,7 @@ class MailingMessagesController extends Controller
       }
     }
 
-    $task = WorkingFileHelper::endTask($task, $this->successMsg, $this->amoutError, $this->skipUsers);
+    WorkingFileHelper::endTask($task, $this->successMsg, $this->amoutError, $this->skipUsers);
   }
 
   public function mailingMessagesUsers(string $msg, array|string $users = [])
@@ -68,14 +59,6 @@ class MailingMessagesController extends Controller
 
     return $this;
   }
-
-  public function setUsers(array $users)
-  {
-    $this->usersList = $users;
-
-    return $this;
-  }
-
 
   private function validate()
   {
@@ -96,6 +79,7 @@ class MailingMessagesController extends Controller
         echo "Users: Warning\n";
         $this->usersList = WorkingFileHelper::initUsersList();
       }
+
       if (count($this->usersList) > 0) {
         true;
       } else {
