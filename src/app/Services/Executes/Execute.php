@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Services\Executes;
 
 use App\Helpers\WorkingFileHelper;
 
-class Controller
+class Execute
 {
   protected array $sessionList;
   protected int $task;
+  protected array $usersList = [];
   public int $success = 0;
   public int $amoutError = 0;
 
@@ -26,5 +27,14 @@ class Controller
     $this->usersList = $users;
 
     return $this;
+  }
+
+  public static function initUsersInFile(): bool
+  {
+    self::$usersList = WorkingFileHelper::initUsersList();
+    if (self::$usersList) {
+      return true;
+    }
+    return false;
   }
 }

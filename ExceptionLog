@@ -1,0 +1,8 @@
+Exception: Not found channel to invite! in /home/timur/www/telegram-mailing-list/src/app/Services/Executes/InvitationsChannelExecute.php:38
+Stack trace:
+#0 /home/timur/www/telegram-mailing-list/index.php(10): App\Services\Executes\InvitationsChannelExecute->inviteToChannel()
+#1 {main}
+Exception: Not found channel to invite! in /home/timur/www/telegram-mailing-list/src/app/Services/Executes/InvitationsChannelExecute.php:38
+Stack trace:
+#0 /home/timur/www/telegram-mailing-list/index.php(10): App\Services\Executes\InvitationsChannelExecute->inviteToChannel()
+#1 {main}

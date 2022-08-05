@@ -67,17 +67,41 @@ trait MessageMethodsTelegram
     return $this;
   }
 
-  // Need rebuild
-  public function getInfo($id): object
+  // Need format '1147860595' 
+  public function getInfo($id)
   {
-    $a = $this->telegram->getFullInfo($id);
-    print_r($a);
-    return $this;
+    return $this->telegram->getInfo(id: $id);
   }
 
-
+  // Show all dialog & channels 
   public function getDialogs(): array
   {
     return $this->telegram->getDialogs();
+  }
+
+  // public function getFullChat(): array
+  // {
+  //   return $this->telegram->getDialogs();
+  // }
+
+  /* Show information by phone. Formation: 
+    number[_] => contacts.resolvedPeer
+    [peer] => Array
+    (
+        [_] => peerUser
+        [user_id] => 1147860595
+    )
+    [chats] => Array()
+    [0] => Array
+    (
+      [_] => user
+      [flags] => 33556567
+      [self] => 
+      [contact] => 1
+      ....
+    */
+  public function getInformationByNumber($phone)
+  {
+    return $this->telegram->contacts->resolvePhone(phone: $phone);
   }
 }

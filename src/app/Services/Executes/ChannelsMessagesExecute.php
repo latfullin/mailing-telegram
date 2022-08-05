@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Services\Executes;
 
 use App\Helpers\ErrorHelper;
 use App\Helpers\WorkingFileHelper;
 use App\Services\Authorization\Telegram;
 use Exception;
 
-class ChannelsController extends Controller
+class ChannelsExecute extends Execute
 {
-  private static ?ChannelsController $instance = null;
+  private static ?ChannelsExecute $instance = null;
   private array $channels = [];
   private array $notFountChannel = [];
   protected bool $verifiedChannels = false;
 
-  public static function instance(array $channels = []): ChannelsController
+  public static function instance(array $channels = []): ChannelsExecute
   {
     if (self::$instance === null) {
       self::$instance = new self($channels);
@@ -32,7 +32,7 @@ class ChannelsController extends Controller
     }
   }
 
-  public function setChannels(array $channels): ChannelsController
+  public function setChannels(array $channels): ChannelsExecute
   {
     $this->channels = $channels;
     $this->verifyChannels();

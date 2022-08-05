@@ -50,4 +50,11 @@ trait ChannelsMethodsTelegram
   {
     return $this->telegram->channels->getFullChannel(channel: $channel);
   }
+
+
+  //$channel - need link 
+  public function getParticipants(string|int $channel, int $offset = 0, int $limit = 40, string $q = '', $hash = '')
+  {
+    return $this->telegram->channels->getParticipants(channel: $channel, filter: ['_' => 'channelParticipantsSearch', 'q' => $q], offset: $offset, limit: $limit,);
+  }
 }

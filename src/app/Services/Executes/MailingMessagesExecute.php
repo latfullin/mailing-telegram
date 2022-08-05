@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Services\Executes;
 
 use App\Helpers\ErrorHelper;
 use App\Helpers\WorkingFileHelper;
 use App\Services\Authorization\Telegram;
 use Exception;
 
-class MailingMessagesController extends Controller
+class MailingMessagesExecute extends Execute
 {
-  private static ?MailingMessagesController $instance = null;
+  private static ?MailingMessagesExecute $instance = null;
   protected string $msg;
   protected array $skipUsers = [];
-  protected array $usersList = [];
 
   public static function instance()
   {
@@ -21,6 +20,14 @@ class MailingMessagesController extends Controller
     }
 
     return self::$instance;
+  }
+
+  private function __construct(array $userList = [])
+  {
+    parent::__construct();
+    if ($userList) {
+      $this->userList = $userList;
+    }
   }
 
   private function getStart($maxMsg = 10)
@@ -78,7 +85,7 @@ class MailingMessagesController extends Controller
         echo "Users: Ok\n";
       } else {
         echo "Users: Warning\n";
-        $this->usersList = WorkingFileHelper::initUsersList();
+        parent::initUsersInFile();
       }
 
       if (count($this->usersList) > 0) {

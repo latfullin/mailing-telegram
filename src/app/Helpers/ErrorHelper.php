@@ -6,7 +6,7 @@ class ErrorHelper
 {
   public static function writeToFileAndDie($text)
   {
-    file_put_contents('ExceptionLog.log', $text, FILE_APPEND);
+    file_put_contents('ExceptionLog', $text, FILE_APPEND);
     echo $text;
     die();
   }
@@ -14,5 +14,6 @@ class ErrorHelper
   public static function writeToFile($text)
   {
     file_put_contents('ExceptionLog.log', $text, FILE_APPEND);
+    echo $text;
   }
 }
