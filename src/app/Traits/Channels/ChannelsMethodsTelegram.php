@@ -2,6 +2,8 @@
 
 namespace App\Traits\Channels;
 
+use danog\MadelineProto\channels;
+
 trait ChannelsMethodsTelegram
 {
   public function createGroup(string $title, string $description,  bool $megagroup = true): object
@@ -17,24 +19,35 @@ trait ChannelsMethodsTelegram
     return $this;
   }
 
-  public function joinChannel($link): object
+  public function joinChannel(string $link): object
   {
     $this->telegram->channels->joinChannel(channel: $link);
 
     return $this;
   }
 
-  public function leaveChannel($link): object
+  public function leaveChannel(string $link): object
   {
     $this->telegram->channels->leaveChannel(channel: $link);
 
     return $this;
   }
 
-  public function inviteToChannel($channel, $users): object
+  public function inviteToChannel(string $channel, array $users): object
   {
     $this->telegram->channels->inviteToChannel(channel: $channel, users: $users);
 
     return $this;
+  }
+
+  // Need rebuild
+  public function getChannels(array $channels)
+  {
+    return $this->telegram->channels->getChannels(id: $channels);
+  }
+
+  public function getChannel($channel)
+  {
+    return $this->telegram->channels->getFullChannel(channel: $channel);
   }
 }

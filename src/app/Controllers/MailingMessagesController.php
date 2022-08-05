@@ -12,6 +12,7 @@ class MailingMessagesController extends Controller
   private static ?MailingMessagesController $instance = null;
   protected string $msg;
   protected array $skipUsers = [];
+  protected array $usersList = [];
 
   public static function instance()
   {
@@ -24,27 +25,27 @@ class MailingMessagesController extends Controller
 
   private function getStart($maxMsg = 10)
   {
-    $task = WorkingFileHelper::newTask($this->usersList, $this->sessionList);
+    WorkingFileHelper::newTask($this->task, $this->usersList, $this->sessionList);
     foreach ($this->sessionList as $session) {
       $user = '';
-      try {
-        for ($i = 0; $i < $maxMsg; $i++) {
+      for ($i = 0; $i < $maxMsg; $i++) {
+        try {
           if (!$this->usersList) {
             break;
           }
           $user = array_pop($this->usersList);
           Telegram::instance($session)->sendMessage($user, $this->msg);
-          $this->successMsg++;
+          $this->success++;
+        } catch (Exception $e) {
+          array_push($this->skipUsers, $user);
+          $this->amoutError++;
+          ErrorHelper::writeToFile("$e\n");
+          continue;
         }
-      } catch (Exception $e) {
-        array_push($this->skipUsers, $user);
-        $this->amoutError++;
-        ErrorHelper::writeToFile("$e\n");
-        continue;
       }
     }
 
-    WorkingFileHelper::endTask($task, $this->successMsg, $this->amoutError, $this->skipUsers);
+    return $this;
   }
 
   public function mailingMessagesUsers(string $msg, array|string $users = [])
@@ -66,7 +67,7 @@ class MailingMessagesController extends Controller
       if (is_string($this->msg) && strlen($this->msg) > 0) {
         echo "Msg: Ok\n";
       } else {
-        throw new ('Send text error');
+        throw new ('Not found text for msg');
       }
     } catch (Exception $e) {
       ErrorHelper::writeToFileAndDie("$e\n");
@@ -90,5 +91,11 @@ class MailingMessagesController extends Controller
     }
 
     return true;
+  }
+
+  public function __destruct()
+  {
+    WorkingFileHelper::newTask($this->task, $this->usersList);
+    WorkingFileHelper::endTask($this->task, $this->success, $this->amoutError, $this->skipUsers);
   }
 }

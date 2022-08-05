@@ -6,6 +6,9 @@ use Exception;
 
 class WorkingFileHelper
 {
+  private static $pathTask = 'src/storage/task/';
+  private static $pathSession;
+
   public static function initSessionList()
   {
     try {
@@ -35,7 +38,7 @@ class WorkingFileHelper
   public static function initChannelsList()
   {
     try {
-      if (is_file('usechannelsrs')) {
+      if (is_file('channels')) {
         return self::readFile('channels');
       } else {
         throw new Exception("Not fount file - channels!");
@@ -55,7 +58,7 @@ class WorkingFileHelper
 
   public static function lastTask(): int
   {
-    $files = scandir('src/storage/task/');
+    $files = scandir(self::$pathTask);
     asort($files, SORT_NUMERIC);
     $file = array_pop($files);
     if ($file > 0) {
@@ -67,31 +70,29 @@ class WorkingFileHelper
     }
   }
 
-  public static function newTask(...$params): int
+  public static function newTask(int $task, ...$params): void
   {
-    $lastTask = self::lastTask();
     foreach ($params as $item) {
       if (is_array($item)) {
         foreach ($item as $text) {
-          self::writeToFile("src/storage/task/{$lastTask}", "$text\n");
+          self::writeToFile(self::$pathTask . $task, "$text\n");
         }
       } else {
-        self::writeToFile("src/storage/task/{$lastTask}", "$item\n");
+        self::writeToFile(self::$pathTask . $task, "$item\n");
       }
-      self::writeToFile("src/storage/task/{$lastTask}", "\n");
+      self::writeToFile(self::$pathTask . $task, "\n");
     }
-    return $lastTask;
   }
 
-  public static function endTask(int $task, int $success, int $error, array $users)
+  public static function endTask(int $task, int $success, int $error, array $users): void
   {
-    self::writeToFile("src/storage/task/{$task}", "\nENDTASK\n");
-    self::writeToFile("src/storage/task/{$task}", "Success: {$success}\n");
-    self::writeToFile("src/storage/task/{$task}", "AmoutErrors: {$error}\n");
+    self::writeToFile(self::$pathTask . $task, "\nENDTASK\n");
+    self::writeToFile(self::$pathTask . $task, "Success: {$success}\n");
+    self::writeToFile(self::$pathTask . $task, "AmoutErrors: {$error}\n");
     if (count($users) > 0) {
-      self::writeToFile("src/storage/task/{$task}", "\nSkipUsers:\n");
+      self::writeToFile(self::$pathTask . $task, "\nSkipUsers:\n");
       foreach ($users as $user) {
-        self::writeToFile("src/storage/task/{$task}", "$user\n");
+        self::writeToFile(self::$pathTask . $task, "$user\n");
       }
     }
   }

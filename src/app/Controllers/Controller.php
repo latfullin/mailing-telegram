@@ -7,14 +7,17 @@ use App\Helpers\WorkingFileHelper;
 class Controller
 {
   protected array $sessionList;
-  protected array $usersList = [];
   protected int $task;
-  public int $successMsg = 0;
+  public int $success = 0;
   public int $amoutError = 0;
 
-  protected function __construct()
+  protected function __construct(array $phone = [])
   {
-    $this->sessionList = WorkingFileHelper::initSessionList();
+    if ($phone) {
+      $this->sessionList = $phone;
+    } else {
+      $this->sessionList = WorkingFileHelper::initSessionList();
+    }
     $this->task = WorkingFileHelper::lastTask();
   }
 

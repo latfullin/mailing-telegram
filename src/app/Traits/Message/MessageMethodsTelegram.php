@@ -6,7 +6,8 @@ use danog\MadelineProto\channels;
 
 trait MessageMethodsTelegram
 {
-  public $channel;
+  public array $channel;
+
   public function sendMessage(string $peer, string $msg): object
   {
     $this->telegram->messages->sendMessage(peer: $peer, message: $msg);
@@ -70,16 +71,10 @@ trait MessageMethodsTelegram
   public function getInfo($id): object
   {
     $a = $this->telegram->getFullInfo($id);
-    print_r($a['Chat']['id']);
+    print_r($a);
     return $this;
   }
-  // Need rebuild
-  public function getChannels($link): object
-  {
-    print_r($this->telegram->channels->getChannels(id: $link));
 
-    return $this;
-  }
 
   public function getDialogs(): array
   {

@@ -1,6 +1,7 @@
 <?php
 require_once 'vendor/autoload.php';
 
+use App\Controllers\ChannelsController;
 use App\Controllers\MailingMessagesController;
 
-MailingMessagesController::instance()->mailingMessagesUsers('hello');
+$a = MailingMessagesController::instance()->mailingMessagesUsers('Hello');

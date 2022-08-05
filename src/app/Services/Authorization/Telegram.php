@@ -26,7 +26,7 @@ class Telegram
     $this->telegram->start();
   }
 
-  public static function instance($phone, $async = false)
+  public static function instance($phone, $async = true)
   {
     return new self($phone, $async);
   }
