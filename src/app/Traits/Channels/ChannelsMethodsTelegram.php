@@ -46,15 +46,23 @@ trait ChannelsMethodsTelegram
     return $this->telegram->channels->getChannels(id: $channels);
   }
 
+
+  /**
+   * @param channel - link for group.
+   */
   public function getChannel($channel)
   {
     return $this->telegram->channels->getFullChannel(channel: $channel);
   }
 
 
-  //$channel - need link 
-  public function getParticipants(string|int $channel, int $offset = 0, int $limit = 40, string $q = '', $hash = '')
+  /**
+   * @param group need link on the group. Not working with chanells(Issues error - 400). 
+   * @param offset Start array. Patricals users for group.
+   * @param limit limit length array. 
+   */
+  public function getParticipants(string|int $group, int $offset = 0, int $limit = 100, string $q = '', $hash = '')
   {
-    return $this->telegram->channels->getParticipants(channel: $channel, filter: ['_' => 'channelParticipantsSearch', 'q' => $q], offset: $offset, limit: $limit,);
+    return $this->telegram->channels->getParticipants(channel: $group, filter: ['_' => 'channelParticipantsSearch', 'q' => $q], offset: $offset, limit: $limit,);
   }
 }

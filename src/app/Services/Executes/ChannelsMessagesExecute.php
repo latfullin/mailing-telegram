@@ -39,20 +39,6 @@ class ChannelsExecute extends Execute
     return $this;
   }
 
-  public function verifyChannel($link): bool
-  {
-    try {
-      if ($link) {
-        Telegram::instance($this->sessionList[rand(0, count($this->sessionList) - 1)], false)->getChannel($link);
-        return true;
-      }
-    } catch (Exception $e) {
-      return false;
-    }
-
-    return false;
-  }
-
   public function joinChannels(): object
   {
     $this->telegramExecute('joinChannel');
@@ -83,20 +69,7 @@ class ChannelsExecute extends Execute
           }
         }
       } else {
-        throw new ('Not found channels for entry');
-      }
-    } catch (Exception $e) {
-      ErrorHelper::writeToFileAndDie("$e\n");
-    }
-  }
-
-  private function methodsWithChallen(string $session, string $method, string $link): void
-  {
-    try {
-      if ($method === 'leaveChannel' || $method === 'joinChannel') {
-        Telegram::instance($session)->{$method}($link);
-      } else {
-        throw new ('Not found methods');
+        throw new Exception('Not found channels for entry');
       }
     } catch (Exception $e) {
       ErrorHelper::writeToFileAndDie("$e\n");
@@ -109,7 +82,7 @@ class ChannelsExecute extends Execute
       if ($this->channels) {
         foreach ($this->channels as $channel) {
           try {
-            Telegram::instance($this->sessionList[rand(0, count($this->sessionList) - 1)], false)->getChannel($channel);
+            $this->verifyChannel($channel);
           } catch (Exception $e) {
             array_push($this->notFountChannel, array_splice($this->channels, array_search($channel, $this->channels), 1)[0]);
             continue;
@@ -117,7 +90,7 @@ class ChannelsExecute extends Execute
         }
         $this->verifiedChannels = true;
       } else {
-        throw new ('Not found channels');
+        throw new Exception('Not found channels');
       }
     } catch (Exception $e) {
       ErrorHelper::writeToFile("$e\n");

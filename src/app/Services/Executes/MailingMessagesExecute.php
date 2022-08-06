@@ -41,7 +41,7 @@ class MailingMessagesExecute extends Execute
             break;
           }
           $user = array_pop($this->usersList);
-          Telegram::instance($session)->sendMessage($user, $this->msg);
+          $this->sendMessage($session, $user, $this->msg);
           $this->success++;
         } catch (Exception $e) {
           array_push($this->skipUsers, $user);
@@ -74,7 +74,7 @@ class MailingMessagesExecute extends Execute
       if (is_string($this->msg) && strlen($this->msg) > 0) {
         echo "Msg: Ok\n";
       } else {
-        throw new ('Not found text for msg');
+        throw new Exception('Not found text for msg');
       }
     } catch (Exception $e) {
       ErrorHelper::writeToFileAndDie("$e\n");
@@ -91,7 +91,7 @@ class MailingMessagesExecute extends Execute
       if (count($this->usersList) > 0) {
         true;
       } else {
-        throw new ('Users list empty');
+        throw new Exception('Users list empty');
       }
     } catch (Exception $e) {
       ErrorHelper::writeToFileAndDie("$e\n");
