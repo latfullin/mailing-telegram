@@ -169,9 +169,6 @@ class InvitationsChannelExecute extends Execute
   {
     if ($this->usersList) {
       ['usersList' => $this->usersList, 'notFount' => $this->notFoundUsers]  = CheckUsersHelpers::checkEmptyUsers($this->usersList);
-      print_r($this->userList);
-      print_r($this->notFoundUsers);
-      die();
       $this->validateUsers = true;
     }
   }

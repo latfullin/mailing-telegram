@@ -2,6 +2,7 @@
 
 namespace App\Services\Executes;
 
+use App\Helpers\CheckUsersHelpers;
 use App\Helpers\ErrorHelper;
 use App\Helpers\WorkingFileHelper;
 use App\Services\Authorization\Telegram;
@@ -12,6 +13,7 @@ class MailingMessagesExecute extends Execute
   private static ?MailingMessagesExecute $instance = null;
   protected string $msg;
   protected array $skipUsers = [];
+  protected array $notFoundUser = [];
 
   public static function instance()
   {
@@ -20,6 +22,19 @@ class MailingMessagesExecute extends Execute
     }
 
     return self::$instance;
+  }
+
+  public function mailingMessagesUsers(string $msg, array|string $users = [])
+  {
+    $this->msg = $msg;
+    if (count($users) > 0) {
+      ['usersList' => $this->usersList, 'notFount' => $this->notFoundUsers]  = CheckUsersHelpers::checkEmptyUsers($this->usersList);
+    }
+    if ($this->validate()) {
+      $this->getStart();
+    }
+
+    return $this;
   }
 
   private function __construct(array $userList = [])
@@ -32,10 +47,9 @@ class MailingMessagesExecute extends Execute
 
   private function getStart($maxMsg = 10)
   {
-    WorkingFileHelper::newTask($this->task, $this->usersList, $this->sessionList);
     foreach ($this->sessionList as $session) {
-      $user = '';
       for ($i = 0; $i < $maxMsg; $i++) {
+        print_r($this->usersList);
         try {
           if (!$this->usersList) {
             break;
@@ -55,18 +69,6 @@ class MailingMessagesExecute extends Execute
     return $this;
   }
 
-  public function mailingMessagesUsers(string $msg, array|string $users = [])
-  {
-    $this->msg = $msg;
-    if (count($users) > 0) {
-      $this->usersList = $users;
-    }
-    if ($this->validate()) {
-      $this->getStart();
-    }
-
-    return $this;
-  }
 
   private function validate()
   {
@@ -81,15 +83,11 @@ class MailingMessagesExecute extends Execute
     }
 
     try {
-      if (count($this->usersList) > 0) {
-        echo "Users: Ok\n";
-      } else {
-        echo "Users: Warning\n";
+      if (count($this->usersList) <= 0) {
         parent::initUsersInFile();
       }
-
       if (count($this->usersList) > 0) {
-        true;
+        return true;
       } else {
         throw new Exception('Users list empty');
       }
@@ -102,8 +100,7 @@ class MailingMessagesExecute extends Execute
 
   public function __destruct()
   {
-    print_r($this->skipUsers);
-    WorkingFileHelper::newTask($this->task, $this->usersList);
+    WorkingFileHelper::newTask($this->task, $this->usersList, $this->sessionList, $this->notFoundUser);
     WorkingFileHelper::endTask($this->task, $this->success, $this->amountError, $this->skipUsers);
   }
 }

@@ -88,6 +88,7 @@ class Execute
     if ($this->usersList) {
       return true;
     }
+
     return false;
   }
 

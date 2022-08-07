@@ -3,11 +3,13 @@
 use App\Helpers\WorkingFileHelper;
 use App\Services\Authorization\Telegram;
 use App\Services\Executes\InvitationsChannelExecute;
+use App\Services\Executes\MailingMessagesExecute;
 
 require_once 'vendor/autoload.php';
 
 
-$a = InvitationsChannelExecute::instance('https://t.me/TheBadComedian')->execute();
+// $a = InvitationsChannelExecute::instance('https://t.me/TheBadComedian')->execute();
+MailingMessagesExecute::instance()->mailingMessagesUsers('helllo');
 
 $aaa = [
   '@artem_dvd',

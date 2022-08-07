@@ -22,7 +22,6 @@ class CheckUsersHelpers
     foreach (self::$usersList as $user) {
       try {
         $result = Telegram::instance($phone[0])->getInfo($user);
-        print_r($result);
         if ($result !== false) {
           if ($result['User']['status']['was_online'] > (self::$today - self::TWO_MONTH)) {
             self::successArray($user);
