@@ -44,7 +44,7 @@ class Execute
   /**
    * @param valiteUsers validate users on the existence
    */
-  protected bool $valiteUsers = false;
+  protected bool $validateUsers = false;
 
 
   /**
@@ -67,7 +67,7 @@ class Execute
   public function setUsers(array $users): object
   {
     $this->usersList = $users;
-    $this->valiteUsers = false;
+    $this->validateUsers = false;
 
     return $this;
   }
@@ -117,8 +117,8 @@ class Execute
     }
   }
 
-  protected function sendMessage(string $session, string $link, string  $msg): void
+  protected function sendMessage(string $session, string $addressMessage, string  $msg): void
   {
-    Telegram::instance($session)->sendMessage($link, $msg);
+    Telegram::instance($session)->sendMessage($addressMessage, $msg);
   }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Services\Executes;
 
+use App\Helpers\CheckUsersHelpers;
 use App\Helpers\ErrorHelper;
 use App\Helpers\WorkingFileHelper;
 use App\Services\Authorization\Telegram;
@@ -10,11 +11,16 @@ use Exception;
 class InvitationsChannelExecute extends Execute
 {
   private static ?InvitationsChannelExecute $instance = null;
-  const LENGTH_USERS_FOR_INVITIONS = 10;
+  const LENGTH_USERS_FOR_INVITIONS = 20;
   protected string $channel = '';
   protected int $idChannel;
   protected array $chunkUsers = [];
   protected array $skipUsers = [];
+  protected array $notFoundUsers = [];
+  protected bool $greedySession = false;
+  protected array $reuseSession = [];
+  protected int $countReuseSession = 0;
+  protected int $sleepArterReuse = 30;
   private bool $validateChannel = false;
 
   /**
@@ -23,13 +29,13 @@ class InvitationsChannelExecute extends Execute
   public static function instance(string $channel = '', array $phone = []): InvitationsChannelExecute
   {
     if (self::$instance === null) {
-      self::$instance = new self($channel, $phone);
+      self::$instance = new self($channel, $phone, greedySession: true);
     }
 
     return self::$instance;
   }
 
-  private function __construct(string $channel = '', array $phone = [], array $users = [])
+  private function __construct(string $channel = '', array $phone = [], array $users = [], bool $greedySession = false)
   {
     if ($phone) {
       parent::__construct($phone);
@@ -41,6 +47,9 @@ class InvitationsChannelExecute extends Execute
     }
     if ($users) {
       $this->usersList = $users;
+    }
+    if ($greedySession) {
+      $this->greedySession = $greedySession;
     }
   }
 
@@ -55,7 +64,6 @@ class InvitationsChannelExecute extends Execute
     if (!$this->usersList) {
       $this->initUsersInFile();
     }
-
     if ($this->channel && $this->usersList) {
       $this->joinsChannel();
       $this->invitionsUsers();
@@ -128,53 +136,75 @@ class InvitationsChannelExecute extends Execute
    */
   private function invitionsUsers()
   {
-    if (!$this->valiteUsers) {
-      $this->validateUsers();
-    }
-    $this->chunkUsers();
+    $this->checkUsers();
 
-    foreach ($this->sessionList as $session) {
-      $this->usedSession($session);
-      try {
-        $users = array_pop($this->chunkUsers);
-        Telegram::instance($session, false)->inviteToChannel($this->channel, $users);
-      } catch (Exception $e) {
-        ErrorHelper::writeToFile($e);
-        array_push($this->skipUsers, $users);
-        continue;
+    if ($this->sessionList) {
+      foreach ($this->sessionList as $session) {
+        if (!$this->chunkUsers) {
+          break;
+        }
+        $this->usedSession($session);
+        try {
+          $users = array_pop($this->chunkUsers);
+          Telegram::instance($session)->inviteToChannel($this->channel, $users);
+          $this->success++;
+        } catch (Exception $e) {
+          ErrorHelper::writeToFile($e);
+          array_push($this->skipUsers, $users);
+          $this->amountError++;
+          continue;
+        }
       }
     }
+
+    $this->callbackInvitations();
   }
 
   private function chunkUsers()
   {
     $this->chunkUsers = array_chunk($this->usersList, self::LENGTH_USERS_FOR_INVITIONS);
-    print_r($this->chunkUsers);
   }
 
   private function validateUsers(): void
   {
     if ($this->usersList) {
-      $session = Telegram::instance($this->sessionList[0]);
-      foreach ($this->usersList as $user) {
-        try {
-          $a = $session->getInfo($user);
-          print_r($a);
-        } catch (Exception $e) {
-          array_push($this->skipUsers, array_splice($this->usersList, array_search($user, $this->usersList))[0]);
-          continue;
-        }
-      }
-      print_r($this->skipUsers);
+      ['usersList' => $this->usersList, 'notFount' => $this->notFoundUsers]  = CheckUsersHelpers::checkEmptyUsers($this->usersList);
+      print_r($this->userList);
+      print_r($this->notFoundUsers);
+      die();
+      $this->validateUsers = true;
     }
   }
 
-  private function spliceUsers($user)
+  private function checkUsers(): void
   {
+    if (!$this->validateUsers) {
+      $this->validateUsers();
+    }
+
+    if (!$this->chunkUsers) {
+      $this->chunkUsers();
+    }
   }
 
-  public function __desctruct()
+  private function callbackInvitations()
   {
-    WorkingFileHelper::newTask($this->task, $this->userList, $this->usedSession, $this->skipUsers);
+    if ($this->greedySession && !$this->sessionList && $this->countReuseSession < 2) {
+      shuffle($this->usedSession);
+      $this->sessionList = array_splice($this->usedSession, 0, count($this->chunkUsers));
+      array_push($this->reuseSession, $this->sessionList);
+      $this->countReuseSession++;
+    }
+    if ($this->chunkUsers && $this->sessionList) {
+      sleep($this->sleepArterReuse);
+      $this->invitionsUsers();
+    }
+  }
+
+
+  public function __destruct()
+  {
+    WorkingFileHelper::newTask($this->task,  $this->usersList, $this->channel, $this->notFoundUsers, $this->usedSession, $this->reuseSession);
+    WorkingFileHelper::endTask($this->task, $this->success, $this->amountError, $this->skipUsers);
   }
 }

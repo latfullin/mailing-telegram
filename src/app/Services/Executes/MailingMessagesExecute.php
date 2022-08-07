@@ -102,7 +102,8 @@ class MailingMessagesExecute extends Execute
 
   public function __destruct()
   {
+    print_r($this->skipUsers);
     WorkingFileHelper::newTask($this->task, $this->usersList);
-    WorkingFileHelper::endTask($this->task, $this->success, $this->amoutError, $this->skipUsers);
+    WorkingFileHelper::endTask($this->task, $this->success, $this->amountError, $this->skipUsers);
   }
 }

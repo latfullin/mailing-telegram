@@ -33,7 +33,7 @@ trait ChannelsMethodsTelegram
     return $this;
   }
 
-  public function inviteToChannel(string $channel, array $users): object
+  public function inviteToChannel(string $channel, array $users)
   {
     $this->telegram->channels->inviteToChannel(channel: $channel, users: $users);
 

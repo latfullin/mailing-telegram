@@ -3,6 +3,7 @@
 namespace App\Traits\Message;
 
 use danog\MadelineProto\channels;
+use Exception;
 
 trait MessageMethodsTelegram
 {
@@ -70,7 +71,11 @@ trait MessageMethodsTelegram
   // Need format '1147860595' 
   public function getInfo($id)
   {
-    return $this->telegram->getInfo(id: $id);
+    try {
+      return $this->telegram->getInfo(id: $id);
+    } catch (Exception $e) {
+      return false;
+    }
   }
 
   // Show all dialog & channels 

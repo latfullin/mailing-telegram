@@ -22,6 +22,19 @@ class WorkingFileHelper
     }
   }
 
+  public static function initcheckSession()
+  {
+    try {
+      if (is_file('phone')) {
+        return self::readFile('phoneForCheck');
+      } else {
+        throw new Exception("Not fount file - phoneForCheck!");
+      }
+    } catch (Exception $e) {
+      ErrorHelper::writeToFile("$e\n");
+    }
+  }
+
   public static function initUsersList()
   {
     try {
@@ -62,10 +75,8 @@ class WorkingFileHelper
     asort($files, SORT_NUMERIC);
     $file = array_pop($files);
     if ($file > 0) {
-
       return $file + 1;
     } else {
-
       return 1;
     }
   }
