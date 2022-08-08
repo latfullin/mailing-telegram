@@ -60,17 +60,6 @@ class Execute
     $this->task = WorkingFileHelper::lastTask();
   }
 
-  /**
-   * Set users list for executes, if not hand over, then will be used file 'user'.
-   */
-  public function setUsers(array $users): object
-  {
-    $this->usersList = $users;
-    $this->validateUsers = false;
-
-    return $this;
-  }
-
   public function usedSession(string $session): void
   {
     if ($this->sessionList) {
@@ -126,5 +115,23 @@ class Execute
   protected function sendMessage(string $session, string $addressMessage, string  $msg): void
   {
     Telegram::instance($session)->sendMessage($addressMessage, $msg);
+  }
+
+  public function setChannel(string $channel)
+  {
+    $this->channel = $channel;
+
+    return $this;
+  }
+
+  /**
+   * Set users list for executes, if not hand over, then will be used file 'user'.
+   */
+  public function setUsers(array $users): object
+  {
+    $this->usersList = $users;
+    $this->validateUsers = false;
+
+    return $this;
   }
 }

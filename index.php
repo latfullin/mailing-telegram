@@ -11,13 +11,13 @@ require_once 'vendor/autoload.php';
 
 // $a = InvitationsChannelExecute::instance('https://t.me/sa12dasdas')->execute();
 // MailingMessagesExecute::instance()->executes('helllo');
-$a = ParcerExecute::instance('https://t.me/gruppau')->start()->breakInfoTime();
+$a = ParcerExecute::instance('https://t.me/sa12dasdas')->start()->breakInfoTime();
 // $a->start();
 // print_r($a);
 
 
 // try {
-//   $a = Telegram::instance('https://t.me/asdasxasxasee')->inviteToChannel('https://t.me/vdgdvvdvrvr', $aaa);
+// $a = Telegram::instance('79776782207')->getInfo('5187729151');
 // $a = Telegram::instance('79874018497')->getInfo('@Artur_Gerd');
 // var_dump($a);
 // } catch (Exception $e) {

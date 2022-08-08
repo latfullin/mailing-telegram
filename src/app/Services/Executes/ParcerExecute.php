@@ -50,20 +50,23 @@ class ParcerExecute extends Execute
   protected int $participantsCount;
   protected array $participants = [];
   protected bool $divideGender = false;
+  protected bool $needUsersId = true;
+  protected int $countUsers = 0;
 
-  private function __construct(string $channel)
+  private function __construct(string $channel, bool $needUsersId)
   {
     parent::__construct();
     $this->channel = $channel;
+    $this->needUsersId = $needUsersId;
     $this->channelInformation = $this->verifyChannel($channel);
     $this->participantsCount = $this->channelInformation['full_chat']['participants_count'];
     $this->countAmountInteration($this->participantsCount);
   }
 
-  public static function instance(string $channel = '')
+  public static function instance(string $channel = '', bool $needUsersId = true)
   {
     if (self::$instance === null) {
-      self::$instance = new self($channel);
+      self::$instance = new self($channel, $needUsersId);
     }
 
     return self::$instance;
@@ -73,12 +76,13 @@ class ParcerExecute extends Execute
   {
     $offset = 0;
     for ($i = 0; $i < $this->countCycles; $i++) {
-      $data = Telegram::instance('79776782207')->getParticipants('https://t.me/devworden', $offset)['users'];
+      $data = Telegram::instance('79776782207')->getParticipants($this->channel, $offset)['users'];
       for ($d = 0; $d < count($data); $d++) {
         array_push($this->participants, $data[$d]);
       }
       $offset += SELF::OFFSET_LIMIT;
     }
+    $this->countUsers = count($this->participants);
 
     return $this;
   }
@@ -86,13 +90,13 @@ class ParcerExecute extends Execute
   public function breakInfoTime()
   {
     $data = [
-      'notTime' => [],
       'oneDay' => [],
       'twoDay' => [],
       'threeDay' => [],
       'oneWeek' => [],
       'oneMonth' => [],
       'moreOneMonth' => [],
+      'notTime' => [],
     ];
     $now = time();
 
@@ -107,7 +111,7 @@ class ParcerExecute extends Execute
 
       $validTime = $now - $time;
 
-      switch ($time) {
+      switch ($validTime) {
         case self::ONE_DAY > $validTime:
           $data['oneDay'][] = $userNameOrId;
           break;
@@ -127,43 +131,15 @@ class ParcerExecute extends Execute
           $data['moreOneMonth'][] = $userNameOrId;
       }
     }
-
+    WorkingFileHelper::writeToFile($this->task, "Группа {$this->channel}\n\n");
+    WorkingFileHelper::writeToFile($this->task, "Количество пользователей: {$this->countUsers}\n\n");
     foreach ($data as $key => $days) {
-      WorkingFileHelper::writeToFile('test', "$key\n\n");
+      WorkingFileHelper::writeToFile($this->task, "\n$key\n\n");
       foreach ($days as $item) {
-        WorkingFileHelper::writeToFile('test', "$item\n");
+        WorkingFileHelper::writeToFile($this->task, "$item\n");
       }
     }
   }
-
-  // if (self::ONE_DAY > $validTime) {
-  //   $oneDay[] = $userNameOrId;
-  //   continue;
-  // }
-
-  // if (self::ONE_DAY < $validTime &&  self::TWO_DAY > $validTime) {
-  //   $twoDay[] = $userNameOrId;
-  //   continue;
-  // }
-
-  // if (self::TWO_DAY < $validTime && self::THREE_DAY > $validTime) {
-  //   $threeDay[] = $userNameOrId;
-  //   continue;
-  // }
-
-  //   if (self::THREE_DAY < $validTime && self::ONE_WEEK > $validTime) {
-  //     $oneWeek[] = $userNameOrId;
-  //     continue;
-  //   }
-
-  //   if (self::ONE_WEEK < $validTime && self::ONE_MONTH > $validTime) {
-  //     $oneMonth[] = $userNameOrId;
-  //     continue;
-  //   }
-
-  //   $moreOneMonth[] = $userNameOrId;
-
-
 
   private function solidSheet($item)
   {
@@ -173,12 +149,5 @@ class ParcerExecute extends Execute
   private function countAmountInteration(int $informationChannel)
   {
     $this->countCycles = ceil($informationChannel / self::OFFSET_LIMIT);
-  }
-
-  public function setChannel(string $channel)
-  {
-    $this->channel = $channel;
-
-    return $this;
   }
 }
