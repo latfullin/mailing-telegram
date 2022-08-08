@@ -10,10 +10,12 @@ use Exception;
 
 class MailingMessagesExecute extends Execute
 {
+  const MAX_MSG = 10;
   private static ?MailingMessagesExecute $instance = null;
   protected string $msg;
   protected array $skipUsers = [];
   protected array $notFoundUser = [];
+  protected bool $needCheckUsers = false;
 
   public static function instance()
   {
@@ -24,11 +26,13 @@ class MailingMessagesExecute extends Execute
     return self::$instance;
   }
 
-  public function mailingMessagesUsers(string $msg, array|string $users = [])
+  public function execute(string $msg, array $users = [], bool $needCheckUsers = false)
   {
     $this->msg = $msg;
-    if (count($users) > 0) {
-      ['usersList' => $this->usersList, 'notFount' => $this->notFoundUsers]  = CheckUsersHelpers::checkEmptyUsers($this->usersList);
+    $this->needCheckUsers = $needCheckUsers;
+
+    if ($users) {
+      $this->usersList = $users;
     }
     if ($this->validate()) {
       $this->getStart();
@@ -45,11 +49,10 @@ class MailingMessagesExecute extends Execute
     }
   }
 
-  private function getStart($maxMsg = 10)
+  private function getStart()
   {
     foreach ($this->sessionList as $session) {
-      for ($i = 0; $i < $maxMsg; $i++) {
-        print_r($this->usersList);
+      for ($i = 0; $i < self::MAX_MSG; $i++) {
         try {
           if (!$this->usersList) {
             break;
@@ -82,14 +85,13 @@ class MailingMessagesExecute extends Execute
       ErrorHelper::writeToFileAndDie("$e\n");
     }
 
+    if (count($this->usersList) <= 0) {
+      $this->initUsersInFile();
+    }
+
     try {
-      if (count($this->usersList) <= 0) {
-        parent::initUsersInFile();
-      }
-      if (count($this->usersList) > 0) {
-        return true;
-      } else {
-        throw new Exception('Users list empty');
+      if ($this->needCheckUsers) {
+        ['usersList' => $this->usersList, 'notFount' => $this->notFoundUsers]  = CheckUsersHelpers::checkEmptyUsers($this->usersList);
       }
     } catch (Exception $e) {
       ErrorHelper::writeToFileAndDie("$e\n");

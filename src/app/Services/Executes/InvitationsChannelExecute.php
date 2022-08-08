@@ -11,7 +11,7 @@ use Exception;
 class InvitationsChannelExecute extends Execute
 {
   private static ?InvitationsChannelExecute $instance = null;
-  const LENGTH_USERS_FOR_INVITIONS = 20;
+  const LENGTH_USERS_FOR_INVITIONS = 15;
   protected string $channel = '';
   protected int $idChannel;
   protected array $chunkUsers = [];
@@ -21,6 +21,7 @@ class InvitationsChannelExecute extends Execute
   protected array $reuseSession = [];
   protected int $countReuseSession = 0;
   protected int $sleepArterReuse = 30;
+  protected bool $needCheckUsers = false;
   private bool $validateChannel = false;
 
   /**
@@ -29,7 +30,7 @@ class InvitationsChannelExecute extends Execute
   public static function instance(string $channel = '', array $phone = []): InvitationsChannelExecute
   {
     if (self::$instance === null) {
-      self::$instance = new self($channel, $phone, greedySession: true);
+      self::$instance = new self($channel, $phone, greedySession: false);
     }
 
     return self::$instance;
@@ -56,8 +57,9 @@ class InvitationsChannelExecute extends Execute
   /** 
    * @param channel required param; Need hand over params 'channel' this function or at call instance  
    */
-  public function execute(string $channel = ''): object
+  public function execute(string $channel = '', bool $needCheckUsers = false): object
   {
+    $this->needCheckUsers = $needCheckUsers;
     if ($channel) {
       $this->channel = $channel;
     }
@@ -68,7 +70,6 @@ class InvitationsChannelExecute extends Execute
       $this->joinsChannel();
       $this->invitionsUsers();
     }
-
     return $this;
   }
 
@@ -78,6 +79,7 @@ class InvitationsChannelExecute extends Execute
   private function joinsChannel(): object
   {
     if (!$this->validateChannel) {
+
       $result = $this->verifyChannel($this->channel);
       $this->idChannel = $result['full_chat']['id'];
       $this->validateChannel = true;
@@ -93,7 +95,7 @@ class InvitationsChannelExecute extends Execute
         throw new Exception('Not found channel to invite!');
       }
     } catch (Exception $e) {
-      ErrorHelper::writeToFileAndDie("$e\n");
+      ErrorHelper::writeToFileAndDie("$e");
     }
 
     return $this;
@@ -175,7 +177,7 @@ class InvitationsChannelExecute extends Execute
 
   private function checkUsers(): void
   {
-    if (!$this->validateUsers) {
+    if (!$this->validateUsers && $this->needCheckUsers) {
       $this->validateUsers();
     }
 

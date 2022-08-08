@@ -1,0 +1,101 @@
+Array
+(
+    [0] => Array
+        (
+            [_] => user
+            [flags] => 33554543
+            [self] => 
+            [contact] => 
+            [mutual_contact] => 
+            [deleted] => 
+            [bot] => 
+            [bot_chat_history] => 
+            [bot_nochats] => 
+            [verified] => 
+            [restricted] => 
+            [min] => 
+            [bot_inline_geo] => 
+            [support] => 
+            [scam] => 
+            [apply_min_photo] => 1
+            [fake] => 
+            [bot_attach_menu] => 
+            [premium] => 
+            [attach_menu_enabled] => 
+            [id] => 657598578
+            [access_hash] => 6755054293635840231
+            [first_name] => Julia
+            [last_name] => SM
+            [username] => juliasva
+            [photo] => Array
+                (
+                    [_] => userProfilePhoto
+                    [flags] => 2
+                    [has_video] => 
+                    [photo_id] => 2824364386862344125
+                    [stripped_thumb] => danog\MadelineProto\TL\Types\Bytes Object
+                        (
+                            [bytes:danog\MadelineProto\TL\Types\Bytes:private] =��o���QE(m
+                        )
+
+                    [dc_id] => 4
+                )
+
+            [status] => Array
+                (
+                    [_] => userStatusOffline
+                    [was_online] => 1659968196
+                )
+
+        )
+
+    [1] => Array
+        (
+            [_] => user
+            [flags] => 33554543
+            [self] => 
+            [contact] => 
+            [mutual_contact] => 
+            [deleted] => 
+            [bot] => 
+            [bot_chat_history] => 
+            [bot_nochats] => 
+            [verified] => 
+            [restricted] => 
+            [min] => 
+            [bot_inline_geo] => 
+            [support] => 
+            [scam] => 
+            [apply_min_photo] => 1
+            [fake] => 
+            [bot_attach_menu] => 
+            [premium] => 
+            [attach_menu_enabled] => 
+            [id] => 1017378454
+            [access_hash] => 1341974716326299372
+            [first_name] => Глеб
+            [last_name] => Иванов
+            [username] => Norman165
+            [photo] => Array
+                (
+                    [_] => userProfilePhoto
+                    [flags] => 2
+                    [has_video] => 
+                    [photo_id] => 4369607188041279406
+                    [stripped_thumb] => danog\MadelineProto\TL\Types\Bytes Object
+                        (
+                            [bytes:danog\MadelineProto\TL\Types\Bytes:private] =O�r<}(��lH
+                        )
+
+                    [dc_id] => 2
+                )
+
+            [status] => Array
+                (
+                    [_] => userStatusOffline
+                    [was_online] => 1659966058
+                )
+
+        )
+
+)

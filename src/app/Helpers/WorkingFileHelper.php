@@ -108,7 +108,7 @@ class WorkingFileHelper
     }
   }
 
-  private static function writeToFile(string $filePath, string $text): void
+  public static function writeToFile(string $filePath, string $text): void
   {
     file_put_contents($filePath, $text, FILE_APPEND);
 

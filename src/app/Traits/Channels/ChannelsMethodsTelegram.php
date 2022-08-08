@@ -61,7 +61,7 @@ trait ChannelsMethodsTelegram
    * @param offset Start array. Patricals users for group.
    * @param limit limit length array. 
    */
-  public function getParticipants(string|int $group, int $offset = 0, int $limit = 100, string $q = '', $hash = '')
+  public function getParticipants(string|int $group, int $offset = 0, int $limit = 200, string $q = '', $hash = '')
   {
     return $this->telegram->channels->getParticipants(channel: $group, filter: ['_' => 'channelParticipantsSearch', 'q' => $q], offset: $offset, limit: $limit,);
   }

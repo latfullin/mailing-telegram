@@ -4,90 +4,17 @@ use App\Helpers\WorkingFileHelper;
 use App\Services\Authorization\Telegram;
 use App\Services\Executes\InvitationsChannelExecute;
 use App\Services\Executes\MailingMessagesExecute;
+use App\Services\Executes\ParcerExecute;
 
 require_once 'vendor/autoload.php';
 
 
-// $a = InvitationsChannelExecute::instance('https://t.me/TheBadComedian')->execute();
-MailingMessagesExecute::instance()->mailingMessagesUsers('helllo');
+// $a = InvitationsChannelExecute::instance('https://t.me/sa12dasdas')->execute();
+// MailingMessagesExecute::instance()->executes('helllo');
+$a = ParcerExecute::instance('https://t.me/gruppau')->start()->breakInfoTime();
+// $a->start();
+// print_r($a);
 
-$aaa = [
-  '@artem_dvd',
-  '@Viktor_Matorin',
-  '@Promokos',
-  '@denis_344',
-  '@Sasssp',
-  '@Frangart',
-  '@dfgwt',
-  '@Weber8',
-  '@Nikcristi21',
-  '@oonlIyselfmade',
-  '@fillaleon',
-  '@kirriltt',
-  '@aleksa_assisten',
-  '@romankolomna',
-  '@Jose566',
-  '@alexey_frolov1990',
-  '@manager_wb_N1',
-  '@AnS7021',
-  '@wool7',
-  '@fancher75',
-  '@bonaccorsi12',
-  '@maltas82',
-  '@holm80',
-  '@stuck35',
-  '@schneeman93',
-  '@fondren24',
-  '@lindell51',
-  '@coburn22',
-  '@curran6',
-  '@cervantes67',
-  '@hawkes4',
-  '@biros17',
-  '@galyean85',
-  '@beech64',
-  '@scribner30',
-  '@boggs7',
-  '@Starbucksgh',
-  '@top88890',
-  '@dlog12',
-  '@Orznv',
-  '@vanofaseo',
-  '@KelvinVereen',
-  '@alex03866',
-  '@namesvoboda',
-  '@seoprodvigeni',
-  '@dmiorlov',
-  '@zaitsev_yu',
-  '@Filipp_Milly',
-  '@mikhailgggggh',
-  '@Timof43',
-  '@OnlyBestKontent',
-  '@kingsman_only',
-  '@popoiop13',
-  '@pva21',
-  '@wise60',
-  '@Serokurov_Maxim',
-  '@cbytl',
-  '@Sergey_zaytsev94',
-  '@Artur_Gerd',
-  '@galioon',
-  '@Pavel_Alenin',
-  '@Alexxa161',
-  '@itacimucujo',
-  '@sarkis29',
-  '@galibibi34',
-  '@anver21',
-  '@osaulenkop',
-  '@manager_pavel77',
-  '@igormsk5',
-  '@sergrycak',
-  '@AkInar',
-  '@mindigo1',
-  '@den4_ekimov',
-  '@MidGold',
-  '@Shurik_1990',
-];
 
 // try {
 //   $a = Telegram::instance('https://t.me/asdasxasxasee')->inviteToChannel('https://t.me/vdgdvvdvrvr', $aaa);

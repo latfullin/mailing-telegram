@@ -55,7 +55,6 @@ class Execute
     if ($phone) {
       $this->sessionList = $phone;
     } else {
-      echo 'esto';
       $this->sessionList = WorkingFileHelper::initSessionList();
     }
     $this->task = WorkingFileHelper::lastTask();
@@ -82,11 +81,17 @@ class Execute
   /**
    * init file with users
    */
-  public function initUsersInFile(): bool
+  protected function initUsersInFile(): bool
   {
-    $this->usersList = WorkingFileHelper::initUsersList();
-    if ($this->usersList) {
-      return true;
+    try {
+      $this->usersList = WorkingFileHelper::initUsersList();
+      if ($this->usersList) {
+        return true;
+      } else {
+        throw new Exception('Users list empty');
+      }
+    } catch (Exception $e) {
+      ErrorHelper::writeToFileAndDie("$e\n");
     }
 
     return false;
@@ -109,12 +114,12 @@ class Execute
   {
     try {
       if ($channel) {
-        return Telegram::instance($this->sessionList[rand(0, count($this->sessionList) - 1)])->getChannel($channel);
+        return Telegram::instance($this->sessionList[0])->getChannel($channel);
       } else {
         throw new Exception('Not found channel to invite!');
       }
     } catch (Exception $e) {
-      ErrorHelper::writeToFileAndDie("$e\n");
+      ErrorHelper::writeToFileAndDie($e,);
     }
   }
 
