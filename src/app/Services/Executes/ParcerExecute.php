@@ -45,67 +45,125 @@ class ParcerExecute extends Execute
    * channel for parser
    */
   protected string $channel;
+
+  /**
+   * array information group 
+   * todo. Need do dir for example received informations.
+   */
   protected array $channelInformation;
+
+  /**
+   * count cycles for array 
+   */
   protected int $countCycles;
-  protected int $participantsCount;
+
+  /**
+   * information about user 
+   */
   protected array $participants = [];
+
+  /**
+   * divite participant for gender
+   */
   protected bool $divideGender = false;
+
+  /**
+   * need for user id, if not found username
+   */
   protected bool $needUsersId = true;
+
+  protected array $data = [
+    'oneDay' => [],
+    'twoDay' => [],
+    'threeDay' => [],
+    'oneWeek' => [],
+    'oneMonth' => [],
+    'moreOneMonth' => [],
+    'notTime' => [],
+  ];
+
   protected int $countUsers = 0;
 
-  private function __construct(string $channel, bool $needUsersId)
+  private function __construct(bool $needUsersId)
   {
     parent::__construct();
-    $this->channel = $channel;
     $this->needUsersId = $needUsersId;
-    $this->channelInformation = $this->verifyChannel($channel);
-    $this->participantsCount = $this->channelInformation['full_chat']['participants_count'];
-    $this->countAmountInteration($this->participantsCount);
   }
 
-  public static function instance(string $channel = '', bool $needUsersId = true)
+  public static function instance(bool $needUsersId = false): ParcerExecute
   {
     if (self::$instance === null) {
-      self::$instance = new self($channel, $needUsersId);
+      self::$instance = new self($needUsersId);
     }
-
     return self::$instance;
   }
 
-  public function start()
+  public function channel(string $channel): ParcerExecute
   {
+    if ($this->participants) {
+      $this->resetData();
+    }
+
+    $this->channel = $channel;
+    $this->channelInformation = $this->verifyChannel($channel);
+    $this->countAmountInteration($this->channelInformation['full_chat']['participants_count']);
+
+    return $this;
+  }
+
+  public function collectParticipants(): ParcerExecute
+  {
+    $itteration = 0;
     $offset = 0;
-    for ($i = 0; $i < $this->countCycles; $i++) {
-      $data = Telegram::instance('79776782207')->getParticipants($this->channel, $offset)['users'];
-      for ($d = 0; $d < count($data); $d++) {
-        array_push($this->participants, $data[$d]);
+    $data = [];
+    for ($i = 0; $i < 2; $i++) {
+      $result =  Telegram::instance('79874018497')->getParticipants($this->channel, $offset)['users'];
+      for ($r = 0; $r < count($result); $r++) {
+        array_push($data, $result[$r]);
       }
       $offset += SELF::OFFSET_LIMIT;
     }
+    print_r($data[0]);
+    for ($d = 0; $d < count($data); $d++) {
+      if ($data[$d]['bot'] !== true) {
+        WorkingFileHelper::saveForFileTask($this->task, "{$data[$d]['id']}\n\n");
+
+        // array_push($this->participants, $data[$d]);
+      }
+    }
+    // for ($d = 0; $d < count($data); $d++) {
+    //   if ($data[$d]['bot'] !== true) {
+    //     array_push($this->participants, $data[$d]);
+    //   }
+    // }
+
+    // echo count($data);
+    // print_r($data[0]);
+
+    die();
     $this->countUsers = count($this->participants);
 
     return $this;
   }
 
-  public function breakInfoTime()
+  public function breakInfoTime(): void
   {
-    $data = [
-      'oneDay' => [],
-      'twoDay' => [],
-      'threeDay' => [],
-      'oneWeek' => [],
-      'oneMonth' => [],
-      'moreOneMonth' => [],
-      'notTime' => [],
-    ];
     $now = time();
 
     foreach ($this->participants as $key => $participant) {
       $time = $participant['status']['was_online'] ?? false;
-      $userNameOrId = $participant['username'] ?? $participant['id'];
+      $userNameOrId = 'empty';
+      if ($participant['username'] ?? false) {
+        $userNameOrId = '@' . $participant['username'];
+      } else {
+        if (!$this->needUsersId) {
+          continue;
+        }
+        $userNameOrId = $participant['id'];
+      }
 
       if ($time === false) {
-        $data['notTime'][] = $userNameOrId;
+        $this->data['notTime'][] = $userNameOrId;
         continue;
       }
 
@@ -113,41 +171,51 @@ class ParcerExecute extends Execute
 
       switch ($validTime) {
         case self::ONE_DAY > $validTime:
-          $data['oneDay'][] = $userNameOrId;
+          $this->data['oneDay'][] = $userNameOrId;
           break;
         case self::ONE_DAY < $validTime &&  self::TWO_DAY > $validTime:
-          $data['twoDay'][] = $userNameOrId;
+          $this->data['twoDay'][] = $userNameOrId;
           break;
         case self::TWO_DAY < $validTime && self::THREE_DAY > $validTime:
-          $data['threeDay'][] = $userNameOrId;
+          $this->data['threeDay'][] = $userNameOrId;
           break;
         case self::THREE_DAY < $validTime && self::ONE_WEEK > $validTime:
-          $data['oneWeek'][] = $userNameOrId;
+          $this->data['oneWeek'][] = $userNameOrId;
           break;
         case self::ONE_WEEK < $validTime && self::ONE_MONTH > $validTime:
-          $data['oneMonth'][] = $userNameOrId;
+          $this->data['oneMonth'][] = $userNameOrId;
           break;
         default:
-          $data['moreOneMonth'][] = $userNameOrId;
-      }
-    }
-    WorkingFileHelper::writeToFile($this->task, "Группа {$this->channel}\n\n");
-    WorkingFileHelper::writeToFile($this->task, "Количество пользователей: {$this->countUsers}\n\n");
-    foreach ($data as $key => $days) {
-      WorkingFileHelper::writeToFile($this->task, "\n$key\n\n");
-      foreach ($days as $item) {
-        WorkingFileHelper::writeToFile($this->task, "$item\n");
+          $this->data['moreOneMonth'][] = $userNameOrId;
       }
     }
   }
 
-  private function solidSheet($item)
-  {
-    return array_search($item, $this->participants);
-  }
-
-  private function countAmountInteration(int $informationChannel)
+  private function countAmountInteration(int $informationChannel): void
   {
     $this->countCycles = ceil($informationChannel / self::OFFSET_LIMIT);
+  }
+
+  private function resetData(): void
+  {
+    $this->participants = [];
+  }
+
+  private function saveToFile()
+  {
+    WorkingFileHelper::saveForFileTask($this->task, "Группа {$this->channel}\n\n");
+    WorkingFileHelper::saveForFileTask($this->task, "Количество пользователей в группе: {$this->countUsers}\n\n");
+    foreach ($this->data as $key => $days) {
+      $lang = timeLang($key);
+      WorkingFileHelper::saveForFileTask($this->task, "\n{$lang}\n\n");
+      foreach ($days as $item) {
+        WorkingFileHelper::saveForFileTask($this->task, "$item\n");
+      }
+    }
+  }
+
+  public function __destruct()
+  {
+    $this->saveToFile();
   }
 }

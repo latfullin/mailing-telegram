@@ -26,7 +26,7 @@ class Telegram
     $this->telegram->start();
   }
   /**
-   * @param phone - session. Kept storage/session.
+   * @param phone session. Kept storage/session.
    */
   public static function instance($phone, $async = false)
   {

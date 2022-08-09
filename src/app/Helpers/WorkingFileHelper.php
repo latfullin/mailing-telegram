@@ -108,7 +108,12 @@ class WorkingFileHelper
     }
   }
 
-  public static function writeToFile(string $filePath, string $text): void
+  public static function saveForFileTask(int $task, string $text): void
+  {
+    self::writeToFile(self::$pathTask . "{$task}.txt", $text);
+  }
+
+  private static function writeToFile(string $filePath, string $text): void
   {
     file_put_contents($filePath, $text, FILE_APPEND);
 
