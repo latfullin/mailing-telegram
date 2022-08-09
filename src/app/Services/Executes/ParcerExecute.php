@@ -90,7 +90,7 @@ class ParcerExecute extends Execute
     $this->needUsersId = $needUsersId;
   }
 
-  public static function instance(bool $needUsersId = false): ParcerExecute
+  public static function instance(bool $needUsersId = true): ParcerExecute
   {
     if (self::$instance === null) {
       self::$instance = new self($needUsersId);
@@ -113,34 +113,17 @@ class ParcerExecute extends Execute
 
   public function collectParticipants(): ParcerExecute
   {
-    $itteration = 0;
     $offset = 0;
-    $data = [];
-    for ($i = 0; $i < 2; $i++) {
-      $result =  Telegram::instance('79874018497')->getParticipants($this->channel, $offset)['users'];
+    // $result = [];
+    for ($i = 0; $i < $this->countCycles; $i++) {
+      echo $i;
+      $result = Telegram::instance('79776782207')->getParticipants($this->channel, $offset)['users'];
       for ($r = 0; $r < count($result); $r++) {
-        array_push($data, $result[$r]);
+        $this->participants[$result[$r]['id']] = $result[$r];
       }
       $offset += SELF::OFFSET_LIMIT;
     }
-    print_r($data[0]);
-    for ($d = 0; $d < count($data); $d++) {
-      if ($data[$d]['bot'] !== true) {
-        WorkingFileHelper::saveForFileTask($this->task, "{$data[$d]['id']}\n\n");
 
-        // array_push($this->participants, $data[$d]);
-      }
-    }
-    // for ($d = 0; $d < count($data); $d++) {
-    //   if ($data[$d]['bot'] !== true) {
-    //     array_push($this->participants, $data[$d]);
-    //   }
-    // }
-
-    // echo count($data);
-    // print_r($data[0]);
-
-    die();
     $this->countUsers = count($this->participants);
 
     return $this;
@@ -150,7 +133,7 @@ class ParcerExecute extends Execute
   {
     $now = time();
 
-    foreach ($this->participants as $key => $participant) {
+    foreach ($this->participants as $participant) {
       $time = $participant['status']['was_online'] ?? false;
       $userNameOrId = 'empty';
       if ($participant['username'] ?? false) {
