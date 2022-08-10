@@ -84,27 +84,6 @@ trait MessageMethodsTelegram
     return $this->telegram->getDialogs();
   }
 
-  // public function getFullChat(): array
-  // {
-  //   return $this->telegram->getDialogs();
-  // }
-
-  /* Show information by phone. Formation: 
-    number[_] => contacts.resolvedPeer
-    [peer] => Array
-    (
-        [_] => peerUser
-        [user_id] => 1147860595
-    )
-    [chats] => Array()
-    [0] => Array
-    (
-      [_] => user
-      [flags] => 33556567
-      [self] => 
-      [contact] => 1
-      ....
-    */
   public function getInformationByNumber($phone)
   {
     return $this->telegram->contacts->resolvePhone(phone: $phone);

@@ -34,6 +34,7 @@ class MailingMessagesExecute extends Execute
     if ($users) {
       $this->usersList = $users;
     }
+
     if ($this->validate()) {
       $this->getStart();
     }
@@ -88,7 +89,6 @@ class MailingMessagesExecute extends Execute
     if (count($this->usersList) <= 0) {
       $this->initUsersInFile();
     }
-
     try {
       if ($this->needCheckUsers) {
         ['usersList' => $this->usersList, 'notFount' => $this->notFoundUsers]  = CheckUsersHelpers::checkEmptyUsers($this->usersList);

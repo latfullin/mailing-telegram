@@ -149,31 +149,13 @@ class ParcerExecute extends Execute
 
   public function bigChannel()
   {
-    foreach (self::ALPHABETS as $key => $alphabets) {
+    foreach (self::ALPHABETS as $alphabets) {
       foreach ($alphabets as $alphabet) {
-        echo $alphabet;
-
         $countsParticipants = Telegram::instance('79874018497')->getParticipants($this->channel, 0, 1, q: $alphabet)['count'];
-        $countsParticipants = $countsParticipants > 10000 ? 10000 : $countsParticipants;
+        $countsParticipants = min($countsParticipants, self::MAX_USER);
         $this->collectParticipants($countsParticipants, $alphabet);
       }
     }
-
-    $handle = fopen('test.txt', 'a');
-    foreach ($this->participants as $participant) {
-      $id = '';
-      if ($participant['username'] ?? false) {
-        $id = $participant['username'];
-      } else {
-        $id = $participant['id'];
-      }
-      $time = $participant['status']['was_online'] ?? false;
-      fwrite($handle, "id:{$id};time:{$time}\n");
-    }
-    $this->resetData();
-    $this->lengthArrayParticipants = 0;
-
-    fclose($handle);
   }
 
   public function collectParticipants(int $countUsers, $q = ''): bool
@@ -222,6 +204,25 @@ class ParcerExecute extends Execute
 
       $this->data[] = $userNameOrId;
     }
+  }
+
+  public function writeTemporaryFile()
+  {
+    $handle = fopen('test.txt', 'a');
+    foreach ($this->participants as $participant) {
+      $id = '';
+      if ($participant['username'] ?? false) {
+        $id = $participant['username'];
+      } else {
+        $id = $participant['id'];
+      }
+      $time = $participant['status']['was_online'] ?? false;
+      fwrite($handle, "id:{$id};time:{$time}\n");
+    }
+    $this->resetData();
+    $this->lengthArrayParticipants = 0;
+
+    fclose($handle);
   }
 
   private function breakTime($userNameOrId, $time): void

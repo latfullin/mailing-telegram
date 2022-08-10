@@ -2,8 +2,6 @@
 
 namespace App\Traits\Channels;
 
-use danog\MadelineProto\channels;
-
 trait ChannelsMethodsTelegram
 {
   public function createGroup(string $title, string $description,  bool $megagroup = true): object
@@ -61,7 +59,7 @@ trait ChannelsMethodsTelegram
    * @param offset Start array. Patricals users for group.
    * @param limit limit length array. 
    */
-  public function getParticipants(string|int $group, int $offset = 0, int $limit = 200, string $q = 'b', $hash = '')
+  public function getParticipants(string|int $group, int $offset = 0, int $limit = 200, string $q = '', $hash = '')
   {
     return $this->telegram->channels->getParticipants(channel: $group, filter: ['_' => 'channelParticipantsSearch', 'q' => $q], offset: $offset, limit: $limit,);
   }
