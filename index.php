@@ -5,26 +5,9 @@ use App\Services\Executes\ParcerExecute;
 
 // $a = InvitationsChannelExecute::instance('https://t.me/sa12dasdas')->execute();
 // MailingMessagesExecute::instance()->executes('helllo');
-// $a = ParcerExecute::instance(true, true)->channel('https://t.me/laravel_web')->executes();
-$a = ParcerExecute::instance(true, true)->channel('https://t.me/laravel_web')->extractData();
+$a = ParcerExecute::instance(true, true)->channel('https://t.me/laravel_web')->executes();
+// $a = ParcerExecute::instance(false, false)->channel('https://t.me/laravel_web')->extractData()->save();
+// $a = ParcerExecute::instance(false, true)->channel('https://t.me/laravel_web')->save();
 
 // ->collectParticipants()->breakTime();
 // $a->start();
-
-$handle = file('src/storage/temporary/385-temporary.txt');
-// $handle = fopen('src/storage/temporary/385-temporary.txt', 'r');
-
-print_r($handle);
-while (true) {
-
-  $a = fgets($handle);
-  if ($a) {
-    explode(';', $a);
-  }
-  if (!$a) {
-    print_r($a);
-    echo time();
-
-    break;
-  }
-}

@@ -152,6 +152,7 @@ class ParcerExecute extends Execute
       $this->resetData();
     }
 
+    $this->now = time();
     $this->channel = $channel;
     $this->channelInformation = $this->verifyChannel($channel);
     $this->countParticipants = $this->channelInformation['full_chat']['participants_count'];
@@ -159,18 +160,21 @@ class ParcerExecute extends Execute
     return $this;
   }
 
-  public function executes(): bool
+  public function executes(): object
   {
     $this->checkChannelInformation();
-    // if ($this->countParticipants < self::MAX_USER) {
-    //   $this->collectParticipants($this->countParticipants);
-    //   $this->usersProcessing();
-    // } else {
-    //   $this->bigChannel();
-    // }
-    $this->bigChannel();
+    if ($this->countParticipants > self::MAX_USER) {
+      $this->collectParticipants($this->countParticipants);
+    } else {
+      $this->bigChannel();
+      $this->extractData();
+    }
 
-    return true;
+    if ($this->participants) {
+      $this->usersProcessing();
+    }
+    sleep(10);
+    return $this;
   }
 
   public function bigChannel()
@@ -186,10 +190,11 @@ class ParcerExecute extends Execute
 
         $this->collectParticipants($countsParticipants, $alphabet);
 
-        if ($this->lengthArrayParticipants > self::MAX_LENGTH) {
+        if ($this->lengthArrayParticipants > 1000) {
           $this->writeTemporaryFile();
           $resetArray++;
         }
+        echo $this->lengthArrayParticipants;
       }
     }
 
@@ -198,7 +203,7 @@ class ParcerExecute extends Execute
     }
   }
 
-  public function collectParticipants(int $countUsers, $q = ''): bool
+  public function collectParticipants(int $countUsers, string $q = ''): bool
   {
     $result = [];
     $this->countAmountInteration($countUsers);
@@ -210,67 +215,83 @@ class ParcerExecute extends Execute
 
     for ($r = 0; $r < count($result); $r++) {
       for ($s = 0; $s < count($result[$r]); $s++) {
-        if ($result[$r][$s]['username'] ?? false || $this->needUsersId) {
-          $this->participants[$result[$r][$s]['id']] = $result[$r][$s];
+
+        $user['id'] = $result[$r][$s]['id'];
+        if ($result[$r][$s]['status']['userStatusOnline'] ?? false) {
+          $user['time'] = $this->now;
+        } else {
+          $user['time'] = $result[$r][$s]['status']['was_online'] ?? false;
+        }
+
+        if ($result[$r][$s]['username'] ?? false) {
+          $user['username'] = '@' . $result[$r][$s]['username'];
+          [
+            'id' => $this->participants[$result[$r][$s]['id']]['id'],
+            'time' => $this->participants[$result[$r][$s]['id']]['time'],
+            'username' => $this->participants[$result[$r][$s]['id']]['username'],
+          ] = $user;
+
+          continue;
+        }
+
+        if ($this->needUsersId) {
+          $user['username'] = $result[$r][$s]['id'];
+          [
+            'id' => $this->participants[$result[$r][$s]['id']]['id'],
+            'time' => $this->participants[$result[$r][$s]['id']]['time'],
+            'username' => $this->participants[$result[$r][$s]['id']]['username'],
+          ] = $user;
         }
       }
     }
 
     $this->lengthArrayParticipants = count($this->participants);
-
     return true;
   }
 
   public function usersProcessing(): void
   {
-    $this->now = time();
-
     foreach ($this->participants as $participant) {
-      $time = $participant['status']['was_online'] ?? false;
-      $userNameOrId = '';
-      if ($participant['username'] ?? false) {
-        $userNameOrId = '@' . $participant['username'];
-      } else {
-        if (!$this->needUsersId) {
-          continue;
-        }
-        $userNameOrId = $participant['id'];
-      }
-
       if ($this->needBreakTime) {
-        $this->switchVariablesTime($userNameOrId, $time);
+        $this->switchVariablesTime($participant['id'], $participant['time'], $participant['username']);
         continue;
       }
 
-      $this->data[] = $userNameOrId;
+      $this->data[] = $participant['username'];
     }
   }
 
-  private function switchVariablesTime($userNameOrId, $time): void
+  private function switchVariablesTime(mixed $userNameOrId, int|bool $time, mixed $username): void
   {
-    if ($time === false) {
-      $this->data['notTime'][] = $userNameOrId;
+    if ($username == '@AlexLaraDev') {
+      echo $username;
+      echo $time;
+      echo $userNameOrId;
+    }
+    if ($time == false) {
+      $this->data['notTime'][$userNameOrId] = $username;
       return;
     }
     $validTime = $this->now - $time;
+
     switch ($validTime) {
       case self::ONE_DAY > $validTime:
-        $this->data['oneDay'][] = $userNameOrId;
+        $this->data['oneDay'][$userNameOrId] = $username;
         break;
       case self::ONE_DAY < $validTime &&  self::TWO_DAY > $validTime:
-        $this->data['twoDay'][] = $userNameOrId;
+        $this->data['twoDay'][$userNameOrId] = $username;
         break;
       case self::TWO_DAY < $validTime && self::THREE_DAY > $validTime:
-        $this->data['threeDay'][] = $userNameOrId;
+        $this->data['threeDay'][$userNameOrId] = $username;
         break;
       case self::THREE_DAY < $validTime && self::ONE_WEEK > $validTime:
-        $this->data['oneWeek'][] = $userNameOrId;
+        $this->data['oneWeek'][$userNameOrId] = $username;
         break;
       case self::ONE_WEEK < $validTime && self::ONE_MONTH > $validTime:
-        $this->data['oneMonth'][] = $userNameOrId;
+        $this->data['oneMonth'][$userNameOrId] = $username;
         break;
       default:
-        $this->data['moreOneMonth'][] = $userNameOrId;
+        $this->data['moreOneMonth'][$userNameOrId] = $username;
     }
   }
 
@@ -278,15 +299,12 @@ class ParcerExecute extends Execute
   {
     $handle = fopen("src/storage/temporary/{$this->task}-temporary.txt", 'a');
     foreach ($this->participants as $participant) {
-      $id = '';
-      if ($participant['username'] ?? false) {
-        $id = $participant['username'];
-      } else {
-        $id = $participant['id'];
-      }
-      $time = $participant['status']['was_online'] ?? 'false';
-      $name = $participant['first_name'];
-      fwrite($handle, "{$id};{$time};{$name}\n");
+      $id = $participant['id'];
+      $username = $participant['username'] ?? '';
+      $time = $participant['time'] ?? '';
+      $name = $participant['first_name'] ?? '';
+
+      fwrite($handle, "{$id};{$username};{$time};{$name}\n");
     }
     $this->resetData();
     $this->lengthArrayParticipants = 0;
@@ -296,13 +314,25 @@ class ParcerExecute extends Execute
 
   public function extractData()
   {
-    $handle = fopen("src/storage/temporary/385-temporary.txt", 'r');
+    $handle = fopen("src/storage/temporary/{$this->task}-temporary.txt", 'r');
     while (true) {
       $str = fgets($handle);
       if ($str) {
         $array = explode(';',  $str);
+        if ($this->needBreakTime) {
+          $time = $array[2] == '' ? false : $array[2];
+          $username = $array[1] == '' ? $array[0] : $array[1];
+          $this->switchVariablesTime($array[0], $time, $username);
+          continue;
+        }
+        $this->data[$array[0]] = $array[1] === '' ? $array[0] : $array[1];
+        continue;
       }
+
+      break;
     }
+
+    fclose($handle);
   }
 
   private function countAmountInteration(int $informationChannel): void
