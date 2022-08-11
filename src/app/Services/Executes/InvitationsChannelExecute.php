@@ -11,7 +11,7 @@ use Exception;
 class InvitationsChannelExecute extends Execute
 {
   private static ?InvitationsChannelExecute $instance = null;
-  const LENGTH_USERS_FOR_INVITIONS = 15;
+  const LENGTH_USERS_FOR_INVITIONS = 1;
   protected string $channel = '';
   protected int $idChannel;
   protected array $chunkUsers = [];
@@ -146,15 +146,19 @@ class InvitationsChannelExecute extends Execute
           break;
         }
         $this->usedSession($session);
-        try {
-          $users = array_pop($this->chunkUsers);
-          Telegram::instance($session)->inviteToChannel($this->channel, $users);
-          $this->success++;
-        } catch (Exception $e) {
-          ErrorHelper::writeToFile($e);
-          array_push($this->skipUsers, $users);
-          $this->amountError++;
-          continue;
+        for ($i = 0; $i < 10; $i++) {
+          try {
+            $users = array_pop($this->chunkUsers);
+            Telegram::instance($session)->inviteToChannel($this->channel, $users);
+            $this->success++;
+            sleep(5);
+          } catch (Exception $e) {
+            ErrorHelper::writeToFile($e);
+            array_push($this->skipUsers, $users);
+            $this->amountError++;
+            sleep(5);
+            continue;
+          }
         }
       }
     }
@@ -199,7 +203,6 @@ class InvitationsChannelExecute extends Execute
       $this->invitionsUsers();
     }
   }
-
 
   public function __destruct()
   {

@@ -19,7 +19,7 @@ class ParcerExecute extends Execute
   /**
    * @param MAX_LENGTH max length array
    */
-  const MAX_LENGTH = 50000;
+  const MAX_LENGTH = 80000;
 
   const CONSONANTS_LETTERS = ['Б', 'В', 'Г', 'Д', 'Ж', 'З', 'Й', 'К', 'Л', 'М', 'Н', 'П', 'Р', 'С', 'Т', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ'];
 
@@ -167,13 +167,14 @@ class ParcerExecute extends Execute
       $this->collectParticipants($this->countParticipants);
     } else {
       $this->bigChannel();
-      $this->extractData();
     }
 
+    if (is_file("src/storage/temporary/{$this->task}-temporary.txt")) {
+      $this->extractData();
+    }
     if ($this->participants) {
       $this->usersProcessing();
     }
-    sleep(10);
     return $this;
   }
 
@@ -189,8 +190,7 @@ class ParcerExecute extends Execute
           ->getParticipants($this->channel, 0, 1, q: $alphabet)['count'], self::MAX_USER);
 
         $this->collectParticipants($countsParticipants, $alphabet);
-
-        if ($this->lengthArrayParticipants > 1000) {
+        if ($this->lengthArrayParticipants > self::MAX_LENGTH) {
           $this->writeTemporaryFile();
           $resetArray++;
         }
@@ -263,11 +263,6 @@ class ParcerExecute extends Execute
 
   private function switchVariablesTime(mixed $userNameOrId, int|bool $time, mixed $username): void
   {
-    if ($username == '@AlexLaraDev') {
-      echo $username;
-      echo $time;
-      echo $userNameOrId;
-    }
     if ($time == false) {
       $this->data['notTime'][$userNameOrId] = $username;
       return;
