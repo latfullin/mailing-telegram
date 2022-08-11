@@ -10,13 +10,24 @@ use Exception;
 class ParcerExecute extends Execute
 {
   private static ?ParcerExecute $instance = null;
+
+  /**
+   * @param MAX_USER max length data for re
+   */
   const MAX_USER = 10000;
+
+  /**
+   * @param MAX_LENGTH max length array
+   */
   const MAX_LENGTH = 50000;
 
   const CONSONANTS_LETTERS = ['Б', 'В', 'Г', 'Д', 'Ж', 'З', 'Й', 'К', 'Л', 'М', 'Н', 'П', 'Р', 'С', 'Т', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ'];
 
   const MALE_END_LETTERS = ['й', 'ь', 'а', 'я'];
 
+  /**
+   * @param ALPHABETS for cycles.
+   */
   const ALPHABETS = [
     ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
     ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'э', 'ю', 'я']
@@ -91,8 +102,21 @@ class ParcerExecute extends Execute
    * @param now time unix format
    */
   protected int $now;
+
+  /**
+   * @param lengthArrayParticipants сounting the data array. Collected users from the channel.
+   */
   protected int $lengthArrayParticipants = 0;
+
+  /**
+   * counts participants in channel, which the parse.
+   */
   protected int $countParticipants;
+
+  /**
+   * @param saveData save results in file 
+   */
+  protected bool $saveData = false;
 
   private function __construct(bool $needUsersId, bool $needBreakTime)
   {
@@ -138,12 +162,13 @@ class ParcerExecute extends Execute
   public function executes(): bool
   {
     $this->checkChannelInformation();
-    if ($this->countParticipants < self::MAX_USER) {
-      $this->collectParticipants($this->countParticipants);
-    } else {
-      $this->bigChannel();
-    }
-    $this->usersProcessing();
+    // if ($this->countParticipants < self::MAX_USER) {
+    //   $this->collectParticipants($this->countParticipants);
+    //   $this->usersProcessing();
+    // } else {
+    //   $this->bigChannel();
+    // }
+    $this->bigChannel();
 
     return true;
   }
@@ -152,14 +177,14 @@ class ParcerExecute extends Execute
   {
     $resetArray = 0;
     foreach (self::ALPHABETS as $alphabets) {
+      if ($this->lengthArrayParticipants > $this->countParticipants * 0.98) {
+        continue;
+      }
       foreach ($alphabets as $alphabet) {
-        echo $alphabet;
-        $countsParticipants = Telegram::instance('79874018497')->getParticipants($this->channel, 0, 1, q: $alphabet)['count'];
-        $countsParticipants = min($countsParticipants, self::MAX_USER);
+        $countsParticipants = min(Telegram::instance('79874018497')
+          ->getParticipants($this->channel, 0, 1, q: $alphabet)['count'], self::MAX_USER);
+
         $this->collectParticipants($countsParticipants, $alphabet);
-
-
-        echo $this->lengthArrayParticipants;
 
         if ($this->lengthArrayParticipants > self::MAX_LENGTH) {
           $this->writeTemporaryFile();
@@ -179,7 +204,8 @@ class ParcerExecute extends Execute
     $this->countAmountInteration($countUsers);
 
     for ($i = 0; $i < $this->countCycles; $i++) {
-      $result[] = Telegram::instance('79874018497')->getParticipants($this->channel, $i * self::OFFSET_LIMIT, q: $q)['users'];
+      $result[] = Telegram::instance('79874018497')
+        ->getParticipants($this->channel, $i * self::OFFSET_LIMIT, q: $q)['users'];
     }
 
     for ($r = 0; $r < count($result); $r++) {
@@ -212,7 +238,7 @@ class ParcerExecute extends Execute
       }
 
       if ($this->needBreakTime) {
-        $this->breakTime($userNameOrId, $time);
+        $this->switchVariablesTime($userNameOrId, $time);
         continue;
       }
 
@@ -220,35 +246,13 @@ class ParcerExecute extends Execute
     }
   }
 
-  public function writeTemporaryFile()
-  {
-    $handle = fopen("{$this->task}-temporary.txt", 'a');
-    foreach ($this->participants as $participant) {
-      $id = '';
-      if ($participant['username'] ?? false) {
-        $id = $participant['username'];
-      } else {
-        $id = $participant['id'];
-      }
-      $time = $participant['status']['was_online'] ?? 'false';
-      $name = $participant['first_name'];
-      fwrite($handle, "id:{$id};time:{$time};name:{$name}\n");
-    }
-    $this->resetData();
-    $this->lengthArrayParticipants = 0;
-
-    fclose($handle);
-  }
-
-  private function breakTime($userNameOrId, $time): void
+  private function switchVariablesTime($userNameOrId, $time): void
   {
     if ($time === false) {
       $this->data['notTime'][] = $userNameOrId;
       return;
     }
-
     $validTime = $this->now - $time;
-
     switch ($validTime) {
       case self::ONE_DAY > $validTime:
         $this->data['oneDay'][] = $userNameOrId;
@@ -267,6 +271,37 @@ class ParcerExecute extends Execute
         break;
       default:
         $this->data['moreOneMonth'][] = $userNameOrId;
+    }
+  }
+
+  public function writeTemporaryFile()
+  {
+    $handle = fopen("src/storage/temporary/{$this->task}-temporary.txt", 'a');
+    foreach ($this->participants as $participant) {
+      $id = '';
+      if ($participant['username'] ?? false) {
+        $id = $participant['username'];
+      } else {
+        $id = $participant['id'];
+      }
+      $time = $participant['status']['was_online'] ?? 'false';
+      $name = $participant['first_name'];
+      fwrite($handle, "{$id};{$time};{$name}\n");
+    }
+    $this->resetData();
+    $this->lengthArrayParticipants = 0;
+
+    fclose($handle);
+  }
+
+  public function extractData()
+  {
+    $handle = fopen("src/storage/temporary/385-temporary.txt", 'r');
+    while (true) {
+      $str = fgets($handle);
+      if ($str) {
+        $array = explode(';',  $str);
+      }
     }
   }
 
@@ -301,6 +336,7 @@ class ParcerExecute extends Execute
   {
     if ($this->data) {
       $this->saveToFile();
+      $this->saveData = true;
     }
 
     return true;
@@ -308,7 +344,9 @@ class ParcerExecute extends Execute
 
   public function __destruct()
   {
-    $this->saveToFile();
+    if (!$this->saveData) {
+      $this->saveToFile();
+    }
   }
 
   public function setNeedUserId(bool $bool): ParcerExecute

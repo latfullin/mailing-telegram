@@ -40,7 +40,6 @@ class Execute
 
   public int $amountError = 0;
 
-
   /**
    * @param valiteUsers validate users on the existence
    */
