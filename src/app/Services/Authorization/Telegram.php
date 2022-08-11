@@ -12,6 +12,7 @@ class Telegram
 
   protected int $phone;
   protected $telegram;
+  protected static array $intsances = [];
 
   public function __construct($phone, $async)
   {
@@ -25,17 +26,17 @@ class Telegram
     $this->telegram->async($async);
     $this->telegram->start();
   }
+
   /**
    * @param phone session. Kept storage/session.
    */
   public static function instance($phone, $async = false)
   {
-    return new self($phone, $async);
-  }
-
-  public function echo($type)
-  {
-    echo $this->{$type};
+    $key = "{$phone}-" . ($async ? 1 : 0);
+    if (!isset(self::$intsances[$key])) {
+      self::$intsances[$key] = new self($phone, $async);
+    }
+    return self::$intsances[$key];
   }
 
   private function pathSession()

@@ -14,6 +14,7 @@ trait ChannelsMethodsTelegram
   public function getGroupsForDiscussion(): array
   {
     print_r($this->telegram->channels->getGroupsForDiscussion());
+
     return $this;
   }
 
