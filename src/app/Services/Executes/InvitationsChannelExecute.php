@@ -151,7 +151,6 @@ class InvitationsChannelExecute extends Execute
   private function invitionsUsers()
   {
     $this->checkUsers();
-
     if ($this->sessionList) {
       for ($i = 0; $i < 10; $i++) {
         foreach ($this->sessionList as $session) {

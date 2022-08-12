@@ -90,7 +90,7 @@ class Execute
   {
     try {
       if ($channel) {
-        return Telegram::instance($this->sessionList[0])->getChannel($channel);
+        return Telegram::instance('79874018497')->getChannel($channel);
       } else {
         throw new Exception('Not found channel to invite!');
       }

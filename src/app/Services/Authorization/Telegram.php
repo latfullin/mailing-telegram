@@ -43,6 +43,7 @@ class Telegram
     if (!isset(self::$intsances[$key])) {
       self::$intsances[$key] = new self($phone, $async);
     }
+
     return self::$intsances[$key];
   }
 

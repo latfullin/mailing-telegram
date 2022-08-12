@@ -142,7 +142,6 @@ class ParcerExecute extends Execute
     if (self::$instance === null) {
       self::$instance = new self($needUsersId, $needBreakTime);
     }
-
     return self::$instance;
   }
 
@@ -151,7 +150,6 @@ class ParcerExecute extends Execute
     if ($this->participants) {
       $this->resetData();
     }
-
     $this->now = time();
     $this->channel = $channel;
     $this->channelInformation = $this->verifyChannel($channel);
@@ -163,7 +161,7 @@ class ParcerExecute extends Execute
   public function executes(): object
   {
     $this->checkChannelInformation();
-    if ($this->countParticipants > self::MAX_USER) {
+    if ($this->countParticipants < self::MAX_USER) {
       $this->collectParticipants($this->countParticipants);
     } else {
       $this->bigChannel();
@@ -183,9 +181,10 @@ class ParcerExecute extends Execute
     $resetArray = 0;
     foreach (self::ALPHABETS as $alphabets) {
       if ($this->lengthArrayParticipants > $this->countParticipants * 0.98) {
-        continue;
+        break;
       }
       foreach ($alphabets as $alphabet) {
+        echo $alphabet;
         $countsParticipants = min(Telegram::instance('79874018497')
           ->getParticipants($this->channel, 0, 1, q: $alphabet)['count'], self::MAX_USER);
 
@@ -385,6 +384,7 @@ class ParcerExecute extends Execute
   {
     try {
       if (!$this->channelInformation) {
+        echo 'dsa';
         throw new Exception('Not information for channel');
       }
     } catch (Exception $e) {
