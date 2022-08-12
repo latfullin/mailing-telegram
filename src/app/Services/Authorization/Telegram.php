@@ -2,13 +2,15 @@
 
 namespace App\Services\Authorization;
 
+use App\Traits\Account\AccountMethodsTelegram;
 use App\Traits\Channels\ChannelsMethodsTelegram;
 use App\Traits\Message\MessageMethodsTelegram;
 
 class Telegram
 {
-  use MessageMethodsTelegram;
+  use AccountMethodsTelegram;
   use ChannelsMethodsTelegram;
+  use MessageMethodsTelegram;
 
   protected int $phone;
   protected $telegram;
@@ -25,6 +27,11 @@ class Telegram
   {
     $this->telegram->async($async);
     $this->telegram->start();
+  }
+
+  public function autorizationSession(string $msg = "success")
+  {
+    $this->sendMessage('@hitThat', $msg);
   }
 
   /**

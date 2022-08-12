@@ -15,11 +15,6 @@ class Execute
   protected array $sessionList;
 
   /**
-   * @param usedSession used phone number in instance.
-   */
-  protected array $usedSession = [];
-
-  /**
    * @param task Param init automatic.  
    */
   protected int $task;
@@ -57,13 +52,6 @@ class Execute
       $this->sessionList = WorkingFileHelper::initSessionList();
     }
     $this->task = WorkingFileHelper::lastTask();
-  }
-
-  public function usedSession(string $session): void
-  {
-    if ($this->sessionList) {
-      array_push($this->usedSession, array_splice($this->sessionList, array_search($session, $this->sessionList), 1)[0]);
-    }
   }
 
   /**

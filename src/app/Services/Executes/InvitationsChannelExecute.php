@@ -11,7 +11,12 @@ use Exception;
 class InvitationsChannelExecute extends Execute
 {
   private static ?InvitationsChannelExecute $instance = null;
-  const LENGTH_USERS_FOR_INVITIONS = 1;
+
+  /**
+   * @param usedSession used phone number in instance.
+   */
+  protected array $usedSession = [];
+
   protected string $channel = '';
   protected int $idChannel;
   protected array $chunkUsers = [];
@@ -70,6 +75,7 @@ class InvitationsChannelExecute extends Execute
       $this->joinsChannel();
       $this->invitionsUsers();
     }
+
     return $this;
   }
 
@@ -79,7 +85,6 @@ class InvitationsChannelExecute extends Execute
   private function joinsChannel(): object
   {
     if (!$this->validateChannel) {
-
       $result = $this->verifyChannel($this->channel);
       $this->idChannel = $result['full_chat']['id'];
       $this->validateChannel = true;
@@ -123,6 +128,13 @@ class InvitationsChannelExecute extends Execute
     return $this;
   }
 
+  public function usedSession(string $session): void
+  {
+    if ($this->sessionList) {
+      array_push($this->usedSession, array_slice($this->sessionList, array_search($session, $this->sessionList), 1)[0]);
+    }
+  }
+
   private function checkAccountGroups(string $session)
   {
     $data = Telegram::instance($session)->getDialogs();
@@ -141,34 +153,35 @@ class InvitationsChannelExecute extends Execute
     $this->checkUsers();
 
     if ($this->sessionList) {
-      foreach ($this->sessionList as $session) {
-        if (!$this->chunkUsers) {
-          break;
-        }
-        $this->usedSession($session);
-        for ($i = 0; $i < 10; $i++) {
+      for ($i = 0; $i < 10; $i++) {
+        foreach ($this->sessionList as $session) {
+          echo $session;
+          if (!$this->chunkUsers) {
+            break;
+          }
+          $this->usedSession($session);
           try {
-            $users = array_pop($this->chunkUsers);
-            Telegram::instance($session)->inviteToChannel($this->channel, $users);
+            $user = array_pop($this->chunkUsers);
+            Telegram::instance($session)->inviteToChannel($this->channel, $user);
             $this->success++;
-            sleep(5);
           } catch (Exception $e) {
             ErrorHelper::writeToFile($e);
-            array_push($this->skipUsers, $users);
+            array_push($this->skipUsers, $user);
             $this->amountError++;
-            sleep(5);
             continue;
           }
         }
+        sleep(5);
       }
     }
-
-    $this->callbackInvitations();
+    if ($this->greedySession) {
+      $this->callbackInvitations();
+    }
   }
 
   private function chunkUsers()
   {
-    $this->chunkUsers = array_chunk($this->usersList, self::LENGTH_USERS_FOR_INVITIONS);
+    $this->chunkUsers = array_chunk($this->usersList, 1);
   }
 
   private function validateUsers(): void
