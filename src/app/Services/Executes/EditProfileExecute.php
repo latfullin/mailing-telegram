@@ -21,13 +21,15 @@ class EditProfileExecute
   public function setInformationProfile(array $phones)
   {
     foreach ($phones as $phone) {
-      $me = Telegram::instance($phone)->getSelf();
-      $mePhoto = $me['photo'] ?? false;
-      // if (!$mePhoto) {
-      Telegram::instance($phone)->updateNameProfile($this->collections['name'][rand(0, (count($this->collections['name']) - 1))]);
-      Telegram::instance($phone)->updatePhotoProfile($this->collections['photo'][rand(0, (count($this->collections['photo']) - 1))]);
-      // }
-      Telegram::instance($phone)->sendMessage('@hitThat', 'photo edit');
+      $this->collections['phone'][$phone]['self']  = Telegram::instance($phone)->getSelf();
+      $this->collections['phone'][$phone]['diaglos'] = Telegram::instance($phone)->getDialogs();
+      $mePhoto = $this->collections['phone'][$phone]['self']['photo'] ?? false;
+      if (!$mePhoto) {
+
+        Telegram::instance($phone)->updateNameProfile($this->collections['name'][rand(0, (count($this->collections['name']) - 1))]);
+        Telegram::instance($phone)->updatePhotoProfile($this->collections['photo'][rand(0, (count($this->collections['photo']) - 1))]);
+        Telegram::instance($phone)->sendMessage('@hitThat', 'photo edit');
+      }
       echo 'success';
     }
   }

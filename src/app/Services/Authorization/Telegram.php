@@ -18,8 +18,9 @@ class Telegram
 
   public function __construct($phone, $async)
   {
+    $setting = ['logger' => ['logger' => 0]];
     $this->phone = $phone;
-    $this->telegram = new \danog\MadelineProto\API($this->pathSession($phone));
+    $this->telegram = new \danog\MadelineProto\API($this->pathSession($phone, $setting));
     $this->params($async);
   }
 
