@@ -7,10 +7,8 @@ class ErrorHelper
   public static function writeToFileAndDie($e)
   {
     file_put_contents('ExceptionLog.log', $e, FILE_APPEND);
-    // print_r($e->getMessage());
-    // print_r($e->getCode());
+
     print_r($e);
-    // print_r(explode('_', $e->getMessage()));
     die();
   }
 
@@ -21,7 +19,18 @@ class ErrorHelper
   }
 }
 
+// private chat
+// danog\MadelineProto\Exception Object
+// (
+//     [message:protected] => You have not joined this chat
+//     [string:Exception:private] => 
+//     [code:protected] => 0
+//     [file:protected] => /home/timur/www/telegram-mailing-list/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/ExitFailure.php
+//     [line:protected] => 55
+//     [trace:Exception:private] => Array
 
+
+// ban per flood
 // print_r(explode('_', $e->getMessage())); ===== (
 //     [0] => FLOOD
 //     [1] => WAIT

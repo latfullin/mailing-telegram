@@ -2,33 +2,26 @@
 require_once 'src/kernel.php';
 
 use App\Services\Authorization\Telegram;
-use App\Services\Executes\InvitationsChannelExecute;
-use App\Services\Executes\ParcerExecute;
+use App\Services\Executes\EditProfileExecute;
 
-// $a = [
+// $a = ParcerExecute::instance(false, true)->channel('https://t.me/+rL3fdT9q_EA2ZTgy')->executes()->save();
+
+
+Telegram::instance('79874018497')->sendMessage('@hitThat', 'Hello');
+
+// $dd = new mysqli('localhost', 'root', '', 'telegram_bot');
+// var_dump($dd);
+// $phone = file('phone');
+// $b = [
+//   '79776782207',
 //   '9804752273',
 //   '79630791322',
 //   '79835444578',
 //   '79913366955',
 //   '79274271401',
-//   '79585596738'
+//   '79585596738',
+//   '9309922217',
+//   '79775399190',
 // ];
-
-// Telegram::instance($a[$i])->autorizationSession();
-
-
-// Telegram::instance('79874018497');
-// for ($i = 0; $i < count($a); $i++) {
-// Telegram::instance($a[$i])->updatePhotoProfile('images.jpg');
-
-// sleep(10);
-// }
-// $a = InvitationsChannelExecute::instance('https://t.me/dasx123asa')->execute();
-// MailingMessagesExecute::instance()->executes('helllo');
-// $a = ParcerExecute::instance(true, true)->channel('https://t.me/ru2chnews')->executes();
-// $a = ParcerExecute::instance(false, false)->channel('https://t.me/laravel_web')->extractData()->save();
-$a = ParcerExecute::instance(false, true)->channel('https://t.me/laravel_web')->executes()->save();
-
-// ->collectParticipants()->breakTime();
-// $a->start();
-// $a = new PDO('mysql:host=127.0.0.1;dbname=bukery', 'root', 'root');
+// $a = new EditProfileExecute();
+// $a->setInformationProfile($b);

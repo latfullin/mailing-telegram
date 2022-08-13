@@ -25,7 +25,7 @@ class InvitationsChannelExecute extends Execute
   protected bool $greedySession = false;
   protected array $reuseSession = [];
   protected int $countReuseSession = 0;
-  protected int $sleepArterReuse = 30;
+  protected int $sleepArterReuse = 10;
   protected bool $needCheckUsers = false;
   private bool $validateChannel = false;
 
@@ -165,12 +165,12 @@ class InvitationsChannelExecute extends Execute
             $this->success++;
           } catch (Exception $e) {
             ErrorHelper::writeToFile($e);
-            array_push($this->skipUsers, $user);
+            $this->skipUsers[] = $user;
             $this->amountError++;
             continue;
           }
         }
-        sleep(5);
+        sleep($this->sleepArterReuse);
       }
     }
     if ($this->greedySession) {

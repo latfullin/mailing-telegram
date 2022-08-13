@@ -21,4 +21,9 @@ trait AccountMethodsTelegram
   {
     $this->telegram->photos->uploadProfilePhoto(file: $path);
   }
+
+  public function getSelf()
+  {
+    return $this->telegram->getSelf();
+  }
 }

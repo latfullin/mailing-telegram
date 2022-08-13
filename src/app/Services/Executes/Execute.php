@@ -95,7 +95,14 @@ class Execute
         throw new Exception('Not found channel to invite!');
       }
     } catch (Exception $e) {
-      ErrorHelper::writeToFileAndDie($e,);
+      if ($e->getMessage() === 'You have not joined this chat') {
+        try {
+          return Telegram::instance('79874018497')->joinChannel($channel)->getChannel($channel);
+        } catch (Exception $e) {
+          ErrorHelper::writeToFileAndDie($e);
+        }
+      }
+      ErrorHelper::writeToFileAndDie($e);
     }
   }
 
