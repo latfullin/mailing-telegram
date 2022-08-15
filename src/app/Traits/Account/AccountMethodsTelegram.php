@@ -26,4 +26,9 @@ trait AccountMethodsTelegram
   {
     return $this->telegram->getSelf();
   }
+
+  public function getInformationByNumber($phone)
+  {
+    return $this->telegram->contacts->resolvePhone(phone: $phone);
+  }
 }

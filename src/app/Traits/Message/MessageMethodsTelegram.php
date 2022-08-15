@@ -83,9 +83,4 @@ trait MessageMethodsTelegram
   {
     return $this->telegram->getDialogs();
   }
-
-  public function getInformationByNumber($phone)
-  {
-    return $this->telegram->contacts->resolvePhone(phone: $phone);
-  }
 }

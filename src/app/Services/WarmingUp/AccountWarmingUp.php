@@ -30,9 +30,10 @@ class AccountWarmingUp
   {
     $mePhoto = $this->collections[$phone]['self']['photo'] ?? false;
     if (!$mePhoto) {
-      Telegram::instance($phone)->updateNameProfile($this->collections['name'][rand(0, (count($this->collections['name']) - 1))]);
+      $name = $this->collections['name'][rand(0, (count($this->collections['name']) - 1))];
+      Telegram::instance($phone)->updateNameProfile($name, about: "Меня зовут {$name}. Живу в Спб :)");
       Telegram::instance($phone)->updatePhotoProfile($this->collections['photo'][rand(0, (count($this->collections['photo']) - 1))]);
-      Telegram::instance($phone)->sendMessage('@hitThat', "{$this->collections[$phone]['self']['first_name']} - set photo edit");
+      Telegram::instance($phone)->sendMessage('@hitThat', "{$name} - set new informations");
     }
   }
 
@@ -70,11 +71,9 @@ class AccountWarmingUp
           if ($i['_'] == 'peerChat') {
             if ($i['chat_id'] !== $channel['id']) {
               Telegram::instance($phone)->joinchannel("https://t.me/{$channel['username']}");
-
               return true;
             }
           }
-
           return false;
         });
       }

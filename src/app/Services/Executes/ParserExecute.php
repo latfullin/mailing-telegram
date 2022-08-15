@@ -7,9 +7,9 @@ use App\Helpers\WorkingFileHelper;
 use App\Services\Authorization\Telegram;
 use Exception;
 
-class ParcerExecute extends Execute
+class ParserExecute extends Execute
 {
-  private static ?ParcerExecute $instance = null;
+  private static ?ParserExecute $instance = null;
 
   /**
    * @param MAX_USER max length data for re
@@ -137,7 +137,7 @@ class ParcerExecute extends Execute
     }
   }
 
-  public static function instance(bool $needUsersId = true,  bool $needBreakTime = true): ParcerExecute
+  public static function instance(bool $needUsersId = true,  bool $needBreakTime = true): ParserExecute
   {
     if (self::$instance === null) {
       self::$instance = new self($needUsersId, $needBreakTime);
@@ -145,7 +145,7 @@ class ParcerExecute extends Execute
     return self::$instance;
   }
 
-  public function channel(string $channel): ParcerExecute
+  public function channel(string $channel): ParserExecute
   {
     if ($this->participants) {
       $this->resetData();
@@ -373,7 +373,7 @@ class ParcerExecute extends Execute
     }
   }
 
-  public function setNeedUserId(bool $bool): ParcerExecute
+  public function setNeedUserId(bool $bool): ParserExecute
   {
     $this->needUsersId = $bool;
 
