@@ -118,11 +118,12 @@ class ParserExecute extends Execute
    */
   protected bool $saveData = false;
 
-  private function __construct(bool $needUsersId, bool $needBreakTime)
+  protected function __construct(bool $needUsersId, bool $needBreakTime)
   {
     parent::__construct();
     $this->needUsersId = $needUsersId;
     $this->needBreakTime = $needBreakTime;
+    $this->now = time();
 
     if ($this->needBreakTime) {
       $this->data = [
@@ -150,7 +151,6 @@ class ParserExecute extends Execute
     if ($this->participants) {
       $this->resetData();
     }
-    $this->now = time();
     $this->channel = $channel;
     $this->channelInformation = $this->verifyChannel($channel);
     $this->countParticipants = $this->channelInformation['full_chat']['participants_count'];
@@ -212,6 +212,14 @@ class ParserExecute extends Execute
         ->getParticipants($this->channel, $i * self::OFFSET_LIMIT, q: $q)['users'];
     }
 
+    $this->treatmentResult($result);
+
+    $this->lengthArrayParticipants = count($this->participants);
+    return true;
+  }
+
+  public function treatmentResult(array $result)
+  {
     for ($r = 0; $r < count($result); $r++) {
       for ($s = 0; $s < count($result[$r]); $s++) {
 
@@ -243,12 +251,9 @@ class ParserExecute extends Execute
         }
       }
     }
-
-    $this->lengthArrayParticipants = count($this->participants);
-    return true;
   }
 
-  public function usersProcessing(): void
+  public function usersProcessing(): object
   {
     foreach ($this->participants as $participant) {
       if ($this->needBreakTime) {
@@ -258,9 +263,11 @@ class ParserExecute extends Execute
 
       $this->data[] = $participant['username'];
     }
+
+    return $this;
   }
 
-  private function switchVariablesTime(mixed $userNameOrId, int|bool $time, mixed $username): void
+  public function switchVariablesTime(mixed $userNameOrId, int|bool $time, mixed $username): void
   {
     if ($time == false) {
       $this->data['notTime'][$userNameOrId] = $username;
@@ -334,9 +341,11 @@ class ParserExecute extends Execute
     $this->countCycles = ceil($informationChannel / self::OFFSET_LIMIT);
   }
 
-  private function saveToFile(): void
+  public function saveToFile(): void
   {
-    WorkingFileHelper::saveForFileTask($this->task, "Группа {$this->channel}\n\n");
+    if ($this->channel ?? false) {
+      WorkingFileHelper::saveForFileTask($this->task, "Группа {$this->channel}\n\n");
+    }
     foreach ($this->data as $key => $items) {
       if (is_array($items)) {
         $lang = timeLang($key);
@@ -364,13 +373,6 @@ class ParserExecute extends Execute
     }
 
     return true;
-  }
-
-  public function __destruct()
-  {
-    if (!$this->saveData) {
-      $this->saveToFile();
-    }
   }
 
   public function setNeedUserId(bool $bool): ParserExecute

@@ -9,12 +9,7 @@ use App\Services\WarmingUp\AccountWarmingUp;
 // $a = new AccountWarmingUp($b);
 // $a->warmingUpAccount();
 
-// $a = new ParserTelephoneExecute();
-// 
-// $a->checkPhones(['7937312242389', '79874018497']);
+// $a = new ParserTelephoneExecute(false, false);
 
-// $a = ['@AnthonyFedorov', '@hitThat'];
-// for ($i = 0; $i < count($a); $i++) {
-
-//   Telegram::instance('79874018497')->sendMessage($a[$i], 'hello');
-// }
+$parser = new ParserTelephoneExecute(true, true);
+$parser->checkPhones(['79874018497', '+79270370406'])->usersProcessing()->saveToFile();

@@ -7,40 +7,52 @@
 
 namespace App\Services\Executes;
 
+use Amp\Parallel\Sync\ParcelException;
+use App\Helpers\Storage;
 use App\Services\Authorization\Telegram;
 use Exception;
 
-class ParserTelephoneExecute
+class ParserTelephoneExecute extends ParserExecute
 {
-  protected $instance = null;
   protected array $users = [];
   protected array $notFoundPhone = [];
 
-  public function __construct(string $phone = '')
+  public function __construct(bool $needUserId, bool $sortOnTime, string $phone = '',)
   {
-    $this->instance = Telegram::instance('79274271401');
+    parent::__construct($needUserId, $sortOnTime);
+    $this->instance = Telegram::instance('79585596738');
   }
 
-  public function checkPhones(array $phonesNumbers): bool
+  public function checkPhones(array $phonesNumbers): object
   {
     if ($phonesNumbers) {
-
+      $result = [];
       foreach ($phonesNumbers as $phone) {
         try {
-          $result = $this->instance->getInformationByNumber($phone)['users'][0];
-          $time = $result['status']['_'] == 'userStatusOnline' ? time() : ($result['status']['was_online'] ?? false);
-          $this->users[$result['id']] = ['id' => $result['id'], 'first_name' => $result['first_name'], 'username' => ($result['username'] ?? false), 'time' => $time];
-          print_r($this->users);
+          $result[] = $this->instance->getInformationByNumber($phone)['users'];
         } catch (Exception $e) {
           if ($e->getMessage() == 'PHONE_NOT_OCCUPIED') {
             $this->notFoundPhone[$phone] = $phone;
           }
+          continue;
         }
+        $this->treatmentResult($result);
       }
 
-      return true;
+      return $this;
     }
 
     return false;
+  }
+
+  public function saveArray()
+  {
+    $this->savesFile(['-----Found users-----', $this->data]);
+    $this->savesFile(['-----Not found users-----', $this->notFoundPhone]);
+  }
+
+  public function savesFile($content)
+  {
+    Storage::disk('task')->put("$this->task.txt", $content);
   }
 }
