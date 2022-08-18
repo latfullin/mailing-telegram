@@ -1,0 +1,63 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Services\Authorization\Telegram;
+use App\Services\WarmingUp\AccountWarmingUp;
+use Exception;
+
+class WakeUpAccountsController
+{
+  public function wakeUpAccounts()
+  {
+    $phones = $this->getPhones();
+    $value = count($phones);
+    foreach ($phones as $key => $phone) {
+      $telegram = Telegram::instance($phone);
+      $me = $telegram->getSelf();
+      $date = date('D M j G:i:s T Y', $me['status']['was_online']);
+      $i = $key + 1;
+      $telegram->sendMessage('@hitThat', "Я {$me['first_name']}, последнее время актива {$date}.Сообщений из {$i} из {$value}.");
+    }
+  }
+
+  public function warmingUpAccount()
+  {
+    $phones = $this->getPhones();
+    if ($phones) {
+      $warmingUp = new AccountWarmingUp($phones);
+      $warmingUp->warmingUpAccount();
+    }
+  }
+
+  public function joinChannel(string $channel)
+  {
+    $phones = $this->getPhones();
+    $channelId = Telegram::instance('79299204367')->getInfo($channel)['channel_id'];
+    foreach ($phones as $phone) {
+      try {
+        $telegram = Telegram::instance($phone);
+        $dialogs = $telegram->getDialogs();
+        $inGroup = [];
+        $inGroup = array_filter($dialogs, fn ($i) => ($i['channel_id'] ?? false) == $channelId);
+        if (!$inGroup) {
+          $telegram->joinChannel($channel);
+          $this->lookChannel($phone, $channel);
+        }
+        sleep(5);
+      } catch (Exception $e) {
+        print_r($e);
+      }
+    }
+  }
+
+  private function lookChannel(string $phone, string $channel)
+  {
+    Telegram::instance($phone)->lookChannel($channel);
+  }
+
+  private function getPhones()
+  {
+    return array_map(fn ($i) => trim($i), file('phone'));
+  }
+}
