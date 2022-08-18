@@ -4,6 +4,7 @@ namespace App\Services\Executes;
 
 use App\Helpers\CheckUsersHelpers;
 use App\Helpers\ErrorHelper;
+use App\Helpers\Storage;
 use App\Helpers\WorkingFileHelper;
 use App\Services\Authorization\Telegram;
 use Exception;
@@ -17,10 +18,13 @@ class InvitationsChannelExecute extends Execute
    */
   protected array $usedSession = [];
 
+  /**
+   * channel for invitations 
+   */
+  protected bool $saved = false;
   protected string $channel = '';
   protected int $idChannel;
   protected array $chunkUsers = [];
-  protected array $skipUsers = [];
   protected array $notFoundUsers = [];
   protected bool $greedySession = false;
   protected array $reuseSession = [];
@@ -32,51 +36,41 @@ class InvitationsChannelExecute extends Execute
   /**
    * @return InvitationsChannelExecute class instance;
    */
-  public static function instance(string $channel = '', array $phone = []): InvitationsChannelExecute
+  public static function instance(string $channel = '', array $usersList, bool $needCheckUsers = false): InvitationsChannelExecute
   {
     if (self::$instance === null) {
-      self::$instance = new self($channel, $phone, greedySession: false);
+      self::$instance = new self($channel, $usersList, greedySession: false, needCheckUsers: $needCheckUsers);
     }
 
     return self::$instance;
   }
 
-  private function __construct(string $channel = '', array $phone = [], array $users = [], bool $greedySession = false)
+  private function __construct(string $channel,  array $users, bool $greedySession = false, bool $needCheckUsers = false)
   {
-    if ($phone) {
-      parent::__construct($phone);
-    } else {
-      parent::__construct();
-    }
-    if ($channel) {
-      $this->channel = $channel;
-    }
-    if ($users) {
-      $this->usersList = $users;
-    }
-    if ($greedySession) {
-      $this->greedySession = $greedySession;
+    parent::__construct();
+    $this->channel = $channel;
+    $this->usersList = $users;
+    $this->greedySession = $greedySession;
+    $this->needCheckUsers = $needCheckUsers;
+    if (!$this->validateChannel) {
+      $result = $this->verifyChannel($this->channel);
+      $this->idChannel = $result['full_chat']['id'];
+      $this->validateChannel = true;
     }
   }
 
   /** 
    * @param channel required param; Need hand over params 'channel' this function or at call instance  
    */
-  public function execute(string $channel = '', bool $needCheckUsers = false): object
+  public function execute(): object
   {
-    $this->needCheckUsers = $needCheckUsers;
-    if ($channel) {
-      $this->channel = $channel;
-    }
-    if (!$this->usersList) {
-      $this->initUsersInFile();
-    }
     if ($this->channel && $this->usersList) {
       $this->joinsChannel();
       $this->invitionsUsers();
+      return $this;
     }
 
-    return $this;
+    return false;
   }
 
   /**
@@ -84,11 +78,6 @@ class InvitationsChannelExecute extends Execute
    */
   private function joinsChannel(): object
   {
-    if (!$this->validateChannel) {
-      $result = $this->verifyChannel($this->channel);
-      $this->idChannel = $result['full_chat']['id'];
-      $this->validateChannel = true;
-    }
     try {
       if ($this->channel && $this->idChannel) {
         foreach ($this->sessionList as $session) {
@@ -154,7 +143,6 @@ class InvitationsChannelExecute extends Execute
     if ($this->sessionList) {
       for ($i = 0; $i < 10; $i++) {
         foreach ($this->sessionList as $session) {
-          echo $session;
           if (!$this->chunkUsers) {
             break;
           }
@@ -165,7 +153,7 @@ class InvitationsChannelExecute extends Execute
             $this->success++;
           } catch (Exception $e) {
             ErrorHelper::writeToFile($e);
-            $this->skipUsers[] = $user;
+            $this->notFoundUsers[] = $user;
             $this->amountError++;
             continue;
           }
@@ -216,9 +204,28 @@ class InvitationsChannelExecute extends Execute
     }
   }
 
+  public function save()
+  {
+    $this->saved = true;
+    $results = [
+      ['Список пользователей', $this->usersList],
+      ['Группа:', $this->channel],
+      ['Не найденные пользователи', $this->notFoundUsers],
+      ['Использованные сессии:', $this->usedSession],
+      ['Переиспользованные сессии:', $this->reuseSession],
+      ['Успешный итераций:', $this->success],
+      ['Количество ошибок:', $this->amountError]
+    ];
+    $disk = Storage::disk('task');
+    foreach ($results as $result) {
+      $disk->put("{$this->task}.txt", $result);
+    }
+  }
+
   public function __destruct()
   {
-    WorkingFileHelper::newTask($this->task,  $this->usersList, $this->channel, $this->notFoundUsers, $this->usedSession, $this->reuseSession);
-    WorkingFileHelper::endTask($this->task, $this->success, $this->amountError, $this->skipUsers);
+    if (!$this->saved) {
+      throw new Exception('Результат не сохранен');
+    }
   }
 }

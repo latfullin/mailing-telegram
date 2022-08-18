@@ -3,6 +3,7 @@
 namespace App\Services\Executes;
 
 use App\Helpers\ErrorHelper;
+use App\Helpers\Storage;
 use App\Helpers\WorkingFileHelper;
 use App\Services\Authorization\Telegram;
 use Exception;
@@ -154,7 +155,6 @@ class ParserExecute extends Execute
     $this->channel = $channel;
     $this->channelInformation = $this->verifyChannel($channel);
     $this->countParticipants = $this->channelInformation['full_chat']['participants_count'];
-
     return $this;
   }
 
@@ -173,10 +173,11 @@ class ParserExecute extends Execute
     if ($this->participants) {
       $this->usersProcessing();
     }
+
     return $this;
   }
 
-  public function bigChannel()
+  private function bigChannel()
   {
     $resetArray = 0;
     foreach (self::ALPHABETS as $alphabets) {
@@ -184,7 +185,6 @@ class ParserExecute extends Execute
         break;
       }
       foreach ($alphabets as $alphabet) {
-        echo $alphabet;
         $countsParticipants = min(Telegram::instance('79874018497')
           ->getParticipants($this->channel, 0, 1, q: $alphabet)['count'], self::MAX_USER);
 
@@ -193,7 +193,6 @@ class ParserExecute extends Execute
           $this->writeTemporaryFile();
           $resetArray++;
         }
-        echo $this->lengthArrayParticipants;
       }
     }
 
@@ -213,8 +212,8 @@ class ParserExecute extends Execute
     }
 
     $this->treatmentResult($result);
-
     $this->lengthArrayParticipants = count($this->participants);
+
     return true;
   }
 
@@ -222,8 +221,8 @@ class ParserExecute extends Execute
   {
     for ($r = 0; $r < count($result); $r++) {
       for ($s = 0; $s < count($result[$r]); $s++) {
-
         $user['id'] = $result[$r][$s]['id'];
+
         if ($result[$r][$s]['status']['userStatusOnline'] ?? false) {
           $user['time'] = $this->now;
         } else {
@@ -296,7 +295,7 @@ class ParserExecute extends Execute
     }
   }
 
-  public function writeTemporaryFile()
+  private function writeTemporaryFile()
   {
     $handle = fopen("src/storage/temporary/{$this->task}-temporary.txt", 'a');
     foreach ($this->participants as $participant) {
@@ -313,24 +312,18 @@ class ParserExecute extends Execute
     fclose($handle);
   }
 
-  public function extractData()
+  private function extractData()
   {
     $handle = fopen("src/storage/temporary/{$this->task}-temporary.txt", 'r');
-    while (true) {
-      $str = fgets($handle);
-      if ($str) {
-        $array = explode(';',  $str);
-        if ($this->needBreakTime) {
-          $time = $array[2] == '' ? false : $array[2];
-          $username = $array[1] == '' ? $array[0] : $array[1];
-          $this->switchVariablesTime($array[0], $time, $username);
-          continue;
-        }
-        $this->data[$array[0]] = $array[1] === '' ? $array[0] : $array[1];
+    while ($str = fgets($handle)) {
+      $array = explode(';',  $str);
+      if ($this->needBreakTime) {
+        $time = $array[2] == '' ? false : $array[2];
+        $username = $array[1] == '' ? $array[0] : $array[1];
+        $this->switchVariablesTime($array[0], $time, $username);
         continue;
       }
-
-      break;
+      $this->data[$array[0]] = $array[1] === '' ? $array[0] : $array[1];
     }
 
     fclose($handle);
@@ -341,38 +334,33 @@ class ParserExecute extends Execute
     $this->countCycles = ceil($informationChannel / self::OFFSET_LIMIT);
   }
 
-  public function saveToFile(): void
+  /**
+   * @return string path before file
+   */
+  public function save(): string
   {
+    $disk = Storage::disk('task');
     if ($this->channel ?? false) {
-      WorkingFileHelper::saveForFileTask($this->task, "Группа {$this->channel}\n\n");
+      $disk->put($this->task, "Группа {$this->channel}\n\n");
     }
     foreach ($this->data as $key => $items) {
       if (is_array($items)) {
         $lang = timeLang($key);
-        WorkingFileHelper::saveForFileTask($this->task, "\n{$lang}\n\n");
+        $disk->put($this->task, "\n{$lang}\n");
         foreach ($items as $item) {
-          WorkingFileHelper::saveForFileTask($this->task, "$item\n");
+          $disk->put($this->task, "$item");
         }
         continue;
       }
-
-      WorkingFileHelper::saveForFileTask($this->task, "$items\n");
+      $disk->put($this->task, "$items");
     }
+
+    return  $disk->getPath("{$this->task}");
   }
 
-  private function resetData(): void
+  public function resetData(): void
   {
     $this->participants = [];
-  }
-
-  public function save(): bool
-  {
-    if ($this->data) {
-      $this->saveToFile();
-      $this->saveData = true;
-    }
-
-    return true;
   }
 
   public function setNeedUserId(bool $bool): ParserExecute
@@ -386,7 +374,6 @@ class ParserExecute extends Execute
   {
     try {
       if (!$this->channelInformation) {
-        echo 'dsa';
         throw new Exception('Not information for channel');
       }
     } catch (Exception $e) {

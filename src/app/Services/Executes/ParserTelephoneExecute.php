@@ -7,7 +7,6 @@
 
 namespace App\Services\Executes;
 
-use Amp\Parallel\Sync\ParcelException;
 use App\Helpers\Storage;
 use App\Services\Authorization\Telegram;
 use Exception;
@@ -17,7 +16,7 @@ class ParserTelephoneExecute extends ParserExecute
   protected array $users = [];
   protected array $notFoundPhone = [];
 
-  public function __construct(bool $needUserId, bool $sortOnTime, string $phone = '',)
+  public function __construct(bool $needUserId, bool $sortOnTime, string $phone = '')
   {
     parent::__construct($needUserId, $sortOnTime);
     $this->instance = Telegram::instance('79585596738');
@@ -38,21 +37,16 @@ class ParserTelephoneExecute extends ParserExecute
         }
         $this->treatmentResult($result);
       }
-
       return $this;
     }
 
     return false;
   }
 
-  public function saveArray()
+  public function save(): string
   {
-    $this->savesFile(['-----Found users-----', $this->data]);
-    $this->savesFile(['-----Not found users-----', $this->notFoundPhone]);
-  }
-
-  public function savesFile($content)
-  {
-    Storage::disk('task')->put("$this->task.txt", $content);
+    $path = parent::save();
+    Storage::disk('task')->put($this->task, ['Не найденные или скрытые номера', $this->notFoundPhone]);
+    return $path;
   }
 }

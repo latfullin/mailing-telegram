@@ -2,6 +2,8 @@
 
 namespace App\Traits\Channels;
 
+use danog\MadelineProto\channels;
+
 trait ChannelsMethodsTelegram
 {
   public function createGroup(string $title, string $description,  bool $megagroup = true): object
@@ -54,6 +56,11 @@ trait ChannelsMethodsTelegram
     return $this->telegram->channels->getFullChannel(channel: $channel);
   }
 
+  public function getMessages($channel)
+  {
+    return $this->telegram->channels->getMessages(channel: $channel, id: [1, 10000]);
+  }
+
 
   /**
    * @param group need link on the group. Not working with chanells(Issues error - 400). 
@@ -62,6 +69,11 @@ trait ChannelsMethodsTelegram
    */
   public function getParticipants(string|int $group, int $offset = 0, int $limit = 200, string $q = '', $hash = '')
   {
-    return $this->telegram->channels->getParticipants(channel: $group, filter: ['_' => 'channelParticipantsSearch', 'q' => $q], offset: $offset, limit: $limit,);
+    return $this->telegram->channels->getParticipants(channel: $group, filter: ['_' => 'channelParticipantsSearch', 'q' => $q], offset: $offset, limit: $limit);
+  }
+
+  public function readHistory($channel): bool
+  {
+    return $this->telegram->channels->readHistory(channel: $channel, max_id: 100000000);
   }
 }

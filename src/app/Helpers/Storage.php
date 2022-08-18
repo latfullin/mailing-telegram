@@ -2,13 +2,15 @@
 
 namespace App\Helpers;
 
+use Exception;
+
 class Storage
 {
   protected string $disk;
   private array $path = [
     'temporary' => 'storage/temporary',
     'session' => 'storage/session',
-    'temporary' => 'storage/photoProfile',
+    'photo' => 'storage/photoProfile',
     'task' => 'storage/task'
   ];
 
@@ -17,6 +19,9 @@ class Storage
     $this->disk = "src/{$this->path[$disk]}";
   }
 
+  /**
+   * @param disk string - [task, session, temporary, photo].
+   */
   public static function disk($disk)
   {
     return new self($disk);
@@ -47,5 +52,14 @@ class Storage
       file_put_contents("{$this->disk}/$file", "$contents\n", FILE_APPEND);
     }
     return;
+  }
+
+  public function getPath(string $file): string
+  {
+    if ($this->isFile($file)) {
+      return "{$this->disk}/$file";
+    }
+
+    throw new Exception('Not found file.');
   }
 }
