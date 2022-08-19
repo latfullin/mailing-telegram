@@ -8,16 +8,18 @@ use Exception;
 
 class WakeUpAccountsController
 {
-  public function wakeUpAccounts()
+  public function wakeUpAccounts($peer = '@hitThat')
   {
     $phones = $this->getPhones();
     $value = count($phones);
     foreach ($phones as $key => $phone) {
       $telegram = Telegram::instance($phone);
       $me = $telegram->getSelf();
-      $date = date('D M j G:i:s T Y', $me['status']['was_online']);
+      echo $phone;
       $i = $key + 1;
-      $telegram->sendMessage('@hitThat', "Я {$me['first_name']}, последнее время актива {$date}.Сообщений из {$i} из {$value}.");
+      $telegram->sendMessage($peer, "Я {$me['first_name']},  номер:'{$phone}'.Сообщений из {$i} из {$value}.");
+
+      sleep(10);
     }
   }
 
@@ -36,15 +38,15 @@ class WakeUpAccountsController
     $channelId = Telegram::instance('79299204367')->getInfo($channel)['channel_id'];
     foreach ($phones as $phone) {
       try {
+        print_r($phone);
         $telegram = Telegram::instance($phone);
         $dialogs = $telegram->getDialogs();
         $inGroup = [];
         $inGroup = array_filter($dialogs, fn ($i) => ($i['channel_id'] ?? false) == $channelId);
         if (!$inGroup) {
           $telegram->joinChannel($channel);
-          $this->lookChannel($phone, $channel);
         }
-        sleep(5);
+        sleep(10);
       } catch (Exception $e) {
         print_r($e);
       }

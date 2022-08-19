@@ -23,6 +23,7 @@ class AccountWarmingUp
       $this->collections[$phone]['dialogs'] = Telegram::instance($phone)->getDialogs();
       $this->setInformationProfile($phone);
       $this->joinChannelForWarmingUp($phone);
+      sleep(15);
     }
   }
 
@@ -71,10 +72,8 @@ class AccountWarmingUp
           if ($i['_'] == 'peerChat') {
             if ($i['chat_id'] !== $channel['id']) {
               Telegram::instance($phone)->joinchannel("https://t.me/{$channel['username']}");
-              return true;
             }
           }
-          return false;
         });
       }
     }
