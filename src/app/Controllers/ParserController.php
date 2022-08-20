@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Services\Bot\SendMessageBot;
 use App\Services\Executes\ParserExecute;
 use App\Services\Executes\ParserTelephoneExecute;
 
@@ -15,8 +16,8 @@ class ParserController
 
   public function parseGroup(string $channel): void
   {
-    $filePath = ParserExecute::instance(false, true)->channel($channel)->executes()->save();
-
-    print_r($filePath);
+    // $filePath = ParserExecute::instance(false, true)->channel($channel)->executes()->save();
+    SendMessageBot::create('365047507')->sendFile('src/storage/task/521');
+    // print_r($filePath);
   }
 }

@@ -1,6 +1,8 @@
 /vendor
 /delete
-123
+/docker/mysql/data
+/docker/redis/data
+.env
 MadelineProto.log
 /src/app/Traits/Channels/Array.ini
 /src/app/Traits/Channels/Array.ini
