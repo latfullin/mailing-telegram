@@ -4,6 +4,7 @@ require_once 'src/kernel.php';
 use App\Controllers\InvitationsController;
 use App\Controllers\ParserController;
 use App\Controllers\WakeUpAccountsController;
+use App\Models\Model;
 use App\Services\Authorization\Telegram;
 use App\Services\Bot\SendMessageBot;
 use App\Services\Executes\EditProfileExecute;
@@ -44,5 +45,14 @@ use App\Services\WarmingUp\AccountWarmingUp;
 
 // $a = fopen(STDIN, 'r');
 // print_r($a);
+// $a = new PDO('mysql:dbname=telegram-bot;host=mysql', 'kilkenny', 'password');
+// $z = "SELECT * FROM sessions";
+// $zz = $a->query($z, PDO::FETCH_ASSOC);
+// $row = $zz->fetchAll();
+// $ss = $a->fetch(PDO::FETCH_ASSOC);
+// SendMessageBot::create('365047507')->sendMsg('pdasdort');
+// print_r($row);
 
-SendMessageBot::create('365047507')->sendMsg('pdasdort');
+// Model::connect('sessions')->insert(['phone' => '12345678', 'ban' => '0', 'count_action' => '0']);
+// Model::connect('sessions')->insert(['phone' => '47475636262', 'ban' => '0', 'count_action' => '0']);
+Model::connect('sessions')->where(['phone', '=', '89874018497'])->update(['ban' => '1']);
