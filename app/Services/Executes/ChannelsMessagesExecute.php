@@ -4,8 +4,6 @@ namespace App\Services\Executes;
 
 use App\Helpers\ErrorHelper;
 use App\Helpers\WorkingFileHelper;
-use App\Services\Authorization\Telegram;
-use Exception;
 
 class ChannelsExecute extends Execute
 {
@@ -63,15 +61,15 @@ class ChannelsExecute extends Execute
             foreach ($this->channels as $channel) {
               $this->methodsWithChallen($session, $method, $channel);
             }
-          } catch (Exception $e) {
+          } catch (\Exception $e) {
             ErrorHelper::writeToFile("$e\n");
             continue;
           }
         }
       } else {
-        throw new Exception('Not found channels for entry');
+        throw new \Exception('Not found channels for entry');
       }
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       ErrorHelper::writeToFileAndDie("$e\n");
     }
   }
@@ -83,16 +81,16 @@ class ChannelsExecute extends Execute
         foreach ($this->channels as $channel) {
           try {
             $this->verifyChannel($channel);
-          } catch (Exception $e) {
+          } catch (\Exception $e) {
             array_push($this->notFountChannel, array_splice($this->channels, array_search($channel, $this->channels), 1)[0]);
             continue;
           }
         }
         $this->verifiedChannels = true;
       } else {
-        throw new Exception('Not found channels');
+        throw new \Exception('Not found channels');
       }
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       ErrorHelper::writeToFile("$e\n");
     }
   }

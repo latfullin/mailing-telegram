@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Services\Authorization\Telegram;
 use App\Services\WarmingUp\AccountWarmingUp;
-use Exception;
 
 class WakeUpAccountsController
 {
@@ -47,7 +46,7 @@ class WakeUpAccountsController
           $telegram->joinChannel($channel);
         }
         sleep(10);
-      } catch (Exception $e) {
+      } catch (\Exception $e) {
         print_r($e);
       }
     }

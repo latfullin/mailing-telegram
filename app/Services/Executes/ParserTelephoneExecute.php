@@ -9,7 +9,6 @@ namespace App\Services\Executes;
 
 use App\Helpers\Storage;
 use App\Services\Authorization\Telegram;
-use Exception;
 
 class ParserTelephoneExecute extends ParserExecute
 {
@@ -29,7 +28,7 @@ class ParserTelephoneExecute extends ParserExecute
       foreach ($phonesNumbers as $phone) {
         try {
           $result[] = $this->instance->getInformationByNumber($phone)['users'];
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
           if ($e->getMessage() == 'PHONE_NOT_OCCUPIED') {
             $this->notFoundPhone[$phone] = $phone;
           }

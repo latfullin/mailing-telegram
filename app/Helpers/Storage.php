@@ -2,7 +2,6 @@
 
 namespace App\Helpers;
 
-use Exception;
 
 class Storage
 {
@@ -60,6 +59,6 @@ class Storage
       return "{$this->disk}/$file";
     }
 
-    throw new Exception('Not found file.');
+    throw new \Exception('Not found file.');
   }
 }

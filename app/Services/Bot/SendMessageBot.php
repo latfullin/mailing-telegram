@@ -2,8 +2,6 @@
 
 namespace App\Services\Bot;
 
-use Exception;
-
 /** 
  * @param $typeMsg, default = /sendMessage; 
  * @param myid 365047507
@@ -35,7 +33,7 @@ class SendMessageBot
 
       $this->send($params, '/sendMessage');
       return $this;
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $this->exceptionError($e);
     }
   }
@@ -46,7 +44,7 @@ class SendMessageBot
       try {
         $params = ['chat_id' => $this->chat_id, 'document' => $path];
         $this->send($params, '/sendDocument');
-      } catch (Exception $e) {
+      } catch (\Exception $e) {
         print_r($e);
       }
     }
@@ -89,7 +87,7 @@ class SendMessageBot
       );
       curl_exec($ch);
       curl_close($ch);
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $this->exceptionError($e);
     }
   }

@@ -7,7 +7,6 @@ use App\Helpers\ErrorHelper;
 use App\Helpers\Storage;
 use App\Helpers\WorkingFileHelper;
 use App\Services\Authorization\Telegram;
-use Exception;
 
 class InvitationsChannelExecute extends Execute
 {
@@ -86,9 +85,9 @@ class InvitationsChannelExecute extends Execute
           }
         }
       } else {
-        throw new Exception('Not found channel to invite!');
+        throw new \Exception('Not found channel to invite!');
       }
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       ErrorHelper::writeToFileAndDie("$e");
     }
 
@@ -151,7 +150,7 @@ class InvitationsChannelExecute extends Execute
             $user = array_pop($this->chunkUsers);
             Telegram::instance($session)->inviteToChannel($this->channel, $user);
             $this->success++;
-          } catch (Exception $e) {
+          } catch (\Exception $e) {
             ErrorHelper::writeToFile($e);
             $this->notFoundUsers[] = $user;
             $this->amountError++;
@@ -225,7 +224,7 @@ class InvitationsChannelExecute extends Execute
   public function __destruct()
   {
     if (!$this->saved) {
-      throw new Exception('Результат не сохранен');
+      throw new \Exception('Результат не сохранен');
     }
   }
 }

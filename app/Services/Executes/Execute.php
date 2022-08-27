@@ -3,10 +3,8 @@
 namespace App\Services\Executes;
 
 use App\Helpers\ErrorHelper;
-use App\Helpers\Storage;
 use App\Helpers\WorkingFileHelper;
 use App\Services\Authorization\Telegram;
-use Exception;
 
 class Execute
 {
@@ -58,21 +56,21 @@ class Execute
   /**
    * init file with users
    */
-  // protected function initUsersInFile(): bool
-  // {
-  //   try {
-  //     $this->usersList = WorkingFileHelper::initUsersList();
-  //     if ($this->usersList) {
-  //       return true;
-  //     } else {
-  //       throw new Exception('Users list empty');
-  //     }
-  //   } catch (Exception $e) {
-  //     ErrorHelper::writeToFileAndDie("$e\n");
-  //   }
+  protected function initUsersInFile(): bool
+  {
+    try {
+      $this->usersList = WorkingFileHelper::initUsersList();
+      if ($this->usersList) {
+        return true;
+      } else {
+        throw new \Exception('Users list empty');
+      }
+    } catch (\Exception $e) {
+      ErrorHelper::writeToFileAndDie("$e\n");
+    }
 
-  //   return false;
-  // }
+    return false;
+  }
 
   protected function methodsWithChallen(string $session, string $method, string $link): void
   {
@@ -80,9 +78,9 @@ class Execute
       if ($method === 'leaveChannel' || $method === 'joinChannel') {
         Telegram::instance($session)->{$method}($link);
       } else {
-        throw new Exception('Not found methods');
+        throw new \Exception('Not found methods');
       }
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       ErrorHelper::writeToFileAndDie("$e\n");
     }
   }
@@ -93,9 +91,9 @@ class Execute
       if ($channel) {
         return Telegram::instance('79874018497')->getChannel($channel);
       } else {
-        throw new Exception('Not found channel to invite!');
+        throw new \Exception('Not found channel to invite!');
       }
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       if ($e->getMessage() == 'You have not joined this chat') {
         return Telegram::instance('79874018497')->joinChannel($channel)->getChannel($channel);
       }

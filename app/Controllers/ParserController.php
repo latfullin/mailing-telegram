@@ -18,7 +18,5 @@ class ParserController
   {
     $filePath = ParserExecute::instance(false, true)->channel($channel)->executes()->save();
     echo 'end';
-    // SendMessageBot::create('365047507')->sendFile('storage/task/521');
-    // print_r($filePath);
   }
 }

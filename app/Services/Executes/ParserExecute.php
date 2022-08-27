@@ -4,9 +4,7 @@ namespace App\Services\Executes;
 
 use App\Helpers\ErrorHelper;
 use App\Helpers\Storage;
-use App\Helpers\WorkingFileHelper;
 use App\Services\Authorization\Telegram;
-use Exception;
 
 class ParserExecute extends Execute
 {
@@ -375,9 +373,9 @@ class ParserExecute extends Execute
   {
     try {
       if (!$this->channelInformation) {
-        throw new Exception('Not information for channel');
+        throw new \Exception('Not information for channel');
       }
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       ErrorHelper::writeToFileAndDie($e);
     }
   }

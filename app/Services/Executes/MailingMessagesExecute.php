@@ -5,8 +5,6 @@ namespace App\Services\Executes;
 use App\Helpers\CheckUsersHelpers;
 use App\Helpers\ErrorHelper;
 use App\Helpers\WorkingFileHelper;
-use App\Services\Authorization\Telegram;
-use Exception;
 
 class MailingMessagesExecute extends Execute
 {
@@ -61,7 +59,7 @@ class MailingMessagesExecute extends Execute
           $user = array_pop($this->usersList);
           $this->sendMessage($session, $user, $this->msg);
           $this->success++;
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
           array_push($this->skipUsers, $user);
           $this->amoutError++;
           ErrorHelper::writeToFile("$e\n");
@@ -80,9 +78,9 @@ class MailingMessagesExecute extends Execute
       if (is_string($this->msg) && strlen($this->msg) > 0) {
         echo "Msg: Ok\n";
       } else {
-        throw new Exception('Not found text for msg');
+        throw new \Exception('Not found text for msg');
       }
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       ErrorHelper::writeToFileAndDie("$e\n");
     }
 
@@ -93,7 +91,7 @@ class MailingMessagesExecute extends Execute
       if ($this->needCheckUsers) {
         ['usersList' => $this->usersList, 'notFount' => $this->notFoundUsers]  = CheckUsersHelpers::checkEmptyUsers($this->usersList);
       }
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       ErrorHelper::writeToFileAndDie("$e\n");
     }
 

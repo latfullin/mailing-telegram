@@ -3,7 +3,6 @@
 namespace App\Helpers;
 
 use App\Services\Authorization\Telegram;
-use Exception;
 
 class CheckUsersHelpers
 {
@@ -29,7 +28,7 @@ class CheckUsersHelpers
           }
         }
         self::notFoundArray($user);
-      } catch (Exception $e) {
+      } catch (\Exception $e) {
         self::notFoundArray($user);
         continue;
       }

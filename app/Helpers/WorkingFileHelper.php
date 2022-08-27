@@ -2,12 +2,9 @@
 
 namespace App\Helpers;
 
-use Exception;
-
 class WorkingFileHelper
 {
   private static $pathTask = 'storage/task/';
-  private static $pathSession;
 
   public static function initSessionList()
   {
@@ -15,9 +12,9 @@ class WorkingFileHelper
       if (is_file('phone')) {
         return self::readFile('phone');
       } else {
-        throw new Exception("Not fount file - phone!");
+        throw new \Exception("Not fount file - phone!");
       }
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       ErrorHelper::writeToFile("$e\n");
     }
   }
@@ -28,9 +25,9 @@ class WorkingFileHelper
       if (is_file('phone')) {
         return self::readFile('phoneForCheck');
       } else {
-        throw new Exception("Not fount file - phoneForCheck!");
+        throw new \Exception("Not fount file - phoneForCheck!");
       }
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       ErrorHelper::writeToFile("$e\n");
     }
   }
@@ -41,9 +38,9 @@ class WorkingFileHelper
       if (is_file('users')) {
         return self::readFile('users');
       } else {
-        throw new Exception("Not fount file - users!");
+        throw new \Exception("Not fount file - users!");
       }
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       ErrorHelper::writeToFile("$e\n");
     }
   }
@@ -54,9 +51,9 @@ class WorkingFileHelper
       if (is_file('channels')) {
         return self::readFile('channels');
       } else {
-        throw new Exception("Not fount file - channels!");
+        throw new \Exception("Not fount file - channels!");
       }
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       ErrorHelper::writeToFile("$e\n");
     }
   }
