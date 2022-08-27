@@ -50,11 +50,11 @@ class Telegram
 
   private function pathSession()
   {
-    if (is_dir("src/storage/session/{$this->phone}")) {
-      return "src/storage/session/{$this->phone}/{$this->phone}";
+    if (is_dir("storage/session/{$this->phone}")) {
+      return "storage/session/{$this->phone}/{$this->phone}";
     } else {
-      mkdir("src/storage/session/{$this->phone}", 0755);
-      return "src/storage/session/{$this->phone}/{$this->phone}";
+      mkdir("storage/session/{$this->phone}", 0755);
+      return "storage/session/{$this->phone}/{$this->phone}";
     }
   }
 }

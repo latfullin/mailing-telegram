@@ -6,7 +6,7 @@ use Exception;
 
 class WorkingFileHelper
 {
-  private static $pathTask = 'src/storage/task/';
+  private static $pathTask = 'storage/task/';
   private static $pathSession;
 
   public static function initSessionList()

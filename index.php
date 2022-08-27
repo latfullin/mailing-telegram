@@ -1,5 +1,5 @@
 <?php
-require_once 'src/kernel.php';
+require_once 'app/kernel.php';
 
 use App\Controllers\InvitationsController;
 use App\Controllers\ParserController;
@@ -28,8 +28,9 @@ use App\Services\WarmingUp\AccountWarmingUp;
 // $parser->checkPhones(['79874018497', '+79270370406'])->usersProcessing()->saveToFile();
 
 
-// $a = new ParserController();
-// $a->parseGroup('https://t.me/devworden');
+
+$a = new ParserController();
+$a->parseGroup('https://t.me/design_ads_best');
 
 // curl_init();
 // $a = new WakeUpAccountsController();
@@ -55,4 +56,8 @@ use App\Services\WarmingUp\AccountWarmingUp;
 
 // Model::connect('sessions')->insert(['phone' => '12345678', 'ban' => '0', 'count_action' => '0']);
 // Model::connect('sessions')->insert(['phone' => '47475636262', 'ban' => '0', 'count_action' => '0']);
-Model::connect('sessions')->where(['phone', '=', '89874018497'])->update(['ban' => '1']);
+// Model::connect('sessions')->where(['phone', '=', '89874018497'])->update(['ban' => '1']);
+$a = Telegram::instance('79375756789');
+$c = [];
+// foreach ($channel as $item) 
+$c[] = $a->getMessages('https://t.me/laravel_web');

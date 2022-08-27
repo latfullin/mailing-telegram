@@ -51,14 +51,14 @@ trait ChannelsMethodsTelegram
   /**
    * @param channel - link for group.
    */
-  public function getChannel($channel)
+  public function getChannel(string $channel)
   {
     return $this->telegram->channels->getFullChannel(channel: $channel);
   }
 
   public function getMessages($channel)
   {
-    return $this->telegram->channels->getMessages(channel: $channel, id: [1, 10000]);
+    return $this->telegram->channels->getMessages(channel: $channel, id: [1, 400]);
   }
 
 

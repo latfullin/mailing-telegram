@@ -167,7 +167,7 @@ class ParserExecute extends Execute
       $this->bigChannel();
     }
 
-    if (is_file("src/storage/temporary/{$this->task}-temporary.txt")) {
+    if (is_file("storage/temporary/{$this->task}-temporary.txt")) {
       $this->extractData();
     }
     if ($this->participants) {
@@ -185,7 +185,8 @@ class ParserExecute extends Execute
         break;
       }
       foreach ($alphabets as $alphabet) {
-        $countsParticipants = min(Telegram::instance('79874018497')
+        echo $alphabet;
+        $countsParticipants = min(Telegram::instance('79274271401')
           ->getParticipants($this->channel, 0, 1, q: $alphabet)['count'], self::MAX_USER);
 
         $this->collectParticipants($countsParticipants, $alphabet);
@@ -207,7 +208,7 @@ class ParserExecute extends Execute
     $this->countAmountInteration($countUsers);
 
     for ($i = 0; $i < $this->countCycles; $i++) {
-      $result[] = Telegram::instance('79874018497')
+      $result[] = Telegram::instance('79274271401')
         ->getParticipants($this->channel, $i * self::OFFSET_LIMIT, q: $q)['users'];
     }
 
@@ -297,7 +298,7 @@ class ParserExecute extends Execute
 
   private function writeTemporaryFile()
   {
-    $handle = fopen("src/storage/temporary/{$this->task}-temporary.txt", 'a');
+    $handle = fopen("storage/temporary/{$this->task}-temporary.txt", 'a');
     foreach ($this->participants as $participant) {
       $id = $participant['id'];
       $username = $participant['username'] ?? '';
@@ -314,7 +315,7 @@ class ParserExecute extends Execute
 
   private function extractData()
   {
-    $handle = fopen("src/storage/temporary/{$this->task}-temporary.txt", 'r');
+    $handle = fopen("storage/temporary/{$this->task}-temporary.txt", 'r');
     while ($str = fgets($handle)) {
       $array = explode(';',  $str);
       if ($this->needBreakTime) {

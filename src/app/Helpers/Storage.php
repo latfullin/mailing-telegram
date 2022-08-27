@@ -16,7 +16,7 @@ class Storage
 
   private function __construct(string $disk)
   {
-    $this->disk = "src/{$this->path[$disk]}";
+    $this->disk = "{$this->path[$disk]}";
   }
 
   /**
