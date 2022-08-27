@@ -6,8 +6,8 @@
       "Apipa\\TelegramS\\": "src/"
     },
     "psr-4": {
-      "App\\": "src/app/",
-      "App\\Traits\\": "src/app/Traits"
+      "App\\": "app/",
+      "App\\Traits\\": "app/Traits"
     }
   },
   "authors": [
