@@ -17,7 +17,8 @@
     }
   ],
   "require": {
-    "danog/madelineproto": "7.0.114.9999"
+    "danog/madelineproto": "7.0.114.9999",
+    "nesbot/carbon": "^2.61"
   },
   "config": {
     "allow-plugins": {
