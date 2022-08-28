@@ -3,22 +3,15 @@
 namespace App\Models;
 
 use PDO;
+use Carbon\Carbon;
 
 class Model
 {
   protected $connect;
   protected $table;
   protected mixed $where;
+  protected $column = '*';
   protected static $intsances = [];
-
-  public static function connect($table)
-  {
-    if (!isset(self::$intsances[$table])) {
-      self::$intsances[$table] = new self($table);
-    }
-
-    return self::$intsances[$table];
-  }
 
   public function __construct($table)
   {
@@ -63,17 +56,23 @@ class Model
     $this->connect->query("UPDATE {$this->table} SET {$update} WHERE {$this->where}");
   }
 
-  public function get()
+  public function get():array
   {
-    // return $this->connect->fetchAll();
+    return $this->connect->query("SELECT {$this->column} FROM {$this->table} WHERE {$this->where}")->fetchAll(PDO::FETCH_CLASS);
+  }
+
+
+  public function first()
+  {
+    return $this->connect->query("SELECT {$this->column} FROM {$this->table} WHERE {$this->where}")->fetch(PDO::FETCH_ASSOC);
   }
 
   public function where(array|string $where)
   {
     if (is_array($where)) {
       $this->where = '';
-      foreach ($where as  $value) {
-        $this->where .= "$value ";
+      foreach ($where as $key => $value) {
+        $this->where .= "{$key} = {$value}";
       }
       return $this;
     }
