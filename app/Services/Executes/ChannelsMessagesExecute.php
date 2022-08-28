@@ -59,7 +59,7 @@ class ChannelsExecute extends Execute
         foreach ($this->sessionList as $session) {
           try {
             foreach ($this->channels as $channel) {
-              $this->methodsWithChallen($session, $method, $channel);
+              $this->methodsWithChallen($session->phone, $method, $channel);
             }
           } catch (\Exception $e) {
             ErrorHelper::writeToFile("$e\n");

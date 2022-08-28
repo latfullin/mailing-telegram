@@ -10,17 +10,17 @@ namespace App\Services\Bot;
 class SendMessageBot
 {
   protected $url = 'https://api.telegram.org/bot';
-  private $chat_id;
+  private $chatId;
   private $token = '5425154420:AAF_bDkwaXo-OcoA6bZlXHVeE1vQkurzT5Q';
 
-  private function __construct($chat_id)
+  public function __construct($chatId = '')
   {
-    $this->chat_id = $chat_id;
+    $this->chatId = $chatId;
   }
 
-  public static function create($chat_id)
+  public static function create($chatId)
   {
-    return new self($chat_id);
+    return new self($chatId);
   }
 
   public function sendMsg($msg, $keyboardMsg = false, $url = false)
@@ -41,8 +41,9 @@ class SendMessageBot
   public function sendFile(string $path)
   {
     if (is_file($path)) {
+      $file = curl_file_create($path);
       try {
-        $params = ['chat_id' => $this->chat_id, 'document' => $path];
+        $params = ['chat_id' => $this->chatId, 'document' => $file];
         $this->send($params, '/sendDocument');
       } catch (\Exception $e) {
         print_r($e);
@@ -51,10 +52,10 @@ class SendMessageBot
     return false;
   }
 
-  public function photo($msg, $urlImages = '', $url = false,  $keyboardMsg = "")
+  public function sendPhoto($msg, $urlImages = '', $url = false,  $keyboardMsg = "")
   {
     $params =  [
-      'chat_id' => $this->chat_id,
+      'chat_id' => $this->chatId,
       'caption' => $msg, 'photo' => $urlImages
     ];
     if ($url) {
@@ -64,9 +65,9 @@ class SendMessageBot
     return $this;
   }
 
-  public function sticker($sticker)
+  public function sendSticker($sticker)
   {
-    $params = ['chat_id' => $this->chat_id, 'sticker' => $sticker];
+    $params = ['chat_id' => $this->chatId, 'sticker' => $sticker];
     $this->send($params, '/sendSticker');
     return $this;
   }
@@ -104,5 +105,12 @@ class SendMessageBot
         ['text' => $textBtn, 'url' => $url]
       ]
     ]));
+  }
+
+  public function setChatId(string $chatId)
+  {
+    $this->chatId = $chatId;
+
+    return $this;
   }
 }

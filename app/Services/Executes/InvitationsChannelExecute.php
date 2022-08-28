@@ -6,6 +6,7 @@ use App\Helpers\CheckUsersHelpers;
 use App\Helpers\ErrorHelper;
 use App\Helpers\Storage;
 use App\Helpers\WorkingFileHelper;
+use App\Models\PhoneModel;
 use App\Services\Authorization\Telegram;
 
 class InvitationsChannelExecute extends Execute
@@ -20,6 +21,7 @@ class InvitationsChannelExecute extends Execute
   /**
    * channel for invitations 
    */
+  protected int $limitActions = 45;
   protected bool $saved = false;
   protected string $channel = '';
   protected int $idChannel;
@@ -31,7 +33,7 @@ class InvitationsChannelExecute extends Execute
   protected int $sleepArterReuse = 10;
   protected bool $needCheckUsers = false;
   private bool $validateChannel = false;
-
+  private ?PhoneModel $connect = null;
   /**
    * @return InvitationsChannelExecute class instance;
    */
@@ -46,7 +48,7 @@ class InvitationsChannelExecute extends Execute
 
   public function __construct()
   {
-    parent::__construct();
+    parent::__construct('count_actions', $this->limitActions);
   }
 
   /** 
@@ -61,6 +63,7 @@ class InvitationsChannelExecute extends Execute
           break;
         }
         $this->joinsChannel($session->phone);
+        $this->connect = new PhoneModel();
         $this->invitionsUsers($session->phone);
         $this->leaveChannel($session->phone);
       }
@@ -146,7 +149,7 @@ class InvitationsChannelExecute extends Execute
         $this->amountError++;
         continue;
       }
-      // }
+      $this->connect->increment($session, 'count_action');
     }
     sleep($this->sleepArterReuse);
     // }
@@ -209,6 +212,8 @@ class InvitationsChannelExecute extends Execute
     foreach ($results as $result) {
       $disk->put("{$this->task}.txt", $result);
     }
+
+    return $disk->getPath("{$this->task}.txt");
   }
 
   public function __destruct()

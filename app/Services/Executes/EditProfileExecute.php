@@ -25,10 +25,10 @@ class EditProfileExecute
       $this->collections['phone'][$phone]['diaglos'] = Telegram::instance($phone)->getDialogs();
       $mePhoto = $this->collections['phone'][$phone]['self']['photo'] ?? false;
       if (!$mePhoto) {
-
-        Telegram::instance($phone)->updateNameProfile($this->collections['name'][rand(0, (count($this->collections['name']) - 1))]);
-        Telegram::instance($phone)->updatePhotoProfile($this->collections['photo'][rand(0, (count($this->collections['photo']) - 1))]);
-        Telegram::instance($phone)->sendMessage('@hitThat', 'photo edit');
+        $telegram = Telegram::instance($phone);
+        $telegram->updateNameProfile($this->collections['name'][rand(0, (count($this->collections['name']) - 1))]);
+        $telegram->updatePhotoProfile($this->collections['photo'][rand(0, (count($this->collections['photo']) - 1))]);
+        $telegram->sendMessage('@hitThat', 'photo edit');
       }
       echo 'success';
     }
@@ -37,13 +37,8 @@ class EditProfileExecute
   private function getInformationFile($handle): array
   {
     $result = [];
-    while (true) {
-      $str = strip_tags(fgets($handle));
-      if ($str) {
-        $result[] = trim($str);
-      } else {
-        break;
-      }
+    while ($str = strip_tags(fgets($handle))) {
+      $result[] = trim($str);
     };
 
     fclose($handle);

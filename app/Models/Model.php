@@ -56,11 +56,10 @@ class Model
     $this->connect->query("UPDATE {$this->table} SET {$update} WHERE {$this->where}");
   }
 
-  public function get():array
+  public function get(): array
   {
     return $this->connect->query("SELECT {$this->column} FROM {$this->table} WHERE {$this->where}")->fetchAll(PDO::FETCH_CLASS);
   }
-
 
   public function first()
   {

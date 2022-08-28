@@ -44,15 +44,11 @@ class Execute
   /**
    * @param phone hand over param if need init certain phones number, else will use phone is name 'phone';
    */
-  protected function __construct(array $phone = [])
+  protected function __construct(string $type = '', int $limitActions = 10)
   {
-    if ($phone) {
-      $this->sessionList = $phone;
-    } else {
-      $phone = new PhoneModel();
-      $this->sessionList = $phone->where(['ban' => 0])->get();
-    }
-
+    $type ? $type : 'count_action';
+    $phone = new PhoneModel();
+    $this->sessionList = $phone->sessionList($type, $limitActions);
     $this->task = WorkingFileHelper::lastTask();
   }
 
