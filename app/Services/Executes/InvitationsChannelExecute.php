@@ -35,27 +35,18 @@ class InvitationsChannelExecute extends Execute
   /**
    * @return InvitationsChannelExecute class instance;
    */
-  public static function instance(string $channel = '', array $usersList, bool $needCheckUsers = false): InvitationsChannelExecute
-  {
-    if (self::$instance === null) {
-      self::$instance = new self($channel, $usersList, greedySession: false, needCheckUsers: $needCheckUsers);
-    }
+  // public static function instance(string $channel = '', array $usersList, bool $needCheckUsers = false): InvitationsChannelExecute
+  // {
+  //   if (self::$instance === null) {
+  //     self::$instance = new self($channel, $usersList, greedySession: false, needCheckUsers: $needCheckUsers);
+  //   }
 
-    return self::$instance;
-  }
+  //   return self::$instance;
+  // }
 
-  private function __construct(string $channel,  array $users, bool $greedySession = false, bool $needCheckUsers = false)
+  public function __construct()
   {
     parent::__construct();
-    $this->channel = $channel;
-    $this->usersList = $users;
-    $this->greedySession = $greedySession;
-    $this->needCheckUsers = $needCheckUsers;
-    if (!$this->validateChannel) {
-      $result = $this->verifyChannel($this->channel);
-      $this->idChannel = $result['full_chat']['id'];
-      $this->validateChannel = true;
-    }
   }
 
   /** 
@@ -64,8 +55,15 @@ class InvitationsChannelExecute extends Execute
   public function execute(): object
   {
     if ($this->channel && $this->usersList) {
-      $this->joinsChannel();
-      $this->invitionsUsers();
+      $this->checkUsers();
+      foreach ($this->sessionList as $session) {
+        if (!$this->chunkUsers) {
+          break;
+        }
+        $this->joinsChannel($session->phone);
+        $this->invitionsUsers($session->phone);
+        $this->leaveChannel($session->phone);
+      }
       return $this;
     }
 
@@ -75,14 +73,12 @@ class InvitationsChannelExecute extends Execute
   /**
    *  @return object this class;
    */
-  private function joinsChannel(): object
+  private function joinsChannel($session)
   {
     try {
       if ($this->channel && $this->idChannel) {
-        foreach ($this->sessionList as $session) {
-          if (!$this->checkAccountGroups($session)) {
-            Telegram::instance($session)->joinChannel($this->channel);
-          }
+        if (!$this->checkAccountGroups($session)) {
+          Telegram::instance($session)->joinChannel($this->channel);
         }
       } else {
         throw new \Exception('Not found channel to invite!');
@@ -100,20 +96,18 @@ class InvitationsChannelExecute extends Execute
   public function setChannel(string $channel): object
   {
     $this->channel = $channel;
-    $this->validateChannel = false;
-    return $this;
-  }
-
-  public function leaveChannel(): object
-  {
-    sleep(10);
-    if ($this->usedSession) {
-      foreach ($this->usedSession as $session) {
-        $this->methodsWithChallen($session, 'leaveChannel', $this->channel);
-      }
+    if (!$this->validateChannel) {
+      $result = $this->verifyChannel($this->channel);
+      $this->idChannel = $result['full_chat']['id'];
+      $this->validateChannel = true;
     }
 
     return $this;
+  }
+
+  public function leaveChannel($session)
+  {
+    $this->methodsWithChallen($session, 'leaveChannel', $this->channel);
   }
 
   public function usedSession(string $session): void
@@ -136,33 +130,29 @@ class InvitationsChannelExecute extends Execute
   /**
    * 
    */
-  private function invitionsUsers()
+  private function invitionsUsers($session)
   {
-    $this->checkUsers();
-    if ($this->sessionList) {
-      for ($i = 0; $i < 10; $i++) {
-        foreach ($this->sessionList as $session) {
-          if (!$this->chunkUsers) {
-            break;
-          }
-          $this->usedSession($session);
-          try {
-            $user = array_pop($this->chunkUsers);
-            Telegram::instance($session)->inviteToChannel($this->channel, $user);
-            $this->success++;
-          } catch (\Exception $e) {
-            ErrorHelper::writeToFile($e);
-            $this->notFoundUsers[] = $user;
-            $this->amountError++;
-            continue;
-          }
-        }
-        sleep($this->sleepArterReuse);
+    for ($i = 0; $i < 10; $i++) {
+      if (!$this->chunkUsers) {
+        break;
       }
+      try {
+        $user = array_pop($this->chunkUsers);
+        Telegram::instance($session)->inviteToChannel($this->channel, $user);
+        $this->success++;
+      } catch (\Exception $e) {
+        ErrorHelper::writeToFile($e);
+        $this->notFoundUsers[] = $user;
+        $this->amountError++;
+        continue;
+      }
+      // }
     }
-    if ($this->greedySession) {
-      $this->callbackInvitations();
-    }
+    sleep($this->sleepArterReuse);
+    // }
+    // if ($this->greedySession) {
+    //   $this->callbackInvitations();
+    // }
   }
 
   private function chunkUsers()
@@ -189,19 +179,19 @@ class InvitationsChannelExecute extends Execute
     }
   }
 
-  private function callbackInvitations()
-  {
-    if ($this->greedySession && !$this->sessionList && $this->countReuseSession < 2) {
-      shuffle($this->usedSession);
-      $this->sessionList = array_splice($this->usedSession, 0, count($this->chunkUsers));
-      array_push($this->reuseSession, $this->sessionList);
-      $this->countReuseSession++;
-    }
-    if ($this->chunkUsers && $this->sessionList) {
-      sleep($this->sleepArterReuse);
-      $this->invitionsUsers();
-    }
-  }
+  // private function callbackInvitations()
+  // {
+  //   if ($this->greedySession && !$this->sessionList && $this->countReuseSession < 2) {
+  //     shuffle($this->usedSession);
+  //     $this->sessionList = array_splice($this->usedSession, 0, count($this->chunkUsers));
+  //     array_push($this->reuseSession, $this->sessionList);
+  //     $this->countReuseSession++;
+  //   }
+  //   if ($this->chunkUsers && $this->sessionList) {
+  //     sleep($this->sleepArterReuse);
+  //     $this->invitionsUsers();
+  //   }
+  // }
 
   public function save()
   {
@@ -226,5 +216,26 @@ class InvitationsChannelExecute extends Execute
     if (!$this->saved) {
       throw new \Exception('Результат не сохранен');
     }
+  }
+
+  public function setGreedySession(bool $bool): object
+  {
+    $this->greedySession = $bool;
+
+    return $this;
+  }
+
+  public function setUsersList(array $users): object
+  {
+    $this->usersList = $users;
+
+    return $this;
+  }
+
+  public function setNeedCheckUser(bool $bool): object
+  {
+    $this->needCheckUsers = $bool;
+
+    return $this;
   }
 }

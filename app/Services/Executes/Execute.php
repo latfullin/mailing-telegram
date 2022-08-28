@@ -4,6 +4,7 @@ namespace App\Services\Executes;
 
 use App\Helpers\ErrorHelper;
 use App\Helpers\WorkingFileHelper;
+use App\Models\PhoneModel;
 use App\Services\Authorization\Telegram;
 
 class Execute
@@ -48,8 +49,10 @@ class Execute
     if ($phone) {
       $this->sessionList = $phone;
     } else {
-      $this->sessionList = WorkingFileHelper::initSessionList();
+      $phone = new PhoneModel();
+      $this->sessionList = $phone->where(['ban' => 0])->get();
     }
+
     $this->task = WorkingFileHelper::lastTask();
   }
 

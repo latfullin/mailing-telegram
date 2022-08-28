@@ -14,9 +14,8 @@ class ParserController
     $filePath = $parser->checkPhones($phones)->usersProcessing()->save();
   }
 
-  public function parseGroup(string $channel): void
+  public function parseGroup(ParserExecute $parser): void
   {
-    $filePath = ParserExecute::instance(false, true)->channel($channel)->executes()->save();
-    echo 'end';
+    $filePath = $parser->channel('https://t.me/salikhov_invest')->executes()->save();
   }
 }

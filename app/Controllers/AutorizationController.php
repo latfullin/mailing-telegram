@@ -2,12 +2,19 @@
 
 namespace App\Controllers;
 
+use App\Models\PhoneModel;
 use App\Services\Authorization\Telegram;
 
-class AutorizationController
+class AutorizationController 
 {
-  public function createSession(string $phone)
+  public function createSession(PhoneModel $phone, $argumets)
   {
-    Telegram::instance($phone)->autorizationSession();
+    $findSession = $phone->where(['phone' => $argumets->phone])->first();
+
+    if(empty($findSession)) { 
+      $phone->insert(['phone' => $argumets->phone]);
+    }
+
+    Telegram::instance($argumets->phone)->autorizationSession();
   }
 }

@@ -117,7 +117,7 @@ class ParserExecute extends Execute
    */
   protected bool $saveData = false;
 
-  protected function __construct(bool $needUsersId, bool $needBreakTime)
+  public function __construct(bool $needUsersId = false, bool $needBreakTime = true)
   {
     parent::__construct();
     $this->needUsersId = $needUsersId;
@@ -137,13 +137,13 @@ class ParserExecute extends Execute
     }
   }
 
-  public static function instance(bool $needUsersId = true,  bool $needBreakTime = true): ParserExecute
-  {
-    if (self::$instance === null) {
-      self::$instance = new self($needUsersId, $needBreakTime);
-    }
-    return self::$instance;
-  }
+  // public static function instance(bool $needUsersId = true,  bool $needBreakTime = true): ParserExecute
+  // {
+  //   if (self::$instance === null) {
+  //     self::$instance = new self($needUsersId, $needBreakTime);
+  //   }
+  //   return self::$instance;
+  // }
 
   public function channel(string $channel): ParserExecute
   {
