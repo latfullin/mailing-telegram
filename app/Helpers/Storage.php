@@ -31,7 +31,7 @@ class Storage
    */
   public function isFile(string $file): bool
   {
-    return is_file("{$this->disk}/{$file}");
+    return is_file("{$this->disk}/{$file}.txt");
   }
 
   /**
@@ -42,13 +42,13 @@ class Storage
     if (is_array($contents)) {
       foreach ($contents as $content) {
         if (is_array($content)) {
-          $this->put($file, $content);
+          $this->put("$file.txt", $content);
         } else {
-          file_put_contents("{$this->disk}/$file", "$content\n", FILE_APPEND);
+          file_put_contents("{$this->disk}/$file.txt", "$content\n", FILE_APPEND);
         }
       }
     } else {
-      file_put_contents("{$this->disk}/$file", "$contents\n", FILE_APPEND);
+      file_put_contents("{$this->disk}/$file.txt", "$contents\n", FILE_APPEND);
     }
     return;
   }
@@ -56,7 +56,7 @@ class Storage
   public function getPath(string $file): string
   {
     if ($this->isFile($file)) {
-      return "{$this->disk}/$file";
+      return "{$this->disk}/$file.txt";
     }
 
     throw new \Exception('Not found file.');

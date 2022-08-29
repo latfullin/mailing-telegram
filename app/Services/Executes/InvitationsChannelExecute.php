@@ -191,10 +191,10 @@ class InvitationsChannelExecute extends Execute
     ];
     $disk = Storage::disk('task');
     foreach ($results as $result) {
-      $disk->put("{$this->task}.txt", $result);
+      $disk->put("{$this->task}", $result);
     }
 
-    return $disk->getPath("{$this->task}.txt");
+    return $disk->getPath("{$this->task}");
   }
 
   public function __destruct()

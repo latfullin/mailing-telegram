@@ -1,5 +1,6 @@
 /vendor
 /delete
+/node_modules
 /docker/mysql/data
 /docker/redis/data
 .env

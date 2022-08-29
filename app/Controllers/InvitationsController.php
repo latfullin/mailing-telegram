@@ -2,13 +2,13 @@
 
 namespace App\Controllers;
 
-use App\Models\InvitationsModel;
 use App\Services\Bot\SendMessageBot;
+use App\Services\Bot\TelegramBot;
 use App\Services\Executes\InvitationsChannelExecute;
 
 class InvitationsController
 {
-  public function invitationsChannel($argumets, InvitationsChannelExecute $invitations, SendMessageBot $bot): void
+  public function invitationsChannel($argumets, InvitationsChannelExecute $invitations, TelegramBot $bot): void
   {
     /**
      * not function save. Need realization
