@@ -6,7 +6,7 @@ class ErrorHelper
 {
   public static function writeToFileAndDie($e)
   {
-    file_put_contents('ExceptionLog.log', $e, FILE_APPEND);
+    file_put_contents("ExceptionLog.log", $e, FILE_APPEND);
 
     print_r($e);
     die();
@@ -14,8 +14,7 @@ class ErrorHelper
 
   public static function writeToFile($e)
   {
-    file_put_contents('ExceptionLog.log', $e, FILE_APPEND);
-    echo $e;
+    file_put_contents("ExceptionLog.log", $e, FILE_APPEND);
   }
 }
 
@@ -23,12 +22,11 @@ class ErrorHelper
 // danog\MadelineProto\Exception Object
 // (
 //     [message:protected] => You have not joined this chat
-//     [string:Exception:private] => 
+//     [string:Exception:private] =>
 //     [code:protected] => 0
 //     [file:protected] => /home/timur/www/telegram-mailing-list/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/ExitFailure.php
 //     [line:protected] => 55
 //     [trace:Exception:private] => Array
-
 
 // ban per flood
 // print_r(explode('_', $e->getMessage())); ===== (
@@ -40,10 +38,10 @@ class ErrorHelper
 // danog\MadelineProto\RPCErrorException Object
 // (
 //     [rpc] => FLOOD_WAIT_9874
-//     [fetched:danog\MadelineProto\RPCErrorException:private] => 
-//     [caller:danog\MadelineProto\RPCErrorException:private] => 
+//     [fetched:danog\MadelineProto\RPCErrorException:private] =>
+//     [caller:danog\MadelineProto\RPCErrorException:private] =>
 //     [message:protected] => FLOOD_WAIT_9874
-//     [string:Exception:private] => 
+//     [string:Exception:private] =>
 //     [code:protected] => 420
 //     [file:protected] => /home/timur/www/telegram-mailing-list/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/ExitFailure.php
 //     [line:protected] => 55
@@ -247,8 +245,8 @@ class ErrorHelper
 
 //         )
 
-//     [previous:Exception:private] => 
-//     [tlTrace] => 
+//     [previous:Exception:private] =>
+//     [tlTrace] =>
 // Client.php(249):        __call("methodCallAsyncRead",["channels.getFullChannel",{"channel":"https:\/\/t.me\/sa12dasdas"},{"apifactory":true}])
 // AbstractAPIFactory.php(195):    methodCallAsyncRead("channels.getFullChannel",{"channel":"https:\/\/t.me\/sa12dasdas"},{"apifactory":true})
 // __call_async()

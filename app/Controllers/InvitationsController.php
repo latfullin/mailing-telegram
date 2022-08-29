@@ -8,13 +8,21 @@ use App\Services\Executes\InvitationsChannelExecute;
 
 class InvitationsController
 {
-  public function invitationsChannel($argumets, InvitationsChannelExecute $invitations, TelegramBot $bot): void
-  {
+  public function invitationsChannel(
+    $argumets,
+    InvitationsChannelExecute $invitations,
+    TelegramBot $bot
+  ): void {
     /**
      * not function save. Need realization
      */
 
-    $filePath = $invitations->setChannel($argumets->channel)->setUsersList($argumets->users)->setNeedCheckUser($argumets->checkUsers)->execute()->save();
-    $bot->setChatId('@hitThat')->sendFile($filePath);
+    $filePath = $invitations
+      ->setChannel($argumets->channel)
+      ->setUsersList($argumets->users)
+      ->setNeedCheckUser($argumets->checkUsers)
+      ->execute()
+      ->save();
+    $bot->setChatId("365047507")->sendFile($filePath);
   }
 }

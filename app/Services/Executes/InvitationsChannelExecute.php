@@ -13,11 +13,11 @@ class InvitationsChannelExecute extends Execute
   private static ?InvitationsChannelExecute $instance = null;
 
   /**
-   * channel for invitations 
+   * channel for invitations
    */
   protected int $limitActions = 45;
   protected bool $saved = false;
-  protected string $channel = '';
+  protected string $channel = "";
   protected int $idChannel;
   protected array $chunkUsers = [];
   protected array $notFoundUsers = [];
@@ -27,7 +27,7 @@ class InvitationsChannelExecute extends Execute
   protected int $sleepArterReuse = 30;
   protected bool $needCheckUsers = false;
   private bool $validateChannel = false;
-  private string $taskName = 'invitations_channel';
+  private string $taskName = "invitations_channel";
   protected ?InvitationsModel $invitationsModel = null;
   /**
    * @return InvitationsChannelExecute class instance;
@@ -47,8 +47,8 @@ class InvitationsChannelExecute extends Execute
     $this->invitationsModel = new InvitationsModel();
   }
 
-  /** 
-   * @param channel required param; Need hand over params 'channel' this function or at call instance  
+  /**
+   * @param channel required param; Need hand over params 'channel' this function or at call instance
    */
   public function execute(): object
   {
@@ -75,7 +75,11 @@ class InvitationsChannelExecute extends Execute
 
   private function callbackInvitations(): void
   {
-    if ($this->greedySession && !$this->sessionList && $this->countReuseSession < 2) {
+    if (
+      $this->greedySession &&
+      !$this->sessionList &&
+      $this->countReuseSession < 2
+    ) {
       $this->getSessionList();
     }
     if ($this->chunkUsers && $this->sessionList) {
@@ -95,7 +99,7 @@ class InvitationsChannelExecute extends Execute
           Telegram::instance($session)->joinChannel($this->channel);
         }
       } else {
-        throw new \Exception('Not found channel to invite!');
+        throw new \Exception("Not found channel to invite!");
       }
     } catch (\Exception $e) {
       ErrorHelper::writeToFileAndDie("$e");
@@ -112,7 +116,7 @@ class InvitationsChannelExecute extends Execute
     $this->channel = $channel;
     if (!$this->validateChannel) {
       $result = $this->verifyChannel($this->channel);
-      $this->idChannel = $result['full_chat']['id'];
+      $this->idChannel = $result["full_chat"]["id"];
       $this->validateChannel = true;
     }
 
@@ -121,15 +125,15 @@ class InvitationsChannelExecute extends Execute
 
   public function leaveChannel($session)
   {
-    $this->methodsWithChallen($session, 'leaveChannel', $this->channel);
+    $this->methodsWithChallen($session, "leaveChannel", $this->channel);
   }
 
   private function checkAccountGroups(string $session)
   {
     $data = Telegram::instance($session)->getDialogs();
     return array_filter($data, function ($group) {
-      if ($group['channel_id'] ?? false) {
-        return $group['channel_id'] === $this->idChannel;
+      if ($group["channel_id"] ?? false) {
+        return $group["channel_id"] === $this->idChannel;
       }
     });
   }
@@ -140,15 +144,17 @@ class InvitationsChannelExecute extends Execute
       if (!$this->chunkUsers) {
         break;
       }
-      $this->sessionConnect->increment($session, 'count_action');
+      $this->sessionConnect->increment($session, "count_action");
       try {
         $user = array_pop($this->chunkUsers);
         Telegram::instance($session)->inviteToChannel($this->channel, $user);
-        $this->invitationsModel->where(['task' => $this->task, 'user' => $user[0]])->update(['performed' => true]);
+        $this->invitationsModel
+          ->where(["task" => $this->task, "user" => $user[0]])
+          ->update(["performed" => true]);
       } catch (\Exception $e) {
-        ErrorHelper::writeToFile($e);
-        $this->notFoundUsers[] = $user;
-        print_r($e);
+        $this->invitationsModel
+          ->where(["task" => $this->task, "user" => $user[0]])
+          ->update(["error_log" => $e->getMessage()]);
         continue;
       }
     }
@@ -164,7 +170,10 @@ class InvitationsChannelExecute extends Execute
   private function validateUsers(): void
   {
     if ($this->usersList) {
-      ['usersList' => $this->usersList, 'notFount' => $this->notFoundUsers]  = CheckUsersHelpers::checkEmptyUsers($this->usersList);
+      [
+        "usersList" => $this->usersList,
+        "notFount" => $this->notFoundUsers,
+      ] = CheckUsersHelpers::checkEmptyUsers($this->usersList);
       $this->validateUsers = true;
     }
   }
@@ -184,12 +193,10 @@ class InvitationsChannelExecute extends Execute
   {
     $this->saved = true;
     $results = [
-      ['Список пользователей', $this->usersList],
-      ['Группа:', $this->channel],
-      ['Не найденные пользователи', $this->notFoundUsers],
-      ['Переиспользованные сессии:', $this->reuseSession],
+      ["Список пользователей", $this->usersList],
+      ["Группа:", $this->channel],
     ];
-    $disk = Storage::disk('task');
+    $disk = Storage::disk("task");
     foreach ($results as $result) {
       $disk->put("{$this->task}", $result);
     }
@@ -200,7 +207,7 @@ class InvitationsChannelExecute extends Execute
   public function __destruct()
   {
     if (!$this->saved) {
-      throw new \Exception('Результат не сохранен');
+      throw new \Exception("Результат не сохранен");
     }
   }
 
@@ -215,7 +222,7 @@ class InvitationsChannelExecute extends Execute
   {
     $this->usersList = $users;
     foreach ($users as $user) {
-      $this->invitationsModel->insert(['task' => $this->task, 'user' => $user]);
+      $this->invitationsModel->insert(["task" => $this->task, "user" => $user]);
     }
 
     return $this;

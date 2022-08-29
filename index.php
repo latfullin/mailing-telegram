@@ -53,10 +53,15 @@ $a = [
 // $telegram = new TelegramBot();
 // $telegram->setChatId('365047507')->sendFile('storage/task/17.txt');
 
-$a = ["https://t.me/vopros_otvet_dubai"];
+// $a = ["https://t.me/vopros_otvet_dubai"];
+$a = ["@dubai_jobstreet"];
 
-foreach ($a as $item) {
-  new Controller(ParserController::class, "parseGroup", ["channel" => $item]);
-}
+// foreach ($a as $item) {
+//   new Controller(ParserController::class, "parseGroup", ["channel" => $item]);
+// }
 // new Controller(AutorizationController::class, 'createSession', ['phone' => $item]);
-// new Controller(InvitationsController::class, 'invitationsChannel', ['channel' => 'https://t.me/asdasdasdzxew', 'users' => $a, 'checkUsers' => false]);
+new Controller(InvitationsController::class, "invitationsChannel", [
+  "channel" => "https://t.me/asdasdasdzxew",
+  "users" => $a,
+  "checkUsers" => false,
+]);
