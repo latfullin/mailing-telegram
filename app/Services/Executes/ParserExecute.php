@@ -354,7 +354,7 @@ class ParserExecute extends Execute
       $disk->put($this->task, "$items");
     }
 
-    return  $disk->getPath("{$this->task}");
+    return $disk->getPath("{$this->task}");
   }
 
   public function resetData(): void

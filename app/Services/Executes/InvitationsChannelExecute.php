@@ -5,18 +5,12 @@ namespace App\Services\Executes;
 use App\Helpers\CheckUsersHelpers;
 use App\Helpers\ErrorHelper;
 use App\Helpers\Storage;
-use App\Helpers\WorkingFileHelper;
-use App\Models\PhoneModel;
+use App\Models\InvitationsModel;
 use App\Services\Authorization\Telegram;
 
 class InvitationsChannelExecute extends Execute
 {
   private static ?InvitationsChannelExecute $instance = null;
-
-  /**
-   * @param usedSession used phone number in instance.
-   */
-  protected array $usedSession = [];
 
   /**
    * channel for invitations 
@@ -30,10 +24,11 @@ class InvitationsChannelExecute extends Execute
   protected bool $greedySession = false;
   protected array $reuseSession = [];
   protected int $countReuseSession = 0;
-  protected int $sleepArterReuse = 10;
+  protected int $sleepArterReuse = 30;
   protected bool $needCheckUsers = false;
   private bool $validateChannel = false;
-  private ?PhoneModel $connect = null;
+  private string $taskName = 'invitations_channel';
+  protected ?InvitationsModel $invitationsModel = null;
   /**
    * @return InvitationsChannelExecute class instance;
    */
@@ -48,7 +43,8 @@ class InvitationsChannelExecute extends Execute
 
   public function __construct()
   {
-    parent::__construct('count_actions', $this->limitActions);
+    parent::__construct($this->taskName, $this->limitActions);
+    $this->invitationsModel = new InvitationsModel();
   }
 
   /** 
@@ -63,14 +59,29 @@ class InvitationsChannelExecute extends Execute
           break;
         }
         $this->joinsChannel($session->phone);
-        $this->connect = new PhoneModel();
         $this->invitionsUsers($session->phone);
         $this->leaveChannel($session->phone);
       }
+      if ($this->greedySession && $this->chunkUsers) {
+        $this->countReuseSession++;
+        $this->callbackInvitations();
+      }
+
       return $this;
     }
 
     return false;
+  }
+
+  private function callbackInvitations(): void
+  {
+    if ($this->greedySession && !$this->sessionList && $this->countReuseSession < 2) {
+      $this->getSessionList();
+    }
+    if ($this->chunkUsers && $this->sessionList) {
+      sleep($this->sleepArterReuse);
+      $this->execute();
+    }
   }
 
   /**
@@ -113,13 +124,6 @@ class InvitationsChannelExecute extends Execute
     $this->methodsWithChallen($session, 'leaveChannel', $this->channel);
   }
 
-  public function usedSession(string $session): void
-  {
-    if ($this->sessionList) {
-      array_push($this->usedSession, array_slice($this->sessionList, array_search($session, $this->sessionList), 1)[0]);
-    }
-  }
-
   private function checkAccountGroups(string $session)
   {
     $data = Telegram::instance($session)->getDialogs();
@@ -130,32 +134,26 @@ class InvitationsChannelExecute extends Execute
     });
   }
 
-  /**
-   * 
-   */
   private function invitionsUsers($session)
   {
     for ($i = 0; $i < 10; $i++) {
       if (!$this->chunkUsers) {
         break;
       }
+      $this->sessionConnect->increment($session, 'count_action');
       try {
         $user = array_pop($this->chunkUsers);
         Telegram::instance($session)->inviteToChannel($this->channel, $user);
-        $this->success++;
+        $this->invitationsModel->where(['task' => $this->task, 'user' => $user[0]])->update(['performed' => true]);
       } catch (\Exception $e) {
         ErrorHelper::writeToFile($e);
         $this->notFoundUsers[] = $user;
-        $this->amountError++;
+        print_r($e);
         continue;
       }
-      $this->connect->increment($session, 'count_action');
     }
+
     sleep($this->sleepArterReuse);
-    // }
-    // if ($this->greedySession) {
-    //   $this->callbackInvitations();
-    // }
   }
 
   private function chunkUsers()
@@ -182,20 +180,6 @@ class InvitationsChannelExecute extends Execute
     }
   }
 
-  // private function callbackInvitations()
-  // {
-  //   if ($this->greedySession && !$this->sessionList && $this->countReuseSession < 2) {
-  //     shuffle($this->usedSession);
-  //     $this->sessionList = array_splice($this->usedSession, 0, count($this->chunkUsers));
-  //     array_push($this->reuseSession, $this->sessionList);
-  //     $this->countReuseSession++;
-  //   }
-  //   if ($this->chunkUsers && $this->sessionList) {
-  //     sleep($this->sleepArterReuse);
-  //     $this->invitionsUsers();
-  //   }
-  // }
-
   public function save()
   {
     $this->saved = true;
@@ -203,10 +187,7 @@ class InvitationsChannelExecute extends Execute
       ['Список пользователей', $this->usersList],
       ['Группа:', $this->channel],
       ['Не найденные пользователи', $this->notFoundUsers],
-      ['Использованные сессии:', $this->usedSession],
       ['Переиспользованные сессии:', $this->reuseSession],
-      ['Успешный итераций:', $this->success],
-      ['Количество ошибок:', $this->amountError]
     ];
     $disk = Storage::disk('task');
     foreach ($results as $result) {
@@ -233,6 +214,9 @@ class InvitationsChannelExecute extends Execute
   public function setUsersList(array $users): object
   {
     $this->usersList = $users;
+    foreach ($users as $user) {
+      $this->invitationsModel->insert(['task' => $this->task, 'user' => $user]);
+    }
 
     return $this;
   }

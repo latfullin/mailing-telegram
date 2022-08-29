@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\InvitationsModel;
 use App\Services\Bot\SendMessageBot;
 use App\Services\Executes\InvitationsChannelExecute;
 
@@ -12,7 +13,8 @@ class InvitationsController
     /**
      * not function save. Need realization
      */
+
     $filePath = $invitations->setChannel($argumets->channel)->setUsersList($argumets->users)->setNeedCheckUser($argumets->checkUsers)->execute()->save();
-    $bot->setChatId('365047507')->sendFile($filePath);
+    $bot->setChatId('@hitThat')->sendFile($filePath);
   }
 }

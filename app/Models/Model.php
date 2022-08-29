@@ -52,7 +52,7 @@ class Model
     } else {
       return false;
     }
-
+    print_r($this->where);
     $this->connect->query("UPDATE {$this->table} SET {$update} WHERE {$this->where}");
   }
 
@@ -97,9 +97,13 @@ class Model
   protected function splitWhere(array $array)
   {
     $i = 0;
-    $count = count($array);
+    $count = count($array) - 1;
     foreach ($array as $key => $value) {
-      $this->where .= $count === $i ? "{$key} = '{$value}'" : "{$key} = '{$value}',";
+      if($i === 0) {
+        $this->where .= $count === $i ? "{$key} = '{$value}'" : "{$key} = '{$value}'";
+      } else { 
+        $this->where .= $count === $i ? "AND {$key} = '{$value}'" : "AND {$key} = '{$value}',";
+      }
       $i++;
     }
   }

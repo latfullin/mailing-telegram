@@ -5,6 +5,7 @@ namespace App\Services\Executes;
 use App\Helpers\ErrorHelper;
 use App\Helpers\WorkingFileHelper;
 use App\Models\PhoneModel;
+use App\Models\TasksModel;
 use App\Services\Authorization\Telegram;
 
 class Execute
@@ -40,16 +41,20 @@ class Execute
    */
   protected bool $validateUsers = false;
 
+  protected ?PhoneModel $sessionConnect = null;
+  protected string $field = '';
+  protected int $limitActions = 10;
 
   /**
    * @param phone hand over param if need init certain phones number, else will use phone is name 'phone';
    */
   protected function __construct(string $type = '', int $limitActions = 10)
   {
-    $type ? $type : 'count_action';
-    $phone = new PhoneModel();
-    $this->sessionList = $phone->sessionList($type, $limitActions);
-    $this->task = WorkingFileHelper::lastTask();
+    $this->field = $type ? $type : 'count_action';
+    $this->limitActions = $limitActions;
+    $this->sessionConnect = new PhoneModel();
+    $this->getSessionList();
+    $this->newTask();
   }
 
   /**
@@ -69,6 +74,11 @@ class Execute
     }
 
     return false;
+  }
+
+  protected function getSessionList(): void
+  {
+    $this->sessionList = $this->sessionConnect->sessionList($this->type, $this->limitActions);
   }
 
   protected function methodsWithChallen(string $session, string $method, string $link): void
@@ -121,5 +131,12 @@ class Execute
     $this->validateUsers = false;
 
     return $this;
+  }
+
+  public function newTask()
+  {
+    $newTask = new TasksModel();
+    $newTask->insert(['type' => $this->field]);
+    $this->task = $newTask->getLastTask()['task'];
   }
 }
