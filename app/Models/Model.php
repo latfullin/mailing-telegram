@@ -28,7 +28,7 @@ class Model
   public function insert(array $values)
   {
     ['column' => $column, 'value' => $value] = $this->splitData($values);
-    $this->connect->query("INSERT INTO {$this->table} ($column) VALUE ($value)");
+    $this->connect->query("INSERT INTO {$this->table} ({$column}) VALUES ({$value})");
   }
 
   public function delete(string $column, string $separator, string $value)
@@ -70,16 +70,13 @@ class Model
   {
     if (is_array($where)) {
       $this->where = '';
-      foreach ($where as $key => $value) {
-        $this->where .= "{$key} = {$value}";
-      }
+      $this->splitWhere($where);
       return $this;
     }
     if (is_string($where)) {
       $this->where = $where;
       return $this;
     }
-
     return false;
   }
 
@@ -89,11 +86,21 @@ class Model
     $count = count($array) - 1;
     $i = 0;
     foreach ($array as $key => $item) {
-      $result['value'] .= $count === $i ?  "$item" : "$item,";
-      $result['column'] .= $count === $i ?  "$key" : "$key,";
+      $result['column'] .= $count === $i ?  "{$key}" : "{$key},";
+      $result['value'] .= $count === $i ?  "'{$item}'" : "'{$item}',";
       $i++;
     }
 
     return $result;
+  }
+
+  protected function splitWhere(array $array)
+  {
+    $i = 0;
+    $count = count($array);
+    foreach ($array as $key => $value) {
+      $this->where .= $count === $i ? "{$key} = '{$value}'" : "{$key} = '{$value}',";
+      $i++;
+    }
   }
 }

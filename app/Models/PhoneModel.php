@@ -19,6 +19,6 @@ class PhoneModel extends Model
 
   public function sessionList($column = 'count_action', int $limit = 10)
   {
-    return $this->connect->query("SELECT * FROM {$this->table}  WHERE ban = '0' AND {$column} < {$limit}  ORDER BY {$column}")->fetchAll();
+    return $this->connect->query("SELECT * FROM {$this->table}  WHERE ban = 0 AND '{$column}' < {$limit} ORDER BY '{$column}'")->fetchAll(\PDO::FETCH_CLASS);
   }
 }
