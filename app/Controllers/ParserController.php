@@ -2,23 +2,27 @@
 
 namespace App\Controllers;
 
+use App\Helpers\ArgumentsHelpers;
 use App\Services\Bot\TelegramBot;
 use App\Services\Executes\ParserExecute;
 use App\Services\Executes\ParserTelephoneExecute;
 
 class ParserController
 {
-  public function checkPhone(array|object $phones): void
-  {
-    $parser = new ParserTelephoneExecute(false, true);
+  public function checkPhone(
+    ArgumentsHelpers $arg,
+    ParserTelephoneExecute $parser,
+    TelegramBot $telegram
+  ): void {
     $filePath = $parser
-      ->checkPhones($phones)
+      ->checkPhones($arg->phones)
       ->usersProcessing()
       ->save();
+    $telegram->setChatId($arg->userId)->sendFile($filePath);
   }
 
   public function parseGroup(
-    $arg,
+    ArgumentsHelpers $arg,
     ParserExecute $parser,
     TelegramBot $telegram
   ): void {
@@ -26,7 +30,7 @@ class ParserController
       ->channel($arg->channel)
       ->executes()
       ->save();
-    // $telegram->setChatId("45881581")->sendFile($filePath);
-    $telegram->setChatId("365047507")->sendFile($filePath);
+
+    $telegram->setChatId($arg->userId)->sendFile($filePath);
   }
 }

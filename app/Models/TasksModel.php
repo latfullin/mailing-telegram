@@ -6,8 +6,7 @@ use PDO;
 
 class TasksModel extends Model
 {
-
-  protected $table = 'tasks';
+  protected $table = "tasks";
 
   public function __construct()
   {
@@ -16,6 +15,8 @@ class TasksModel extends Model
 
   public function getLastTask()
   {
-    return $this->connect->query("SELECT * FROM {$this->table} ORDER BY `task` DESC")->fetch(PDO::FETCH_ASSOC);
+    return $this->connect
+      ->query("SELECT * FROM {$this->table} ORDER BY `task` DESC")
+      ->fetch(PDO::FETCH_ASSOC);
   }
 }

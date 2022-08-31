@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Helpers\ArgumentsHelpers;
 use App\Services\Bot\SendMessageBot;
 use App\Services\Bot\TelegramBot;
 use App\Services\Executes\InvitationsChannelExecute;
@@ -9,7 +10,7 @@ use App\Services\Executes\InvitationsChannelExecute;
 class InvitationsController
 {
   public function invitationsChannel(
-    $argumets,
+    ArgumentsHelpers $argumets,
     InvitationsChannelExecute $invitations,
     TelegramBot $bot
   ): void {
@@ -23,6 +24,7 @@ class InvitationsController
       ->setNeedCheckUser($argumets->checkUsers)
       ->execute()
       ->save();
-    $bot->setChatId("365047507")->sendFile($filePath);
+
+    $bot->setChatId($argumets->userId)->sendFile($filePath);
   }
 }

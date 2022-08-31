@@ -4,7 +4,7 @@ namespace App\Models;
 
 class ParserModel extends Model
 {
-  protected $table = 'parser_group';
+  protected $table = "parser_group";
 
   public function __construct()
   {

@@ -112,7 +112,7 @@ class ParserExecute extends Execute
       "я",
     ],
   ];
-
+  const COUNT_ALPHABETS = 56;
   /**
    * limit count, on the get users in request
    */
@@ -193,18 +193,27 @@ class ParserExecute extends Execute
    */
   protected int $countParticipants;
 
-  protected string $type = "parser_group";
+  const LIMIT_ACTIONS = 50;
+  const ACTION_FIELD = "parser_action";
+  const TASK_NAME = "parser_group";
 
+  protected ?ParserModel $parserModel = null;
   /**
    * @param saveData save results in file
    */
   protected bool $saveData = false;
 
   public function __construct(
+    ParserModel $conntect,
     bool $needUsersId = false,
     bool $needBreakTime = true
   ) {
-    parent::__construct($this->type);
+    parent::__construct(
+      self::ACTION_FIELD,
+      self::TASK_NAME,
+      self::LIMIT_ACTIONS
+    );
+    $this->parserModel = $conntect;
     $this->needUsersId = $needUsersId;
     $this->needBreakTime = $needBreakTime;
     $this->now = time();
@@ -239,13 +248,13 @@ class ParserExecute extends Execute
     $this->channelInformation = $this->verifyChannel($channel);
     $this->countParticipants =
       $this->channelInformation["full_chat"]["participants_count"];
-    $this->insertInformation(new ParserModel());
+    $this->insertInformation();
     return $this;
   }
 
-  public function insertInformation(ParserModel $parserModel)
+  public function insertInformation(): void
   {
-    $parserModel->insert([
+    $this->parserModel->insert([
       "task" => $this->task,
       "link_group" => $this->channel,
       "amount_users" => $this->countParticipants,
@@ -271,17 +280,20 @@ class ParserExecute extends Execute
     return $this;
   }
 
-  private function bigChannel()
+  private function bigChannel(): void
   {
     $resetArray = 0;
+    $i = 0;
     foreach (self::ALPHABETS as $alphabets) {
       if ($this->lengthArrayParticipants > $this->countParticipants * 0.98) {
         break;
       }
       foreach ($alphabets as $alphabet) {
-        echo $alphabet;
+        $this->incrementActions($this->sessionList[0]->phone);
+        $i++;
+        echo ($i * 100) / self::COUNT_ALPHABETS;
         $countsParticipants = min(
-          Telegram::instance("79274271401")->getParticipants(
+          Telegram::instance($this->sessionList[0]->phone)->getParticipants(
             $this->channel,
             0,
             1,
@@ -309,11 +321,11 @@ class ParserExecute extends Execute
     $this->countAmountInteration($countUsers);
 
     for ($i = 0; $i < $this->countCycles; $i++) {
-      $result[] = Telegram::instance("79274271401")->getParticipants(
-        $this->channel,
-        $i * self::OFFSET_LIMIT,
-        q: $q
-      )["users"];
+      $result[] = Telegram::instance(
+        $this->sessionList[0]->phone
+      )->getParticipants($this->channel, $i * self::OFFSET_LIMIT, q: $q)[
+        "users"
+      ];
     }
 
     $this->treatmentResult($result);

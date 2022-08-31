@@ -18,9 +18,11 @@ class Telegram
 
   public function __construct($phone, $async)
   {
-    $setting = ['logger' => ['logger' => 0]];
+    $setting = ["logger" => ["logger" => 0]];
     $this->phone = $phone;
-    $this->telegram = new \danog\MadelineProto\API($this->pathSession($phone, $setting));
+    $this->telegram = new \danog\MadelineProto\API(
+      $this->pathSession($phone, $setting)
+    );
     $this->params($async);
   }
 
@@ -32,7 +34,7 @@ class Telegram
 
   public function autorizationSession(string $msg = "success")
   {
-    $this->sendMessage('@hitThat', $msg);
+    $this->sendMessage("@hitThat", $msg);
   }
 
   /**

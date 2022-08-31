@@ -2,12 +2,13 @@
 
 /**
  * code 400; PHONE_NOT_OCCUPIED - not found users in telegram or user hidden number in profile.
- * code 400; 
+ * code 400;
  */
 
 namespace App\Services\Executes;
 
 use App\Helpers\Storage;
+use App\Models\ParserModel;
 use App\Services\Authorization\Telegram;
 
 class ParserTelephoneExecute extends ParserExecute
@@ -15,10 +16,13 @@ class ParserTelephoneExecute extends ParserExecute
   protected array $users = [];
   protected array $notFoundPhone = [];
 
-  public function __construct(bool $needUserId, bool $sortOnTime, string $phone = '')
-  {
-    parent::__construct($needUserId, $sortOnTime);
-    $this->instance = Telegram::instance('79585596738');
+  public function __construct(
+    ParserModel $connect,
+    bool $needUserId,
+    bool $sortOnTime
+  ) {
+    parent::__construct($connect, $needUserId, $sortOnTime);
+    $this->instance = Telegram::instance($this->sessionList[0]->phone);
   }
 
   public function checkPhones(array $phonesNumbers): object
@@ -27,9 +31,9 @@ class ParserTelephoneExecute extends ParserExecute
       $result = [];
       foreach ($phonesNumbers as $phone) {
         try {
-          $result[] = $this->instance->getInformationByNumber($phone)['users'];
+          $result[] = $this->instance->getInformationByNumber($phone)["users"];
         } catch (\Exception $e) {
-          if ($e->getMessage() == 'PHONE_NOT_OCCUPIED') {
+          if ($e->getMessage() == "PHONE_NOT_OCCUPIED") {
             $this->notFoundPhone[$phone] = $phone;
           }
           continue;
@@ -45,7 +49,11 @@ class ParserTelephoneExecute extends ParserExecute
   public function save(): string
   {
     $path = parent::save();
-    Storage::disk('task')->put($this->task, ['Не найденные или скрытые номера', $this->notFoundPhone]);
+    Storage::disk("task")->put($this->task, [
+      "Не найденные или скрытые номера",
+      $this->notFoundPhone,
+    ]);
+
     return $path;
   }
 }

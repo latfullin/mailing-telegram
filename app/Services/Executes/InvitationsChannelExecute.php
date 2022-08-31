@@ -10,40 +10,28 @@ use App\Services\Authorization\Telegram;
 
 class InvitationsChannelExecute extends Execute
 {
-  private static ?InvitationsChannelExecute $instance = null;
-
-  /**
-   * channel for invitations
-   */
-  protected int $limitActions = 45;
+  const LIMIT_ACTIONS = 45;
+  const ACTION_FIELD = "count_action";
+  const TASK_NAME = "invitations_channel";
   protected bool $saved = false;
   protected string $channel = "";
   protected int $idChannel;
   protected array $chunkUsers = [];
   protected array $notFoundUsers = [];
   protected bool $greedySession = false;
-  protected array $reuseSession = [];
   protected int $countReuseSession = 0;
   protected int $sleepArterReuse = 30;
   protected bool $needCheckUsers = false;
   private bool $validateChannel = false;
-  private string $taskName = "invitations_channel";
   protected ?InvitationsModel $invitationsModel = null;
-  /**
-   * @return InvitationsChannelExecute class instance;
-   */
-  // public static function instance(string $channel = '', array $usersList, bool $needCheckUsers = false): InvitationsChannelExecute
-  // {
-  //   if (self::$instance === null) {
-  //     self::$instance = new self($channel, $usersList, greedySession: false, needCheckUsers: $needCheckUsers);
-  //   }
-
-  //   return self::$instance;
-  // }
 
   public function __construct()
   {
-    parent::__construct($this->taskName, $this->limitActions);
+    parent::__construct(
+      self::ACTION_FIELD,
+      self::TASK_NAME,
+      self::LIMIT_ACTIONS
+    );
     $this->invitationsModel = new InvitationsModel();
   }
 

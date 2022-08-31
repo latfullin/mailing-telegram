@@ -42,15 +42,20 @@ class Execute
   protected bool $validateUsers = false;
 
   protected ?PhoneModel $sessionConnect = null;
-  protected string $type = "";
+  protected string $typeAction = "";
+  protected string $nameTask = "empty";
   protected int $limitActions = 10;
 
   /**
    * @param phone hand over param if need init certain phones number, else will use phone is name 'phone';
    */
-  protected function __construct(string $type = "", int $limitActions = 10)
-  {
-    $this->type = $type ? $type : "count_action";
+  protected function __construct(
+    string $typeAction = "",
+    string $nameTask = "",
+    int $limitActions = 10
+  ) {
+    $this->typeAction = $typeAction ? $typeAction : "count_action";
+    $this->nameTask = $nameTask;
     $this->limitActions = $limitActions;
     $this->sessionConnect = new PhoneModel();
     $this->getSessionList();
@@ -79,7 +84,7 @@ class Execute
   protected function getSessionList(): void
   {
     $this->sessionList = $this->sessionConnect->sessionList(
-      $this->type,
+      $this->typeAction,
       $this->limitActions
     );
   }
@@ -104,13 +109,17 @@ class Execute
   {
     try {
       if ($channel) {
-        return Telegram::instance("79874018497")->getChannel($channel);
+        $this->incrementActions($this->sessionList[0]->phone);
+        return Telegram::instance($this->sessionList[0]->phone)->getChannel(
+          $channel
+        );
       } else {
         throw new \Exception("Not found channel to invite!");
       }
     } catch (\Exception $e) {
       if ($e->getMessage() == "You have not joined this chat") {
-        return Telegram::instance("79874018497")
+        $this->incrementActions($this->sessionList[0]->phone);
+        return Telegram::instance($this->sessionList[0]->phone)
           ->joinChannel($channel)
           ->getChannel($channel);
       }
@@ -124,6 +133,7 @@ class Execute
     string $msg
   ): void {
     Telegram::instance($session)->sendMessage($addressMessage, $msg);
+    $this->incrementActions($session);
   }
 
   public function setChannel(string $channel)
@@ -147,7 +157,12 @@ class Execute
   public function newTask()
   {
     $newTask = new TasksModel();
-    $newTask->insert(["type" => $this->type]);
+    $newTask->insert(["type" => $this->nameTask]);
     $this->task = $newTask->getLastTask()["task"];
+  }
+
+  public function incrementActions(string $phone): void
+  {
+    $this->sessionConnect->increment($phone, $this->typeAction);
   }
 }

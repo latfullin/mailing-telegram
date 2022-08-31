@@ -3,7 +3,6 @@
 namespace App\Services\Executes;
 
 use App\Helpers\ErrorHelper;
-use App\Helpers\WorkingFileHelper;
 
 class ChannelsExecute extends Execute
 {
@@ -39,20 +38,20 @@ class ChannelsExecute extends Execute
 
   public function joinChannels(): object
   {
-    $this->telegramExecute('joinChannel');
+    $this->telegramExecute("joinChannel");
     return $this;
   }
 
   public function leaveChannel(): object
   {
-    $this->telegramExecute('leaveChannel');
+    $this->telegramExecute("leaveChannel");
     return $this;
   }
 
   private function telegramExecute(string $method): void
   {
     if (!$this->channels) {
-      $this->getChannels();
+      return;
     }
     try {
       if ($this->channels && $this->verifiedChannels) {
@@ -67,7 +66,7 @@ class ChannelsExecute extends Execute
           }
         }
       } else {
-        throw new \Exception('Not found channels for entry');
+        throw new \Exception("Not found channels for entry");
       }
     } catch (\Exception $e) {
       ErrorHelper::writeToFileAndDie("$e\n");
@@ -82,26 +81,23 @@ class ChannelsExecute extends Execute
           try {
             $this->verifyChannel($channel);
           } catch (\Exception $e) {
-            array_push($this->notFountChannel, array_splice($this->channels, array_search($channel, $this->channels), 1)[0]);
+            array_push(
+              $this->notFountChannel,
+              array_splice(
+                $this->channels,
+                array_search($channel, $this->channels),
+                1
+              )[0]
+            );
             continue;
           }
         }
         $this->verifiedChannels = true;
       } else {
-        throw new \Exception('Not found channels');
+        throw new \Exception("Not found channels");
       }
     } catch (\Exception $e) {
       ErrorHelper::writeToFile("$e\n");
-    }
-  }
-
-  private function getChannels(): void
-  {
-    if (!$this->channels) {
-      $this->channels = WorkingFileHelper::initChannelsList();
-      if ($this->channels) {
-        $this->verifyChannels();
-      }
     }
   }
 }
