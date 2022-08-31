@@ -11,6 +11,7 @@ use App\Models\TasksModel;
 use App\Providers\Providers;
 use App\Services\Authorization\Telegram;
 use App\Services\Bot\TelegramBot;
+use danog\MadelineProto\MyTelegramOrgWrapper;
 
 // $a = new ParserController();
 // $a->parseGroup('https://t.me/design_ads_best');
@@ -25,45 +26,47 @@ use App\Services\Bot\TelegramBot;
 // $telegram = new TelegramBot();
 // $telegram->setChatId('365047507')->sendFile('storage/task/17.txt');
 
-// function getAddicted($class)
-// {
-//   $type = ["string", "int", "bool", "array"];
-//   $reflection = new ReflectionMethod($class, "__construct");
-//   foreach ($reflection->getParameters() as $param) {
-//     if ($param->getType()?->getName() ?? false) {
-//       $className = $param->getType()->getName();
-//       if (!in_array($className, $type)) {
-//         print_r($className);
-//         return new $className();
-//       }
-//     }
-//   }
-// }
-// $a = ["https://t.me/United_global_friends"];
-$a = ["@dubai_jobstreet"];
-// $b = [];
-$reflection = new ReflectionClass("App\Services\Executes\ParserExecute");
-// $a = $reflection->getConstructor();
-// echo $a;
-// print_r(
-//   $a
-//     ->getParameters()[0]
-//     ->getType()
-//     ->getName()
-// );
 // die();
-// foreach ($reflection->getParameters() as $item) {
-//   $b[] = getAddicted($item->getType()?->getName());
+// new Providers(ParserController::class, "parseGroup", ["channel" => $a[0]]);
 // }
-// print_r($b);
-// $reflection->invokeArgs(new $controller(), $class);
 
-// die();
-new Providers(ParserController::class, "parseGroup", ["channel" => $a[0]]);
-// }
-// new Controller(AutorizationController::class, 'createSession', ['phone' => $item]);
+new Providers(AutorizationController::class, "createSession", [
+  "phone" => 79962817558,
+]);
 // new Controller(InvitationsController::class, "invitationsChannel", [
 //   "channel" => "https://t.me/asdasdasdzxew",
 //   "users" => $a,
 //   "checkUsers" => false,
 // ]);
+// $wrapper = new MyTelegramOrgWrapper([]);
+// $wrapper->async(false);
+
+// $wrapper->login(79361783365);
+
+// sleep(10);
+// $wrapper->completeLogin($wrapper->readline("Enter the code"));
+
+// if ($wrapper->loggedIn()) {
+//   if ($wrapper->hasApp()) {
+//     $app = $wrapper->getApp();
+//   } else {
+//     $app_title = $wrapper->readLine('Enter the app\'s name, can be anything: ');
+//     $short_name = $wrapper->readLine(
+//       'Enter the app\'s short name, can be anything: '
+//     );
+//     $url = $wrapper->readLine(
+//       'Enter the app/website\'s URL, or t.me/yourusername: '
+//     );
+//     $description = $wrapper->readLine("Describe your app: ");
+
+//     $app = $wrapper->createApp([
+//       "app_title" => $app_title,
+//       "app_shortname" => $short_name,
+//       "app_url" => $url,
+//       "app_platform" => "web",
+//       "app_desc" => $description,
+//     ]);
+//   }
+
+//   \danog\MadelineProto\Logger::log($app);
+// }

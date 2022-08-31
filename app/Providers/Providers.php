@@ -10,6 +10,7 @@ class Providers
 
   public function __construct($controller, string $function, $argumets = [])
   {
+    echo "ds";
     $class = [];
     $reflection = new ReflectionMethod($controller, $function);
     foreach ($reflection->getParameters() as $param) {
@@ -21,7 +22,6 @@ class Providers
       }
     }
 
-    die();
     $reflection->invokeArgs(new $controller(), $class);
   }
 

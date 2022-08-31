@@ -9088,3 +9088,1452 @@ SeqLoop, AlexandroPost9:        	Was fed updates of type updates...
 FeedLoop, AlexandroPost9:       	Resumed update feed loop channel 1108282320
 Session, AlexandroPost9:        	Garbage collected 11 incoming messages in DC 2, 0 left
 Session, AlexandroPost9:        	Garbage collected 4 outgoing messages in DC 2, 0 left
+Logger:         	MadelineProto
+Logger:         	Copyright (C) 2016-2022 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	Got exclusive session lock!
+DataCenter, 5661049312:     	Disconnecting all before reconnect!
+DataCenterConnection, 5661049312: 	Disconnecting from shared DC 
+DataCenterConnection, 5661049312: 	Backed up 0, added to 0 existing messages) from DC 
+DataCenter, 5661049312:     	Disconnecting all before reconnect!
+DataCenterConnection, 5661049312: 	Disconnecting from shared DC 
+DataCenterConnection, 5661049312: 	Backed up 0, added to 0 existing messages) from DC 
+DataCenter, 5661049312:     	Disconnecting all before reconnect!
+DataCenterConnection, 5661049312: 	Disconnecting from shared DC 
+DataCenterConnection, 5661049312: 	Backed up 0, added to 0 existing messages) from DC 
+DataCenter, 5661049312:     	Disconnecting all before reconnect!
+DataCenterConnection, 5661049312: 	Disconnecting from shared DC 
+DataCenterConnection, 5661049312: 	Backed up 0, added to 0 existing messages) from DC 
+DataCenter, 5661049312:     	Disconnecting all before reconnect!
+DataCenterConnection, 5661049312: 	Disconnecting from shared DC 
+DataCenterConnection, 5661049312: 	Backed up 0, added to 0 existing messages) from DC 
+DataCenter, 5661049312:     	Disconnecting all before reconnect!
+DataCenterConnection, 5661049312: 	Disconnecting from shared DC 
+DataCenterConnection, 5661049312: 	Backed up 0, added to 0 existing messages) from DC 
+DataCenter, 5661049312:     	Disconnecting all before reconnect!
+DataCenterConnection, 5661049312: 	Disconnecting from shared DC 
+DataCenterConnection, 5661049312: 	Backed up 0, added to 0 existing messages) from DC 
+DataCenter, 5661049312:     	Reconnecting to DC 2 (-1) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.50:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection, 5661049312:     	Connecting to DC 2.0
+Session, 5661049312:        	Resetting session in DC 2.0...
+DataCenter, 5661049312:     	Reconnecting to DC 1 (-1) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.175.54:443 main DC 1, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection, 5661049312:     	Connecting to DC 1.0
+Session, 5661049312:        	Resetting session in DC 1.0...
+DataCenter, 5661049312:     	Reconnecting to DC 2_media (-1) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.151:443 main DC 2_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection, 5661049312:     	Connecting to DC 2_media.0
+Session, 5661049312:        	Resetting session in DC 2_media.0...
+DataCenter, 5661049312:     	Reconnecting to DC 3 (-1) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.175.100:443 main DC 3, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection, 5661049312:     	Connecting to DC 3.0
+Session, 5661049312:        	Resetting session in DC 3.0...
+DataCenter, 5661049312:     	Reconnecting to DC 4 (-1) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.92:443 main DC 4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection, 5661049312:     	Connecting to DC 4.0
+Session, 5661049312:        	Resetting session in DC 4.0...
+DataCenter, 5661049312:     	Reconnecting to DC 4_media (-1) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.165.136:443 main DC 4_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection, 5661049312:     	Connecting to DC 4_media.0
+Session, 5661049312:        	Resetting session in DC 4_media.0...
+DataCenter, 5661049312:     	Reconnecting to DC 5 (-1) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://91.108.56.185:443 main DC 5, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection, 5661049312:     	Connecting to DC 5.0
+Session, 5661049312:        	Resetting session in DC 5.0...
+Connection, 5661049312:     	Connected to DC 2.0!
+DataCenterConnection, 5661049312: 	Restoring 0 messages to DC 2
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 2_media.0!
+Connection, 5661049312:     	Connecting to DC 2_media.1
+Session, 5661049312:        	Resetting session in DC 2_media.1...
+Connection, 5661049312:     	Connected to DC 4.0!
+DataCenterConnection, 5661049312: 	Restoring 0 messages to DC 4
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 4_media.0!
+Connection, 5661049312:     	Connecting to DC 4_media.1
+Session, 5661049312:        	Resetting session in DC 4_media.1...
+Connection, 5661049312:     	Connected to DC 2_media.1!
+Connection, 5661049312:     	Connecting to DC 2_media.2
+Session, 5661049312:        	Resetting session in DC 2_media.2...
+Connection, 5661049312:     	Connected to DC 4_media.1!
+Connection, 5661049312:     	Connecting to DC 4_media.2
+Session, 5661049312:        	Resetting session in DC 4_media.2...
+Connection, 5661049312:     	Connected to DC 1.0!
+DataCenterConnection, 5661049312: 	Restoring 0 messages to DC 1
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 3.0!
+DataCenterConnection, 5661049312: 	Restoring 0 messages to DC 3
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 2_media.2!
+Connection, 5661049312:     	Connecting to DC 2_media.3
+Session, 5661049312:        	Resetting session in DC 2_media.3...
+Connection, 5661049312:     	Connected to DC 4_media.2!
+Connection, 5661049312:     	Connecting to DC 4_media.3
+Session, 5661049312:        	Resetting session in DC 4_media.3...
+Connection, 5661049312:     	Connected to DC 5.0!
+DataCenterConnection, 5661049312: 	Restoring 0 messages to DC 5
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 2_media.3!
+Connection, 5661049312:     	Connecting to DC 2_media.4
+Session, 5661049312:        	Resetting session in DC 2_media.4...
+Connection, 5661049312:     	Connected to DC 4_media.3!
+Connection, 5661049312:     	Connecting to DC 4_media.4
+Session, 5661049312:        	Resetting session in DC 4_media.4...
+Connection, 5661049312:     	Connected to DC 2_media.4!
+DataCenterConnection, 5661049312: 	Restoring 0 messages to DC 2_media
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 4_media.4!
+DataCenterConnection, 5661049312: 	Restoring 0 messages to DC 4_media
+DataCenter, 5661049312:     	OK!
+MTProto, 5661049312:        	Initing authorization...
+MTProto, 5661049312:        	Initing authorization DC 2...
+MTProto, 5661049312:        	Done initing authorization DC 2
+MTProto, 5661049312:        	Initing authorization DC 1...
+MTProto, 5661049312:        	Done initing authorization DC 1
+MTProto, 5661049312:        	Initing authorization DC 3...
+MTProto, 5661049312:        	Done initing authorization DC 3
+MTProto, 5661049312:        	Initing authorization DC 4...
+MTProto, 5661049312:        	Done initing authorization DC 4
+MTProto, 5661049312:        	Initing authorization DC 5...
+MTProto, 5661049312:        	Done initing authorization DC 5
+MTProto, 5661049312:        	Initing authorization DC 2_media...
+MTProto, 5661049312:        	Done initing authorization DC 2_media
+MTProto, 5661049312:        	Initing authorization DC 4_media...
+MTProto, 5661049312:        	Done initing authorization DC 4_media
+DataCenter, 5661049312:     	Reconnecting to DC 2 (-1) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.50:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection, 5661049312: 	Already connected!
+DataCenter, 5661049312:     	OK!
+DataCenter, 5661049312:     	Reconnecting to DC 1 (-1) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.175.54:443 main DC 1, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection, 5661049312: 	Already connected!
+DataCenter, 5661049312:     	OK!
+DataCenter, 5661049312:     	Reconnecting to DC 2_media (-1) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.151:443 main DC 2_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection, 5661049312: 	Already connected!
+DataCenter, 5661049312:     	OK!
+DataCenter, 5661049312:     	Reconnecting to DC 3 (-1) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.175.100:443 main DC 3, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection, 5661049312: 	Already connected!
+DataCenter, 5661049312:     	OK!
+DataCenter, 5661049312:     	Reconnecting to DC 4 (-1) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.92:443 main DC 4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection, 5661049312: 	Already connected!
+DataCenter, 5661049312:     	OK!
+DataCenter, 5661049312:     	Reconnecting to DC 4_media (-1) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.165.136:443 main DC 4_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection, 5661049312: 	Already connected!
+DataCenter, 5661049312:     	OK!
+DataCenter, 5661049312:     	Reconnecting to DC 5 (-1) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://91.108.56.185:443 main DC 5, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection, 5661049312: 	Already connected!
+DataCenter, 5661049312:     	OK!
+MTProto, 5661049312:        	Initing authorization...
+MTProto, 5661049312:        	Initing authorization DC 2...
+MTProto, 5661049312:        	Done initing authorization DC 2
+MTProto, 5661049312:        	Initing authorization DC 1...
+MTProto, 5661049312:        	Done initing authorization DC 1
+MTProto, 5661049312:        	Initing authorization DC 3...
+MTProto, 5661049312:        	Done initing authorization DC 3
+MTProto, 5661049312:        	Initing authorization DC 4...
+MTProto, 5661049312:        	Done initing authorization DC 4
+MTProto, 5661049312:        	Initing authorization DC 5...
+MTProto, 5661049312:        	Done initing authorization DC 5
+MTProto, 5661049312:        	Initing authorization DC 2_media...
+MTProto, 5661049312:        	Done initing authorization DC 2_media
+MTProto, 5661049312:        	Initing authorization DC 4_media...
+MTProto, 5661049312:        	Done initing authorization DC 4_media
+TOS, 5661049312:            	Fetching TOS...
+MTProto, 5661049312:        	Initing authorization...
+MTProto, 5661049312:        	Initing authorization DC 2...
+MTProto, 5661049312:        	Done initing authorization DC 2
+MTProto, 5661049312:        	Initing authorization DC 1...
+MTProto, 5661049312:        	Done initing authorization DC 1
+MTProto, 5661049312:        	Initing authorization DC 3...
+MTProto, 5661049312:        	Done initing authorization DC 3
+MTProto, 5661049312:        	Initing authorization DC 4...
+MTProto, 5661049312:        	Done initing authorization DC 4
+MTProto, 5661049312:        	Initing authorization DC 5...
+MTProto, 5661049312:        	Done initing authorization DC 5
+MTProto, 5661049312:        	Initing authorization DC 2_media...
+MTProto, 5661049312:        	Done initing authorization DC 2_media
+MTProto, 5661049312:        	Initing authorization DC 4_media...
+MTProto, 5661049312:        	Done initing authorization DC 4_media
+MTProto, 5661049312:        	Starting update system
+FeedLoop, 5661049312:       	Resumed update feed loop generic
+MTProto, 5661049312:        	Getting updates after deserialization...
+FeedLoop, 5661049312:       	Getdiff fed me message of type message in update feed loop generic...
+FeedLoop, 5661049312:       	Getdiff fed me message of type message in update feed loop generic...
+FeedLoop, 5661049312:       	Getdiff fed me message of type message in update feed loop generic...
+FeedLoop, 5661049312:       	Getdiff fed me message of type message in update feed loop generic...
+FeedLoop, 5661049312:       	Resumed update feed loop generic
+API, 5661049312:            	MadelineProto is ready!
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.ipcState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.ipcState.php.lock...
+MTProto, 5661049312:        	Accepted IPC client connection!
+Session, 5661049312:        	Garbage collected 8 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 7 outgoing messages in DC 2, 1 left
+UpdateHandler, 5661049312:  	Parsing updates (updateShortSentMessage) received via the socket...
+FeedLoop, 5661049312:       	Resumed update feed loop generic
+GarbageCollector, 5661049312: 	gc_collect_cycles done. Cleaned memory: 0 Mb
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Server, 5661049312:         	Exception in IPC connection: Amp\Ipc\Sync\ChannelException: The channel closed unexpectedly. Did the context die? in /var/www/html/vendor/danog/ipc/lib/Sync/ChannelledStream.php:72
+Stack trace:
+#0 [internal function]: Amp\Ipc\Sync\ChannelledStream->Amp\Ipc\Sync\{closure}()
+#1 /var/www/html/vendor/amphp/amp/lib/Coroutine.php(118): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): Amp\Coroutine->Amp\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('hb', Resource id #424, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.53)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 1 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+PingLoop, 5661049312:       	Ping DC 2.0
+PingLoop, 5661049312:       	Ping DC 4.0
+Session, 5661049312:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 1 left
+PingLoop, 5661049312:       	Ping DC 1.0
+PingLoop, 5661049312:       	Ping DC 3.0
+Session, 5661049312:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session, 5661049312:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+PingLoop, 5661049312:       	Ping DC 5.0
+Session, 5661049312:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+Session, 5661049312:        	Garbage collected 3 incoming messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 6 outgoing messages in DC 2, 0 left
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('cu', Resource id #339, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.044)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 2_media.3, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 2_media.3
+Connection, 5661049312:     	Disconnecting from DC 2_media.3
+Connection, 5661049312:     	Disconnected from DC 2_media.3
+DataCenter, 5661049312:     	Reconnecting to DC 2_media (3) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.151:443 main DC 2_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection, 5661049312:     	Connecting to DC 2_media.3
+Connection, 5661049312:     	Connected to DC 2_media.3!
+DataCenter, 5661049312:     	OK!
+Session, 5661049312:        	Garbage collected 3 incoming messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 3 incoming messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 3 incoming messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('as', Resource id #291, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.041)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 2_media.0, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 2_media.0
+Connection, 5661049312:     	Disconnecting from DC 2_media.0
+Connection, 5661049312:     	Disconnected from DC 2_media.0
+DataCenter, 5661049312:     	Reconnecting to DC 2_media (0) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.151:443 main DC 2_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection, 5661049312:     	Connecting to DC 2_media.0
+Connection, 5661049312:     	Connected to DC 2_media.0!
+DataCenter, 5661049312:     	OK!
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('bi', Resource id #317, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.027)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 2_media.1, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 2_media.1
+Connection, 5661049312:     	Disconnecting from DC 2_media.1
+Connection, 5661049312:     	Disconnected from DC 2_media.1
+DataCenter, 5661049312:     	Reconnecting to DC 2_media (1) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.151:443 main DC 2_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection, 5661049312:     	Connecting to DC 2_media.1
+Connection, 5661049312:     	Connected to DC 2_media.1!
+DataCenter, 5661049312:     	OK!
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+MTProto, 5661049312:        	Accepted IPC client connection!
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 1 left
+UpdateHandler, 5661049312:  	Parsing updates (updateShortSentMessage) received via the socket...
+FeedLoop, 5661049312:       	Resumed update feed loop generic
+Session, 5661049312:        	Garbage collected 2 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 3 outgoing messages in DC 2, 0 left
+PingLoop, 5661049312:       	Ping DC 2.0
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 1 left
+PingLoop, 5661049312:       	Ping DC 4.0
+PingLoop, 5661049312:       	Ping DC 1.0
+PingLoop, 5661049312:       	Ping DC 3.0
+PingLoop, 5661049312:       	Ping DC 5.0
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+Session, 5661049312:        	Garbage collected 2 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 5, 0 left
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('by', Resource id #293, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.042)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 3.0, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 3.0
+Connection, 5661049312:     	Disconnecting from DC 3.0
+Connection, 5661049312:     	Disconnected from DC 3.0
+DataCenter, 5661049312:     	Reconnecting to DC 3 (0) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.175.100:443 main DC 3, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection, 5661049312:     	Connecting to DC 3.0
+Connection, 5661049312:     	Connected to DC 3.0!
+DataCenter, 5661049312:     	OK!
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 1 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 1 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Server, 5661049312:         	Exception in IPC connection: Amp\ByteStream\StreamException: Failed to write to stream; fwrite(): Send of 45 bytes failed with errno=32 Broken pipe in /var/www/html/vendor/amphp/byte-stream/lib/ResourceOutputStream.php:218
+Stack trace:
+#0 /var/www/html/vendor/amphp/byte-stream/lib/ResourceOutputStream.php(157): Amp\ByteStream\ResourceOutputStream->send('\x00(\x00\x00\x00O:28:"Amp\\...', false)
+#1 /var/www/html/vendor/danog/ipc/lib/Sync/ChannelledStream.php(51): Amp\ByteStream\ResourceOutputStream->write('\x00(\x00\x00\x00O:28:"Amp\\...')
+#2 [internal function]: Amp\Ipc\Sync\ChannelledStream->Amp\Ipc\Sync\{closure}()
+#3 /var/www/html/vendor/amphp/amp/lib/Coroutine.php(67): Generator->current()
+#4 /var/www/html/vendor/amphp/amp/lib/functions.php(96): Amp\Coroutine->__construct(Object(Generator))
+#5 /var/www/html/vendor/danog/ipc/lib/Sync/ChannelledStream.php(55): Amp\call(Object(Closure))
+#6 /var/www/html/vendor/danog/ipc/lib/Sync/ChannelledSocket.php(71): Amp\Ipc\Sync\ChannelledStream->send(Object(Amp\Ipc\Sync\ChannelCloseAck))
+#7 [internal function]: Amp\Ipc\Sync\ChannelledSocket->Amp\Ipc\Sync\{closure}()
+#8 /var/www/html/vendor/amphp/amp/lib/Coroutine.php(118): Generator->send(Object(Amp\Ipc\Sync\ChannelCloseReq))
+#9 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): Amp\Coroutine->Amp\{closure}(NULL, Object(Amp\Ipc\Sync\ChannelCloseReq))
+#10 /var/www/html/vendor/amphp/amp/lib/Coroutine.php(123): Amp\Coroutine->resolve(Object(Amp\Ipc\Sync\ChannelCloseReq))
+#11 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): Amp\Coroutine->Amp\{closure}(NULL, '\x00(\x00\x00\x00O:28:"Amp\\...')
+#12 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve('\x00(\x00\x00\x00O:28:"Amp\\...')
+#13 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve('\x00(\x00\x00\x00O:28:"Amp\\...')
+#14 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('emv', Resource id #500, NULL)
+#15 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.032)
+#16 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#17 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#18 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#19 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#20 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#21 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#22 {main}
+
+Next Amp\Ipc\Sync\ChannelException: Sending on the channel failed. Did the context die? in /var/www/html/vendor/danog/ipc/lib/Sync/ChannelledStream.php:53
+Stack trace:
+#0 [internal function]: Amp\Ipc\Sync\ChannelledStream->Amp\Ipc\Sync\{closure}()
+#1 /var/www/html/vendor/amphp/amp/lib/Coroutine.php(115): Generator->throw(Object(Amp\ByteStream\StreamException))
+#2 /var/www/html/vendor/amphp/amp/lib/Failure.php(33): Amp\Coroutine->Amp\{closure}(Object(Amp\ByteStream\StreamException), NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Coroutine.php(151): Amp\Failure->onResolve(Object(Closure))
+#4 /var/www/html/vendor/amphp/amp/lib/functions.php(96): Amp\Coroutine->__construct(Object(Generator))
+#5 /var/www/html/vendor/danog/ipc/lib/Sync/ChannelledStream.php(55): Amp\call(Object(Closure))
+#6 /var/www/html/vendor/danog/ipc/lib/Sync/ChannelledSocket.php(71): Amp\Ipc\Sync\ChannelledStream->send(Object(Amp\Ipc\Sync\ChannelCloseAck))
+#7 [internal function]: Amp\Ipc\Sync\ChannelledSocket->Amp\Ipc\Sync\{closure}()
+#8 /var/www/html/vendor/amphp/amp/lib/Coroutine.php(118): Generator->send(Object(Amp\Ipc\Sync\ChannelCloseReq))
+#9 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): Amp\Coroutine->Amp\{closure}(NULL, Object(Amp\Ipc\Sync\ChannelCloseReq))
+#10 /var/www/html/vendor/amphp/amp/lib/Coroutine.php(123): Amp\Coroutine->resolve(Object(Amp\Ipc\Sync\ChannelCloseReq))
+#11 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): Amp\Coroutine->Amp\{closure}(NULL, '\x00(\x00\x00\x00O:28:"Amp\\...')
+#12 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve('\x00(\x00\x00\x00O:28:"Amp\\...')
+#13 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve('\x00(\x00\x00\x00O:28:"Amp\\...')
+#14 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('emv', Resource id #500, NULL)
+#15 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.032)
+#16 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#17 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#18 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#19 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#20 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#21 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#22 {main}
+PingLoop, 5661049312:       	Ping DC 2.0
+PingLoop, 5661049312:       	Ping DC 4.0
+PingLoop, 5661049312:       	Ping DC 1.0
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+PingLoop, 5661049312:       	Ping DC 5.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+PingLoop, 5661049312:       	Ping DC 3.0
+Session, 5661049312:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+PingLoop, 5661049312:       	Ping DC 2.0
+PingLoop, 5661049312:       	Ping DC 4.0
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+PingLoop, 5661049312:       	Ping DC 1.0
+PingLoop, 5661049312:       	Ping DC 5.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+PingLoop, 5661049312:       	Ping DC 3.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 1 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+PingLoop, 5661049312:       	Ping DC 4.0
+PingLoop, 5661049312:       	Ping DC 2.0
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+PingLoop, 5661049312:       	Ping DC 1.0
+PingLoop, 5661049312:       	Ping DC 5.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('cj', Resource id #331, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.262)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 4_media.2, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 4_media.2
+Connection, 5661049312:     	Disconnecting from DC 4_media.2
+Connection, 5661049312:     	Disconnected from DC 4_media.2
+DataCenter, 5661049312:     	Reconnecting to DC 4_media (2) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.165.136:443 main DC 4_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection, 5661049312:     	Connecting to DC 4_media.2
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('cz', Resource id #343, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.262)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 4_media.3, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 4_media.3
+Connection, 5661049312:     	Disconnecting from DC 4_media.3
+Connection, 5661049312:     	Disconnected from DC 4_media.3
+DataCenter, 5661049312:     	Reconnecting to DC 4_media (3) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.165.136:443 main DC 4_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection, 5661049312:     	Connecting to DC 4_media.3
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('dr', Resource id #353, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.262)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 4_media.4, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 4_media.4
+Connection, 5661049312:     	Disconnecting from DC 4_media.4
+Connection, 5661049312:     	Disconnected from DC 4_media.4
+DataCenter, 5661049312:     	Reconnecting to DC 4_media (4) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.165.136:443 main DC 4_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection, 5661049312:     	Connecting to DC 4_media.4
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('bd', Resource id #297, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(false)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 4_media.0, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 4_media.0
+Connection, 5661049312:     	Disconnecting from DC 4_media.0
+Connection, 5661049312:     	Disconnected from DC 4_media.0
+DataCenter, 5661049312:     	Reconnecting to DC 4_media (0) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.165.136:443 main DC 4_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection, 5661049312:     	Connecting to DC 4_media.0
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('bn', Resource id #323, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(false)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 4_media.1, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 4_media.1
+Connection, 5661049312:     	Disconnecting from DC 4_media.1
+Connection, 5661049312:     	Disconnected from DC 4_media.1
+DataCenter, 5661049312:     	Reconnecting to DC 4_media (1) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.165.136:443 main DC 4_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection, 5661049312:     	Connecting to DC 4_media.1
+Connection, 5661049312:     	Connected to DC 4_media.2!
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 4_media.4!
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 4_media.0!
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 4_media.3!
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 4_media.1!
+DataCenter, 5661049312:     	OK!
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+PingLoop, 5661049312:       	Ping DC 3.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 1 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+PingLoop, 5661049312:       	Ping DC 2.0
+PingLoop, 5661049312:       	Ping DC 4.0
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+PingLoop, 5661049312:       	Ping DC 1.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+PingLoop, 5661049312:       	Ping DC 5.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+PingLoop, 5661049312:       	Ping DC 3.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('dpf', Resource id #488, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.524)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 2_media.1, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 2_media.1
+Connection, 5661049312:     	Disconnecting from DC 2_media.1
+Connection, 5661049312:     	Disconnected from DC 2_media.1
+DataCenter, 5661049312:     	Reconnecting to DC 2_media (1) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.151:443 main DC 2_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection, 5661049312:     	Connecting to DC 2_media.1
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('ce', Resource id #327, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(false)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 2_media.2, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 2_media.2
+Connection, 5661049312:     	Disconnecting from DC 2_media.2
+Connection, 5661049312:     	Disconnected from DC 2_media.2
+DataCenter, 5661049312:     	Reconnecting to DC 2_media (2) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.151:443 main DC 2_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection, 5661049312:     	Connecting to DC 2_media.2
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('de', Resource id #349, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(false)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 2_media.4, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 2_media.4
+Connection, 5661049312:     	Disconnecting from DC 2_media.4
+Connection, 5661049312:     	Disconnected from DC 2_media.4
+DataCenter, 5661049312:     	Reconnecting to DC 2_media (4) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.151:443 main DC 2_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection, 5661049312:     	Connecting to DC 2_media.4
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('cfe', Resource id #476, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(false)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 2_media.3, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 2_media.3
+Connection, 5661049312:     	Disconnecting from DC 2_media.3
+Connection, 5661049312:     	Disconnected from DC 2_media.3
+DataCenter, 5661049312:     	Reconnecting to DC 2_media (3) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.151:443 main DC 2_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection, 5661049312:     	Connecting to DC 2_media.3
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('dom', Resource id #484, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(false)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 2_media.0, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 2_media.0
+Connection, 5661049312:     	Disconnecting from DC 2_media.0
+Connection, 5661049312:     	Disconnected from DC 2_media.0
+DataCenter, 5661049312:     	Reconnecting to DC 2_media (0) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.151:443 main DC 2_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection, 5661049312:     	Connecting to DC 2_media.0
+Connection, 5661049312:     	Connected to DC 2_media.1!
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 2_media.2!
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 2_media.4!
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 2_media.3!
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 2_media.0!
+DataCenter, 5661049312:     	OK!
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+PingLoop, 5661049312:       	Ping DC 4.0
+PingLoop, 5661049312:       	Ping DC 2.0
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+PingLoop, 5661049312:       	Ping DC 1.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+PingLoop, 5661049312:       	Ping DC 5.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+PingLoop, 5661049312:       	Ping DC 3.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 1 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('sei', Resource id #691, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.053)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 2_media.3, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 2_media.3
+Connection, 5661049312:     	Disconnecting from DC 2_media.3
+Connection, 5661049312:     	Disconnected from DC 2_media.3
+DataCenter, 5661049312:     	Reconnecting to DC 2_media (3) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.151:443 main DC 2_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection, 5661049312:     	Connecting to DC 2_media.3
+Connection, 5661049312:     	Connected to DC 2_media.3!
+DataCenter, 5661049312:     	OK!
+PingLoop, 5661049312:       	Ping DC 2.0
+PingLoop, 5661049312:       	Ping DC 4.0
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+PingLoop, 5661049312:       	Ping DC 1.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+PingLoop, 5661049312:       	Ping DC 5.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+PingLoop, 5661049312:       	Ping DC 3.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+PingLoop, 5661049312:       	Ping DC 2.0
+PingLoop, 5661049312:       	Ping DC 4.0
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+PingLoop, 5661049312:       	Ping DC 1.0
+PingLoop, 5661049312:       	Ping DC 5.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+PingLoop, 5661049312:       	Ping DC 3.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+PingLoop, 5661049312:       	Ping DC 2.0
+PingLoop, 5661049312:       	Ping DC 4.0
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+PingLoop, 5661049312:       	Ping DC 1.0
+PingLoop, 5661049312:       	Ping DC 5.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+PingLoop, 5661049312:       	Ping DC 3.0
+Session, 5661049312:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+PingLoop, 5661049312:       	Ping DC 2.0
+PingLoop, 5661049312:       	Ping DC 4.0
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+PingLoop, 5661049312:       	Ping DC 1.0
+PingLoop, 5661049312:       	Ping DC 5.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+PingLoop, 5661049312:       	Ping DC 3.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('nvm', Resource id #626, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.532)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 4_media.4, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 4_media.4
+Connection, 5661049312:     	Disconnecting from DC 4_media.4
+Connection, 5661049312:     	Disconnected from DC 4_media.4
+DataCenter, 5661049312:     	Reconnecting to DC 4_media (4) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.165.136:443 main DC 4_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection, 5661049312:     	Connecting to DC 4_media.4
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('nvs', Resource id #628, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.532)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 4_media.0, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 4_media.0
+Connection, 5661049312:     	Disconnecting from DC 4_media.0
+Connection, 5661049312:     	Disconnected from DC 4_media.0
+DataCenter, 5661049312:     	Reconnecting to DC 4_media (0) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.165.136:443 main DC 4_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection, 5661049312:     	Connecting to DC 4_media.0
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('nwe', Resource id #630, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.532)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 4_media.1, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 4_media.1
+Connection, 5661049312:     	Disconnecting from DC 4_media.1
+Connection, 5661049312:     	Disconnected from DC 4_media.1
+DataCenter, 5661049312:     	Reconnecting to DC 4_media (1) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.165.136:443 main DC 4_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection, 5661049312:     	Connecting to DC 4_media.1
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('nvg', Resource id #622, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(false)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 4_media.2, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 4_media.2
+Connection, 5661049312:     	Disconnecting from DC 4_media.2
+Connection, 5661049312:     	Disconnected from DC 4_media.2
+DataCenter, 5661049312:     	Reconnecting to DC 4_media (2) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.165.136:443 main DC 4_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection, 5661049312:     	Connecting to DC 4_media.2
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('nvy', Resource id #624, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(false)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 4_media.3, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 4_media.3
+Connection, 5661049312:     	Disconnecting from DC 4_media.3
+Connection, 5661049312:     	Disconnected from DC 4_media.3
+DataCenter, 5661049312:     	Reconnecting to DC 4_media (3) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.165.136:443 main DC 4_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection, 5661049312:     	Connecting to DC 4_media.3
+Connection, 5661049312:     	Connected to DC 4_media.0!
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 4_media.4!
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 4_media.1!
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 4_media.2!
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 4_media.3!
+DataCenter, 5661049312:     	OK!
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 1 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+PingLoop, 5661049312:       	Ping DC 2.0
+PingLoop, 5661049312:       	Ping DC 4.0
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+PingLoop, 5661049312:       	Ping DC 1.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+PingLoop, 5661049312:       	Ping DC 5.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+PingLoop, 5661049312:       	Ping DC 3.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+PingLoop, 5661049312:       	Ping DC 2.0
+PingLoop, 5661049312:       	Ping DC 4.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+PingLoop, 5661049312:       	Ping DC 1.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+PingLoop, 5661049312:       	Ping DC 5.0
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('sdq', Resource id #685, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.258)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 2_media.1, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 2_media.1
+Connection, 5661049312:     	Disconnecting from DC 2_media.1
+Connection, 5661049312:     	Disconnected from DC 2_media.1
+DataCenter, 5661049312:     	Reconnecting to DC 2_media (1) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.151:443 main DC 2_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection, 5661049312:     	Connecting to DC 2_media.1
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('sdw', Resource id #687, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.258)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 2_media.2, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 2_media.2
+Connection, 5661049312:     	Disconnecting from DC 2_media.2
+Connection, 5661049312:     	Disconnected from DC 2_media.2
+DataCenter, 5661049312:     	Reconnecting to DC 2_media (2) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.151:443 main DC 2_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection, 5661049312:     	Connecting to DC 2_media.2
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('sec', Resource id #689, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.258)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 2_media.4, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 2_media.4
+Connection, 5661049312:     	Disconnecting from DC 2_media.4
+Connection, 5661049312:     	Disconnected from DC 2_media.4
+DataCenter, 5661049312:     	Reconnecting to DC 2_media (4) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.151:443 main DC 2_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection, 5661049312:     	Connecting to DC 2_media.4
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('seo', Resource id #693, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.258)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 2_media.0, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 2_media.0
+Connection, 5661049312:     	Disconnecting from DC 2_media.0
+Connection, 5661049312:     	Disconnected from DC 2_media.0
+DataCenter, 5661049312:     	Reconnecting to DC 2_media (0) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.151:443 main DC 2_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection, 5661049312:     	Connecting to DC 2_media.0
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('wda', Resource id #743, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.258)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 2_media.3, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 2_media.3
+Connection, 5661049312:     	Disconnecting from DC 2_media.3
+Connection, 5661049312:     	Disconnected from DC 2_media.3
+DataCenter, 5661049312:     	Reconnecting to DC 2_media (3) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.151:443 main DC 2_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection, 5661049312:     	Connecting to DC 2_media.3
+Connection, 5661049312:     	Connected to DC 2_media.1!
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 2_media.2!
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 2_media.0!
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 2_media.3!
+DataCenter, 5661049312:     	OK!
+Connection, 5661049312:     	Connected to DC 2_media.4!
+DataCenter, 5661049312:     	OK!
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+PingLoop, 5661049312:       	Ping DC 3.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.safe.php.lock...
+SessionPaths, 5661049312:   	Waiting for exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+SessionPaths, 5661049312:   	Got exclusive lock of /var/www/html/storage/session/79361783365/79361783365.lightState.php.lock...
+APIWrapper, 5661049312:     	Saved session!
+PingLoop, 5661049312:       	Ping DC 4.0
+PingLoop, 5661049312:       	Ping DC 2.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+PingLoop, 5661049312:       	Ping DC 1.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+PingLoop, 5661049312:       	Ping DC 5.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+PingLoop, 5661049312:       	Ping DC 3.0
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, 5661049312:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+ReadLoop, 5661049312:       	danog\MadelineProto\NothingInTheSocketException in /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Stream/Common/BufferedRawStream.php:180
+Stack trace:
+#0 [internal function]: danog\MadelineProto\Stream\Common\BufferedRawStream->bufferReadGenerator(1)
+#1 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Coroutine.php(112): Generator->send(NULL)
+#2 /var/www/html/vendor/amphp/amp/lib/Internal/Placeholder.php(149): danog\MadelineProto\Coroutine->danog\MadelineProto\{closure}(NULL, NULL)
+#3 /var/www/html/vendor/amphp/amp/lib/Deferred.php(53): Amp\Promise@anonymous->resolve(NULL)
+#4 /var/www/html/vendor/amphp/byte-stream/lib/ResourceInputStream.php(101): Amp\Deferred->resolve(NULL)
+#5 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(327): Amp\ByteStream\ResourceInputStream::Amp\ByteStream\{closure}('akym', Resource id #946, NULL)
+#6 /var/www/html/vendor/amphp/amp/lib/Loop/NativeDriver.php(127): Amp\Loop\NativeDriver->selectStreams(Array, Array, 0.32)
+#7 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(138): Amp\Loop\NativeDriver->dispatch(true)
+#8 /var/www/html/vendor/amphp/amp/lib/Loop/Driver.php(72): Amp\Loop\Driver->tick()
+#9 /var/www/html/vendor/amphp/amp/lib/Loop.php(95): Amp\Loop\Driver->run()
+#10 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Tools.php(294): Amp\Loop::run(Object(Closure))
+#11 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(110): danog\MadelineProto\Tools::wait(Object(Amp\Internal\PrivatePromise))
+#12 /var/www/html/vendor/danog/madelineproto/src/danog/MadelineProto/Ipc/Runner/entry.php(134): {closure}()
+#13 {main}
+ReadLoop, 5661049312:       	Got nothing in the socket in DC 2_media.3, reconnecting...
+Connection, 5661049312:     	Reconnecting DC 2_media.3
+Connection, 5661049312:     	Disconnecting from DC 2_media.3
+Connection, 5661049312:     	Disconnected from DC 2_media.3
+DataCenter, 5661049312:     	Reconnecting to DC 2_media (3) from existing
+DataCenterConnection, 5661049312: 	Trying shared connection via tcp://149.154.167.151:443 main DC 2_media, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection, 5661049312:     	Connecting to DC 2_media.3
+Connection, 5661049312:     	Connected to DC 2_media.3!
+DataCenter, 5661049312:     	OK!

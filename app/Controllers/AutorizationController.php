@@ -8,10 +8,9 @@ use App\Services\Authorization\Telegram;
 
 class AutorizationController
 {
-  public function createSession(PhoneModel $phone, ArgumentsHelpers $argumets)
+  public function createSession(ArgumentsHelpers $argumets, PhoneModel $phone)
   {
     $findSession = $phone->where(["phone" => $argumets->phone])->first();
-
     if (empty($findSession)) {
       $phone->insert(["phone" => $argumets->phone]);
     }
