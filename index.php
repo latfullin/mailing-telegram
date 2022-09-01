@@ -5,6 +5,8 @@ use App\Controllers\AutorizationController;
 use App\Controllers\Controller;
 use App\Controllers\InvitationsController;
 use App\Controllers\ParserController;
+use App\Controllers\PrepareAccountController;
+use App\Controllers\WakeUpAccountsController;
 use App\Models\InvitationsModel;
 use App\Models\PhoneModel;
 use App\Models\TasksModel;
@@ -13,60 +15,57 @@ use App\Services\Authorization\Telegram;
 use App\Services\Bot\TelegramBot;
 use danog\MadelineProto\MyTelegramOrgWrapper;
 
-// $a = new ParserController();
-// $a->parseGroup('https://t.me/design_ads_best');
-
-// $a = Telegram::instance('79375756789');
-// $c = [];
-// foreach ($channel as $item)
-// $c[] = $a->getMessages('https://t.me/laravel_web');
-
-// $invitationsModel = new InvitationsModel();
-// $invitationsModel->where(['task' => '12', 'user' => '@myriophyllite1826'])->update(['performed' => true]);
-// $telegram = new TelegramBot();
-// $telegram->setChatId('365047507')->sendFile('storage/task/17.txt');
-
-// die();
 // new Providers(ParserController::class, "parseGroup", ["channel" => $a[0]]);
 // }
 
-new Providers(AutorizationController::class, "createSession", [
-  "phone" => 79962817558,
-]);
+// 79346648049 -- need auto
+
+// new Providers(AutorizationController::class, "createSession", [
+//   "phone" => 6281375481475,
+// ]);
 // new Controller(InvitationsController::class, "invitationsChannel", [
 //   "channel" => "https://t.me/asdasdasdzxew",
 //   "users" => $a,
 //   "checkUsers" => false,
 // ]);
-// $wrapper = new MyTelegramOrgWrapper([]);
-// $wrapper->async(false);
 
-// $wrapper->login(79361783365);
+// new Providers(WakeUpAccountsController::class, "joinChannel", [
+//   "channel" => "https://t.me/+vZ57IK_pcghiOWZi",
+// ]);
+// $a = Telegram::instance("79274271401")->deleteMePhotoProfile();
+// print_r($a);
 
-// sleep(10);
-// $wrapper->completeLogin($wrapper->readline("Enter the code"));
+// $a = new PhoneModel();
+// $b = $a->limit(5)->sessionList();
 
-// if ($wrapper->loggedIn()) {
-//   if ($wrapper->hasApp()) {
-//     $app = $wrapper->getApp();
-//   } else {
-//     $app_title = $wrapper->readLine('Enter the app\'s name, can be anything: ');
-//     $short_name = $wrapper->readLine(
-//       'Enter the app\'s short name, can be anything: '
-//     );
-//     $url = $wrapper->readLine(
-//       'Enter the app/website\'s URL, or t.me/yourusername: '
-//     );
-//     $description = $wrapper->readLine("Describe your app: ");
+// print_r($b);
 
-//     $app = $wrapper->createApp([
-//       "app_title" => $app_title,
-//       "app_shortname" => $short_name,
-//       "app_url" => $url,
-//       "app_platform" => "web",
-//       "app_desc" => $description,
-//     ]);
-//   }
+// new Providers(PrepareAccountController::class, "prepareAccount", [
+//   "photo" => "DimaTelegram.jpg",
+//   "firstName" => "Дмитрий",
+//   "lastName" => "Бедарев",
+//   "about" => "Актер и сценарист фильмов, которые Вы наверняка смотрели по ТВ.",
+// ]);
 
-//   \danog\MadelineProto\Logger::log($app);
-// }
+Telegram::instance(6281375481475)->sendMessage(
+  "@AnthonyFedorov",
+  'Привет! Пишу Вам так как мы состоим в одном чате. 
+
+
+Меня зовут Дмитрий Бедарев, я актер и сценарист фильмов, которые Вы наверняка смотрели по ТВ 🎬 «Тариф новогодний», «Домовой», «В ожидании чуда», «Беловодье» и пр.
+
+Все эти фильмы связаны с чудесами и исполнением желаний и поэтому я создал настоящий вдохновляющий марафон ✨ «Ты можешь Все!»✨
+
+Я хочу попросить Вас пройти этот марафон, Вы получите много ценности ну а для меня будет важен Ваш результат и отзыв 🤝
+
+Хорошо? Вот ссылочка, там все описал - https://lifeskill.pro
+
+Это 21-дневный марафон и за это время Вы достигнете любую свою поставленную цель!
+ 
+[ВАЖНО!] Старт марафона - 6 сентября
+ 
+Буду благодарен за обратную связь 🙏 и буду рад видеть Вас на марафоне 
+
+Спасибо! 
+'
+);

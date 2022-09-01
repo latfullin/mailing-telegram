@@ -22,8 +22,16 @@ class PhoneModel extends Model
   {
     return $this->connect
       ->query(
-        "SELECT * FROM {$this->table}  WHERE ban = 0 AND '{$column}' < {$limit} ORDER BY '{$column}'"
+        "SELECT * FROM {$this->table}  WHERE ban = 0 AND '{$column}' < {$limit} ORDER BY '{$column}'" .
+          ($this->limit !== null ? "LIMIT {$this->limit}" : "")
       )
-      ->fetchAll();
+      ->fetchAll(\PDO::FETCH_CLASS);
+  }
+
+  public function getAll()
+  {
+    return $this->connect
+      ->query("SELECT * FROM {$this->table}  WHERE ban = 0")
+      ->fetchAll(\PDO::FETCH_CLASS);
   }
 }

@@ -10,6 +10,7 @@ class Model
   protected $connect;
   protected $table;
   protected mixed $where;
+  protected ?int $limit = null;
   protected $column = "*";
   protected static $intsances = [];
 
@@ -119,5 +120,12 @@ class Model
       }
       $i++;
     }
+  }
+
+  public function limit(int $limit)
+  {
+    $this->limit = $limit;
+
+    return $this;
   }
 }
