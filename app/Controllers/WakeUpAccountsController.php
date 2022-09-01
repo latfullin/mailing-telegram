@@ -2,12 +2,14 @@
 
 namespace App\Controllers;
 
+use App\Helpers\ArgumentsHelpers;
+use App\Models\PhoneModel;
 use App\Services\Authorization\Telegram;
 use App\Services\WarmingUp\AccountWarmingUp;
 
 class WakeUpAccountsController
 {
-  public function wakeUpAccounts($peer = '@hitThat')
+  public function wakeUpAccounts($peer = "@hitThat")
   {
     $phones = $this->getPhones();
     $value = count($phones);
@@ -16,7 +18,10 @@ class WakeUpAccountsController
       $me = $telegram->getSelf();
       echo $phone;
       $i = $key + 1;
-      $telegram->sendMessage($peer, "Я {$me['first_name']},  номер:'{$phone}'.Сообщений из {$i} из {$value}.");
+      $telegram->sendMessage(
+        $peer,
+        "Я {$me["first_name"]},  номер:'{$phone}'.Сообщений из {$i} из {$value}."
+      );
 
       sleep(10);
     }
@@ -31,19 +36,24 @@ class WakeUpAccountsController
     }
   }
 
-  public function joinChannel(string $channel)
+  public function joinChannel(ArgumentsHelpers $arguments, PhoneModel $phones)
   {
-    $phones = $this->getPhones();
-    $channelId = Telegram::instance('79299204367')->getInfo($channel)['channel_id'];
+    $phones = $phones->getAll();
+    $channelId = Telegram::instance("79299204367")->getInfo(
+      $arguments->channel
+    )["channel_id"];
     foreach ($phones as $phone) {
       try {
         print_r($phone);
-        $telegram = Telegram::instance($phone);
+        $telegram = Telegram::instance($phone->phone);
         $dialogs = $telegram->getDialogs();
         $inGroup = [];
-        $inGroup = array_filter($dialogs, fn ($i) => ($i['channel_id'] ?? false) == $channelId);
+        $inGroup = array_filter(
+          $dialogs,
+          fn($i) => ($i["channel_id"] ?? false) == $channelId
+        );
         if (!$inGroup) {
-          $telegram->joinChannel($channel);
+          $telegram->joinChannel($arguments->channel);
         }
         sleep(10);
       } catch (\Exception $e) {
@@ -59,6 +69,6 @@ class WakeUpAccountsController
 
   private function getPhones()
   {
-    return array_map(fn ($i) => trim($i), file('phone'));
+    return array_map(fn($i) => trim($i), file("phone"));
   }
 }
