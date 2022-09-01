@@ -138,11 +138,11 @@ class InvitationsChannelExecute extends Execute
         Telegram::instance($session)->inviteToChannel($this->channel, $user);
         $this->invitationsModel
           ->where(["task" => $this->task, "user" => $user[0]])
-          ->update(["performed" => true]);
+          ->update(["status" => 2]);
       } catch (\Exception $e) {
         $this->invitationsModel
           ->where(["task" => $this->task, "user" => $user[0]])
-          ->update(["error_log" => $e->getMessage()]);
+          ->update(["error_log" => $e->getMessage(), "status" => 3]);
         continue;
       }
     }
@@ -210,7 +210,11 @@ class InvitationsChannelExecute extends Execute
   {
     $this->usersList = $users;
     foreach ($users as $user) {
-      $this->invitationsModel->insert(["task" => $this->task, "user" => $user]);
+      $this->invitationsModel->insert([
+        "task" => $this->task,
+        "user" => $user,
+        "status" => 1,
+      ]);
     }
 
     return $this;

@@ -42,6 +42,7 @@ class Execute
   protected bool $validateUsers = false;
 
   protected ?PhoneModel $sessionConnect = null;
+  protected ?TasksModel $modelTask = null;
   protected string $typeAction = "";
   protected string $nameTask = "empty";
   protected int $limitActions = 10;
@@ -130,9 +131,14 @@ class Execute
   protected function sendMessage(
     string $session,
     string $addressMessage,
-    string $msg
+    string $msg,
+    $photo = false
   ): void {
-    Telegram::instance($session)->sendMessage($addressMessage, $msg);
+    if ($photo) {
+      Telegram::instance($session)->sendFoto($addressMessage, $photo, $msg);
+    } else {
+      Telegram::instance($session)->sendMessage($addressMessage, $msg);
+    }
     $this->incrementActions($session);
   }
 
@@ -146,19 +152,19 @@ class Execute
   /**
    * Set users list for executes, if not hand over, then will be used file 'user'.
    */
-  public function setUsers(array $users): object
-  {
-    $this->usersList = $users;
-    $this->validateUsers = false;
+  // public function setUsers(array $users): object
+  // {
+  //   $this->usersList = $users;
+  //   $this->validateUsers = false;
 
-    return $this;
-  }
+  //   return $this;
+  // }
 
   public function newTask()
   {
-    $newTask = new TasksModel();
-    $newTask->insert(["type" => $this->nameTask]);
-    $this->task = $newTask->getLastTask()["task"];
+    $this->modelTask = new TasksModel();
+    $this->modelTask->insert(["type" => $this->nameTask]);
+    $this->task = $this->modelTask->getLastTask()["task"];
   }
 
   public function incrementActions(string $phone): void

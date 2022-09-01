@@ -9,7 +9,7 @@ class Model
 {
   protected $connect;
   protected $table;
-  protected mixed $where;
+  protected $where = null;
   protected ?int $limit = null;
   protected $column = "*";
   protected static $intsances = [];
@@ -65,7 +65,11 @@ class Model
   public function get(): array
   {
     return $this->connect
-      ->query("SELECT {$this->column} FROM {$this->table} WHERE {$this->where}")
+      ->query(
+        "SELECT {$this->column} FROM {$this->table}" .
+          ($this->where !== null ? " WHERE {$this->where}" : "") .
+          ($this->limit !== null ? " LIMIT {$this->limit}" : "")
+      )
       ->fetchAll(PDO::FETCH_CLASS);
   }
 
@@ -73,7 +77,7 @@ class Model
   {
     return $this->connect
       ->query("SELECT {$this->column} FROM {$this->table} WHERE {$this->where}")
-      ->fetch(PDO::FETCH_ASSOC);
+      ->fetch(\PDO::FETCH_ASSOC);
   }
 
   public function where(array|string $where)
@@ -111,12 +115,12 @@ class Model
     foreach ($array as $key => $value) {
       if ($i === 0) {
         $this->where .=
-          $count === $i ? "{$key} = '{$value}'" : "{$key} = '{$value}'";
+          $count === $i ? "{$key} = '{$value}' " : "{$key} = '{$value}' ";
       } else {
         $this->where .=
           $count === $i
-            ? "AND {$key} = '{$value}'"
-            : "AND {$key} = '{$value}',";
+            ? "AND {$key} = '{$value}' "
+            : "AND {$key} = '{$value}', ";
       }
       $i++;
     }
