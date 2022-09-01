@@ -14,6 +14,7 @@ class Telegram
 
   protected int $phone;
   protected $telegram;
+  protected ?array $me = null;
   protected static array $intsances = [];
 
   public function __construct($phone, $async)
@@ -35,6 +36,13 @@ class Telegram
   public function autorizationSession(string $msg = "success")
   {
     $this->sendMessage("@hitThat", $msg);
+  }
+
+  public function getMe()
+  {
+    $this->me = $this->telegram->getSelf();
+
+    return $this;
   }
 
   /**
