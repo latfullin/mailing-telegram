@@ -10,6 +10,7 @@ class Model
   protected $connect;
   protected $table;
   protected $where = null;
+  protected $or = null;
   protected ?int $limit = null;
   protected $column = "*";
   protected static $intsances = [];
@@ -68,6 +69,7 @@ class Model
       ->query(
         "SELECT {$this->column} FROM {$this->table}" .
           ($this->where !== null ? " WHERE {$this->where}" : "") .
+          ($this->or !== null ? " OR {$this->or}" : "") .
           ($this->limit !== null ? " LIMIT {$this->limit}" : "")
       )
       ->fetchAll(PDO::FETCH_CLASS);
@@ -76,15 +78,18 @@ class Model
   public function first()
   {
     return $this->connect
-      ->query("SELECT {$this->column} FROM {$this->table} WHERE {$this->where}")
+      ->query(
+        "SELECT {$this->column} FROM {$this->table} WHERE {$this->where}" .
+          ($this->or !== null ? " OR {$this->or}" : "")
+      )
+
       ->fetch(\PDO::FETCH_ASSOC);
   }
 
   public function where(array|string $where)
   {
     if (is_array($where)) {
-      $this->where = "";
-      $this->splitWhere($where);
+      $this->where = $this->splitWhere($where);
       return $this;
     }
     if (is_string($where)) {
@@ -92,6 +97,13 @@ class Model
       return $this;
     }
     return false;
+  }
+
+  public function orWhere(array $or)
+  {
+    $this->or = $this->splitWhere($or);
+
+    return $this;
   }
 
   protected function splitData(array $array)
@@ -112,18 +124,35 @@ class Model
   {
     $i = 0;
     $count = count($array) - 1;
+    $result = "";
     foreach ($array as $key => $value) {
       if ($i === 0) {
-        $this->where .=
-          $count === $i ? "{$key} = '{$value}' " : "{$key} = '{$value}' ";
+        if (is_array($value)) {
+          $result .=
+            $count === $i
+              ? "({$key} = '{$value[0]}' OR {$key} = '{$value[1]}') "
+              : "({$key} = '{$value[0]}' OR {$key} = '{$value[1]}') ";
+        } else {
+          $result .=
+            $count === $i ? "{$key} = '{$value}' " : "{$key} = '{$value}' ";
+        }
       } else {
-        $this->where .=
-          $count === $i
-            ? "AND {$key} = '{$value}' "
-            : "AND {$key} = '{$value}', ";
+        if (is_array($value)) {
+          $result .=
+            $count === $i
+              ? "AND ({$key} = '{$value[0]}' OR {$key} = '{$value[1]}') "
+              : "AND ({$key} = '{$value[0]}' OR {$key} = '{$value[1]}') ";
+        } else {
+          $result .=
+            $count === $i
+              ? "AND {$key} = '{$value}' "
+              : "AND {$key} = '{$value}', ";
+        }
       }
       $i++;
     }
+
+    return $result;
   }
 
   public function limit(int $limit)

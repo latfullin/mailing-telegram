@@ -50,7 +50,7 @@ class Execute
   /**
    * @param phone hand over param if need init certain phones number, else will use phone is name 'phone';
    */
-  protected function __construct(
+  public function __construct(
     string $typeAction = "",
     string $nameTask = "",
     int $limitActions = 10

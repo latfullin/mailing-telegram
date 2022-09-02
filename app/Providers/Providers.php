@@ -10,7 +10,6 @@ class Providers
 
   public function __construct($controller, string $function, $argumets = [])
   {
-    echo "ds";
     $class = [];
     $reflection = new ReflectionMethod($controller, $function);
     foreach ($reflection->getParameters() as $param) {

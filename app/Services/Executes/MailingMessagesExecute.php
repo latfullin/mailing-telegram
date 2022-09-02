@@ -6,10 +6,12 @@ use App\Helpers\CheckUsersHelpers;
 use App\Helpers\ErrorHelper;
 use App\Helpers\WorkingFileHelper;
 use App\Models\MailingModel;
+use App\Services\Authorization\Telegram;
 
 class MailingMessagesExecute extends Execute
 {
-  const MAX_MSG = 20;
+  const MAX_MSG = 13;
+  const LIMIT_ACTIONS = 35;
   const TYPE_ACTION = "send_message";
   const NAME_TASK = "send_message";
   protected string $msg;
@@ -31,7 +33,11 @@ class MailingMessagesExecute extends Execute
 
   public function __construct(MailingModel $mailingModel)
   {
-    parent::__construct(self::TYPE_ACTION, self::NAME_TASK);
+    parent::__construct(
+      self::TYPE_ACTION,
+      self::NAME_TASK,
+      self::LIMIT_ACTIONS
+    );
     $this->mailingModel = $mailingModel;
   }
 
@@ -40,37 +46,60 @@ class MailingMessagesExecute extends Execute
   {
     $uniq = 0;
     foreach ($this->sessionList as $session) {
+      if (!$this->users) {
+        break;
+      }
+
+      $telegram = Telegram::instance($session->phone);
       for ($i = 0; $i < self::MAX_MSG; $i++) {
         $uniq++;
-
-        print_r($this->users);
-        die();
         try {
           if (!$this->users) {
             break;
           }
           $user = array_pop($this->users);
-          $this->sendMessage(
-            $session->phone,
-            $user->user,
-            $uniq . $this->msg . $uniq
-          );
+
+          if ($this->photo) {
+            $telegram->sendFoto(
+              $user->user,
+              $this->photo,
+              $uniq . $this->msg . $uniq
+            );
+          } else {
+            $telegram->sendMessage($user->user, $uniq . $this->msg . $uniq);
+          }
+
           $this->mailingModel
             ->where(["user" => $user->user, "task" => $this->task])
             ->update([
               "status" => 2,
             ]);
         } catch (\Exception $e) {
+          print_r($e);
           $this->mailingModel
             ->where(["user" => $user->user, "task" => $this->task])
             ->update([
               "status" => 3,
-              "error_log" => $e->getMessage(),
             ]);
           ErrorHelper::writeToFile("$e\n");
+          if ($e->getMessage() == "PEER_FLOOD") {
+            $this->sessionConnect
+              ->where(["phone" => $session->phone])
+              ->update(["flood_wait" => true]);
+            continue 2;
+          }
+          if ($e->getMessage() == "USER_DEACTIVATED_BAN") {
+            $this->sessionConnect
+              ->where(["phone" => $session->phone])
+              ->update(["ban" => true]);
+            continue 2;
+          }
           continue;
         }
+        sleep(5);
       }
+
+      sleep(4);
     }
 
     return $this;
@@ -119,9 +148,12 @@ class MailingMessagesExecute extends Execute
   public function setMsg(string $msg): MailingMessagesExecute
   {
     $this->msg = $msg;
-    $this->modelTask
-      ->where(["task" => $this->task])
-      ->update(["information" => $msg]);
+    $this->modelTask->where(["task" => $this->task])->update([
+      "information" => json_encode(
+        ["msg" => $msg, "file" => $this->photo],
+        JSON_UNESCAPED_UNICODE
+      ),
+    ]);
 
     return $this;
   }
