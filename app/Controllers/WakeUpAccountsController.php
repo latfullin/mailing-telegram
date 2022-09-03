@@ -9,21 +9,38 @@ use App\Services\WarmingUp\AccountWarmingUp;
 
 class WakeUpAccountsController
 {
-  public function wakeUpAccounts($peer = "@hitThat")
+  public function wakeUpAccounts(ArgumentsHelpers $arg, PhoneModel $session)
   {
-    $phones = $this->getPhones();
+    $phones = $session->getAll();
     $value = count($phones);
     foreach ($phones as $key => $phone) {
-      $telegram = Telegram::instance($phone);
-      $me = $telegram->getSelf();
-      echo $phone;
-      $i = $key + 1;
-      $telegram->sendMessage(
-        $peer,
-        "Я {$me["first_name"]},  номер:'{$phone}'.Сообщений из {$i} из {$value}."
-      );
+      try {
+        $telegram = Telegram::instance($phone->phone);
+        $me = $telegram->getSelf();
+        $i = $key + 1;
+        $telegram->sendMessage(
+          $arg->channel,
+          "Я {$me["first_name"]},  номер:'{$phone->phone}'.Сообщений из {$i} из {$value}."
+        );
+        $session
+          ->where(["phone" => $phone->phone])
+          ->update(["ban" => 0, "flood_wait" => 0]);
 
-      sleep(10);
+        sleep(5);
+      } catch (\Exception $e) {
+        if ($e->getMessage() == "PEER_FLOOD") {
+          sleep(5);
+          $session
+            ->where(["phone" => $phone->phone])
+            ->update(["flood_wait" => 1]);
+          continue;
+        }
+        if ($e->getMessage() == "USER_DEACTIVATED_BAN") {
+          $session->where(["phone" => $phone->phone])->update(["ban" => 1]);
+          continue;
+        }
+        $session->where(["phone" => $phone->phone])->update(["ban" => 2]);
+      }
     }
   }
 
@@ -39,12 +56,11 @@ class WakeUpAccountsController
   public function joinChannel(ArgumentsHelpers $arguments, PhoneModel $phones)
   {
     $phones = $phones->getAll();
-    $channelId = Telegram::instance("79299204367")->getInfo(
+    $channelId = Telegram::instance($phones[0]->phone)->getInfo(
       $arguments->channel
     )["channel_id"];
     foreach ($phones as $phone) {
       try {
-        print_r($phone);
         $telegram = Telegram::instance($phone->phone);
         $dialogs = $telegram->getDialogs();
         $inGroup = [];

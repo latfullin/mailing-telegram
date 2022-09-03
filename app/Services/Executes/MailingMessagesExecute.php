@@ -2,15 +2,13 @@
 
 namespace App\Services\Executes;
 
-use App\Helpers\CheckUsersHelpers;
 use App\Helpers\ErrorHelper;
-use App\Helpers\WorkingFileHelper;
 use App\Models\MailingModel;
 use App\Services\Authorization\Telegram;
 
 class MailingMessagesExecute extends Execute
 {
-  const MAX_MSG = 13;
+  const MAX_MSG = 5;
   const LIMIT_ACTIONS = 35;
   const TYPE_ACTION = "send_message";
   const NAME_TASK = "send_message";
@@ -52,21 +50,17 @@ class MailingMessagesExecute extends Execute
 
       $telegram = Telegram::instance($session->phone);
       for ($i = 0; $i < self::MAX_MSG; $i++) {
+        $this->incrementActions($session->phone);
         $uniq++;
         try {
           if (!$this->users) {
             break;
           }
           $user = array_pop($this->users);
-
           if ($this->photo) {
-            $telegram->sendFoto(
-              $user->user,
-              $this->photo,
-              $uniq . $this->msg . $uniq
-            );
+            $telegram->sendFoto($user->user, $this->photo, $this->msg . $uniq);
           } else {
-            $telegram->sendMessage($user->user, $uniq . $this->msg . $uniq);
+            $telegram->sendMessage($user->user, $this->msg . $uniq);
           }
 
           $this->mailingModel
@@ -75,7 +69,6 @@ class MailingMessagesExecute extends Execute
               "status" => 2,
             ]);
         } catch (\Exception $e) {
-          print_r($e);
           $this->mailingModel
             ->where(["user" => $user->user, "task" => $this->task])
             ->update([

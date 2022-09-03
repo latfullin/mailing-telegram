@@ -16,6 +16,7 @@ class PrepareAccountController
     $phones = $phoneModel->getAll();
     foreach ($phones as $phone) {
       if ($argument->photo ?? false) {
+        echo $phone->phone;
         Telegram::instance($phone->phone)->deleteMePhotoProfile();
         Telegram::instance($phone->phone)->updatePhotoProfile($argument->photo);
       }
@@ -26,9 +27,6 @@ class PrepareAccountController
         $argument->about ?? ""
       );
       $phoneModel->increment($phone->phone, "count_action");
-      shell_exec(
-        "ps -ef | grep 'MadelineProto' | grep -v grep | awk '{print $2}' | xargs -r kill -9"
-      );
     }
   }
 }

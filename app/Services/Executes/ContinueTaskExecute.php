@@ -3,6 +3,7 @@
 namespace App\Services\Executes;
 
 use App\Helpers\ErrorHelper;
+use App\Models\MailingModel;
 use App\Services\Authorization\Telegram;
 
 class ContinueTaskExecute extends Execute
@@ -10,13 +11,16 @@ class ContinueTaskExecute extends Execute
   const TYPE_ACTION = "send_message";
   const NAME_TASK = "continue_task";
   const LIMIT_ACTIONS = 35;
-  const MAX_MSG = 13;
+  const MAX_MSG = 5;
   protected array $users = [];
   protected string $msg = "";
   protected string $file = "";
+  protected int $taskContinue;
+  protected ?MailingModel $mailingModel = null;
 
-  public function __constuct()
+  public function __construct(MailingModel $mailingModel)
   {
+    $this->mailingModel = $mailingModel;
     parent::__construct(
       self::TYPE_ACTION,
       self::NAME_TASK,
@@ -31,16 +35,23 @@ class ContinueTaskExecute extends Execute
     return $this;
   }
 
-  public function setMsg(string $msg)
+  public function setMsg(string $msg): ContinueTaskExecute
   {
     $this->msg = $msg;
 
     return $this;
   }
 
-  public function setFile(string $file)
+  public function setFile(string $file): ContinueTaskExecute
   {
     $this->file = $file;
+
+    return $this;
+  }
+
+  public function setTask(int $task)
+  {
+    $this->taskContinue = $task;
 
     return $this;
   }
@@ -52,7 +63,6 @@ class ContinueTaskExecute extends Execute
       if (!$this->users) {
         break;
       }
-
       $telegram = Telegram::instance($session->phone);
       for ($i = 0; $i < self::MAX_MSG; $i++) {
         $uniq++;
@@ -61,7 +71,6 @@ class ContinueTaskExecute extends Execute
             break;
           }
           $user = array_pop($this->users);
-
           if ($this->file) {
             $telegram->sendFoto(
               $user->user,
@@ -73,18 +82,17 @@ class ContinueTaskExecute extends Execute
           }
 
           $this->mailingModel
-            ->where(["user" => $user->user, "task" => $this->task])
+            ->where(["user" => $user->user, "task" => $this->taskContinue])
             ->update([
               "status" => 2,
             ]);
         } catch (\Exception $e) {
           $this->mailingModel
-            ->where(["user" => $user->user, "task" => $this->task])
+            ->where(["user" => $user->user, "task" => $this->taskContinue])
             ->update([
               "status" => 3,
             ]);
           ErrorHelper::writeToFile("$e\n");
-          print_r($e);
           if ($e->getMessage() == "PEER_FLOOD") {
             $this->sessionConnect
               ->where(["phone" => $session->phone])
@@ -99,9 +107,9 @@ class ContinueTaskExecute extends Execute
           }
           continue;
         }
-        sleep(5);
+        sleep(7);
       }
-
+      echo "end";
       sleep(4);
     }
 

@@ -24,8 +24,8 @@ class MailingMessagesController
   public function continueTask(
     ArgumentsHelpers $arguments,
     TasksModel $tasksModel,
-    MailingModel $mailingModel,
-    ContinueTaskExecute $continue
+    ContinueTaskExecute $continue,
+    MailingModel $mailingModel
   ) {
     $task = $tasksModel->where(["task" => $arguments->task])->first();
     $users = $mailingModel
@@ -35,11 +35,11 @@ class MailingMessagesController
       ])
       ->get();
 
-    $information = json_decode($task["information"], JSON_UNESCAPED_UNICODE);
     $continue
       ->setUsers($users)
-      ->setMsg($information["msg"])
-      ->setFile($information["file"])
+      ->setMsg($arguments->msg)
+      ->setTask($task["task"])
+      ->setFile($arguments->photo)
       ->start();
   }
 }

@@ -31,7 +31,9 @@ class PhoneModel extends Model
   public function getAll()
   {
     return $this->connect
-      ->query("SELECT * FROM {$this->table} WHERE ban = 0")
+      ->query(
+        "SELECT * FROM {$this->table} WHERE (ban = 1 OR ban = 2) AND (flood_wait = 0 OR flood_wait = 1) ORDER BY id DESC"
+      )
       ->fetchAll(\PDO::FETCH_CLASS);
   }
 }
