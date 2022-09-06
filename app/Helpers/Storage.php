@@ -2,15 +2,14 @@
 
 namespace App\Helpers;
 
-
 class Storage
 {
   protected string $disk;
   private array $path = [
-    'temporary' => 'storage/temporary',
-    'session' => 'storage/session',
-    'photo' => 'storage/photoProfile',
-    'task' => 'storage/task'
+    "temporary" => "storage/temporary",
+    "session" => "storage/session",
+    "photo" => "storage/photoProfile",
+    "task" => "storage/task",
   ];
 
   private function __construct(string $disk)
@@ -44,7 +43,11 @@ class Storage
         if (is_array($content)) {
           $this->put("$file.txt", $content);
         } else {
-          file_put_contents("{$this->disk}/$file.txt", "$content\n", FILE_APPEND);
+          file_put_contents(
+            "{$this->disk}/$file.txt",
+            "$content\n",
+            FILE_APPEND
+          );
         }
       }
     } else {
@@ -59,6 +62,6 @@ class Storage
       return "{$this->disk}/$file.txt";
     }
 
-    throw new \Exception('Not found file.');
+    throw new \Exception("Not found file.");
   }
 }
