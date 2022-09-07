@@ -15,21 +15,21 @@ class Telegram
   use ChannelsMethodsTelegram;
   use MessageMethodsTelegram;
 
-  protected array $proxy = [];
+  private array $proxy = [];
   private bool $usedProxy = true;
   protected int $phone;
   protected $telegram;
-  private $setting = null;
-  protected ?array $me = null;
-  protected static array $intsances = [];
+  private $setting = [];
+  private ?array $me = null;
+  private static array $intsances = [];
 
   public function __construct($phone, $async)
   {
-    $this->setting = Proxy::getProxy($phone)->getSetting();
+    // $this->setting = Proxy::getProxy($phone)->getSetting();
 
-    if (!$this->setting && $this->usedProxy) {
-      throw "Error proxy";
-    }
+    // if (!$this->setting && $this->usedProxy) {
+    //   throw "Error proxy";
+    // }
     try {
       $this->phone = $phone;
       $this->telegram = new \danog\MadelineProto\API(
@@ -46,11 +46,6 @@ class Telegram
   {
     $this->telegram->async($async);
     $this->telegram->start();
-  }
-
-  public function autorizationSession(string $msg = "success")
-  {
-    $this->sendMessage("@hitThat", $msg);
   }
 
   public function getMe()
@@ -74,7 +69,7 @@ class Telegram
     return self::$intsances[$key];
   }
 
-  private function pathSession()
+  protected function pathSession()
   {
     if (is_dir("storage/session/{$this->phone}")) {
       return "storage/session/{$this->phone}/{$this->phone}";
