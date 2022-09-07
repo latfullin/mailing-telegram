@@ -3,7 +3,7 @@
 namespace App\Services\Authorization;
 
 use App\Models\ProxyModel;
-use danog\MadelineProto\Stream\Proxy\SocksProxy;
+use danog\MadelineProto\Stream\Proxy\HttpProxy;
 
 class Proxy
 {
@@ -16,24 +16,31 @@ class Proxy
       ->where(["who_used" => $phone, "active" => true])
       ->first();
 
-    empty($setting) ? $this->test($phone) : $this->setSettings($setting);
+    empty($setting)
+      ? $this->newSettingProxy($phone)
+      : $this->setSettings($setting);
   }
 
   private function setSettings(array $settings)
   {
-    $this->setting = new \danog\MadelineProto\Settings\Connection();
-    $this->setting->addProxy(SocksProxy::class, [
-      "address" => $settings["address"],
-      "port" => $settings["port"],
-      "username" => $settings["login"],
-      "password" => $settings["password"],
-    ]);
-    $this->setting->setIpv6(true);
-    $this->setting->setRetry(false);
-    $this->setting->setTestMode(true);
+    $this->setting = [
+      "connection_settings" => [
+        "all" => [
+          "retry" => false,
+          "ipv6" => true,
+          "proxy" => HttpProxy::class,
+          "proxy_extra" => [
+            "address" => $settings["address"],
+            "port" => $settings["port"],
+            "username" => $settings["login"],
+            "password" => $settings["password"],
+          ],
+        ],
+      ],
+    ];
   }
 
-  public function test($phone)
+  public function newSettingProxy($phone)
   {
     $data = $this->proxy
       ->where(["who_used" => false, "active" => true])
