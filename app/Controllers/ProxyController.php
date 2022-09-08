@@ -11,17 +11,30 @@ class ProxyController
 {
   private $polyfills = ["socks" => "\SocksProxy"];
 
-  public function addProxy(ArgumentsHelpers $arguments, ProxyModel $model)
+  public function checkProxy(Ipv6Proxy $proxy, ProxyModel $model)
   {
-    $model->insert([
-      "type" => $this->polyfills[$arguments->type],
-      "address" => $arguments->address,
-      "port" => $arguments->port,
-      "password" => $arguments->password ?? "",
-      "ipv" => $arguments->ipv ?? "",
-      "active" => true,
-      "active_at" => $arguments->activeTime,
-    ]);
+    $proxies = $proxy->getProxy();
+    foreach ($proxies->list as $proxy) {
+      $data = $model
+        ->where([
+          "numeric_id" => $proxy->id,
+          "active_ad" => $proxy->date_end,
+        ])
+        ->first();
+      if (empty($data)) {
+        $model->insert([
+          "country" => $proxy->country,
+          "address" => $proxy->host,
+          "port" => $proxy->port,
+          "login" => $proxy->user,
+          "password" => $proxy->pass,
+          "numeric_id" => $proxy->id,
+          "active" => $proxy->active,
+          "active_ad" => $proxy->date_end,
+          "active" => $proxy->active,
+        ]);
+      }
+    }
   }
 
   public function buyProxy(
@@ -34,7 +47,6 @@ class ProxyController
       $arguments->period,
       $arguments->country
     );
-    print_r($data);
     if ($data) {
       foreach ($data->list as $proxy) {
         $model->insert([
@@ -47,6 +59,18 @@ class ProxyController
           "active" => $proxy->active,
           "active_ad" => Carbon::now()->addDays($arguments->period),
         ]);
+      }
+    }
+  }
+
+  public function checkActiveProxy(ProxyModel $model)
+  {
+    $proxies = $model->where(["active" => 1])->get();
+    foreach ($proxies as $proxy) {
+      if ($proxy->active_ad < Carbon::now()) {
+        $model
+          ->where(["numeric_id" => $proxy->numeric_id])
+          ->update(["active" => 0]);
       }
     }
   }

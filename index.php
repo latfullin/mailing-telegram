@@ -60,7 +60,7 @@ require_once "app/kernel.php";
 // $a->insert()
 // $a->where(["id" => 1])->update(["active_ad" => Carbon::now()->addDays(5)]);
 
-new Providers(ProxyController::class, "buyProxy", [
+new Providers(ProxyController::class, "checkProxy", [
   "count" => 1,
   "period" => 3,
   "country" => "nl",
