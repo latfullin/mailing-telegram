@@ -22,19 +22,15 @@ use danog\MadelineProto\Tools;
 
 require_once "app/kernel.php";
 
-// new Providers(ParserController::class, "parseGroup", ["channel" => $a[0]]);
-// }9430366
-
-// 79346648049 -- need auto
-new Providers(AutorizationController::class, "createSession", [
-  "phone" => 6281226073637,
-  "proxy" => [
-    "address" => "217.69.6.173",
-    "port" => 14068,
-    "login" => "SwWBH1",
-    "password" => "VTS6tQ",
-  ],
-]);
+// new Providers(AutorizationController::class, "createSession", [
+//   "phone" => 31231232412412,
+//   "proxy" => [
+//     "address" => "217.29.63.40",
+//     "port" => 11247,
+//     "login" => "SsPqUX",
+//     "password" => "pBfCut",
+//   ],
+// ]);
 // new Controller(InvitationsController::class, "invitationsChannel", [
 //   "channel" => "https://t.me/asdasdasdzxew",
 //   "users" => $a,

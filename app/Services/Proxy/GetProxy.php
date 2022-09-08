@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Services\Authorization;
+namespace App\Services\Proxy;
 
 use App\Models\ProxyModel;
 use danog\MadelineProto\Stream\Proxy\HttpProxy;
 
-class Proxy
+class GetProxy
 {
   private ?ProxyModel $proxy = null;
   private mixed $setting;
+
   public function __construct($phone)
   {
     $this->proxy = new ProxyModel();
@@ -21,7 +22,7 @@ class Proxy
       : $this->setSettings($setting);
   }
 
-  private function setSettings(array $settings)
+  private function setSettings(array $settings): void
   {
     $this->setting = [
       "connection_settings" => [
@@ -40,7 +41,7 @@ class Proxy
     ];
   }
 
-  public function newSettingProxy($phone)
+  public function newSettingProxy($phone): void
   {
     $data = $this->proxy
       ->where(["who_used" => false, "active" => true])
@@ -60,7 +61,7 @@ class Proxy
     return new self($phone);
   }
 
-  public function getSetting()
+  public function getSetting(): array
   {
     return $this->setting;
   }

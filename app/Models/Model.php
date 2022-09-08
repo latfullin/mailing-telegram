@@ -31,7 +31,7 @@ class Model
   {
     ["column" => $column, "value" => $value] = $this->splitData($values);
     $this->connect->query(
-      "INSERT INTO {$this->table} ({$column}) VALUES ({$value})"
+      "INSERT INTO {$this->table} ({$column}, created_at) VALUES ({$value}, now())"
     );
   }
 

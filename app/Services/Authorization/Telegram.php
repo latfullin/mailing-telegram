@@ -3,10 +3,10 @@
 namespace App\Services\Authorization;
 
 use App\Models\PhoneModel;
+use App\Services\Proxy\GetProxy;
 use App\Traits\Account\AccountMethodsTelegram;
 use App\Traits\Channels\ChannelsMethodsTelegram;
 use App\Traits\Message\MessageMethodsTelegram;
-use danog\MadelineProto\Settings\Connection;
 use Exception;
 
 class Telegram
@@ -25,11 +25,11 @@ class Telegram
 
   public function __construct($phone, $async)
   {
-    // $this->setting = Proxy::getProxy($phone)->getSetting();
+    $this->setting = GetProxy::getProxy($phone)->getSetting();
 
-    // if (!$this->setting && $this->usedProxy) {
-    //   throw "Error proxy";
-    // }
+    if (!$this->setting && $this->usedProxy) {
+      throw "Error proxy";
+    }
     try {
       $this->phone = $phone;
       $this->telegram = new \danog\MadelineProto\API(
