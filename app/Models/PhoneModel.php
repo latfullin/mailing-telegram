@@ -23,7 +23,7 @@ class PhoneModel extends Model
     return $this->connect
       ->query(
         "SELECT * FROM {$this->table}  WHERE ban = 0 AND flood_wait = 0 AND {$column} < '{$limit}' ORDER BY {$column} ASC " .
-          ($this->limit !== null ? "LIMIT {$this->limit}" : " ")
+          ($this->limit !== null ? " LIMIT {$this->limit}" : " ")
       )
       ->fetchAll(\PDO::FETCH_CLASS);
   }
@@ -32,7 +32,8 @@ class PhoneModel extends Model
   {
     return $this->connect
       ->query(
-        "SELECT * FROM {$this->table} WHERE (ban = 1 OR ban = 2) AND (flood_wait = 0 OR flood_wait = 1) ORDER BY id DESC"
+        "SELECT * FROM {$this->table} WHERE (ban = 0 OR ban = 2) AND (flood_wait = 0 OR flood_wait = 1) ORDER BY id DESC" .
+          ($this->limit !== null ? " LIMIT {$this->limit}" : " ")
       )
       ->fetchAll(\PDO::FETCH_CLASS);
   }

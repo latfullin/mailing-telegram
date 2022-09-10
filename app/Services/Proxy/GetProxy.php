@@ -61,7 +61,7 @@ class GetProxy
     return new self($phone);
   }
 
-  public function getSetting(): array
+  public function getSetting(): array|bool
   {
     return $this->setting;
   }

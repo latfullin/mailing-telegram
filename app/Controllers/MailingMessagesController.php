@@ -3,43 +3,33 @@
 namespace App\Controllers;
 
 use App\Helpers\ArgumentsHelpers;
-use App\Models\MailingModel;
 use App\Models\TasksModel;
 use App\Services\Executes\ContinueTaskExecute;
 use App\Services\Executes\MailingMessagesExecute;
 
 class MailingMessagesController
 {
-  public function createMailingMessages(
+  public function createTaskMailingMessages(
     ArgumentsHelpers $arguments,
     MailingMessagesExecute $execute
   ) {
     $execute
       ->setMsg($arguments->msg)
-      ->setPhoto($arguments->photo ?? false)
-      ->setUsers($arguments->users)
-      ->execute($arguments->limit);
+      ->setFile($arguments->file ?? false)
+      ->setUsers($arguments->users);
   }
 
   public function continueTask(
     ArgumentsHelpers $arguments,
     TasksModel $tasksModel,
-    ContinueTaskExecute $continue,
-    MailingModel $mailingModel
+    ContinueTaskExecute $continue
   ) {
     $task = $tasksModel->where(["task" => $arguments->task])->first();
-    $users = $mailingModel
-      ->where([
-        "task" => $task["task"],
-        "status" => [0, 1],
-      ])
-      ->get();
 
     $continue
-      ->setUsers($users)
+      ->setTaskExecute($task["task"])
       ->setMsg($arguments->msg)
-      ->setTask($task["task"])
-      ->setFile($arguments->photo)
-      ->start();
+      ->setFile($arguments->photo ?? "")
+      ->execute();
   }
 }

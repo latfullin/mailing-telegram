@@ -2,6 +2,7 @@
 
 namespace App\Services\Authorization;
 
+use App\Helpers\ErrorHelper;
 use App\Models\PhoneModel;
 use App\Services\Proxy\GetProxy;
 use App\Traits\Account\AccountMethodsTelegram;
@@ -26,11 +27,10 @@ class Telegram
   public function __construct($phone, $async)
   {
     $this->setting = GetProxy::getProxy($phone)->getSetting();
-
-    if (!$this->setting && $this->usedProxy) {
-      throw "Error proxy";
-    }
     try {
+      if (!$this->setting && $this->usedProxy) {
+        throw new \Exception("Error proxy");
+      }
       $this->phone = $phone;
       $this->telegram = new \danog\MadelineProto\API(
         $this->pathSession($phone),
@@ -38,7 +38,9 @@ class Telegram
       );
       $this->params($async);
     } catch (\Exception $e) {
+      ErrorHelper::writeToFile($e);
       $this->checkError($e, $phone);
+      return;
     }
   }
 
@@ -58,15 +60,9 @@ class Telegram
   /**
    * @param phone session. Kept storage/session.
    */
-  public static function instance($phone, $async = false)
+  public static function instance($phone, bool $async = false)
   {
-    $key = "{$phone}-" . ($async ? 1 : 0);
-    if (!isset(self::$intsances[$key])) {
-      echo "new intance";
-      self::$intsances[$key] = new self($phone, $async);
-    }
-
-    return self::$intsances[$key];
+    return new self($phone, $async);
   }
 
   protected function pathSession()
@@ -79,23 +75,35 @@ class Telegram
     }
   }
 
-  public function checkError(Exception $e, int $phone): void
+  public function checkError(Exception $e, int $phone)
   {
-    $session = new PhoneModel();
+    ErrorHelper::writeToFile($e);
     if ($e->getMessage() == "PEER_FLOOD") {
+      $session = new PhoneModel();
       $session->where(["phone" => $phone])->update(["flood_wait" => true]);
       return;
     }
     if ($e->getMessage() == "USER_DEACTIVATED_BAN") {
+      $session = new PhoneModel();
       $session->where(["phone" => $phone])->update(["ban" => 1]);
       return;
     }
   }
 
-  public function setUsedProxy(bool $bool): self
+  public function setUsedProxy(bool $bool): object
   {
     $this->usedProxy = $bool;
 
     return $this;
+  }
+
+  public function stop()
+  {
+    $this->telegram->stop();
+  }
+
+  public function getTelegram(): object|null
+  {
+    return $this->telegram;
   }
 }

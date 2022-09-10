@@ -41,27 +41,28 @@ require_once "app/kernel.php";
 //   "checkUsers" => false,
 // // ]);
 
-// new Providers(WakeUpAccountsController::class, "wakeUpAccounts", [
-//   "channel" => "https://t.me/+vZ57IK_pcghiOWZi",
-// ]);
-
-// $a = [79585596738, 79309971649];
+new Providers(WakeUpAccountsController::class, "wakeUpAccounts", [
+  "channel" => "https://t.me/+vZ57IK_pcghiOWZi",
+  "limit" => [11, 20],
+]);
 
 // foreach ($a as $item) {
 //   Telegram::instance($item)->sendMessage("@hitThat", "hsadsaidsahu dhhds");
 // }
 
-// Ipv6Proxy::init()->buyHttpProxy(1, 7, "nl");
-// $result = Ipv6Proxy::init()->getProxy();
+// new Providers(ProxyController::class, "checkProxy", [
+//   "count" => 1,
+//   "period" => 3,
+//   "country" => "nl",
+// ]);
 
-// print_r($result->list);
-
-// $a = new ProxyModel();
-// $a->insert()
-// $a->where(["id" => 1])->update(["active_ad" => Carbon::now()->addDays(5)]);
-
-new Providers(ProxyController::class, "checkProxy", [
-  "count" => 1,
-  "period" => 3,
-  "country" => "nl",
-]);
+// new Providers(MailingMessagesController::class, "continueTask", [
+//   "task" => 115,
+//   "msg" => "zdarova brat",
+//   "country" => "nl",
+// ]);
+// new Providers(MailingMessagesController::class, "continueTask", [
+//   "task" => 111,
+//   "msg" => "zdarova brat",
+//   "country" => "nl",
+// ]);
