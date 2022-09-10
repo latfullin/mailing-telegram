@@ -11,7 +11,7 @@ class Model
   protected $table;
   protected $where = null;
   protected $or = null;
-  protected ?int $limit = null;
+  protected mixed $limit = null;
   protected $column = "*";
   protected static $intsances = [];
 
@@ -155,10 +155,21 @@ class Model
     return $result;
   }
 
-  public function limit(int $limit)
+  /**
+   * @param limit Type int - 1,2,3,4....; Type array from - before [0, 10];
+   */
+  public function limit(int|array $limit)
   {
-    $this->limit = $limit;
-
+    $this->limit = "";
+    if (is_int($limit)) {
+      $this->limit = $limit;
+    }
+    if (is_array($limit)) {
+      $count = count($limit) - 1;
+      foreach ($limit as $key => $int) {
+        $this->limit .= $key == $count ? $int : $int . ",";
+      }
+    }
     return $this;
   }
 }

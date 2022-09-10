@@ -7,10 +7,11 @@ use App\Models\ProxyModel;
 use App\Services\Proxy\Ipv6Proxy;
 use Carbon\Carbon;
 
+/**
+ * Max 3 request in 1 second. If request > 3, then return error 503.
+ */
 class ProxyController
 {
-  private $polyfills = ["socks" => "\SocksProxy"];
-
   public function checkProxy(Ipv6Proxy $proxy, ProxyModel $model)
   {
     $proxies = $proxy->getProxy();
@@ -65,12 +66,16 @@ class ProxyController
 
   public function checkActiveProxy(ProxyModel $model)
   {
-    $proxies = $model->where(["active" => 1])->get();
+    $proxies = $model->get();
     foreach ($proxies as $proxy) {
       if ($proxy->active_ad < Carbon::now()) {
         $model
           ->where(["numeric_id" => $proxy->numeric_id])
           ->update(["active" => 0]);
+      } else {
+        $model
+          ->where(["numeric_id" => $proxy->numeric_id])
+          ->update(["active" => 1]);
       }
     }
   }

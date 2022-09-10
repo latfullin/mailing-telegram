@@ -6,18 +6,24 @@ use App\Helpers\ArgumentsHelpers;
 use App\Models\PhoneModel;
 use App\Services\Authorization\Telegram;
 use App\Services\WarmingUp\AccountWarmingUp;
+use danog\MadelineProto\phone;
 
 class WakeUpAccountsController
 {
   public function wakeUpAccounts(ArgumentsHelpers $arg, PhoneModel $session)
   {
-    $phones = $session->getAll();
+    $phones = $session->limit([$arg->limit[0], $arg->limit[1]])->getAll();
+    $this->startClient($phones);
     $value = count($phones);
     foreach ($phones as $key => $phone) {
       try {
-        $telegram = Telegram::instance($phone->phone);
+        $telegram = Telegram::instance($phone->phone, false);
+        if (!$telegram->getTelegram()) {
+          continue;
+        }
         $me = $telegram->getSelf();
         $i = $key + 1;
+        echo "dsa";
         $telegram->sendMessage(
           $arg->channel,
           "Я {$me["first_name"]},  номер:'{$phone->phone}'.Сообщений из {$i} из {$value}."
@@ -44,14 +50,15 @@ class WakeUpAccountsController
     }
   }
 
-  public function warmingUpAccount()
-  {
-    $phones = $this->getPhones();
-    if ($phones) {
-      $warmingUp = new AccountWarmingUp($phones);
-      $warmingUp->warmingUpAccount();
-    }
-  }
+  //not work
+  // public function warmingUpAccount()
+  // {
+  //   $phones = $this->getPhones();
+  //   if ($phones) {
+  //     $warmingUp = new AccountWarmingUp($phones);
+  //     $warmingUp->warmingUpAccount();
+  //   }
+  // }
 
   public function joinChannel(ArgumentsHelpers $arguments, PhoneModel $phones)
   {
@@ -78,13 +85,11 @@ class WakeUpAccountsController
     }
   }
 
-  private function lookChannel(string $phone, string $channel)
+  private function startClient($phones): void
   {
-    Telegram::instance($phone)->lookChannel($channel);
-  }
-
-  private function getPhones()
-  {
-    return array_map(fn($i) => trim($i), file("phone"));
+    foreach ($phones as $phone) {
+      echo $phone->phone;
+      Telegram::instance($phone->phone);
+    }
   }
 }
