@@ -84,10 +84,9 @@ class Execute
 
   protected function getSessionList(): void
   {
-    $this->sessionList = $this->sessionConnect->sessionList(
-      $this->typeAction,
-      $this->limitActions
-    );
+    $this->sessionList = $this->sessionConnect
+      ->limit(10)
+      ->sessionList($this->typeAction, $this->limitActions);
   }
 
   protected function methodsWithChallen(
@@ -149,17 +148,6 @@ class Execute
     return $this;
   }
 
-  /**
-   * Set users list for executes, if not hand over, then will be used file 'user'.
-   */
-  // public function setUsers(array $users): object
-  // {
-  //   $this->usersList = $users;
-  //   $this->validateUsers = false;
-
-  //   return $this;
-  // }
-
   public function newTask()
   {
     $this->modelTask = new TasksModel();
@@ -170,5 +158,11 @@ class Execute
   public function incrementActions(string $phone): void
   {
     $this->sessionConnect->increment($phone, $this->typeAction);
+  }
+
+  // start client in process cpu. If need look, write in sh console command "top".
+  protected function startClient(string $phone): void
+  {
+    Telegram::instance($phone);
   }
 }
