@@ -106,4 +106,9 @@ class Telegram
   {
     return $this->telegram;
   }
+
+  public function __destruct()
+  {
+    echo "descruct";
+  }
 }

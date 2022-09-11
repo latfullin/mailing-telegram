@@ -11,8 +11,13 @@ class Model
   protected $table;
   protected $where = null;
   protected $or = null;
+  protected $join = null;
   protected mixed $limit = null;
-  protected $column = "*";
+  /**
+   * @param column  ['column' => 'value']
+   */
+  protected $select = "*";
+  protected $separators = ["=", ">", "<"];
   protected static $intsances = [];
 
   public function __construct($table)
@@ -24,9 +29,6 @@ class Model
     $this->connect = new PDO($dsn, $user, $password);
   }
 
-  /**
-   * @param column ['column' => 'value']
-   */
   public function insert(array $values)
   {
     ["column" => $column, "value" => $value] = $this->splitData($values);
@@ -67,7 +69,8 @@ class Model
   {
     return $this->connect
       ->query(
-        "SELECT {$this->column} FROM {$this->table}" .
+        "SELECT {$this->select} FROM {$this->table}" .
+          ($this->join !== null ? " {$this->join}" : "") .
           ($this->where !== null ? " WHERE {$this->where}" : "") .
           ($this->or !== null ? " OR {$this->or}" : "") .
           ($this->limit !== null ? " LIMIT {$this->limit}" : "")
@@ -79,11 +82,42 @@ class Model
   {
     return $this->connect
       ->query(
-        "SELECT {$this->column} FROM {$this->table} WHERE {$this->where}" .
+        "SELECT {$this->select} FROM {$this->table} WHERE {$this->where}" .
           ($this->or !== null ? " OR {$this->or}" : "")
       )
 
       ->fetch(\PDO::FETCH_ASSOC);
+  }
+
+  public function join(array $join): object
+  {
+    $this->join = null;
+    if (is_array($join)) {
+      foreach ($join as $key => $item) {
+        $this->join = " JOIN {$key} ON {$item[0]} {$item[1]} {$item[2]}";
+      }
+    }
+
+    return $this;
+  }
+
+  /**
+   * @param limit Type int - 1,2,3,4....; Type array from - before [0, 10];
+   */
+  public function limit(int|array $limit)
+  {
+    $this->limit = "";
+    if (is_int($limit)) {
+      $this->limit = $limit;
+    }
+    if (is_array($limit)) {
+      $count = count($limit) - 1;
+      foreach ($limit as $key => $int) {
+        $this->limit .= $key == $count ? $int : $int . ",";
+      }
+    }
+
+    return $this;
   }
 
   public function where(array|string $where)
@@ -153,23 +187,5 @@ class Model
     }
 
     return $result;
-  }
-
-  /**
-   * @param limit Type int - 1,2,3,4....; Type array from - before [0, 10];
-   */
-  public function limit(int|array $limit)
-  {
-    $this->limit = "";
-    if (is_int($limit)) {
-      $this->limit = $limit;
-    }
-    if (is_array($limit)) {
-      $count = count($limit) - 1;
-      foreach ($limit as $key => $int) {
-        $this->limit .= $key == $count ? $int : $int . ",";
-      }
-    }
-    return $this;
   }
 }

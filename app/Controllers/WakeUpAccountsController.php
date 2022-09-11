@@ -60,9 +60,14 @@ class WakeUpAccountsController
   //   }
   // }
 
-  public function joinChannel(ArgumentsHelpers $arguments, PhoneModel $phones)
+  public function joinChannel(ArgumentsHelpers $arguments, PhoneModel $session)
   {
-    $phones = $phones->getAll();
+    $phones = $session
+      ->join(["proxies" => ["sessions.phone", "=", "proxies.who_used"]])
+      ->where(["proxies.active" => "1", "sessions.ban" => [0, 2]])
+      ->limit([10])
+      ->get();
+
     $channelId = Telegram::instance($phones[0]->phone)->getInfo(
       $arguments->channel
     )["channel_id"];
@@ -77,7 +82,14 @@ class WakeUpAccountsController
         );
         if (!$inGroup) {
           $telegram->joinChannel($arguments->channel);
+          $session
+            ->where(["phone" => $phone->phone])
+            ->update(["ban" => 0, "flood_wait" => 0]);
         }
+        $telegram->sendMessage(
+          $arguments->channel,
+          "Я   номер:'{$phone->phone}'.Сообщений из  "
+        );
         sleep(10);
       } catch (\Exception $e) {
         print_r($e);
@@ -88,7 +100,6 @@ class WakeUpAccountsController
   private function startClient($phones): void
   {
     foreach ($phones as $phone) {
-      echo $phone->phone;
       Telegram::instance($phone->phone);
     }
   }
