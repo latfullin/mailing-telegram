@@ -26,31 +26,31 @@ use danog\MadelineProto\Tools;
 
 require_once "app/kernel.php";
 
-// new Providers(AutorizationController::class, "createSession", [
-//   "phone" => 31231232412412,
-//   "proxy" => [
-//     "address" => "217.29.63.40",
-//     "port" => 11247,
-//     "login" => "SsPqUX",
-//     "password" => "pBfCut",
-//   ],
-// ]);
+new Providers(AutorizationController::class, "createSession", [
+  "phone" => 6283877702924,
+  "proxy" => [
+    "address" => "45.91.209.149",
+    "port" => 11490,
+    "login" => "WLNyCd",
+    "password" => "7wo4cW",
+  ],
+]);
 // new Controller(InvitationsController::class, "invitationsChannel", [
 //   "channel" => "https://t.me/asdasdasdzxew",
 //   "users" => $a,
 //   "checkUsers" => false,
 // // ]);
 
-new Providers(WakeUpAccountsController::class, "wakeUpAccounts", [
-  "channel" => "https://t.me/+vZ57IK_pcghiOWZi",
-  "limit" => [11, 20],
-]);
+// new Providers(WakeUpAccountsController::class, "joinChannel", [
+//   "channel" => "https://t.me/+vZ57IK_pcghiOWZi",
+//   "limit" => [0, 5],
+// ]);
 
 // foreach ($a as $item) {
 //   Telegram::instance($item)->sendMessage("@hitThat", "hsadsaidsahu dhhds");
 // }
 
-// new Providers(ProxyController::class, "checkProxy", [
+// new Providers(ProxyController::class, "checkActiveProxy", [
 //   "count" => 1,
 //   "period" => 3,
 //   "country" => "nl",
@@ -66,3 +66,6 @@ new Providers(WakeUpAccountsController::class, "wakeUpAccounts", [
 //   "msg" => "zdarova brat",
 //   "country" => "nl",
 // ]);
+// 16257535
+// 82258b80b4bfb2ed89de17879ea566e9
+// Telegram::instance()

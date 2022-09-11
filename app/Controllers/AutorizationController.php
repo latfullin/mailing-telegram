@@ -25,10 +25,12 @@ class AutorizationController
       }
 
       $telegram->autorizationSession(
-        "dsda diashj d84774732 hbfuds2312 asd asd yodasdas d ddas das daso? "
+        "{$argumets->phone}  privated my s toboy "
       );
     } catch (\Exception $e) {
-      $telegram->autorizationSession("My fristasd sas");
+      print_r($e);
+      // $telegram->autorizationSession("My fristasd sas");
+      echo "error";
     }
   }
 }

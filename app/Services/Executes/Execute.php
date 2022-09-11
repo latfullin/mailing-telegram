@@ -85,7 +85,7 @@ class Execute
   protected function getSessionList(): void
   {
     $this->sessionList = $this->sessionConnect
-      ->limit(10)
+      ->limit(20)
       ->sessionList($this->typeAction, $this->limitActions);
   }
 

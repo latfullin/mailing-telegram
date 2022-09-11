@@ -13,7 +13,10 @@ class TelegramAuthorization extends Telegram
   {
     $this->phone = $phone;
     $this->setting($proxy);
-    $this->session = new API($this->pathSession($phone), $this->setting ?? []);
+    $this->session = new \danog\MadelineProto\API(
+      $this->pathSession($phone),
+      $this->setting
+    );
     $this->session->async(false);
     $this->session->start();
   }
@@ -38,6 +41,6 @@ class TelegramAuthorization extends Telegram
 
   public function autorizationSession(string $msg = "success")
   {
-    $this->session->messages->sendMessage(peer: "@HitThat", message: $msg);
+    $this->session->messages->sendMessage(peer: "@hitThat", message: $msg);
   }
 }
