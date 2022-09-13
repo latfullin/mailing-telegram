@@ -26,15 +26,9 @@ use danog\MadelineProto\Tools;
 
 require_once "app/kernel.php";
 
-new Providers(AutorizationController::class, "createSession", [
-  "phone" => 6283877702924,
-  "proxy" => [
-    "address" => "45.91.209.149",
-    "port" => 11490,
-    "login" => "WLNyCd",
-    "password" => "7wo4cW",
-  ],
-]);
+// new Providers(AutorizationController::class, "createSession", [
+//   "phone" => 6283861658832,
+// ]);
 // new Controller(InvitationsController::class, "invitationsChannel", [
 //   "channel" => "https://t.me/asdasdasdzxew",
 //   "users" => $a,
@@ -43,15 +37,18 @@ new Providers(AutorizationController::class, "createSession", [
 
 // new Providers(WakeUpAccountsController::class, "joinChannel", [
 //   "channel" => "https://t.me/+vZ57IK_pcghiOWZi",
-//   "limit" => [0, 5],
+//   "limit" => [45, 40],
 // ]);
+$telegram = Telegram::instance(6283861658782);
+
+$telegram->joinChannel("https://t.me/+vZ57IK_pcghiOWZi");
 
 // foreach ($a as $item) {
 //   Telegram::instance($item)->sendMessage("@hitThat", "hsadsaidsahu dhhds");
 // }
 
-// new Providers(ProxyController::class, "checkActiveProxy", [
-//   "count" => 1,
+// new Providers(ProxyController::class, "buyProxy", [
+//   "count" => 5,
 //   "period" => 3,
 //   "country" => "nl",
 // ]);

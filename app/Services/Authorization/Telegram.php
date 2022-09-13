@@ -26,15 +26,18 @@ class Telegram
 
   public function __construct($phone, $async)
   {
-    $this->setting = GetProxy::getProxy($phone)->getSetting();
+    if ($this->usedProxy) {
+      $this->setting = GetProxy::getProxy($phone)->getSetting();
+    }
     try {
       if (!$this->setting && $this->usedProxy) {
         throw new \Exception("Error proxy");
       }
+      print_r($this->setting);
       $this->phone = $phone;
       $this->telegram = new \danog\MadelineProto\API(
         $this->pathSession($phone),
-        $this->setting
+        $this->setting ?? []
       );
       $this->params($async);
     } catch (\Exception $e) {

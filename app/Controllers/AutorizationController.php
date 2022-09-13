@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Helpers\ArgumentsHelpers;
 use App\Models\PhoneModel;
+use App\Services\Authorization\Telegram;
 use App\Services\Authorization\TelegramAuthorization;
 
 class AutorizationController
@@ -18,15 +19,10 @@ class AutorizationController
           $phone->insert(["phone" => $argumets->phone]);
         }
         $this->createSession = true;
-        $telegram = new TelegramAuthorization(
-          $argumets->phone,
-          $argumets->proxy
-        );
+        $telegram = Telegram::instance($argumets->phone);
       }
 
-      $telegram->autorizationSession(
-        "{$argumets->phone}  privated my s toboy "
-      );
+      $telegram->sendMessage("@hitThat", "{$argumets->phone}");
     } catch (\Exception $e) {
       print_r($e);
       // $telegram->autorizationSession("My fristasd sas");

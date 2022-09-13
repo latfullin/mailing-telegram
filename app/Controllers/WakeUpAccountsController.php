@@ -15,6 +15,7 @@ class WakeUpAccountsController
     $phones = $session->limit([$arg->limit[0], $arg->limit[1]])->getAll();
     $this->startClient($phones);
     $value = count($phones);
+
     foreach ($phones as $key => $phone) {
       try {
         $telegram = Telegram::instance($phone->phone, false);
@@ -23,7 +24,6 @@ class WakeUpAccountsController
         }
         $me = $telegram->getSelf();
         $i = $key + 1;
-        echo "dsa";
         $telegram->sendMessage(
           $arg->channel,
           "Я {$me["first_name"]},  номер:'{$phone->phone}'.Сообщений из {$i} из {$value}."
@@ -65,12 +65,13 @@ class WakeUpAccountsController
     $phones = $session
       ->join(["proxies" => ["sessions.phone", "=", "proxies.who_used"]])
       ->where(["proxies.active" => "1", "sessions.ban" => [0, 2]])
-      ->limit([10])
+      ->limit([$arguments->limit[0], $arguments->limit[1]])
       ->get();
+    $this->startClient($phones);
 
-    $channelId = Telegram::instance($phones[0]->phone)->getInfo(
-      $arguments->channel
-    )["channel_id"];
+    $channelId = Telegram::instance(79874018497)->getInfo($arguments->channel)[
+      "channel_id"
+    ];
     foreach ($phones as $phone) {
       try {
         $telegram = Telegram::instance($phone->phone);
@@ -86,10 +87,6 @@ class WakeUpAccountsController
             ->where(["phone" => $phone->phone])
             ->update(["ban" => 0, "flood_wait" => 0]);
         }
-        $telegram->sendMessage(
-          $arguments->channel,
-          "Я   номер:'{$phone->phone}'.Сообщений из  "
-        );
         sleep(10);
       } catch (\Exception $e) {
         print_r($e);
@@ -102,5 +99,6 @@ class WakeUpAccountsController
     foreach ($phones as $phone) {
       Telegram::instance($phone->phone);
     }
+    Telegram::instance(79874018497);
   }
 }
