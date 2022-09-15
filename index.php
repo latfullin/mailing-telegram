@@ -27,28 +27,26 @@ use danog\MadelineProto\Tools;
 require_once "app/kernel.php";
 
 // new Providers(AutorizationController::class, "createSession", [
-//   "phone" => 6283861658832,
+//   "phone" => 6285223919893,
 // ]);
+
 // new Controller(InvitationsController::class, "invitationsChannel", [
 //   "channel" => "https://t.me/asdasdasdzxew",
 //   "users" => $a,
 //   "checkUsers" => false,
 // // ]);
 
-// new Providers(WakeUpAccountsController::class, "joinChannel", [
-//   "channel" => "https://t.me/+vZ57IK_pcghiOWZi",
-//   "limit" => [45, 40],
-// ]);
-$telegram = Telegram::instance(6283861658782);
-
-$telegram->joinChannel("https://t.me/+vZ57IK_pcghiOWZi");
+new Providers(WakeUpAccountsController::class, "joinChannel", [
+  "channel" => "https://t.me/+vZ57IK_pcghiOWZi",
+  "limit" => [72, 7],
+]);
 
 // foreach ($a as $item) {
 //   Telegram::instance($item)->sendMessage("@hitThat", "hsadsaidsahu dhhds");
 // }
 
 // new Providers(ProxyController::class, "buyProxy", [
-//   "count" => 5,
+//   "count" => 10,
 //   "period" => 3,
 //   "country" => "nl",
 // ]);

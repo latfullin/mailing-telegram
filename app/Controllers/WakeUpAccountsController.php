@@ -69,9 +69,9 @@ class WakeUpAccountsController
       ->get();
     $this->startClient($phones);
 
-    $channelId = Telegram::instance(79874018497)->getInfo($arguments->channel)[
-      "channel_id"
-    ];
+    $start = Telegram::instance(79874018497);
+
+    $channelId = $start->getInfo($arguments->channel)["channel_id"];
     foreach ($phones as $phone) {
       try {
         $telegram = Telegram::instance($phone->phone);
@@ -82,6 +82,7 @@ class WakeUpAccountsController
           fn($i) => ($i["channel_id"] ?? false) == $channelId
         );
         if (!$inGroup) {
+          print_r($inGroup);
           $telegram->joinChannel($arguments->channel);
           $session
             ->where(["phone" => $phone->phone])
