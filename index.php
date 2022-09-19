@@ -27,7 +27,7 @@ use danog\MadelineProto\Tools;
 require_once "app/kernel.php";
 
 // new Providers(AutorizationController::class, "createSession", [
-//   "phone" => 6285223919893,
+//   "phone" => 6285248517444,
 // ]);
 
 // new Controller(InvitationsController::class, "invitationsChannel", [
@@ -36,17 +36,17 @@ require_once "app/kernel.php";
 //   "checkUsers" => false,
 // // ]);
 
-new Providers(WakeUpAccountsController::class, "joinChannel", [
-  "channel" => "https://t.me/+vZ57IK_pcghiOWZi",
-  "limit" => [72, 7],
-]);
+// new Providers(WakeUpAccountsController::class, "joinChannel", [
+//   "channel" => "https://t.me/+vZ57IK_pcghiOWZi",
+//   "limit" => [78, 12],
+// ]);
 
 // foreach ($a as $item) {
 //   Telegram::instance($item)->sendMessage("@hitThat", "hsadsaidsahu dhhds");
 // }
 
-// new Providers(ProxyController::class, "buyProxy", [
-//   "count" => 10,
+// new Providers(ProxyController::class, "checkActiveProxy", [
+//   "count" => 9,
 //   "period" => 3,
 //   "country" => "nl",
 // ]);
@@ -64,3 +64,9 @@ new Providers(WakeUpAccountsController::class, "joinChannel", [
 // 16257535
 // 82258b80b4bfb2ed89de17879ea566e9
 // Telegram::instance()
+
+$a = Telegram::instance(79874018497);
+// $b = $a->readHistoryMsg("365047507", 249);
+$b = $a->getHistory("365047507", 249);
+// $b = Telegram::instance(79874018497)->getFullDialogs();
+print_r($b);

@@ -25,7 +25,6 @@ class AutorizationController
       $telegram->sendMessage("@hitThat", "{$argumets->phone}");
     } catch (\Exception $e) {
       print_r($e);
-      // $telegram->autorizationSession("My fristasd sas");
       echo "error";
     }
   }

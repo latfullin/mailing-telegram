@@ -96,4 +96,36 @@ trait MessageMethodsTelegram
   {
     return $this->telegram->getDialogs();
   }
+
+  public function getFullDialogs()
+  {
+    return $this->telegram->getFullDialogs();
+  }
+
+  public function getHistory($peer, $msg)
+  {
+    return $this->telegram->messages->getHistory(
+      peer: $peer,
+      offset_id: $msg,
+      limit: 0,
+      offset_date: 0,
+      add_offset: 0,
+      max_id: 0,
+      min_id: 0
+    );
+  }
+
+  public function getPeerDialogs($msg)
+  {
+    return $this->telegram->messages->getPeerDialogs(peers: [$msg]);
+  }
+
+  /**
+   * mark msg how read
+   * @return bool
+   */
+  public function readHistoryMsg(string|int $peer, int $id)
+  {
+    return $this->telegram->messages->readHistory(peer: $peer, max_id: $id);
+  }
 }
