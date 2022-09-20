@@ -70,10 +70,10 @@ class Model
     return $this->connect
       ->query(
         "SELECT {$this->select} FROM {$this->table}" .
-          ($this->join !== null ? " {$this->join}" : "") .
-          ($this->where !== null ? " WHERE {$this->where}" : "") .
-          ($this->or !== null ? " OR {$this->or}" : "") .
-          ($this->limit !== null ? " LIMIT {$this->limit}" : "")
+          // ($this->join !== null ? " {$this->join}" : "") .
+          ($this->where !== null ? " WHERE {$this->where}" : "")
+        // ($this->or !== null ? " OR {$this->or}" : "")
+        // ($this->limit !== null ? " LIMIT {$this->limit}" : "")
       )
       ->fetchAll(PDO::FETCH_CLASS);
   }
@@ -164,23 +164,23 @@ class Model
         if (is_array($value)) {
           $result .=
             $count === $i
-              ? "({$key} = '{$value[0]}' OR {$key} = '{$value[1]}') "
-              : "({$key} = '{$value[0]}' OR {$key} = '{$value[1]}') ";
+              ? "(`{$key}` = '{$value[0]}' OR `{$key}` = '{$value[1]}')"
+              : "(`{$key}` = '{$value[0]}' OR `{$key}` = '{$value[1]}') ";
         } else {
           $result .=
-            $count === $i ? "{$key} = '{$value}' " : "{$key} = '{$value}' ";
+            $count === $i ? "`{$key}` = '{$value}' " : "`{$key}` = '{$value}' ";
         }
       } else {
         if (is_array($value)) {
           $result .=
             $count === $i
-              ? "AND ({$key} = '{$value[0]}' OR {$key} = '{$value[1]}') "
-              : "AND ({$key} = '{$value[0]}' OR {$key} = '{$value[1]}') ";
+              ? "AND (`{$key}` = '{$value[0]}' OR `{$key}` = '{$value[1]}') "
+              : "AND (`{$key}` = '{$value[0]}' OR `{$key}` = '{$value[1]}') ";
         } else {
           $result .=
             $count === $i
-              ? "AND {$key} = '{$value}' "
-              : "AND {$key} = '{$value}', ";
+              ? "AND `{$key}` = '{$value}'"
+              : "AND `{$key}` = '{$value}', ";
         }
       }
       $i++;
