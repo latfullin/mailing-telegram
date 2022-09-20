@@ -42,7 +42,6 @@ class Telegram
     } catch (\Exception $e) {
       ErrorHelper::writeToFile($e);
       $this->checkError($e, $phone);
-      new self($phone, $async);
     }
   }
 
@@ -64,7 +63,10 @@ class Telegram
    */
   public static function instance($phone, bool $async = false)
   {
-    return new self($phone, $async);
+    try {
+      return new self($phone, $async);
+    } catch (\Exception $e) {
+    }
   }
 
   protected function pathSession()

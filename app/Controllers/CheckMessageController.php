@@ -21,22 +21,33 @@ class CheckMessageController
     }
     try {
       $telegram = Telegram::instance($phone["phone"]);
-      $dialogs = $telegram->getFullDialogs();
     } catch (\Exception $e) {
+      if (!$telegram) {
+        $telegram = Telegram::instance($phone["phone"]);
+      }
     }
 
+    $dialogs = $telegram->getFullDialogs();
     foreach ($dialogs as $dialog) {
       if ($dialog["peer"]["_"] === "peerUser") {
         $message = $messages
-          ->where(["from" => [$dialog["peer"]["user_id"], $phone["me_id"]]])
-          ->orWhere(["to" => [$dialog["peer"]["user_id"], $phone["me_id"]]])
-          ->orderByDesc("id")
+          ->where([
+            "from" => [$dialog["peer"]["user_id"], $phone["me_id"]],
+            "to" => [$dialog["peer"]["user_id"], $phone["me_id"]],
+          ])
+          ->orderByDesc("msg_id")
           ->first();
-        $topMsg = $dialog["top_message"] + 1;
-
-        if ($message["msg_id"] ?? false !== $topMsg) {
-          $history = $telegram->getHistory($dialog["peer"]["user_id"], $topMsg);
-          $telegram->readHistoryMsg($dialog["peer"]["user_id"], $topMsg);
+        $topMsg = $dialog["top_message"];
+        $msgId = $message["msg_id"] ?? false;
+        print_r($topMsg);
+        echo "fsapofkasopfkpasf";
+        print_r($message);
+        if ($msgId !== $topMsg) {
+          $history = $telegram->getHistory(
+            $dialog["peer"]["user_id"],
+            $topMsg + 1
+          );
+          $telegram->readHistoryMsg($dialog["peer"]["user_id"], $topMsg + 1);
           foreach ($history["messages"] as $msg) {
             if (!$msg) {
               continue;
