@@ -8,6 +8,8 @@ use App\Services\Proxy\GetProxy;
 use App\Traits\Account\AccountMethodsTelegram;
 use App\Traits\Channels\ChannelsMethodsTelegram;
 use App\Traits\Message\MessageMethodsTelegram;
+use danog\MadelineProto\Settings\Connection;
+use danog\MadelineProto\Stream\Proxy\HttpProxy;
 use Exception;
 
 class Telegram
@@ -33,11 +35,20 @@ class Telegram
       if (!$this->setting && $this->usedProxy) {
         throw new \Exception("Error proxy");
       }
+      $settings = new Connection();
+
+      $settings->addProxy(HttpProxy::class, [
+        "address" => "194.67.221.38",
+        "port" => "9565",
+        "username" => "1GfF63",
+        "password" => "vUqry0",
+      ]);
       $this->phone = $phone;
       $this->telegram = new \danog\MadelineProto\API(
         $this->pathSession($phone),
-        $this->setting ?? []
+        $settings ?? []
       );
+      $this->telegram->updateSettings($settings);
       $this->params($async);
     } catch (\Exception $e) {
       ErrorHelper::writeToFile($e);

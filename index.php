@@ -23,6 +23,8 @@ use Carbon\Carbon;
 use danog\MadelineProto\Logger;
 use danog\MadelineProto\messages;
 use danog\MadelineProto\MyTelegramOrgWrapper;
+use danog\MadelineProto\Settings\Connection;
+use danog\MadelineProto\Stream\Proxy\HttpProxy;
 use danog\MadelineProto\Tools;
 
 require_once "app/kernel.php";
@@ -66,11 +68,19 @@ require_once "app/kernel.php";
 // 82258b80b4bfb2ed89de17879ea566e9
 // Telegram::instance()
 
-new Providers(CheckMessageController::class, "update", [
-  "phone" => 79874018497,
-]);
+// new Providers(CheckMessageController::class, "update", [
+//   "phone" => 79874018497,
+// ]);
 
-// $a = Telegram::instance(79874018497);
 // $b = $a->readHistoryMsg("365047507", 249);
 // $b = Telegram::instance(79874018497)->getFullDialogs();
 // print_r($b);
+
+
+
+сделать обновление прокксей в настройках, если они уже использовались
+foreach ([79874018497] as $item) {
+  $a = Telegram::instance(79874018497);
+}
+sleep(10);
+Telegram::instance(79874018497)->sendMessage("@hitThat", "helldsadso");
