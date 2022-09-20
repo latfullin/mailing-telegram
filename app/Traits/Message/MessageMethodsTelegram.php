@@ -107,7 +107,7 @@ trait MessageMethodsTelegram
     return $this->telegram->messages->getHistory(
       peer: $peer,
       offset_id: $msg,
-      limit: 0,
+      limit: 50,
       offset_date: 0,
       add_offset: 0,
       max_id: 0,

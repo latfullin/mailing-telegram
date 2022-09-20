@@ -8,6 +8,6 @@ class MessagesModel extends Model
 
   public function __construct()
   {
-    parent::__construct($this->table);
+    return parent::__construct($this->table);
   }
 }

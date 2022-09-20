@@ -33,7 +33,6 @@ class Telegram
       if (!$this->setting && $this->usedProxy) {
         throw new \Exception("Error proxy");
       }
-      print_r($this->setting);
       $this->phone = $phone;
       $this->telegram = new \danog\MadelineProto\API(
         $this->pathSession($phone),
@@ -43,7 +42,7 @@ class Telegram
     } catch (\Exception $e) {
       ErrorHelper::writeToFile($e);
       $this->checkError($e, $phone);
-      return;
+      new self($phone, $async);
     }
   }
 

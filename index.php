@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\AutorizationController;
+use App\Controllers\CheckMessageController;
 use App\Controllers\Controller;
 use App\Controllers\CreateMailingMessagesController;
 use App\Controllers\InvitationsController;
@@ -65,8 +66,11 @@ require_once "app/kernel.php";
 // 82258b80b4bfb2ed89de17879ea566e9
 // Telegram::instance()
 
-$a = Telegram::instance(79874018497);
+new Providers(CheckMessageController::class, "update", [
+  "phone" => 79874018497,
+]);
+
+// $a = Telegram::instance(79874018497);
 // $b = $a->readHistoryMsg("365047507", 249);
-$b = $a->getHistory("365047507", 249);
 // $b = Telegram::instance(79874018497)->getFullDialogs();
-print_r($b);
+// print_r($b);
