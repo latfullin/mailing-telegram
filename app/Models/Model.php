@@ -12,6 +12,7 @@ class Model
   protected $where = null;
   protected $or = null;
   protected $join = null;
+  protected $order = null;
   protected mixed $limit = null;
   /**
    * @param column  ['column' => 'value']
@@ -33,7 +34,7 @@ class Model
   {
     ["column" => $column, "value" => $value] = $this->splitData($values);
     $this->connect->query(
-      "INSERT INTO {$this->table} ({$column}, created_at) VALUES ({$value}, now())"
+      "INSERT INTO {$this->table} ({$column}, `created_at`) VALUES ({$value}, now())"
     );
   }
 
@@ -70,10 +71,11 @@ class Model
     return $this->connect
       ->query(
         "SELECT {$this->select} FROM {$this->table}" .
-          // ($this->join !== null ? " {$this->join}" : "") .
-          ($this->where !== null ? " WHERE {$this->where}" : "")
-        // ($this->or !== null ? " OR {$this->or}" : "")
-        // ($this->limit !== null ? " LIMIT {$this->limit}" : "")
+          ($this->join !== null ? " {$this->join}" : "") .
+          ($this->where !== null ? " WHERE {$this->where}" : "") .
+          ($this->or !== null ? " OR {$this->or}" : "") .
+          ($this->limit !== null ? " LIMIT {$this->limit}" : "") .
+          ($this->order !== null ? " {$this->order}" : "")
       )
       ->fetchAll(PDO::FETCH_CLASS);
   }
@@ -82,10 +84,13 @@ class Model
   {
     return $this->connect
       ->query(
-        "SELECT {$this->select} FROM {$this->table} WHERE {$this->where}" .
-          ($this->or !== null ? " OR {$this->or}" : "")
+        "SELECT {$this->select} FROM {$this->table}" .
+          ($this->join !== null ? " {$this->join}" : "") .
+          ($this->where !== null ? " WHERE {$this->where}" : "") .
+          ($this->or !== null ? " OR {$this->or}" : "") .
+          ($this->limit !== null ? " LIMIT {$this->limit}" : "") .
+          ($this->order !== null ? " {$this->order}" : "")
       )
-
       ->fetch(\PDO::FETCH_ASSOC);
   }
 
@@ -146,7 +151,7 @@ class Model
     $count = count($array) - 1;
     $i = 0;
     foreach ($array as $key => $item) {
-      $result["column"] .= $count === $i ? "{$key}" : "{$key},";
+      $result["column"] .= $count === $i ? "`{$key}`" : "`{$key}`,";
       $result["value"] .= $count === $i ? "'{$item}'" : "'{$item}',";
       $i++;
     }
@@ -187,5 +192,19 @@ class Model
     }
 
     return $result;
+  }
+
+  public function orderBy(string $colum)
+  {
+    $this->order = "ORDER BY `{$colum}` ASC";
+
+    return $this;
+  }
+
+  public function orderByDesc(string $colum)
+  {
+    $this->order = "ORDER BY `{$colum}` DESC";
+
+    return $this;
   }
 }
