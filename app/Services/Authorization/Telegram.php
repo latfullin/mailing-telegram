@@ -8,9 +8,6 @@ use App\Services\Proxy\GetProxy;
 use App\Traits\Account\AccountMethodsTelegram;
 use App\Traits\Channels\ChannelsMethodsTelegram;
 use App\Traits\Message\MessageMethodsTelegram;
-use danog\MadelineProto\Settings\Connection;
-use danog\MadelineProto\Stream\Proxy\HttpProxy;
-use Exception;
 
 class Telegram
 {
@@ -31,22 +28,18 @@ class Telegram
     if ($this->usedProxy) {
       $this->setting = GetProxy::getProxy($phone)->getSetting();
     }
-    // $settings = new Connection();
-
-    print_r($this->setting instanceof Connection);
-    // print_r($this->setting);
-    die();
     try {
       if (!$this->setting && $this->usedProxy) {
         throw new \Exception("Error proxy");
       }
-
       $this->phone = $phone;
       $this->telegram = new \danog\MadelineProto\API(
         $this->pathSession($phone),
-        $settings ?? []
+        $this->setting ?? []
       );
-      $this->telegram->updateSettings($settings);
+      if ($this->setting instanceof \danog\MadelineProto\Settings\Connection) {
+        $this->telegram->updateSettings($this->setting);
+      }
       $this->params($async);
     } catch (\Exception $e) {
       ErrorHelper::writeToFile($e);
@@ -88,7 +81,7 @@ class Telegram
     }
   }
 
-  public function checkError(Exception $e, int $phone)
+  public function checkError(\Exception $e, int $phone)
   {
     ErrorHelper::writeToFile($e);
     if ($e->getMessage() == "PEER_FLOOD") {

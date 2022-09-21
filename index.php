@@ -66,7 +66,7 @@ require_once "app/kernel.php";
 // ]);
 // 16257535
 // 82258b80b4bfb2ed89de17879ea566e9
-Telegram::instance(6281261276212);
+// Telegram::instance(79874018497);
 
 // new Providers(CheckMessageController::class, "update", [
 //   "phone" => 79874018497,
@@ -77,11 +77,11 @@ Telegram::instance(6281261276212);
 // print_r($b);
 
 // сделать обновление прокксей в настройках, если они уже использовались
-// foreach ([79874018497] as $item) {
-//   $a = Telegram::instance(79874018497);
-// }
-// sleep(10);
-// Telegram::instance(79874018497)->sendMessage(
-//   "@hitThat",
-//   "hedas das das dasdas dasdaslldsadso"
-// );
+foreach ([79874018497] as $item) {
+  $a = Telegram::instance(79874018497);
+}
+sleep(10);
+Telegram::instance(79874018497)->sendMessage(
+  "@hitThat",
+  "hedas das das dasdas dasdaslldsadso"
+);
