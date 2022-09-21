@@ -17,7 +17,6 @@ class GetProxy
     $setting = $this->proxy
       ->where(["who_used" => $phone, "active" => true])
       ->first();
-    print_r($setting);
     empty($setting)
       ? $this->newSettingProxy($phone)
       : $this->setSettings($setting);
@@ -33,9 +32,9 @@ class GetProxy
         ->where(["id" => $data["id"]])
         ->update(["who_used" => $phone]);
 
-      $wasUsed = $this->proxy->where(["who_used" => $phone])->first();
-      print_r($wasUsed);
-      $wasUsed ? $this->setUpdateSettings($data) : $this->setSettings($data);
+      $this->proxy->where(["who_used" => $phone])->first()
+        ? $this->setUpdateSettings($data)
+        : $this->setSettings($data);
     } else {
       $this->setting = false;
     }
