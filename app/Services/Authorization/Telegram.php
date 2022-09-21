@@ -31,18 +31,16 @@ class Telegram
     if ($this->usedProxy) {
       $this->setting = GetProxy::getProxy($phone)->getSetting();
     }
+    // $settings = new Connection();
+
+    print_r($this->setting instanceof Connection);
+    // print_r($this->setting);
+    die();
     try {
       if (!$this->setting && $this->usedProxy) {
         throw new \Exception("Error proxy");
       }
-      $settings = new Connection();
 
-      $settings->addProxy(HttpProxy::class, [
-        "address" => "194.67.221.38",
-        "port" => "9565",
-        "username" => "1GfF63",
-        "password" => "vUqry0",
-      ]);
       $this->phone = $phone;
       $this->telegram = new \danog\MadelineProto\API(
         $this->pathSession($phone),
