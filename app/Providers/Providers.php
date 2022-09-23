@@ -6,7 +6,7 @@ use ReflectionMethod;
 
 class Providers
 {
-  protected array $type = ["string", "int", "bool", "array"];
+  protected array $type = ['string', 'int', 'bool', 'array'];
 
   public function __construct($controller, string $function, $argumets = [])
   {
@@ -14,7 +14,8 @@ class Providers
     $reflection = new ReflectionMethod($controller, $function);
     foreach ($reflection->getParameters() as $param) {
       $nameClass = $param->getType()->getName();
-      if ($nameClass == "App\Helpers\ArgumentsHelpers") {
+      if ($nameClass == 'App\Helpers\ArgumentsHelpers') {
+        $argumets = $argumets ? $this->chunkParams($argumets) : [];
         $class[] = new $nameClass($argumets ?? []);
       } else {
         $class[] = $this->getAddicted($nameClass);
@@ -36,5 +37,19 @@ class Providers
       }
     }
     return $reflection->newInstanceArgs($argumets);
+  }
+
+  public function chunkParams($argumets)
+  {
+    $data = [];
+    foreach ($argumets as $argumet) {
+      if ($argumet) {
+        foreach ($argumet as $key => $item) {
+          $data[$key] = $item;
+        }
+      }
+    }
+
+    return $data;
   }
 }

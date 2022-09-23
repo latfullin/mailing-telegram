@@ -39,9 +39,7 @@ class CheckMessageController
           ->first();
         $topMsg = $dialog["top_message"];
         $msgId = $message["msg_id"] ?? false;
-        print_r($topMsg);
-        echo "fsapofkasopfkpasf";
-        print_r($message);
+
         if ($msgId !== $topMsg) {
           $history = $telegram->getHistory(
             $dialog["peer"]["user_id"],

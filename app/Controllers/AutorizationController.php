@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Helpers\ArgumentsHelpers;
 use App\Models\PhoneModel;
 use App\Services\Authorization\Telegram;
-use App\Services\Authorization\TelegramAuthorization;
 
 class AutorizationController
 {

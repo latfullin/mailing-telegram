@@ -19,7 +19,6 @@ use App\Providers\Providers;
 use App\Services\Authorization\Telegram;
 use App\Services\Bot\TelegramBot;
 use App\Services\Proxy\Ipv6Proxy;
-use Carbon\Carbon;
 use danog\MadelineProto\Logger;
 use danog\MadelineProto\messages;
 use danog\MadelineProto\MyTelegramOrgWrapper;
@@ -27,7 +26,7 @@ use danog\MadelineProto\Settings\Connection;
 use danog\MadelineProto\Stream\Proxy\HttpProxy;
 use danog\MadelineProto\Tools;
 
-require_once "app/kernel.php";
+require_once 'app/kernel.php';
 
 // new Providers(AutorizationController::class, "createSession", [
 //   "phone" => 6285248517444,
@@ -44,13 +43,9 @@ require_once "app/kernel.php";
 //   "limit" => [78, 12],
 // ]);
 
-// foreach ($a as $item) {
-//   Telegram::instance($item)->sendMessage("@hitThat", "hsadsaidsahu dhhds");
-// }
-
-new Providers(ProxyController::class, "checkActiveProxy", [
-  "count" => 9,
-]);
+// new Providers(ProxyController::class, "checkActiveProxy", [
+//   "count" => 9,
+// ]);
 
 // new Providers(MailingMessagesController::class, "continueTask", [
 //   "task" => 115,
@@ -69,12 +64,10 @@ new Providers(ProxyController::class, "checkActiveProxy", [
 // new Providers(CheckMessageController::class, "update", [
 //   "phone" => 79874018497,
 // ]);
-
-foreach ([79874018497] as $item) {
-  $a = Telegram::instance(79874018497);
-}
-sleep(10);
-Telegram::instance(79874018497)->sendMessage(
-  "@hitThat",
-  "hedas das das dasdas dasdasd asdpo kaopsdk asopngpd klasldoasopi dmoias ndiokasaslldsadso"
-);
+// echo "dasdasd asd asda";
+// echo "<pre/>";
+// print_r($_SERVER);
+// foreach ([79874018497] as $item) {
+//   $a = Telegram::instance(79874018497);
+// }
+// sleep(10);
