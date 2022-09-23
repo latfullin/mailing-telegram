@@ -62,18 +62,22 @@
     }
   </style>
 </head>
-<div class="error404">
-  <div class="container error404__container">
+<body>
+  <? include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/components/menu/menu.php" ?>
+  
+  <div class="error404">
+    <div class="container error404__container">
     <p class="error404__title">
       <span>4</span><span>0</span><span>4</span>
       <span>!</span>
     </p>
     <p class="error404__text"> Похоже, вы выбрали неправильный путь.
-    </p>
-    <p class="error404__text"> Не волнуйтесь, время от времени, это случается с каждым из нас.
-    </p>
+      </p>
+      <p class="error404__text"> Не волнуйтесь, время от времени, это случается с каждым из нас.
+        </p>
     <div class="error404__controls">
-      <a href="home" class="btn -primary error404__btn">Перейти на главную</a>
+      <a href="/home" class="btn -primary error404__btn">Перейти на главную</a>
     </div>
   </div>
 </div>
+</body>

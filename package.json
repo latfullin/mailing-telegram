@@ -14,11 +14,11 @@
   },
   "devDependencies": {
     "@prettier/plugin-php": "^0.18.9",
-    "prettier": "^2.7.1",
-    "laravel-mix": "^6.0.49",
     "browser-sync": "^2.27.5",
     "browser-sync-webpack-plugin": "^2.3.0",
-    "postcss-sort-media-queries": "^3.11.12"
+    "laravel-mix": "^6.0.49",
+    "postcss-sort-media-queries": "^3.11.12",
+    "prettier": "2.7.1"
   },
   "dependencies": {
     "npm": "^8.17.0"

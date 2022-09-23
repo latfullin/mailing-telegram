@@ -18,7 +18,12 @@ class Router
     }
     if ($method == 'GET') {
       $params = self::getLayout($url, $method);
-      include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/layouts/{$params}.php";
+      if ($params != '404') {
+        $page = substr($params['page'], 0) == '/' ? substr($params['page'], 1) : $params['page'];
+        include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/components/layouts/{$params['layout']}.php";
+      } else {
+        self::notFound();
+      }
     }
   }
 
@@ -26,7 +31,7 @@ class Router
   {
     $pages = new PagesModel();
     $params = $pages->where(['page' => $url, 'method' => $method])->first();
-    return $params ? $params['layout'] : '404';
+    return $params ? $params : '404';
   }
 
   public static function getRoute()
@@ -54,7 +59,11 @@ class Router
     if (self::$post[$url] ?? false) {
       new Providers(self::$post[$url][0], self::$post[$url][1], [$_GET, $_POST]);
     } else {
-      include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/layouts/404.php";
+      self::notFound();
     }
+  }
+  public static function notFound()
+  {
+    include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/components/layouts/404.php";
   }
 }
