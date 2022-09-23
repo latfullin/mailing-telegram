@@ -48,11 +48,9 @@ require_once "app/kernel.php";
 //   Telegram::instance($item)->sendMessage("@hitThat", "hsadsaidsahu dhhds");
 // }
 
-// new Providers(ProxyController::class, "checkActiveProxy", [
-//   "count" => 9,
-//   "period" => 3,
-//   "country" => "nl",
-// ]);
+new Providers(ProxyController::class, "checkActiveProxy", [
+  "count" => 9,
+]);
 
 // new Providers(MailingMessagesController::class, "continueTask", [
 //   "task" => 115,
@@ -72,16 +70,11 @@ require_once "app/kernel.php";
 //   "phone" => 79874018497,
 // ]);
 
-// $b = $a->readHistoryMsg("365047507", 249);
-// $b = Telegram::instance(79874018497)->getFullDialogs();
-// print_r($b);
-
-// сделать обновление прокксей в настройках, если они уже использовались
 foreach ([79874018497] as $item) {
   $a = Telegram::instance(79874018497);
 }
 sleep(10);
 Telegram::instance(79874018497)->sendMessage(
   "@hitThat",
-  "hedas das das dasdas dasdaslldsadso"
+  "hedas das das dasdas dasdasd asdpo kaopsdk asopngpd klasldoasopi dmoias ndiokasaslldsadso"
 );
