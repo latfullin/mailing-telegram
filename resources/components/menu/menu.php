@@ -6,14 +6,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
       <ul class="navbar-nav">
-        <li class="nav-item dropdown">
+        <li class="nav-item">
           <a class="nav-link" href="/send-message" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Написать сообщение
           </a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link" href="/buy-proxy" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Купить прокси
+        <li class="nav-item ">
+          <a class="nav-link" href="/proxy" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Прокси
           </a>
         </li>
       </ul>

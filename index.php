@@ -1,31 +1,5 @@
 <?php
 
-use App\Controllers\AutorizationController;
-use App\Controllers\CheckMessageController;
-use App\Controllers\Controller;
-use App\Controllers\CreateMailingMessagesController;
-use App\Controllers\InvitationsController;
-use App\Controllers\MailingMessagesController;
-use App\Controllers\ParserController;
-use App\Controllers\PrepareAccountController;
-use App\Controllers\ProxyController;
-use App\Controllers\WakeUpAccountsController;
-use App\Models\InvitationsModel;
-use App\Models\MailingModel;
-use App\Models\PhoneModel;
-use App\Models\ProxyModel;
-use App\Models\TasksModel;
-use App\Providers\Providers;
-use App\Services\Authorization\Telegram;
-use App\Services\Bot\TelegramBot;
-use App\Services\Proxy\Ipv6Proxy;
-use danog\MadelineProto\Logger;
-use danog\MadelineProto\messages;
-use danog\MadelineProto\MyTelegramOrgWrapper;
-use danog\MadelineProto\Settings\Connection;
-use danog\MadelineProto\Stream\Proxy\HttpProxy;
-use danog\MadelineProto\Tools;
-
 require_once 'app/kernel.php';
 
 // new Providers(AutorizationController::class, "createSession", [
@@ -64,10 +38,3 @@ require_once 'app/kernel.php';
 // new Providers(CheckMessageController::class, "update", [
 //   "phone" => 79874018497,
 // ]);
-// echo "dasdasd asd asda";
-// echo "<pre/>";
-// print_r($_SERVER);
-// foreach ([79874018497] as $item) {
-//   $a = Telegram::instance(79874018497);
-// }
-// sleep(10);

@@ -10,14 +10,16 @@ class Router
   private static PagesModel $layout;
   private static $web = [];
   private static $post = [];
+  private static $url = '';
   public static function start(string $url, string $method)
   {
-    $url = strtok($url, '?');
+    self::$url = strtok($url, '?');
     if ($method == 'POST') {
-      self::postValidate($url);
+      self::postValidate(self::$url);
+      return;
     }
     if ($method == 'GET') {
-      $params = self::getLayout($url, $method);
+      $params = self::getLayout(self::$url, $method);
       if ($params != '404') {
         $page = substr($params['page'], 0) == '/' ? substr($params['page'], 1) : $params['page'];
         include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/components/layouts/{$params['layout']}.php";
@@ -34,9 +36,9 @@ class Router
     return $params ? $params : '404';
   }
 
-  public static function getRoute()
+  public static function getUrl()
   {
-    print_r(self::$web);
+    return self::$web[self::$url];
   }
 
   public static function get($url, $class)
@@ -57,7 +59,7 @@ class Router
   public static function postValidate($url)
   {
     if (self::$post[$url] ?? false) {
-      new Providers(self::$post[$url][0], self::$post[$url][1], [$_GET, $_POST]);
+      return new Providers(self::$post[$url][0], self::$post[$url][1], [$_GET, $_POST]);
     } else {
       self::notFound();
     }
