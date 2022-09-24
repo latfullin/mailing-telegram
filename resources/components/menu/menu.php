@@ -16,6 +16,16 @@
             Прокси
           </a>
         </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/task" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Задания
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/created-task" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Создать задание
+          </a>
+        </li>
       </ul>
     </div>
   </div>

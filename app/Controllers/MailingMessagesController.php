@@ -9,27 +9,23 @@ use App\Services\Executes\MailingMessagesExecute;
 
 class MailingMessagesController
 {
-  public function createTaskMailingMessages(
-    ArgumentsHelpers $arguments,
-    MailingMessagesExecute $execute
-  ) {
+  public function createTaskMailingMessages(ArgumentsHelpers $arguments, MailingMessagesExecute $execute)
+  {
+    $users = preg_split('/[\r\n]+/', $arguments->users, -1, PREG_SPLIT_NO_EMPTY);
     $execute
       ->setMsg($arguments->msg)
       ->setFile($arguments->file ?? false)
-      ->setUsers($arguments->users);
+      ->setUsers($users);
   }
 
-  public function continueTask(
-    ArgumentsHelpers $arguments,
-    TasksModel $tasksModel,
-    ContinueTaskExecute $continue
-  ) {
-    $task = $tasksModel->where(["task" => $arguments->task])->first();
+  public function continueTask(ArgumentsHelpers $arguments, TasksModel $tasksModel, ContinueTaskExecute $continue)
+  {
+    $task = $tasksModel->where(['task' => $arguments->task])->first();
 
     $continue
-      ->setTaskExecute($task["task"])
+      ->setTaskExecute($task['task'])
       ->setMsg($arguments->msg)
-      ->setFile($arguments->photo ?? "")
+      ->setFile($arguments->photo ?? '')
       ->execute();
   }
 }
