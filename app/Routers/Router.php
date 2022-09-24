@@ -19,10 +19,10 @@ class Router
       return;
     }
     if ($method == 'GET') {
-      $params = self::getLayout(self::$url, $method);
-      if ($params != '404') {
-        $page = substr($params['page'], 0) == '/' ? substr($params['page'], 1) : $params['page'];
-        include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/components/layouts/{$params['layout']}.php";
+      // $params = self::getLayout(self::$url, $method);
+      if (self::$web[$url] ?? false) {
+        self::webValidate(self::$url);
+        // include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/components/layouts/{$params['layout']}.php";
       } else {
         self::notFound();
       }
@@ -56,16 +56,27 @@ class Router
     print_r(self::$post);
   }
 
-  public static function postValidate($url)
+  public static function postValidate($url, array $data = [])
   {
     if (self::$post[$url] ?? false) {
-      return new Providers(self::$post[$url][0], self::$post[$url][1], [$_GET, $_POST]);
+      new Providers(self::$post[$url][0], self::$post[$url][1], [$_GET, $_POST, $data]);
     } else {
       self::notFound();
     }
   }
+
+  public static function webValidate($url, array $data = [])
+  {
+    if (self::$web[$url] ?? false) {
+      $data['page'] = substr($url, 0) == '/' ? substr($url, 1) : $url;
+      new Providers(self::$web[$url][0], self::$web[$url][1], [$_GET, $_POST, $data]);
+    } else {
+      self::notFound();
+    }
+  }
+
   public static function notFound()
   {
-    include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/components/layouts/404.php";
+    view('default', ['page' => 404], 404);
   }
 }

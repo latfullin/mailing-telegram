@@ -1,6 +1,6 @@
-<div class="proxy">
+<div class="proxy li col-6">
   <h2 class="fs-2">Купить прокси</h2>
-  <form class="row g-3 col-6 px-1" action="/api/buy-proxy" method="POST">
+  <form class="row g-3 px-1" action="/api/buy-proxy" method="POST">
     <label for="country">
       Страна:
     </label>

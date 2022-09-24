@@ -8,7 +8,7 @@
 <body>
   <head>
       <? include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/components/menu/menu.php" ?>
-      <? include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/components/pages/{$page}.php" ?>
+      <? include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/components/pages/{$this->data['page']}.php" ?>
   </head>
 </body>
 

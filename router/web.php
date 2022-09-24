@@ -1,7 +1,7 @@
 <?php
 
+use App\Controllers\ViewController;
 use App\Routers\Router;
 
-Router::get("/get", [Router::class]);
-Router::get("/class", [Router::class]);
-Router::get("/sfasfs", [Router::class]);
+Router::get('/proxy', [ViewController::class, 'viewProxy']);
+Router::get('/send-message', [ViewController::class, 'sendMessage']);

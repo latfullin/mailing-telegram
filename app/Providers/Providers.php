@@ -42,10 +42,14 @@ class Providers
   public function chunkParams($argumets)
   {
     $data = [];
-    foreach ($argumets as $argumet) {
+    foreach ($argumets as $key => $argumet) {
       if ($argumet) {
-        foreach ($argumet as $key => $item) {
-          $data[$key] = $item;
+        if (is_array($argumet)) {
+          foreach ($argumet as $key => $item) {
+            $data[$key] = $item;
+          }
+        } else {
+          $data[$key] = $argumet;
         }
       }
     }
