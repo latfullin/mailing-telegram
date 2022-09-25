@@ -4,6 +4,7 @@ namespace App\Routers;
 
 use App\Models\PagesModel;
 use App\Providers\Providers;
+use App\Services\Executes\Execute;
 
 class Router
 {
@@ -19,10 +20,8 @@ class Router
       return;
     }
     if ($method == 'GET') {
-      // $params = self::getLayout(self::$url, $method);
       if (self::$web[$url] ?? false) {
         self::webValidate(self::$url);
-        // include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/components/layouts/{$params['layout']}.php";
       } else {
         self::notFound();
       }
@@ -59,7 +58,11 @@ class Router
   public static function postValidate($url, array $data = [])
   {
     if (self::$post[$url] ?? false) {
-      new Providers(self::$post[$url][0], self::$post[$url][1], [$_GET, $_POST, $data]);
+      try {
+        new Providers(self::$post[$url][0], self::$post[$url][1], [$_GET, $_POST, $data]);
+      } catch (Execute $e) {
+        self::notFound();
+      }
     } else {
       self::notFound();
     }

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Routers\Router;
 use ReflectionMethod;
 
 class Providers
@@ -10,19 +11,24 @@ class Providers
 
   public function __construct($controller, string $function, $argumets = [])
   {
-    $class = [];
-    $reflection = new ReflectionMethod($controller, $function);
-    foreach ($reflection->getParameters() as $param) {
-      $nameClass = $param->getType()->getName();
-      if ($nameClass == 'App\Helpers\ArgumentsHelpers') {
-        $argumets = $argumets ? $this->chunkParams($argumets) : [];
-        $class[] = new $nameClass($argumets ?? []);
-      } else {
-        $class[] = $this->getAddicted($nameClass);
+    try {
+      $class = [];
+      $reflection = new ReflectionMethod($controller, $function);
+      foreach ($reflection->getParameters() as $param) {
+        $nameClass = $param->getType()->getName();
+        if ($nameClass == 'App\Helpers\ArgumentsHelpers') {
+          $argumets = $argumets ? $this->chunkParams($argumets) : [];
+          $class[] = new $nameClass($argumets ?? []);
+        } else {
+          $class[] = $this->getAddicted($nameClass);
+        }
       }
-    }
 
-    $reflection->invokeArgs(new $controller(), $class);
+      $reflection->invokeArgs(new $controller(), $class);
+    } catch (\Exception $e) {
+      Router::notFound();
+      die();
+    }
   }
 
   public function getAddicted($class)
