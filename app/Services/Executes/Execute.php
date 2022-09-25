@@ -43,19 +43,16 @@ class Execute
 
   protected ?PhoneModel $sessionConnect = null;
   protected ?TasksModel $modelTask = null;
-  protected string $typeAction = "";
-  protected string $nameTask = "empty";
+  protected string $typeAction = '';
+  protected string $nameTask = 'empty';
   protected int $limitActions = 10;
 
   /**
    * @param phone hand over param if need init certain phones number, else will use phone is name 'phone';
    */
-  public function __construct(
-    string $typeAction = "",
-    string $nameTask = "",
-    int $limitActions = 10
-  ) {
-    $this->typeAction = $typeAction ? $typeAction : "count_action";
+  public function __construct(string $typeAction = '', string $nameTask = '', int $limitActions = 10)
+  {
+    $this->typeAction = $typeAction ? $typeAction : 'count_action';
     $this->nameTask = $nameTask;
     $this->limitActions = $limitActions;
     $this->sessionConnect = new PhoneModel();
@@ -73,7 +70,7 @@ class Execute
       if ($this->usersList) {
         return true;
       } else {
-        throw new \Exception("Users list empty");
+        throw new \Exception('Users list empty');
       }
     } catch (\Exception $e) {
       ErrorHelper::writeToFileAndDie("$e\n");
@@ -84,42 +81,36 @@ class Execute
 
   protected function getSessionList(): void
   {
-    $this->sessionList = $this->sessionConnect
-      ->limit(20)
-      ->sessionList($this->typeAction, $this->limitActions);
+    $this->sessionList = $this->sessionConnect->limit(20)->sessionList($this->typeAction, $this->limitActions);
   }
 
-  protected function methodsWithChallen(
-    string $session,
-    string $method,
-    string $link
-  ): void {
+  protected function methodsWithChallen(string $session, string $method, string $link): void
+  {
     try {
-      if ($method === "leaveChannel" || $method === "joinChannel") {
+      if ($method === 'leaveChannel' || $method === 'joinChannel') {
         Telegram::instance($session)->{$method}($link);
       } else {
-        throw new \Exception("Not found methods");
+        throw new \Exception('Not found methods');
       }
     } catch (\Exception $e) {
       ErrorHelper::writeToFileAndDie("$e\n");
     }
   }
 
+  // TODO need technical class with phones
   protected function verifyChannel($channel): object|array
   {
     try {
       if ($channel) {
-        $this->incrementActions($this->sessionList[0]->phone);
-        return Telegram::instance($this->sessionList[0]->phone)->getChannel(
-          $channel
-        );
+        $this->incrementActions(79874018497);
+        return Telegram::instance(79874018497)->getChannel($channel);
       } else {
-        throw new \Exception("Not found channel to invite!");
+        throw new \Exception('Not found channel to invite!');
       }
     } catch (\Exception $e) {
-      if ($e->getMessage() == "You have not joined this chat") {
-        $this->incrementActions($this->sessionList[0]->phone);
-        return Telegram::instance($this->sessionList[0]->phone)
+      if ($e->getMessage() == 'You have not joined this chat') {
+        $this->incrementActions(79874018497);
+        return Telegram::instance(79874018497)
           ->joinChannel($channel)
           ->getChannel($channel);
       }
@@ -127,12 +118,8 @@ class Execute
     }
   }
 
-  protected function sendMessage(
-    string $session,
-    string $addressMessage,
-    string $msg,
-    $photo = false
-  ): void {
+  protected function sendMessage(string $session, string $addressMessage, string $msg, $photo = false): void
+  {
     if ($photo) {
       Telegram::instance($session)->sendFoto($addressMessage, $photo, $msg);
     } else {
@@ -151,8 +138,8 @@ class Execute
   public function newTask()
   {
     $this->modelTask = new TasksModel();
-    $this->modelTask->insert(["type" => $this->nameTask]);
-    $this->task = $this->modelTask->getLastTask()["task"];
+    $this->modelTask->insert(['type' => $this->nameTask]);
+    $this->task = $this->modelTask->getLastTask()['task'];
   }
 
   public function incrementActions(string $phone): void

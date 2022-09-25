@@ -11,12 +11,11 @@ class InvitationsController
   public function invitationsChannel(
     ArgumentsHelpers $argumets,
     InvitationsChannelExecute $invitations,
-    TelegramBot $bot
+    TelegramBot $bot,
   ): void {
     /**
      * not function save. Need realization
      */
-
     $filePath = $invitations
       ->setChannel($argumets->channel)
       ->setUsersList($argumets->users)
@@ -25,5 +24,11 @@ class InvitationsController
       ->save();
 
     $bot->setChatId($argumets->userId)->sendFile($filePath);
+  }
+
+  public function createTaskInvitations(ArgumentsHelpers $arguments, InvitationsChannelExecute $execute)
+  {
+    $users = preg_split('/[\r\n]+/', $arguments->users, -1, PREG_SPLIT_NO_EMPTY);
+    $execute->setChannel($arguments->channel)->setUsersList($users);
   }
 }

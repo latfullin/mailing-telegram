@@ -19,6 +19,6 @@
       </label>
       <input class="form-control" type="text" name="msg" id="">
     </div>
-    <button class="btn border btn-outline-secondary" type="submit">Отрпавить</button>
+    <button class="btn border btn-outline-secondary" type="submit">Отправить</button>
   </form>
 </div>
