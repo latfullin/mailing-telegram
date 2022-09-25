@@ -26,6 +26,11 @@
             Создать задание
           </a>
         </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/parsing" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Парсинг
+          </a>
+        </li>
       </ul>
     </div>
   </div>

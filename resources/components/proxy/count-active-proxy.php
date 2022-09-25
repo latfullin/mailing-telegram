@@ -3,5 +3,5 @@
       <div class="p-3 mb-2 border bg-light">Количество использованных прокси: <?= $this->data['proxy']['all'] ?></div>
       <div class="p-3 mb-2 border bg-light">Активные прокси: <?= $this->data['proxy']['active'] ?></div>
       <div class="p-3 mb-2 border bg-light">Не используемые прокси: <?= $this->data['proxy']['not_used'] ?></div>
-      <? include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/components/form/check-proxy.php"?>
+      <? include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/components/form/form-check-proxy.php"?>
   </div>

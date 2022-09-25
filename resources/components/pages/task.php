@@ -1,10 +1,11 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">task</th>
-        <th scope="col">type</th>
-        <th scope="col">information</th>
-        <th scope="col">status</th>
+        <th scope="col">Task</th>
+        <th scope="col">Type</th>
+        <th scope="col">Information</th>
+        <th scope="col">File</th>
+        <th scope="col">Status</th>
       </tr>
     </thead>
     <tbody>
@@ -13,8 +14,10 @@
           <th scope="row"><?= $task['task'] ?></th>
           <td><?= $task['type'] ?></td>
           <td>
-            Сообщение: <br><?= $task['information']->msg ?? '' ?><br>
-            File: <br><?= $task['information']->file ?? '' ?>
+            <?= $task['information']->msg ?? '' ?>
+          </td>
+          <td>
+            <?= $task['information']->file ?? 'false' ?>
           </td>
           <td><?= $task['status'] ?></td>
         </tr>
