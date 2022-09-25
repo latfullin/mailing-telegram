@@ -22,94 +22,94 @@ class ParserExecute extends Execute
   const MAX_LENGTH = 80000;
 
   const CONSONANTS_LETTERS = [
-    "Б",
-    "В",
-    "Г",
-    "Д",
-    "Ж",
-    "З",
-    "Й",
-    "К",
-    "Л",
-    "М",
-    "Н",
-    "П",
-    "Р",
-    "С",
-    "Т",
-    "Ф",
-    "Х",
-    "Ц",
-    "Ч",
-    "Ш",
-    "Щ",
+    'Б',
+    'В',
+    'Г',
+    'Д',
+    'Ж',
+    'З',
+    'Й',
+    'К',
+    'Л',
+    'М',
+    'Н',
+    'П',
+    'Р',
+    'С',
+    'Т',
+    'Ф',
+    'Х',
+    'Ц',
+    'Ч',
+    'Ш',
+    'Щ',
   ];
 
-  const MALE_END_LETTERS = ["й", "ь", "а", "я"];
+  const MALE_END_LETTERS = ['й', 'ь', 'а', 'я'];
 
   /**
    * @param ALPHABETS for cycles.
    */
   const ALPHABETS = [
     [
-      "a",
-      "b",
-      "c",
-      "d",
-      "e",
-      "f",
-      "g",
-      "h",
-      "i",
-      "j",
-      "k",
-      "l",
-      "m",
-      "n",
-      "o",
-      "p",
-      "q",
-      "r",
-      "s",
-      "t",
-      "u",
-      "v",
-      "w",
-      "x",
-      "y",
-      "z",
+      'a',
+      'b',
+      'c',
+      'd',
+      'e',
+      'f',
+      'g',
+      'h',
+      'i',
+      'j',
+      'k',
+      'l',
+      'm',
+      'n',
+      'o',
+      'p',
+      'q',
+      'r',
+      's',
+      't',
+      'u',
+      'v',
+      'w',
+      'x',
+      'y',
+      'z',
     ],
     [
-      "а",
-      "б",
-      "в",
-      "г",
-      "д",
-      "е",
-      "ё",
-      "ж",
-      "з",
-      "и",
-      "й",
-      "к",
-      "л",
-      "м",
-      "н",
-      "о",
-      "п",
-      "р",
-      "с",
-      "т",
-      "у",
-      "ф",
-      "х",
-      "ц",
-      "ч",
-      "ш",
-      "щ",
-      "э",
-      "ю",
-      "я",
+      'а',
+      'б',
+      'в',
+      'г',
+      'д',
+      'е',
+      'ё',
+      'ж',
+      'з',
+      'и',
+      'й',
+      'к',
+      'л',
+      'м',
+      'н',
+      'о',
+      'п',
+      'р',
+      'с',
+      'т',
+      'у',
+      'ф',
+      'х',
+      'ц',
+      'ч',
+      'ш',
+      'щ',
+      'э',
+      'ю',
+      'я',
     ],
   ];
   const COUNT_ALPHABETS = 56;
@@ -194,8 +194,8 @@ class ParserExecute extends Execute
   protected int $countParticipants;
 
   const LIMIT_ACTIONS = 50;
-  const ACTION_FIELD = "parser_action";
-  const TASK_NAME = "parser_group";
+  const ACTION_FIELD = 'parser_action';
+  const TASK_NAME = 'parser_group';
 
   protected ?ParserModel $parserModel = null;
   /**
@@ -203,16 +203,9 @@ class ParserExecute extends Execute
    */
   protected bool $saveData = false;
 
-  public function __construct(
-    ParserModel $conntect,
-    bool $needUsersId = false,
-    bool $needBreakTime = true
-  ) {
-    parent::__construct(
-      self::ACTION_FIELD,
-      self::TASK_NAME,
-      self::LIMIT_ACTIONS
-    );
+  public function __construct(ParserModel $conntect, bool $needUsersId = false, bool $needBreakTime = true)
+  {
+    parent::__construct(self::ACTION_FIELD, self::TASK_NAME, self::LIMIT_ACTIONS);
     $this->parserModel = $conntect;
     $this->needUsersId = $needUsersId;
     $this->needBreakTime = $needBreakTime;
@@ -220,13 +213,13 @@ class ParserExecute extends Execute
 
     if ($this->needBreakTime) {
       $this->data = [
-        "oneDay" => [],
-        "twoDay" => [],
-        "threeDay" => [],
-        "oneWeek" => [],
-        "oneMonth" => [],
-        "moreOneMonth" => [],
-        "notTime" => [],
+        'oneDay' => [],
+        'twoDay' => [],
+        'threeDay' => [],
+        'oneWeek' => [],
+        'oneMonth' => [],
+        'moreOneMonth' => [],
+        'notTime' => [],
       ];
     }
   }
@@ -246,8 +239,7 @@ class ParserExecute extends Execute
     }
     $this->channel = $channel;
     $this->channelInformation = $this->verifyChannel($channel);
-    $this->countParticipants =
-      $this->channelInformation["full_chat"]["participants_count"];
+    $this->countParticipants = $this->channelInformation['full_chat']['participants_count'];
     $this->insertInformation();
     return $this;
   }
@@ -255,9 +247,9 @@ class ParserExecute extends Execute
   public function insertInformation(): void
   {
     $this->parserModel->insert([
-      "task" => $this->task,
-      "link_group" => $this->channel,
-      "amount_users" => $this->countParticipants,
+      'task' => $this->task,
+      'link_group' => $this->channel,
+      'amount_users' => $this->countParticipants,
     ]);
   }
 
@@ -289,17 +281,12 @@ class ParserExecute extends Execute
         break;
       }
       foreach ($alphabets as $alphabet) {
-        $this->incrementActions($this->sessionList[0]->phone);
+        $this->incrementActions(79874018497);
         $i++;
         echo ($i * 100) / self::COUNT_ALPHABETS;
         $countsParticipants = min(
-          Telegram::instance($this->sessionList[0]->phone)->getParticipants(
-            $this->channel,
-            0,
-            1,
-            q: $alphabet
-          )["count"],
-          self::MAX_USER
+          Telegram::instance(79874018497)->getParticipants($this->channel, 0, 1, q: $alphabet)['count'],
+          self::MAX_USER,
         );
 
         $this->collectParticipants($countsParticipants, $alphabet);
@@ -315,16 +302,14 @@ class ParserExecute extends Execute
     }
   }
 
-  public function collectParticipants(int $countUsers, string $q = ""): bool
+  public function collectParticipants(int $countUsers, string $q = ''): bool
   {
     $result = [];
     $this->countAmountInteration($countUsers);
 
     for ($i = 0; $i < $this->countCycles; $i++) {
-      $result[] = Telegram::instance(
-        $this->sessionList[0]->phone
-      )->getParticipants($this->channel, $i * self::OFFSET_LIMIT, q: $q)[
-        "users"
+      $result[] = Telegram::instance(79874018497)->getParticipants($this->channel, $i * self::OFFSET_LIMIT, q: $q)[
+        'users'
       ];
     }
 
@@ -338,32 +323,30 @@ class ParserExecute extends Execute
   {
     for ($r = 0; $r < count($result); $r++) {
       for ($s = 0; $s < count($result[$r]); $s++) {
-        $user["id"] = $result[$r][$s]["id"];
+        $user['id'] = $result[$r][$s]['id'];
 
-        if ($result[$r][$s]["status"]["userStatusOnline"] ?? false) {
-          $user["time"] = $this->now;
+        if ($result[$r][$s]['status']['userStatusOnline'] ?? false) {
+          $user['time'] = $this->now;
         } else {
-          $user["time"] = $result[$r][$s]["status"]["was_online"] ?? false;
+          $user['time'] = $result[$r][$s]['status']['was_online'] ?? false;
         }
 
-        if ($result[$r][$s]["username"] ?? false) {
-          $user["username"] = "@" . $result[$r][$s]["username"];
+        if ($result[$r][$s]['username'] ?? false) {
+          $user['username'] = '@' . $result[$r][$s]['username'];
           [
-            "id" => $this->participants[$result[$r][$s]["id"]]["id"],
-            "time" => $this->participants[$result[$r][$s]["id"]]["time"],
-            "username" =>
-              $this->participants[$result[$r][$s]["id"]]["username"],
+            'id' => $this->participants[$result[$r][$s]['id']]['id'],
+            'time' => $this->participants[$result[$r][$s]['id']]['time'],
+            'username' => $this->participants[$result[$r][$s]['id']]['username'],
           ] = $user;
           continue;
         }
 
         if ($this->needUsersId) {
-          $user["username"] = $result[$r][$s]["id"];
+          $user['username'] = $result[$r][$s]['id'];
           [
-            "id" => $this->participants[$result[$r][$s]["id"]]["id"],
-            "time" => $this->participants[$result[$r][$s]["id"]]["time"],
-            "username" =>
-              $this->participants[$result[$r][$s]["id"]]["username"],
+            'id' => $this->participants[$result[$r][$s]['id']]['id'],
+            'time' => $this->participants[$result[$r][$s]['id']]['time'],
+            'username' => $this->participants[$result[$r][$s]['id']]['username'],
           ] = $user;
         }
       }
@@ -374,60 +357,53 @@ class ParserExecute extends Execute
   {
     foreach ($this->participants as $participant) {
       if ($this->needBreakTime) {
-        $this->switchVariablesTime(
-          $participant["id"],
-          $participant["time"],
-          $participant["username"]
-        );
+        $this->switchVariablesTime($participant['id'], $participant['time'], $participant['username']);
         continue;
       }
 
-      $this->data[] = $participant["username"];
+      $this->data[] = $participant['username'];
     }
 
     return $this;
   }
 
-  public function switchVariablesTime(
-    mixed $userNameOrId,
-    int|bool $time,
-    mixed $username
-  ): void {
+  public function switchVariablesTime(mixed $userNameOrId, int|bool $time, mixed $username): void
+  {
     if ($time == false) {
-      $this->data["notTime"][$userNameOrId] = $username;
+      $this->data['notTime'][$userNameOrId] = $username;
       return;
     }
     $validTime = $this->now - $time;
 
     switch ($validTime) {
       case self::ONE_DAY > $validTime:
-        $this->data["oneDay"][$userNameOrId] = $username;
+        $this->data['oneDay'][$userNameOrId] = $username;
         break;
       case self::ONE_DAY < $validTime && self::TWO_DAY > $validTime:
-        $this->data["twoDay"][$userNameOrId] = $username;
+        $this->data['twoDay'][$userNameOrId] = $username;
         break;
       case self::TWO_DAY < $validTime && self::THREE_DAY > $validTime:
-        $this->data["threeDay"][$userNameOrId] = $username;
+        $this->data['threeDay'][$userNameOrId] = $username;
         break;
       case self::THREE_DAY < $validTime && self::ONE_WEEK > $validTime:
-        $this->data["oneWeek"][$userNameOrId] = $username;
+        $this->data['oneWeek'][$userNameOrId] = $username;
         break;
       case self::ONE_WEEK < $validTime && self::ONE_MONTH > $validTime:
-        $this->data["oneMonth"][$userNameOrId] = $username;
+        $this->data['oneMonth'][$userNameOrId] = $username;
         break;
       default:
-        $this->data["moreOneMonth"][$userNameOrId] = $username;
+        $this->data['moreOneMonth'][$userNameOrId] = $username;
     }
   }
 
   private function writeTemporaryFile()
   {
-    $handle = fopen("storage/temporary/{$this->task}-temporary.txt", "a");
+    $handle = fopen("storage/temporary/{$this->task}-temporary.txt", 'a');
     foreach ($this->participants as $participant) {
-      $id = $participant["id"];
-      $username = $participant["username"] ?? "";
-      $time = $participant["time"] ?? "";
-      $name = $participant["first_name"] ?? "";
+      $id = $participant['id'];
+      $username = $participant['username'] ?? '';
+      $time = $participant['time'] ?? '';
+      $name = $participant['first_name'] ?? '';
 
       fwrite($handle, "{$id};{$username};{$time};{$name}\n");
     }
@@ -439,16 +415,16 @@ class ParserExecute extends Execute
 
   private function extractData()
   {
-    $handle = fopen("storage/temporary/{$this->task}-temporary.txt", "r");
+    $handle = fopen("storage/temporary/{$this->task}-temporary.txt", 'r');
     while ($str = fgets($handle)) {
-      $array = explode(";", $str);
+      $array = explode(';', $str);
       if ($this->needBreakTime) {
-        $time = $array[2] == "" ? false : $array[2];
-        $username = $array[1] == "" ? $array[0] : $array[1];
+        $time = $array[2] == '' ? false : $array[2];
+        $username = $array[1] == '' ? $array[0] : $array[1];
         $this->switchVariablesTime($array[0], $time, $username);
         continue;
       }
-      $this->data[$array[0]] = $array[1] === "" ? $array[0] : $array[1];
+      $this->data[$array[0]] = $array[1] === '' ? $array[0] : $array[1];
     }
 
     fclose($handle);
@@ -464,7 +440,7 @@ class ParserExecute extends Execute
    */
   public function save(): string
   {
-    $disk = Storage::disk("task");
+    $disk = Storage::disk('task');
     if ($this->channel ?? false) {
       $disk->put($this->task, "Группа {$this->channel}\n\n");
     }
@@ -499,7 +475,7 @@ class ParserExecute extends Execute
   {
     try {
       if (!$this->channelInformation) {
-        throw new \Exception("Not information for channel");
+        throw new \Exception('Not information for channel');
       }
     } catch (\Exception $e) {
       ErrorHelper::writeToFileAndDie($e);
