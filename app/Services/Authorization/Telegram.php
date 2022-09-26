@@ -30,13 +30,11 @@ class Telegram
     }
     try {
       if (!$this->setting && $this->usedProxy) {
-        throw new \Exception("Error proxy");
+        throw new \Exception('Error proxy');
       }
+      print_r($this->setting);
       $this->phone = $phone;
-      $this->telegram = new \danog\MadelineProto\API(
-        $this->pathSession($phone),
-        $this->setting ?? []
-      );
+      $this->telegram = new \danog\MadelineProto\API($this->pathSession($phone), $this->setting ?? []);
       if ($this->setting instanceof \danog\MadelineProto\Settings\Connection) {
         $this->telegram->updateSettings($this->setting);
       }
@@ -84,14 +82,14 @@ class Telegram
   public function checkError(\Exception $e, int $phone)
   {
     ErrorHelper::writeToFile($e);
-    if ($e->getMessage() == "PEER_FLOOD") {
+    if ($e->getMessage() == 'PEER_FLOOD') {
       $session = new PhoneModel();
-      $session->where(["phone" => $phone])->update(["flood_wait" => true]);
+      $session->where(['phone' => $phone])->update(['flood_wait' => true]);
       return;
     }
-    if ($e->getMessage() == "USER_DEACTIVATED_BAN") {
+    if ($e->getMessage() == 'USER_DEACTIVATED_BAN') {
       $session = new PhoneModel();
-      $session->where(["phone" => $phone])->update(["ban" => 1]);
+      $session->where(['phone' => $phone])->update(['ban' => 1]);
       return;
     }
   }
@@ -115,6 +113,6 @@ class Telegram
 
   public function __destruct()
   {
-    echo "descruct";
+    echo 'descruct';
   }
 }

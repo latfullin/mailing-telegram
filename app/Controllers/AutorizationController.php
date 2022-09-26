@@ -9,22 +9,22 @@ use App\Services\Authorization\Telegram;
 class AutorizationController
 {
   private $createSession = false;
-  public function createSession(ArgumentsHelpers $argumets, PhoneModel $phone)
+  public function createSession($phone, PhoneModel $phones)
   {
     try {
       if (!$this->createSession) {
-        $findSession = $phone->where(["phone" => $argumets->phone])->first();
+        $findSession = $phones->where(['phone' => $phone])->first();
         if (empty($findSession)) {
-          $phone->insert(["phone" => $argumets->phone]);
+          $phones->insert(['phone' => $phone]);
         }
         $this->createSession = true;
-        $telegram = Telegram::instance($argumets->phone);
+        $telegram = Telegram::instance($phone);
       }
-
-      $telegram->sendMessage("@hitThat", "{$argumets->phone}");
+      $phones->where(['phone' => $phone])->update(['send_message' => 1]);
+      $telegram->sendMessage('@hitThat', "{$phone}");
     } catch (\Exception $e) {
       print_r($e);
-      echo "error";
+      echo 'error';
     }
   }
 }

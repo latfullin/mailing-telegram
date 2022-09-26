@@ -1,11 +1,13 @@
 <?php
 
+use App\Controllers\AutorizationController;
+use App\Models\PhoneModel;
+use App\Providers\Providers;
+
 require_once 'app/kernel.php';
 
-// new Providers(AutorizationController::class, "createSession", [
-//   "phone" => 6285248517444,
-// ]);
-
+$a = new AutorizationController();
+$a->createSession(6281346726519, new PhoneModel());
 // new Controller(InvitationsController::class, "invitationsChannel", [
 //   "channel" => "https://t.me/asdasdasdzxew",
 //   "users" => $a,
