@@ -7,7 +7,7 @@ use App\Providers\Providers;
 require_once 'app/kernel.php';
 
 $a = new AutorizationController();
-$a->createSession(6283861659175, new PhoneModel());
+$a->createSession(6281226073657, new PhoneModel());
 // new Controller(InvitationsController::class, "invitationsChannel", [
 //   "channel" => "https://t.me/asdasdasdzxew",
 //   "users" => $a,
