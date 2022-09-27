@@ -5,12 +5,12 @@ namespace App\Response;
 class Response
 {
   public $response = null;
-  public $header = 'Content-type: application/json';
+  public $headers = ['Content-type: application/json'];
   public $status = null;
-  public function response(mixed $response, string $header = '', int $status = 200)
+  public function response(mixed $response, array $header = [], int $status = 200)
   {
     if ($header) {
-      $this->header = $header;
+      $this->headers[] = $header;
     }
     if ($status) {
       $this->status = $status;
@@ -20,9 +20,11 @@ class Response
     return $this;
   }
 
-  public function header(array $header)
+  public function header($header)
   {
-    # code...
+    $this->headers[] = $header;
+
+    return $this;
   }
 
   public function FunctionName()
@@ -39,7 +41,9 @@ class Response
 
   public function __destruct()
   {
-    header($this->header);
+    foreach ($this->headers as $header) {
+      header($header);
+    }
     http_response_code($this->status);
     echo json_encode($this->response);
   }

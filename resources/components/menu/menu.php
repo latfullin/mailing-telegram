@@ -31,6 +31,11 @@
             Парсинг
           </a>
         </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/sessions" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Сессии
+          </a>
+        </li>
       </ul>
     </div>
   </div>

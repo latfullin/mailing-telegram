@@ -8,3 +8,4 @@ Router::get('/send-message', [ViewController::class, 'sendMessage']);
 Router::get('/task', [ViewController::class, 'task']);
 Router::get('/created-task', [ViewController::class, 'createdTask']);
 Router::get('/parsing', [ViewController::class, 'createdTask']);
+Router::get('/sessions', [ViewController::class, 'sessions']);

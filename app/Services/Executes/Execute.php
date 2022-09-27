@@ -2,6 +2,7 @@
 
 namespace App\Services\Executes;
 
+use App\Helpers\Enum\EnumStatus;
 use App\Helpers\ErrorHelper;
 use App\Helpers\WorkingFileHelper;
 use App\Models\PhoneModel;
@@ -50,13 +51,17 @@ class Execute
   /**
    * @param phone hand over param if need init certain phones number, else will use phone is name 'phone';
    */
-  public function __construct(string $typeAction = '', string $nameTask = '', int $limitActions = 10)
-  {
+  public function __construct(
+    string $typeAction = '',
+    string $nameTask = '',
+    int $limitActions = 10,
+    string $howUsed = 'AllUsed',
+  ) {
     $this->typeAction = $typeAction ? $typeAction : 'count_action';
     $this->nameTask = $nameTask;
     $this->limitActions = $limitActions;
     $this->sessionConnect = new PhoneModel();
-    $this->getSessionList();
+    $this->getSessionList($howUsed);
     $this->newTask();
   }
 
@@ -79,9 +84,11 @@ class Execute
     return false;
   }
 
-  protected function getSessionList(): void
+  protected function getSessionList(string $howUsed = 'AllUsed'): void
   {
-    $this->sessionList = $this->sessionConnect->limit(20)->sessionList($this->typeAction, $this->limitActions);
+    $this->sessionList = $this->sessionConnect
+      ->limit(20)
+      ->sessionList($this->typeAction, EnumStatus::getStatus($howUsed), $this->limitActions);
   }
 
   protected function methodsWithChallen(string $session, string $method, string $link): void
@@ -97,20 +104,19 @@ class Execute
     }
   }
 
-  // TODO need technical class with phones
   protected function verifyChannel($channel): object|array
   {
     try {
       if ($channel) {
-        $this->incrementActions(79874018497);
-        return Telegram::instance(79874018497)->getChannel($channel);
+        $this->incrementActions($this->sessionList[0]->phone);
+        return Telegram::instance($this->sessionList[0]->phone)->getChannel($channel);
       } else {
         throw new \Exception('Not found channel to invite!');
       }
     } catch (\Exception $e) {
       if ($e->getMessage() == 'You have not joined this chat') {
-        $this->incrementActions(79874018497);
-        return Telegram::instance(79874018497)
+        $this->incrementActions($this->sessionList[0]->phone);
+        return Telegram::instance($this->sessionList[0]->phone)
           ->joinChannel($channel)
           ->getChannel($channel);
       }

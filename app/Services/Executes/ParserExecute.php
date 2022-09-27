@@ -193,9 +193,10 @@ class ParserExecute extends Execute
    */
   protected int $countParticipants;
 
-  const LIMIT_ACTIONS = 50;
+  const LIMIT_ACTIONS = 1000;
   const ACTION_FIELD = 'parser_action';
   const TASK_NAME = 'parser_group';
+  const HOW_USED = 'Technical';
 
   protected ?ParserModel $parserModel = null;
   /**
@@ -205,7 +206,7 @@ class ParserExecute extends Execute
 
   public function __construct(ParserModel $conntect, bool $needUsersId = false, bool $needBreakTime = true)
   {
-    parent::__construct(self::ACTION_FIELD, self::TASK_NAME, self::LIMIT_ACTIONS);
+    parent::__construct(self::ACTION_FIELD, self::TASK_NAME, self::LIMIT_ACTIONS, self::HOW_USED);
     $this->parserModel = $conntect;
     $this->needUsersId = $needUsersId;
     $this->needBreakTime = $needBreakTime;
@@ -224,7 +225,7 @@ class ParserExecute extends Execute
     }
   }
 
-  // public static function instance(bool $needUsersId = true,  bool $needBreakTime = true): ParserExecute
+  // public static function instance(bool $needUsersId = true, bool $needBreakTime = true): ParserExecute
   // {
   //   if (self::$instance === null) {
   //     self::$instance = new self($needUsersId, $needBreakTime);
