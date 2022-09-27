@@ -36,6 +36,8 @@ class ProxyController
         ]);
       }
     }
+
+    return response('Update complete');
   }
 
   public function buyProxy(ArgumentsHelpers $arguments, Ipv6Proxy $ipv6, ProxyModel $model)
@@ -54,6 +56,8 @@ class ProxyController
           'active_ad' => Carbon::now()->addDays($arguments->period),
         ]);
       }
+
+      return response($data);
     }
   }
 
@@ -67,7 +71,7 @@ class ProxyController
         $model->where(['numeric_id' => $proxy->numeric_id])->update(['active' => 1]);
       }
     }
-    header('Content-type: application/json');
-    echo json_encode($proxies);
+
+    return response($proxies);
   }
 }

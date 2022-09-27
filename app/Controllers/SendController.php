@@ -9,6 +9,12 @@ class SendController
 {
   public function sendMessage(ArgumentsHelpers $arg)
   {
-    Telegram::instance($arg->phone)->sendMessage($arg->how, $arg->msg);
+    try {
+      Telegram::instance($arg->phone)->sendMessage($arg->how, $arg->msg);
+
+      return response('Success send msg');
+    } catch (\Exception $e) {
+      return response('Error send message', status: 404);
+    }
   }
 }

@@ -21,14 +21,17 @@ class ParserController
 
   public function parseGroup(ArgumentsHelpers $arg, ParserExecute $parser, TelegramBot $telegram): bool
   {
-    if (!$arg->userId || !$arg->channel) {
-      return false;
+    try {
+      if (!$arg->userId || !$arg->channel) {
+        return false;
+      }
+      $filePath = $parser
+        ->channel($arg->channel)
+        ->executes()
+        ->save();
+      $telegram->setChatId($arg->userId)->sendFile($filePath);
+    } catch (\Exception $e) {
+      $telegram->setChatId('365047507')->sendMsg($e->getMessage());
     }
-    $filePath = $parser
-      ->channel($arg->channel)
-      ->executes()
-      ->save();
-
-    $telegram->setChatId($arg->userId)->sendFile($filePath);
   }
 }

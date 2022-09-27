@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Helpers\ArgumentsHelpers;
+use App\Models\PhoneModel;
 use App\Models\ProxyModel;
 use App\Models\TasksModel;
 
@@ -41,5 +42,11 @@ class ViewController
   public function createdTask(ArgumentsHelpers $argument)
   {
     view('default', ['page' => $argument->page, 'title' => 'Created task']);
+  }
+
+  public function sessions(ArgumentsHelpers $argument, PhoneModel $phone)
+  {
+    $phones = $phone->get();
+    view('default', ['page' => $argument->page, 'title' => 'Sessions list', 'phones' => $phones]);
   }
 }
