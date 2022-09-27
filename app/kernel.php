@@ -17,7 +17,7 @@ function view(string $page, array $data = [], $status = 200)
   return new View($page, $data, $status);
 }
 
-function response(mixed $data, string $header = '', int $status = 200)
+function response(mixed $data, array $header = [], int $status = 200)
 {
   $response = new Response();
   $response->response($data, $header, $status);
