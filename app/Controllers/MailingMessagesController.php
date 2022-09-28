@@ -20,12 +20,25 @@ class MailingMessagesController
 
   public function continueTask(ArgumentsHelpers $arguments, TasksModel $tasksModel, ContinueTaskExecute $continue)
   {
-    $task = $tasksModel->where(['task' => $arguments->task])->first();
+    $task = $tasksModel?->where(['task' => $arguments->task])?->first();
+
+    if (!$task) {
+      return response('Not found task');
+    }
+
+    if ($task['status'] === 0) {
+      $tasksModel->where(['task' => $arguments->task])->update(['status' => 1]);
+    }
 
     $continue
-      ->setTaskExecute($task['task'])
-      ->setMsg($arguments->msg)
-      ->setFile($arguments->photo ?? '')
-      ->execute();
+      ?->setTaskExecute($task['task'])
+      ?->setMsg($arguments->msg)
+      ?->setFile($arguments->photo ?? '')
+      ?->execute();
+
+    if ($continue) {
+      return response($continue);
+    }
+    return response('Error');
   }
 }

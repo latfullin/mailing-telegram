@@ -30,6 +30,8 @@ class ParserController
         ->executes()
         ->save();
       $telegram->setChatId($arg->userId)->sendFile($filePath);
+
+      return response(true);
     } catch (\Exception $e) {
       $telegram->setChatId('365047507')->sendMsg($e->getMessage());
     }

@@ -6,6 +6,7 @@
         <th scope="col">Information</th>
         <th scope="col">File</th>
         <th scope="col">Status</th>
+        <th scope="col">Start task</th>
       </tr>
     </thead>
     <tbody>
@@ -20,6 +21,12 @@
             <?= $task['information']->file ?? 'false' ?>
           </td>
           <td><?= $task['status'] ?></td>
+          <? if($task['status'] <= 1) :?>
+          <td> 
+            <input type="hidden" name="task" value="<?= $task['task'] ?>">
+            <button class="btn btn-outline-secondary" type="submit">Запустить</button>
+          </td>
+          <? endif ?>
         </tr>
         <? endforeach ?>
       </tbody>
