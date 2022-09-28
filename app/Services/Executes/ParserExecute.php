@@ -6,6 +6,7 @@ use App\Helpers\ErrorHelper;
 use App\Helpers\Storage;
 use App\Models\ParserModel;
 use App\Services\Authorization\Telegram;
+use App\Services\Bot\TelegramBot;
 
 class ParserExecute extends Execute
 {
@@ -225,14 +226,6 @@ class ParserExecute extends Execute
     }
   }
 
-  // public static function instance(bool $needUsersId = true, bool $needBreakTime = true): ParserExecute
-  // {
-  //   if (self::$instance === null) {
-  //     self::$instance = new self($needUsersId, $needBreakTime);
-  //   }
-  //   return self::$instance;
-  // }
-
   public function channel(string $channel): ParserExecute
   {
     if ($this->participants) {
@@ -282,11 +275,12 @@ class ParserExecute extends Execute
         break;
       }
       foreach ($alphabets as $alphabet) {
-        $this->incrementActions(79874018497);
+        $this->incrementActions($this->sessionList[0]->phone);
         $i++;
-        echo ($i * 100) / self::COUNT_ALPHABETS;
         $countsParticipants = min(
-          Telegram::instance(79874018497)->getParticipants($this->channel, 0, 1, q: $alphabet)['count'],
+          Telegram::instance($this->sessionList[0]->phone)->getParticipants($this->channel, 0, 1, q: $alphabet)[
+            'count'
+          ],
           self::MAX_USER,
         );
 
@@ -309,9 +303,11 @@ class ParserExecute extends Execute
     $this->countAmountInteration($countUsers);
 
     for ($i = 0; $i < $this->countCycles; $i++) {
-      $result[] = Telegram::instance(79874018497)->getParticipants($this->channel, $i * self::OFFSET_LIMIT, q: $q)[
-        'users'
-      ];
+      $result[] = Telegram::instance($this->sessionList[0]->phone)->getParticipants(
+        $this->channel,
+        $i * self::OFFSET_LIMIT,
+        q: $q,
+      )['users'];
     }
 
     $this->treatmentResult($result);
@@ -457,6 +453,7 @@ class ParserExecute extends Execute
       $disk->put($this->task, "$items");
     }
 
+    $this->modelTask->where(['task' => $this->task])->update(['status' => 2]);
     return $disk->getPath("{$this->task}");
   }
 
