@@ -1,8 +1,12 @@
 <?php
 
-use App\Controllers\AutorizationController;
-use App\Models\PhoneModel;
-use App\Providers\Providers;
+session_start();
+if (empty($_SESSION['auth'])) {
+  $_SESSION['auth'] = false;
+}
+if (empty($_SESSION['is_admin'])) {
+  $_SESSION['is_admin'] = false;
+}
 
 require_once 'app/kernel.php';
 

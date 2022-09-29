@@ -1,6 +1,5 @@
 <?php
 
-use App\Controllers\ViewController;
 use App\Helpers\LangHelper;
 use App\Helpers\View;
 use App\Response\Response;

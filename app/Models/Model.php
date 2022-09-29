@@ -17,33 +17,29 @@ class Model
   /**
    * @param column  ['column' => 'value']
    */
-  protected $select = "*";
-  protected $separators = ["=", ">", "<"];
+  protected $select = '*';
+  protected $separators = ['=', '>', '<'];
   protected static $intsances = [];
 
-  public function __construct($table)
+  public function __construct(string $table)
   {
-    $dsn = "mysql:dbname=telegram-bot;host=mysql";
-    $user = "kilkenny";
-    $password = "password";
+    $dsn = 'mysql:dbname=telegram-bot;host=mysql';
+    $user = 'kilkenny';
+    $password = 'password';
     $this->table = $table;
     $this->connect = new PDO($dsn, $user, $password);
   }
 
   public function insert(array $values)
   {
-    ["column" => $column, "value" => $value] = $this->splitData($values);
-    $this->connect->query(
-      "INSERT INTO {$this->table} ({$column}, `created_at`) VALUES ({$value}, now())"
-    );
+    ['column' => $column, 'value' => $value] = $this->splitData($values);
+    $this->connect->query("INSERT INTO {$this->table} ({$column}, `created_at`) VALUES ({$value}, now())");
   }
 
   public function delete(string $column, string $separator, string $value)
   {
-    $separator = $separator == "" ? "=" : $separator;
-    $this->connect->query(
-      "DELETE FROM {$this->table} WHERE {$column} {$separator} {$value}"
-    );
+    $separator = $separator == '' ? '=' : $separator;
+    $this->connect->query("DELETE FROM {$this->table} WHERE {$column} {$separator} {$value}");
   }
 
   /**
@@ -51,7 +47,7 @@ class Model
    */
   public function update(string|array $sets)
   {
-    $update = is_string($sets) ? $sets : "";
+    $update = is_string($sets) ? $sets : '';
     if (is_array($sets)) {
       $length = count($sets);
       $i = 0;
@@ -61,9 +57,7 @@ class Model
     } else {
       return false;
     }
-    $this->connect->query(
-      "UPDATE {$this->table} SET {$update} WHERE {$this->where}"
-    );
+    $this->connect->query("UPDATE {$this->table} SET {$update} WHERE {$this->where}");
   }
 
   public function get(): array
@@ -71,11 +65,11 @@ class Model
     return $this->connect
       ->query(
         "SELECT {$this->select} FROM {$this->table}" .
-          ($this->join !== null ? " {$this->join}" : "") .
-          ($this->where !== null ? " WHERE {$this->where}" : "") .
-          ($this->or !== null ? " OR {$this->or}" : "") .
-          ($this->limit !== null ? " LIMIT {$this->limit}" : "") .
-          ($this->order !== null ? " {$this->order}" : "")
+          ($this->join !== null ? " {$this->join}" : '') .
+          ($this->where !== null ? " WHERE {$this->where}" : '') .
+          ($this->or !== null ? " OR {$this->or}" : '') .
+          ($this->limit !== null ? " LIMIT {$this->limit}" : '') .
+          ($this->order !== null ? " {$this->order}" : ''),
       )
       ->fetchAll(PDO::FETCH_CLASS);
   }
@@ -85,11 +79,11 @@ class Model
     return $this->connect
       ->query(
         "SELECT {$this->select} FROM {$this->table}" .
-          ($this->join !== null ? " {$this->join}" : "") .
-          ($this->where !== null ? " WHERE {$this->where}" : "") .
-          ($this->or !== null ? " OR {$this->or}" : "") .
-          ($this->limit !== null ? " LIMIT {$this->limit}" : "") .
-          ($this->order !== null ? " {$this->order}" : "")
+          ($this->join !== null ? " {$this->join}" : '') .
+          ($this->where !== null ? " WHERE {$this->where}" : '') .
+          ($this->or !== null ? " OR {$this->or}" : '') .
+          ($this->limit !== null ? " LIMIT {$this->limit}" : '') .
+          ($this->order !== null ? " {$this->order}" : ''),
       )
       ->fetch(\PDO::FETCH_ASSOC);
   }
@@ -111,14 +105,14 @@ class Model
    */
   public function limit(int|array $limit)
   {
-    $this->limit = "";
+    $this->limit = '';
     if (is_int($limit)) {
       $this->limit = $limit;
     }
     if (is_array($limit)) {
       $count = count($limit) - 1;
       foreach ($limit as $key => $int) {
-        $this->limit .= $key == $count ? $int : $int . ",";
+        $this->limit .= $key == $count ? $int : $int . ',';
       }
     }
 
@@ -147,12 +141,12 @@ class Model
 
   protected function splitData(array $array)
   {
-    $result = ["column" => "", "value" => ""];
+    $result = ['column' => '', 'value' => ''];
     $count = count($array) - 1;
     $i = 0;
     foreach ($array as $key => $item) {
-      $result["column"] .= $count === $i ? "`{$key}`" : "`{$key}`,";
-      $result["value"] .= $count === $i ? "'{$item}'" : "'{$item}',";
+      $result['column'] .= $count === $i ? "`{$key}`" : "`{$key}`,";
+      $result['value'] .= $count === $i ? "'{$item}'" : "'{$item}',";
       $i++;
     }
 
@@ -163,7 +157,7 @@ class Model
   {
     $i = 0;
     $count = count($array) - 1;
-    $result = "";
+    $result = '';
     foreach ($array as $key => $value) {
       if ($i === 0) {
         if (is_array($value)) {
@@ -172,8 +166,7 @@ class Model
               ? "(`{$key}` = '{$value[0]}' OR `{$key}` = '{$value[1]}')"
               : "(`{$key}` = '{$value[0]}' OR `{$key}` = '{$value[1]}') ";
         } else {
-          $result .=
-            $count === $i ? "`{$key}` = '{$value}' " : "`{$key}` = '{$value}' ";
+          $result .= $count === $i ? "`{$key}` = '{$value}' " : "`{$key}` = '{$value}' ";
         }
       } else {
         if (is_array($value)) {
@@ -182,10 +175,7 @@ class Model
               ? "AND (`{$key}` = '{$value[0]}' OR `{$key}` = '{$value[1]}') "
               : "AND (`{$key}` = '{$value[0]}' OR `{$key}` = '{$value[1]}') ";
         } else {
-          $result .=
-            $count === $i
-              ? "AND `{$key}` = '{$value}'"
-              : "AND `{$key}` = '{$value}', ";
+          $result .= $count === $i ? "AND `{$key}` = '{$value}'" : "AND `{$key}` = '{$value}', ";
         }
       }
       $i++;

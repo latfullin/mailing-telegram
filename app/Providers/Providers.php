@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Routers\Router;
-use ReflectionMethod;
 
 class Providers
 {
@@ -13,7 +12,7 @@ class Providers
   {
     try {
       $class = [];
-      $reflection = new ReflectionMethod($controller, $function);
+      $reflection = new \ReflectionMethod($controller, $function);
       foreach ($reflection->getParameters() as $param) {
         $nameClass = $param->getType()->getName();
         if ($nameClass == 'App\Helpers\ArgumentsHelpers') {
@@ -23,7 +22,6 @@ class Providers
           $class[] = $this->getAddicted($nameClass);
         }
       }
-
       $reflection->invokeArgs(new $controller(), $class);
     } catch (\Exception $e) {
       Router::notFound();

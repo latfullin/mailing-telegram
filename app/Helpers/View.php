@@ -9,10 +9,12 @@ class View
   private string $layout;
   private string $page;
   private array $data;
+
   public function __construct(string $layout, array $data, $status = 200)
   {
     $this->layout = $layout;
     $this->data = $data;
+    $this->data['session'] = $_SESSION;
     $this->status = $status;
   }
 
@@ -23,7 +25,7 @@ class View
 
   public function page(string $page)
   {
-    $this->page = $page;
+    $this->page = $page == '/' ? 'home' : $page;
   }
 
   public function render()
