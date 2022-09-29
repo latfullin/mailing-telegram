@@ -49,4 +49,14 @@ class ViewController
     $phones = $phone->get();
     view('default', ['page' => $argument->page, 'title' => 'Sessions list', 'phones' => $phones]);
   }
+
+  public function login(ArgumentsHelpers $argument)
+  {
+    view('default', ['page' => $argument->page, 'title' => 'Login']);
+  }
+
+  public function home()
+  {
+    view('default', ['page' => 'login', 'title' => 'Login']);
+  }
 }
