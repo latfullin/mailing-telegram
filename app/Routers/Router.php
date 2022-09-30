@@ -2,6 +2,7 @@
 
 namespace App\Routers;
 
+use App\Middleware\Middleware;
 use App\Models\PagesModel;
 use App\Providers\Providers;
 use App\Services\Executes\Execute;
@@ -61,11 +62,14 @@ class Router
     if (self::$instance[$url] ?? false) {
       try {
         if (self::$instance[$url]?->middleware ?? false) {
-          self::handle($url, self::$instance[$url]->middleware);
+          $midl = new Middleware();
+          foreach (self::$instance[$url]?->middleware as $middle) {
+            Providers::call($midl->getMiddleware($middle), 'handle');
+          }
         }
         $page = substr($url, 0) == '/' ? substr($url, 1) : $url;
         $data['page'] = $page == '/' || $page == '' ? 'home' : $page;
-        new Providers(self::$instance[$url]->class, self::$instance[$url]->function, [$_GET, $_POST, $data]);
+        self::handle($url, $data);
       } catch (Execute $e) {
         self::notFound();
       }
@@ -74,12 +78,9 @@ class Router
     }
   }
 
-  public static function handle(string $url, string $middleware)
+  public static function handle(string $url, array $data = [])
   {
-    if ($_SESSION['is_admin'] === true) {
-      return true;
-    }
-    self::notFound();
+    Providers::call(self::$instance[$url]->class, self::$instance[$url]->function, [$_GET, $_POST, $data]);
   }
 
   public static function notFound()
@@ -88,9 +89,16 @@ class Router
     exit();
   }
 
-  public static function middleware($middleware)
+  public static function middleware(string|array $middleware)
   {
-    self::$instance[self::$url]->middleware = $middleware;
+    if (is_array($middleware)) {
+      foreach ($middleware as $midl) {
+        self::$instance[self::$url]->middleware[] = $midl;
+      }
+    }
+    if (is_string($middleware)) {
+      self::$instance[self::$url]->middleware[] = $middleware;
+    }
 
     return self::$instance[self::$url];
   }

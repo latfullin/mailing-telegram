@@ -4,10 +4,10 @@ namespace App\Models;
 
 class InvitationsModel extends Model
 {
-  protected $table = "invitations_users";
+  protected $table = 'invitations_users';
 
   public function __construct()
   {
-    parent::__construct($this->table);
+    return parent::__construct($this->table);
   }
 }

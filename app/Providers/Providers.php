@@ -8,7 +8,7 @@ class Providers
 {
   protected array $type = ['string', 'int', 'bool', 'array'];
 
-  public function __construct($controller, string $function, $argumets = [])
+  private function __construct($controller, string $function, $argumets = [])
   {
     try {
       $class = [];
@@ -29,7 +29,7 @@ class Providers
     }
   }
 
-  public function getAddicted($class)
+  private function getAddicted($class)
   {
     $argumets = [];
     $reflection = new \ReflectionClass($class);
@@ -43,7 +43,7 @@ class Providers
     return $reflection->newInstanceArgs($argumets);
   }
 
-  public function chunkParams($argumets)
+  private function chunkParams($argumets)
   {
     $data = [];
     foreach ($argumets as $key => $argumet) {
@@ -59,5 +59,10 @@ class Providers
     }
 
     return $data;
+  }
+
+  public static function call($controller, string $function, $argumets = [])
+  {
+    new self($controller, $function, $argumets);
   }
 }

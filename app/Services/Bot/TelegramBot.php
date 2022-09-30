@@ -10,11 +10,11 @@ namespace App\Services\Bot;
 
 class TelegramBot
 {
-  protected $url = "https://api.telegram.org/bot";
+  protected $url = 'https://api.telegram.org/bot';
   private $chatId;
-  private $token = "5425154420:AAF_bDkwaXo-OcoA6bZlXHVeE1vQkurzT5Q";
+  private $token = '5425154420:AAF_bDkwaXo-OcoA6bZlXHVeE1vQkurzT5Q';
 
-  public function __construct($chatId = "")
+  public function __construct($chatId = '')
   {
     $this->chatId = $chatId;
   }
@@ -27,12 +27,12 @@ class TelegramBot
   public function sendMsg($msg, $keyboardMsg = false, $url = false)
   {
     try {
-      $params = ["chat_id" => $this->chatId, "text" => $msg];
+      $params = ['chat_id' => $this->chatId, 'text' => $msg];
       if ($keyboardMsg) {
-        $params["reply_markup"] = $this->addKeyboad($keyboardMsg, $url);
+        $params['reply_markup'] = $this->addKeyboad($keyboardMsg, $url);
       }
 
-      $this->send($params, "/sendMessage");
+      $this->send($params, '/sendMessage');
       return $this;
     } catch (\Exception $e) {
       $this->exceptionError($e);
@@ -44,8 +44,8 @@ class TelegramBot
     if (is_file($path)) {
       $file = curl_file_create($path);
       try {
-        $params = ["chat_id" => $this->chatId, "document" => $file];
-        $this->send($params, "/sendDocument");
+        $params = ['chat_id' => $this->chatId, 'document' => $file];
+        $this->send($params, '/sendDocument');
       } catch (\Exception $e) {
         print_r($e);
       }
@@ -53,28 +53,24 @@ class TelegramBot
     return false;
   }
 
-  public function sendPhoto(
-    $msg,
-    $urlImages = "",
-    $url = false,
-    $keyboardMsg = ""
-  ) {
+  public function sendPhoto($msg, $urlImages = '', $url = false, $keyboardMsg = '')
+  {
     $params = [
-      "chat_id" => $this->chatId,
-      "caption" => $msg,
-      "photo" => $urlImages,
+      'chat_id' => $this->chatId,
+      'caption' => $msg,
+      'photo' => $urlImages,
     ];
     if ($url) {
-      $params["reply_markup"] = $this->addKeyboad($keyboardMsg, $url);
+      $params['reply_markup'] = $this->addKeyboad($keyboardMsg, $url);
     }
-    $this->send($params, "/sendPhoto");
+    $this->send($params, '/sendPhoto');
     return $this;
   }
 
   public function sendSticker($sticker)
   {
-    $params = ["chat_id" => $this->chatId, "sticker" => $sticker];
-    $this->send($params, "/sendSticker");
+    $params = ['chat_id' => $this->chatId, 'sticker' => $sticker];
+    $this->send($params, '/sendSticker');
     return $this;
   }
 
@@ -96,15 +92,15 @@ class TelegramBot
     }
   }
 
-  private static function exceptionError($error = "Error")
+  public static function exceptionError($error = 'Error')
   {
-    static::create("365047507")->sendMsg($error);
+    static::create('365047507')->sendMsg($error);
   }
 
   private function addKeyboad($textBtn, $url = false)
   {
     return json_encode([
-      "inline_keyboard" => [[["text" => $textBtn, "url" => $url]]],
+      'inline_keyboard' => [[['text' => $textBtn, 'url' => $url]]],
     ]);
   }
 
