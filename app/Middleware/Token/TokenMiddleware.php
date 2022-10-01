@@ -7,15 +7,15 @@ use App\Routers\Router;
 class TokenMiddleware
 {
   private ?array $session = null;
-  private ?array $cokkie = null;
+  private ?array $cookie = null;
   public function __construct()
   {
     $this->session = &$_SESSION;
-    $this->cokkie = &$_COOKIE;
+    $this->cookie = &$_COOKIE;
   }
   public function handle()
   {
-    if (@$this->session['token']['token'] !== @$this->cokkie['token'] || @$this->session['token']['time'] < time()) {
+    if ($this->session['token']['token'] !== $this->cookie['token'] || $this->session['token']['time'] < time()) {
       \App\Routers\Router::notFound();
       exit();
     }

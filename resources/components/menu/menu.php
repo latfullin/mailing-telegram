@@ -39,8 +39,13 @@
           </li>
         <? else : ?>
           <li class="nav-item ">
-            <a class="nav-link" href="/" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Логин
+            <a class="nav-link" href="/login" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Вход
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/registration" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Регистрация
             </a>
           </li>
         <? endif ?>

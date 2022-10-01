@@ -2,8 +2,6 @@
 
 namespace App\Helpers\Sessions;
 
-use Carbon\Carbon;
-
 class Cokkie
 {
   public function __construct()
@@ -12,7 +10,7 @@ class Cokkie
 
   public function handle()
   {
-    if (empty($_COOKIE['token'])) {
+    if (empty($_COOKIE['token']) || empty($_SESSION['token'])) {
       $token = $this->getToken();
       $time = time() + 60 * 60;
       setcookie('token', $token, $time);

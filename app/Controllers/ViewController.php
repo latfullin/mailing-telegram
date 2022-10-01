@@ -59,4 +59,9 @@ class ViewController
   {
     view('default', ['page' => 'login', 'title' => 'Login']);
   }
+
+  public function registration()
+  {
+    view('default', ['page' => 'registration', 'title' => 'Registration']);
+  }
 }

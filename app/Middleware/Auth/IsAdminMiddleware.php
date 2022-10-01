@@ -12,7 +12,7 @@ class IsAdminMiddleware
 
   public function handle()
   {
-    if ($this->session && $this->session['is_admin']) {
+    if ($this->session && $this->session['is_admin'] === true) {
       return true;
     }
     header('Location: /home');
