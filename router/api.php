@@ -13,7 +13,7 @@ Router::post('/api/created-session', [AutorizationController::class, 'createSess
 Router::post('/api/send-message', [SendController::class, 'sendMessage'])->middleware(['auth']);
 Router::post('/api/parser-channel', [ParserController::class, 'parseGroup'])->middleware(['auth']);
 Router::post('/api/buy-proxy', [ProxyController::class, 'buyProxy'])->middleware(['IsAdmin', 'auth']);
-Router::post('/api/proxy-check-active', [ProxyController::class, 'checkActiveProxy'])->middleware('auth');
+Router::post('/api/proxy-check-active', [ProxyController::class, 'checkActiveProxy'])->middleware(['auth', 'token']);
 Router::post('/api/created-task-mailing', [MailingMessagesController::class, 'createTaskMailingMessages'])->middleware([
   'IsAdmin',
   'auth',
