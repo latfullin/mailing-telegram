@@ -8,6 +8,7 @@ Router::get('/send-message', [ViewController::class, 'sendMessage'])->middleware
 Router::get('/task', [ViewController::class, 'task'])->middleware('auth');
 Router::get('/created-task', [ViewController::class, 'createdTask']);
 Router::get('/parsing', [ViewController::class, 'createdTask'])->middleware('auth');
-Router::get('/sessions', [ViewController::class, 'sessions'])->middleware('auth');
+Router::get('/sessions', [ViewController::class, 'sessions'])->middleware(['auth', 'isAdmin']);
 Router::get('/login', [ViewController::class, 'login']);
+Router::get('/registration', [ViewController::class, 'registration']);
 Router::get('/', [ViewController::class, 'home'])->middleware(['auth']);
