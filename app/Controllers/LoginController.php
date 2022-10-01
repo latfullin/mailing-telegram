@@ -47,4 +47,32 @@ class LoginController
       return response('Undefined error');
     }
   }
+
+  public function registration(ArgumentsHelpers $argument, UsersModel $users)
+  {
+    $user = $users->where(['login' => $argument->login])->first();
+
+    if (empty($user)) {
+      if ($argument->password === $argument->doublePassword) {
+        try {
+          $users->insert([
+            'login' => $argument->login,
+            'password' => password_hash($argument->password, PASSWORD_BCRYPT),
+            'name' => $argument?->name,
+          ]);
+        } catch (\Exception $e) {
+          \App\Services\Bot\TelegramBot::exceptionError($e->getMessage());
+          return response(
+            'Happened exception. Please, send this message in telegram, link - https://t.me/@hitThat',
+            status: 404,
+          );
+        }
+        return response('Success');
+      } else {
+        return response('Passwords do not match');
+      }
+    } else {
+      return response('This login exists');
+    }
+  }
 }
