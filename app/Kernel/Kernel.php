@@ -8,15 +8,14 @@ use App\Routers\Router;
 
 class Kernel extends AppKernel
 {
+  private array $router = ['/router/api.php', '/router/web.php'];
   public function __construct()
   {
   }
 
   public function app()
   {
-    include_once "{$_SERVER['DOCUMENT_ROOT']}/router/api.php";
-    include_once "{$_SERVER['DOCUMENT_ROOT']}/router/web.php";
-
+    $this->include();
     Router::start($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
   }
 
@@ -32,5 +31,12 @@ class Kernel extends AppKernel
   private function handle(string $class, string $function, array $data = [])
   {
     Providers::call($class, $function, $data);
+  }
+
+  public function include()
+  {
+    foreach ($this->router as $router) {
+      include_once "{$_SERVER['DOCUMENT_ROOT']}{$router}";
+    }
   }
 }
