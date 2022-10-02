@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\AutorizationController;
 use App\Controllers\ViewController;
 use App\Routers\Router;
 
@@ -12,3 +13,5 @@ Router::get('/sessions', [ViewController::class, 'sessions'])->middleware(['auth
 Router::get('/login', [ViewController::class, 'login']);
 Router::get('/registration', [ViewController::class, 'registration']);
 Router::get('/', [ViewController::class, 'home'])->middleware(['auth']);
+// Need realise for autorization
+Router::get('/test', [AutorizationController::class, 'test']);
