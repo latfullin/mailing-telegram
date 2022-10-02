@@ -88,6 +88,20 @@ class Model
       ->fetch(\PDO::FETCH_ASSOC);
   }
 
+  public function last($colum = 'id')
+  {
+    return $this->connect
+      ->query(
+        "SELECT {$this->select} FROM {$this->table}" .
+          ($this->join !== null ? " {$this->join}" : '') .
+          ($this->where !== null ? " WHERE {$this->where}" : '') .
+          ($this->or !== null ? " OR {$this->or}" : '') .
+          ($this->limit !== null ? " LIMIT {$this->limit}" : '') .
+          ($this->order !== null ? " {$this->order}" : " ORDER BY `{$colum}` DESC"),
+      )
+      ->fetch(\PDO::FETCH_ASSOC);
+  }
+
   public function join(array $join): object
   {
     $this->join = null;
