@@ -4,6 +4,7 @@ namespace App\Services\Authorization;
 
 use App\Helpers\ErrorHelper;
 use App\Models\PhoneModel;
+use App\Services\Bot\TelegramBot;
 use App\Services\Proxy\GetProxy;
 use App\Traits\Account\AccountMethodsTelegram;
 use App\Traits\Channels\ChannelsMethodsTelegram;
@@ -17,6 +18,7 @@ class Telegram
 
   private array $proxy = [];
   private bool $usedProxy = true;
+  private bool $start = false;
   protected int $phone;
   protected $telegram;
   private $setting = [];
@@ -40,8 +42,9 @@ class Telegram
       }
       $this->params($async);
     } catch (\Exception $e) {
-      ErrorHelper::writeToFile($e);
       $this->checkError($e, $phone);
+      return $e->getMessage();
+      ErrorHelper::writeToFile($e);
     }
   }
 
@@ -49,13 +52,17 @@ class Telegram
   {
     $this->telegram->async($async);
     $this->telegram->start();
+    $this->start = true;
   }
 
   public function getMe()
   {
-    $this->me = $this->telegram->getSelf();
-
-    return $this;
+    try {
+      $this->me = $this->telegram->getSelf();
+      return $this;
+    } catch (\Exception $e) {
+      TelegramBot::exceptionError($e->getMessage());
+    }
   }
 
   /**
@@ -109,5 +116,15 @@ class Telegram
   public function getTelegram(): object|null
   {
     return $this->telegram;
+  }
+
+  public function getSetting()
+  {
+    return $this->setting;
+  }
+
+  public function getStart()
+  {
+    return $this->start;
   }
 }
