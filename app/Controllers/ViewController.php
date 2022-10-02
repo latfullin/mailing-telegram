@@ -64,4 +64,9 @@ class ViewController
   {
     view('default', ['page' => 'registration', 'title' => 'Registration']);
   }
+
+  public function createSession()
+  {
+    view('default', ['page' => 'create-session', 'title' => 'Created sessions']);
+  }
 }

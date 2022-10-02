@@ -13,5 +13,6 @@ Router::get('/sessions', [ViewController::class, 'sessions'])->middleware(['auth
 Router::get('/login', [ViewController::class, 'login']);
 Router::get('/registration', [ViewController::class, 'registration']);
 Router::get('/', [ViewController::class, 'home'])->middleware(['auth']);
+Router::get('/create-session', [ViewController::class, 'createSession']);
 // Need realise for autorization
-Router::get('/test', [AutorizationController::class, 'test']);
+Router::get('/create-session-init', [AutorizationController::class, 'createSession']);

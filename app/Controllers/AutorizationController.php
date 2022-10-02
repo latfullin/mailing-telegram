@@ -29,6 +29,11 @@ class AutorizationController
   //   }
   // }
 
+  public function redirectCreateSession(ArgumentsHelpers $argument)
+  {
+    return response('true')->header("Location: /create-session-init?how={$argument->how}");
+  }
+
   public function createSession(ArgumentsHelpers $argument, PhoneModel $phones, ProxyModel $proxies)
   {
     try {

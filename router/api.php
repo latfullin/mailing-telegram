@@ -26,3 +26,4 @@ Router::post('/api/continue-task', [MailingMessagesController::class, 'continueT
 Router::post('/api/login', [LoginController::class, 'login'])->middleware(['token']);
 Router::post('/api/registration', [LoginController::class, 'registration'])->middleware(['token']);
 Router::post('/api/logout', [LoginController::class, 'logout'])->middleware('auth');
+Router::post('/api/redirect-create-session', [AutorizationController::class, 'redirectCreateSession']);

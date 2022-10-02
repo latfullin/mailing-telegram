@@ -37,6 +37,11 @@
               Сессии
             </a>
           </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/create-session" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Создать сессию
+            </a>
+          </li>
         <? else : ?>
           <li class="nav-item ">
             <a class="nav-link" href="/login" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
