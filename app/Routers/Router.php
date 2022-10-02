@@ -15,7 +15,8 @@ class Router
   public static function start(string $url, string $method)
   {
     self::$url = strtok($url, '?');
-    if (self::$instance[$url] ?? false && self::$instance[$url]->method == $method) {
+
+    if (self::$instance[self::$url] ?? false && self::$instance[self::$url]->method == $method) {
       self::providers(self::$url);
     } else {
       self::notFound();
