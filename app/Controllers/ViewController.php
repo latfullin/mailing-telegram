@@ -90,4 +90,11 @@ class ViewController
 
     view('default', ['page' => 'create-session', 'title' => 'Created sessions', 'menu' => $menu]);
   }
+
+  public function notFound(Menu $menu)
+  {
+    $menu = $menu->getMenu();
+
+    view('default', ['page' => '404', 'title' => 'Not found', 'menu' => $menu], 404);
+  }
 }
