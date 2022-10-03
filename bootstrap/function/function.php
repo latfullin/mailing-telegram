@@ -1,10 +1,9 @@
 <?php
 
 use App\Helpers\LangHelper;
+use App\Helpers\Sessions\Session;
 use App\Helpers\View;
-use App\Middleware\Middleware;
 use App\Response\Response;
-use App\Routers\Router;
 
 function timeLang($type)
 {
@@ -21,4 +20,9 @@ function response(mixed $data, array $header = [], int $status = 200)
   $response = new Response();
   $response->response($data, $header, $status);
   return $response;
+}
+
+function session()
+{
+  return Session::intance();
 }
