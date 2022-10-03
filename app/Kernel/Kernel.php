@@ -5,38 +5,68 @@ namespace App\Kernel;
 use App\kernel as AppKernel;
 use App\Providers\Providers;
 use App\Routers\Router;
+use App\Services\Bot\TelegramBot;
 
 class Kernel extends AppKernel
 {
   private array $router = ['/router/api.php', '/router/web.php'];
+  private ?string $type = null;
+  private bool $notFound = false;
+
   public function __construct()
   {
+    $this->include();
   }
 
   public function app()
   {
-    $this->include();
-    Router::start($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+    if (!$this->notFound) {
+      Router::start($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+    } else {
+      $this->sendErrors();
+    }
   }
 
   public function callServices()
   {
-    foreach ($this->services as $service) {
-      if (is_string($service)) {
+    $this->type = $this->getRequesMethod($_SERVER['REQUEST_URI']);
+    if ($this->type === null) {
+      foreach ([\App\Helpers\Sessions\Session::class, \App\Helpers\Sessions\Cokkie::class] as $service) {
         $this->handle($service, 'handle');
+      }
+      $this->notFound = true;
+      Router::notFound();
+    } else {
+      foreach ($this->services[$this->type] as $service) {
+        if (is_string($service)) {
+          $this->handle($service, 'handle');
+        }
       }
     }
   }
 
-  private function handle(string $class, string $function, array $data = [])
+  private function handle(string $class, string $function, array $data = []): void
   {
     Providers::call($class, $function, $data);
   }
 
-  public function include()
+  public function include(): void
   {
-    foreach ($this->router as $router) {
+    foreach ($this->router as $key => $router) {
       include_once "{$_SERVER['DOCUMENT_ROOT']}{$router}";
     }
+  }
+
+  private function getRequesMethod(string $url): ?string
+  {
+    return Router::getRequesMethod($url);
+  }
+
+  private function sendErrors()
+  {
+    $data = json_encode(debug_backtrace());
+    $method = $_SERVER['REQUEST_METHOD'] ?? 'NO DATA';
+    $path = $_SERVER['REQUEST_URI'] ?? 'NO PATH';
+    TelegramBot::exceptionError("Error 404. Page: {$path}. Methods: {$method}. \nInformation: {$data}.");
   }
 }
