@@ -67,7 +67,7 @@
       <p class="error404__text"> Не волнуйтесь, время от времени, это случается с каждым из нас.
         </p>
     <div class="error404__controls">
-      <a href="/home" class="btn -primary error404__btn">Перейти на главную</a>
+      <a href="/" class="btn -primary error404__btn">Перейти на главную</a>
     </div>
   </div>
 </div>

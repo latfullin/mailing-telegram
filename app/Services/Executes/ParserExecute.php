@@ -439,14 +439,14 @@ class ParserExecute extends Execute
   {
     $disk = Storage::disk('task');
     if ($this->channel ?? false) {
-      $disk->put($this->task, "Группа {$this->channel}\n\n");
+      $disk->put("{$this->task}.txt", "Группа {$this->channel}\n\n");
     }
     foreach ($this->data as $key => $items) {
       if (is_array($items)) {
         $lang = timeLang($key);
-        $disk->put($this->task, "\n{$lang}\n");
+        $disk->put("{$this->task}.txt", "\n{$lang}\n");
         foreach ($items as $item) {
-          $disk->put($this->task, "$item");
+          $disk->put("{$this->task}.txt", "$item");
         }
         continue;
       }

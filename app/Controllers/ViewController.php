@@ -6,23 +6,31 @@ use App\Helpers\ArgumentsHelpers;
 use App\Models\PhoneModel;
 use App\Models\ProxyModel;
 use App\Models\TasksModel;
+use App\View\Components\Menu\Menu;
 
 class ViewController
 {
-  public function viewProxy(ArgumentsHelpers $argument, ProxyModel $proxyModel)
+  public function viewProxy(ArgumentsHelpers $argument, ProxyModel $proxyModel, Menu $menu)
   {
-    $proxy['all'] = count($proxyModel->get());
-    $proxy['active'] = count($proxyModel->where(['active' => 1])->get());
-    $proxy['not_used'] = count($proxyModel->where(['active' => 1, 'who_used' => 0])->get());
-    view('default', ['page' => $argument->page, 'title' => 'Proxy', 'proxy' => $proxy]);
+    try {
+      $menu = $menu->getMenu();
+      $proxy['all'] = count($proxyModel->get());
+      $proxy['active'] = count($proxyModel->where(['active' => 1])->get());
+      $proxy['not_used'] = count($proxyModel->where(['active' => 1, 'who_used' => 0])->get());
+      view('default', ['page' => $argument->page, 'title' => 'Proxy', 'proxy' => $proxy, 'menu' => $menu]);
+    } catch (\Exception $e) {
+    }
   }
 
-  public function sendMessage(ArgumentsHelpers $argument)
+  public function sendMessage(ArgumentsHelpers $argument, Menu $menu)
   {
-    view('default', ['page' => $argument->page, 'title' => 'Send Message For Telegram']);
+    $menu = $menu->getMenu();
+
+    view('default', ['page' => $argument->page, 'title' => 'Send Message For Telegram', 'menu' => $menu]);
   }
-  public function task(ArgumentsHelpers $argument, TasksModel $tasksModel)
+  public function task(ArgumentsHelpers $argument, TasksModel $tasksModel, Menu $menu)
   {
+    $menu = $menu->getMenu();
     $tasks = $tasksModel
       ->orderByDesc('task')
       ->where("type != 'continue_task'")
@@ -36,37 +44,50 @@ class ViewController
       ],
       $tasks,
     );
-    view('default', ['page' => $argument->page, 'title' => 'Task list', 'task' => $tasks]);
+
+    view('default', ['page' => $argument->page, 'title' => 'Task list', 'task' => $tasks, 'menu' => $menu]);
   }
 
-  public function createdTask(ArgumentsHelpers $argument)
+  public function createdTask(ArgumentsHelpers $argument, Menu $menu)
   {
-    view('default', ['page' => $argument->page, 'title' => 'Created task']);
+    $menu = $menu->getMenu();
+
+    view('default', ['page' => $argument->page, 'title' => 'Created task', 'menu' => $menu]);
   }
 
-  public function sessions(ArgumentsHelpers $argument, PhoneModel $phone)
+  public function sessions(ArgumentsHelpers $argument, PhoneModel $phone, Menu $menu)
   {
+    $menu = $menu->getMenu();
     $phones = $phone->get();
-    view('default', ['page' => $argument->page, 'title' => 'Sessions list', 'phones' => $phones]);
+
+    view('default', ['page' => $argument->page, 'title' => 'Sessions list', 'phones' => $phones, 'menu' => $menu]);
   }
 
-  public function login(ArgumentsHelpers $argument)
+  public function login(ArgumentsHelpers $argument, Menu $menu)
   {
-    view('default', ['page' => $argument->page, 'title' => 'Login']);
+    $menu = $menu->getMenu();
+
+    view('default', ['page' => $argument->page, 'title' => 'Login', 'menu' => $menu]);
   }
 
-  public function home()
+  public function home(Menu $menu)
   {
-    view('default', ['page' => 'login', 'title' => 'Login']);
+    $menu = $menu->getMenu();
+
+    view('default', ['page' => 'login', 'title' => 'Login', 'menu' => $menu]);
   }
 
-  public function registration()
+  public function registration(Menu $menu)
   {
-    view('default', ['page' => 'registration', 'title' => 'Registration']);
+    $menu = $menu->getMenu();
+
+    view('default', ['page' => 'registration', 'title' => 'Registration', 'menu' => $menu]);
   }
 
-  public function createSession()
+  public function createSession(Menu $menu)
   {
-    view('default', ['page' => 'create-session', 'title' => 'Created sessions']);
+    $menu = $menu->getMenu();
+
+    view('default', ['page' => 'create-session', 'title' => 'Created sessions', 'menu' => $menu]);
   }
 }

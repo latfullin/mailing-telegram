@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use PDO;
-use Carbon\Carbon;
 
 class Model
 {
