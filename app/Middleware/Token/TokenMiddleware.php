@@ -2,9 +2,10 @@
 
 namespace App\Middleware\Token;
 
+use App\Contracts\Middleware\Middleware;
 use App\Routers\Router;
 
-class TokenMiddleware
+class TokenMiddleware implements Middleware
 {
   private ?array $session = null;
   private ?array $cookie = null;

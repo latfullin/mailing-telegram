@@ -2,7 +2,9 @@
 
 namespace App\Middleware\Auth;
 
-class AuthMiddleware
+use App\Contracts\Middleware\Middleware;
+
+class AuthMiddleware implements Middleware
 {
   private ?array $session = null;
   private ?array $cokkie = null;

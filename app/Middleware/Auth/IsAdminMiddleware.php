@@ -2,7 +2,9 @@
 
 namespace App\Middleware\Auth;
 
-class IsAdminMiddleware
+use App\Contracts\Middleware\Middleware;
+
+class IsAdminMiddleware implements Middleware
 {
   private ?array $session = null;
   public function __construct()
