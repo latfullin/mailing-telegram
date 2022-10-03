@@ -24,6 +24,7 @@ class LoginController
         $_SESSION['auth'] = true;
         $_SESSION['login'] = $user['login'];
         $_SESSION['is_admin'] = boolval($user['admin']);
+        $_SESSION['access'] = $user['access'];
         return response('Success')->header('Location: /');
       }
       return response('Wrong password');
