@@ -6,7 +6,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
       <ul class="navbar-nav">
-        <? foreach ($this->data['menu'] as $menu) : ?>
+        <? foreach ($this->data['menu'] ?? [] as $menu) : ?>
           <li class="nav-item">
             <a class="nav-link" href="<?= $menu->link ?>" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <?= $menu->title ?>

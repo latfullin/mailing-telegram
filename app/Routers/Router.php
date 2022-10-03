@@ -43,10 +43,12 @@ class Router
   private static function instance(string $url, array $class, string $method)
   {
     if (!isset(self::$instance[$url])) {
+      preg_match('/^\/api/', $url, $api);
       self::$instance[$url] = new self();
       self::$instance[$url]->method = $method;
       self::$instance[$url]->class = $class[0];
       self::$instance[$url]->function = $class[1];
+      self::$instance[$url]->requesMethod = $api ? 'api' : 'web';
       self::$url = $url;
       return self::$instance[$url];
     }
@@ -86,8 +88,7 @@ class Router
 
   public static function notFound()
   {
-    view('default', ['page' => 404], 404);
-    exit();
+    Providers::call(\App\Controllers\ViewController::class, 'notFound', []);
   }
 
   public static function middleware(string|array $middleware)
@@ -102,5 +103,10 @@ class Router
     }
 
     return self::$instance[self::$url];
+  }
+
+  public static function getRequesMethod(string $url): ?string
+  {
+    return self::$instance[$url]->requesMethod ?? null;
   }
 }
