@@ -27,8 +27,10 @@ class Response
     return $this;
   }
 
-  public function FunctionName()
+  public function redirect(string $path): Response
   {
+    $this->headers[] = "Location: $path";
+
     return $this;
   }
 
