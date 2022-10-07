@@ -87,7 +87,7 @@ class Execute
   protected function getSessionList(string $howUsed = 'AllUsed'): void
   {
     $this->sessionList = $this->sessionConnect
-      ->limit(20)
+      ->limit(10)
       ->sessionList($this->typeAction, EnumStatus::getStatus($howUsed), $this->limitActions);
   }
 

@@ -11,7 +11,7 @@ class ContinueTaskExecute extends Execute
 {
   const TYPE_ACTION = 'send_message';
   const NAME_TASK = 'continue_task';
-  const LIMIT_ACTIONS = 8;
+  const LIMIT_ACTIONS = 9;
   const MAX_MSG = 9;
   protected ?Telegram $telegram = null;
   protected array $users = [];
@@ -43,36 +43,46 @@ class ContinueTaskExecute extends Execute
 
   private function start()
   {
-    $uniq = 0;
+    $this->initTelegram();
     foreach ($this->sessionList as $session) {
       if (!$this->users) {
         break;
       }
-      $this->initTelegram($session->phone);
-      for ($i = 0; $i < self::MAX_MSG - $session->send_message; $i++) {
-        $uniq++;
+      $iterable = min(self::MAX_MSG - $session->send_message < 0 ? 0 : self::MAX_MSG - $session->send_message, 9);
+      for ($i = 0; $i <= $iterable; $i++) {
         try {
           if (!$this->users) {
             break;
           }
+          sleep(7);
           $user = array_pop($this->users);
-          print_r($user->user);
+          $bool = true;
           if ($this->file) {
-            $this->telegram->sendFoto($user->user, $this->file, $this->msg . $uniq);
+            $bool = Telegram::instance($session->phone)->sendFoto($user->user, $this->file, $this->msg);
           } else {
-            $this->telegram->sendMessage($user->user, $uniq . $this->msg . $uniq);
+            $bool = Telegram::instance($session->phone)->sendMessage($user->user, $this->msg);
           }
-          $this->mailingModel->where(['user' => $user->user, 'task' => $this->taskExecute])->update([
-            'status' => 2,
-          ]);
+          if ($bool) {
+            $this->mailingModel->where(['user' => $user->user, 'task' => $this->taskExecute])->update([
+              'status' => 2,
+            ]);
+          } else {
+            $this->mailingModel->where(['user' => $user->user, 'task' => $this->taskExecute])->update([
+              'status' => 3,
+            ]);
+          }
+          $this->incrementActions($session->phone);
         } catch (\Exception $e) {
           $continue = $this->checkError($e, $user->user, $session->phone);
+          echo $continue;
           if ($continue === 'ban') {
             continue 2;
           }
+          $this->mailingModel->where(['user' => $user->user, 'task' => $this->taskExecute])->update([
+            'status' => 3,
+          ]);
           continue;
         }
-        sleep(7);
       }
     }
   }
@@ -86,12 +96,15 @@ class ContinueTaskExecute extends Execute
     }
   }
 
-  public function initTelegram(string $phone)
+  public function initTelegram()
   {
-    try {
-      $this->telegram = Telegram::instance($phone);
-    } catch (\Exception $e) {
-      ErrorHelper::writeToFile($e);
+    foreach ($this->sessionList as $phone) {
+      try {
+        Telegram::instance($phone->phone);
+      } catch (\Exception $e) {
+        ErrorHelper::writeToFile($e);
+        continue;
+      }
     }
   }
 

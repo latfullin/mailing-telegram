@@ -9,24 +9,28 @@ use danog\MadelineProto\phone;
 
 class PrepareAccountController
 {
-  public function prepareAccount(
-    ArgumentsHelpers $argument,
-    PhoneModel $phoneModel
-  ) {
-    $phones = $phoneModel->getAll();
+  public function prepareAccount(ArgumentsHelpers $argument, PhoneModel $phoneModel)
+  {
+    $phones = $phoneModel
+      ->limit([0, 10])
+      ->where(['status' => 10, 'ban' => 0])
+      ->get();
     foreach ($phones as $phone) {
-      if ($argument->photo ?? false) {
-        echo $phone->phone;
-        Telegram::instance($phone->phone)->deleteMePhotoProfile();
-        Telegram::instance($phone->phone)->updatePhotoProfile($argument->photo);
-      }
-
-      Telegram::instance($phone->phone)->updateNameProfile(
-        $argument->firstName,
-        $argument->lastName ?? "",
-        $argument->about ?? ""
-      );
-      $phoneModel->increment($phone->phone, "count_action");
+      // if ($argument->photo ?? false) {
+      $telegram = Telegram::instance($phone->phone);
     }
+    foreach ($phones as $phone) {
+      // $telegram->updateNameProfile('Дмитрий', 'выф', '');
+      $telegram->deleteMePhotoProfile();
+      $telegram->updatePhotoProfile('image-20.jpeg');
+    }
+    // $telegram->updateNameProfile('Kilkenny', '', '');
+    // $telegram->sendMessage('@hitThat', 'hello');
+    // $phoneModel->increment($phone->phone, 'count_action');
+  }
+
+  public function start($phone)
+  {
+    Telegram::instance($phone);
   }
 }

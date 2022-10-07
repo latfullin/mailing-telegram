@@ -45,4 +45,12 @@ class AutorizationController
       print_r($e);
     }
   }
+
+  public function editProfile(ArgumentsHelpers $argument, PhoneModel $sessions)
+  {
+    $session = $sessions
+      ->limit([0, 20])
+      ->where(['status' => 10])
+      ->get();
+  }
 }

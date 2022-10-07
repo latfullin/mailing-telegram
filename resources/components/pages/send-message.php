@@ -17,7 +17,7 @@
       <label class="form-label" for='phone'>
         Сообщение:
       </label>
-      <input class="form-control" type="text" name="msg" id="">
+      <textarea class="form-control" type="text" name="msg" id=""></textarea>
     </div>
     <button class="btn border btn-outline-secondary" type="submit">Отправить</button>
   </form>

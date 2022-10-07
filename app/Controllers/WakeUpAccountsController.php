@@ -12,8 +12,7 @@ class WakeUpAccountsController
 {
   public function wakeUpAccounts(ArgumentsHelpers $arg, PhoneModel $session)
   {
-    $phones = $session->limit([$arg->limit[0], $arg->limit[1]])->getAll();
-    $this->startClient($phones);
+    $phones = $session->limit([$arg->limit[0], $arg->limit[1]])->get();
     $value = count($phones);
 
     foreach ($phones as $key => $phone) {
@@ -26,26 +25,22 @@ class WakeUpAccountsController
         $i = $key + 1;
         $telegram->sendMessage(
           $arg->channel,
-          "Я {$me["first_name"]},  номер:'{$phone->phone}'.Сообщений из {$i} из {$value}."
+          "Я {$me['first_name']},  номер:'{$phone->phone}'.Сообщений из {$i} из {$value}.",
         );
-        $session
-          ->where(["phone" => $phone->phone])
-          ->update(["ban" => 0, "flood_wait" => 0]);
+        $session->where(['phone' => $phone->phone])->update(['ban' => 0, 'flood_wait' => 0]);
 
         sleep(5);
       } catch (\Exception $e) {
-        if ($e->getMessage() == "PEER_FLOOD") {
+        if ($e->getMessage() == 'PEER_FLOOD') {
           sleep(5);
-          $session
-            ->where(["phone" => $phone->phone])
-            ->update(["flood_wait" => 1]);
+          $session->where(['phone' => $phone->phone])->update(['flood_wait' => 1]);
           continue;
         }
-        if ($e->getMessage() == "USER_DEACTIVATED_BAN") {
-          $session->where(["phone" => $phone->phone])->update(["ban" => 1]);
+        if ($e->getMessage() == 'USER_DEACTIVATED_BAN') {
+          $session->where(['phone' => $phone->phone])->update(['ban' => 1]);
           continue;
         }
-        $session->where(["phone" => $phone->phone])->update(["ban" => 2]);
+        $session->where(['phone' => $phone->phone])->update(['ban' => 2]);
       }
     }
   }
@@ -63,30 +58,25 @@ class WakeUpAccountsController
   public function joinChannel(ArgumentsHelpers $arguments, PhoneModel $session)
   {
     $phones = $session
-      ->join(["proxies" => ["sessions.phone", "=", "proxies.who_used"]])
-      ->where(["proxies.active" => "1", "sessions.ban" => [0, 2]])
+      ->join(['proxies' => ['sessions.phone', '=', 'proxies.who_used']])
+      ->where(['proxies.active' => '1', 'sessions.ban' => [0, 2]])
       ->limit([$arguments->limit[0], $arguments->limit[1]])
       ->get();
     $this->startClient($phones);
 
     $start = Telegram::instance(79874018497);
 
-    $channelId = $start->getInfo($arguments->channel)["channel_id"];
+    $channelId = $start->getInfo($arguments->channel)['channel_id'];
     foreach ($phones as $phone) {
       try {
         $telegram = Telegram::instance($phone->phone);
         $dialogs = $telegram->getDialogs();
         $inGroup = [];
-        $inGroup = array_filter(
-          $dialogs,
-          fn($i) => ($i["channel_id"] ?? false) == $channelId
-        );
+        $inGroup = array_filter($dialogs, fn($i) => ($i['channel_id'] ?? false) == $channelId);
         if (!$inGroup) {
           print_r($inGroup);
           $telegram->joinChannel($arguments->channel);
-          $session
-            ->where(["phone" => $phone->phone])
-            ->update(["ban" => 0, "flood_wait" => 0]);
+          $session->where(['phone' => $phone->phone])->update(['ban' => 0, 'flood_wait' => 0]);
         }
         sleep(10);
       } catch (\Exception $e) {

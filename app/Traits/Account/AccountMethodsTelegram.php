@@ -12,9 +12,9 @@ trait AccountMethodsTelegram
    * @param lastName surname.
    * @param about description profile. Max Max length 70 symbol.
    */
-  public function updateNameProfile(string $firstName, ?string $lastName = null, ?string $about = null): void
+  public function updateNameProfile(string $firstName, string $lastName = '', string $about = '')
   {
-    $this->telegram->account->updateProfile(first_name: $firstName, last_name: $lastName, about: $about);
+    return $this->telegram->account->updateProfile(first_name: $firstName, last_name: $lastName, about: $about);
   }
 
   /**

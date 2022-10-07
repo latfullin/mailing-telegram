@@ -10,12 +10,12 @@ class EditProfileExecute
 
   public function __construct()
   {
-    $this->collections["photo"] = $this->getInformationFile(
-      fopen("photoList", "r")
-    );
-    $this->collections["name"] = $this->getInformationFile(
-      fopen("nameList", "r")
-    );
+    // $this->collections["photo"] = $this->getInformationFile(
+    //   fopen("photoList", "r")
+    // );
+    // $this->collections["name"] = $this->getInformationFile(
+    //   fopen("nameList", "r")
+    // );
   }
 
   public static function create()
@@ -25,28 +25,16 @@ class EditProfileExecute
   public function setInformationProfile(array $phones)
   {
     foreach ($phones as $phone) {
-      $this->collections["phone"][$phone]["self"] = Telegram::instance(
-        $phone
-      )->getSelf();
-      $this->collections["phone"][$phone]["diaglos"] = Telegram::instance(
-        $phone
-      )->getDialogs();
-      $mePhoto = $this->collections["phone"][$phone]["self"]["photo"] ?? false;
+      $this->collections['phone'][$phone]['self'] = Telegram::instance($phone)->getSelf();
+      $this->collections['phone'][$phone]['diaglos'] = Telegram::instance($phone)->getDialogs();
+      $mePhoto = $this->collections['phone'][$phone]['self']['photo'] ?? false;
       if (!$mePhoto) {
         $telegram = Telegram::instance($phone);
-        $telegram->updateNameProfile(
-          $this->collections["name"][
-            rand(0, count($this->collections["name"]) - 1)
-          ]
-        );
-        $telegram->updatePhotoProfile(
-          $this->collections["photo"][
-            rand(0, count($this->collections["photo"]) - 1)
-          ]
-        );
-        $telegram->sendMessage("@hitThat", "photo edit");
+        $telegram->updateNameProfile($this->collections['name'][rand(0, count($this->collections['name']) - 1)]);
+        $telegram->updatePhotoProfile($this->collections['photo'][rand(0, count($this->collections['photo']) - 1)]);
+        $telegram->sendMessage('@hitThat', 'photo edit');
       }
-      echo "success";
+      echo 'success';
     }
   }
 

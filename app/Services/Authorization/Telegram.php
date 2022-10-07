@@ -34,7 +34,6 @@ class Telegram
       if (!$this->setting && $this->usedProxy) {
         throw new \Exception('Error proxy');
       }
-
       $this->phone = $phone;
       $this->telegram = new \danog\MadelineProto\API($this->pathSession($phone), $this->setting ?? []);
       if ($this->setting instanceof \danog\MadelineProto\Settings\Connection) {
