@@ -37,11 +37,15 @@ class MailingMessagesExecute extends Execute
 
   public function setMsg(string $msg): MailingMessagesExecute
   {
-    $this->msg = $msg;
-    $this->modelTask->where(['task' => $this->task])->update([
-      'information' => json_encode(['msg' => $msg, 'file' => $this->file], JSON_UNESCAPED_UNICODE),
-    ]);
-
+    try {
+      $this->msg = $msg;
+      $this->modelTask->where(['task' => $this->task])->update([
+        'information' => json_encode(['msg' => $msg, 'file' => $this->file], JSON_UNESCAPED_UNICODE),
+      ]);
+    } catch (\Exception $e) {
+      echo '<pre>';
+      print_r($e);
+    }
     return $this;
   }
 

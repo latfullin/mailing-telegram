@@ -54,7 +54,7 @@ class Execute
   public function __construct(
     string $typeAction = '',
     string $nameTask = '',
-    int $limitActions = 10,
+    int $limitActions = 20,
     string $howUsed = 'AllUsed',
   ) {
     $this->typeAction = $typeAction ? $typeAction : 'count_action';

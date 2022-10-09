@@ -12,7 +12,7 @@ class ContinueTaskExecute extends Execute
   const TYPE_ACTION = 'send_message';
   const NAME_TASK = 'continue_task';
   const LIMIT_ACTIONS = 9;
-  const MAX_MSG = 9;
+  const MAX_MSG = 8;
   protected ?Telegram $telegram = null;
   protected array $users = [];
   protected string $msg = '';
@@ -50,6 +50,7 @@ class ContinueTaskExecute extends Execute
       }
       $iterable = min(self::MAX_MSG - $session->send_message < 0 ? 0 : self::MAX_MSG - $session->send_message, 9);
       for ($i = 0; $i <= $iterable; $i++) {
+        $error = 0;
         try {
           if (!$this->users) {
             break;
@@ -67,17 +68,24 @@ class ContinueTaskExecute extends Execute
               'status' => 2,
             ]);
           } else {
+            ++$error;
             $this->mailingModel->where(['user' => $user->user, 'task' => $this->taskExecute])->update([
               'status' => 3,
             ]);
           }
           $this->incrementActions($session->phone);
+          if ($error > 1) {
+            $this->sessionConnect->where(['phone' => $session->phone])->update(['ban' => 9]);
+            continue 2;
+          }
         } catch (\Exception $e) {
           $continue = $this->checkError($e, $user->user, $session->phone);
           echo $continue;
           if ($continue === 'ban') {
+            $this->sessionConnect->where(['phone' => $session->phone])->update(['ban' => 1]);
             continue 2;
           }
+          ++$error;
           $this->mailingModel->where(['user' => $user->user, 'task' => $this->taskExecute])->update([
             'status' => 3,
           ]);

@@ -12,6 +12,7 @@ class MailingMessagesController
   public function createTaskMailingMessages(ArgumentsHelpers $arguments, MailingMessagesExecute $execute)
   {
     $users = preg_split('/[\r\n]+/', $arguments->users, -1, PREG_SPLIT_NO_EMPTY);
+    $users = count($users) === 0 ? $arguments->users : $users;
     $execute
       ->setMsg($arguments->msg)
       ->setFile($arguments->file ?? false)

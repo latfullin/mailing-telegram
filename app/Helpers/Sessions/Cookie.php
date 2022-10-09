@@ -2,7 +2,7 @@
 
 namespace App\Helpers\Sessions;
 
-class Cokkie
+class Cookie
 {
   public function __construct()
   {

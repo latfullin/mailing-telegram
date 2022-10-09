@@ -2,6 +2,7 @@
 
 namespace App\Traits\Message;
 
+use App\Helpers\ErrorHelper;
 use danog\MadelineProto\channels;
 use Exception;
 
@@ -15,6 +16,7 @@ trait MessageMethodsTelegram
       $this->telegram->messages->sendMessage(peer: $peer, message: $msg);
       return $this;
     } catch (\Exception $e) {
+      ErrorHelper::writeToFile($e);
       return false;
     }
   }
