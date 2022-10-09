@@ -1,8 +1,23 @@
 version: '3.8'
 
+networks:
+    default:
+        name: nginx_net
+        external: true
+
 services:
+    nginx:
+        container_name: telegram-client-bot-nginx
+        image: nginx:latest
+        restart: always
+        ports:
+            - '${DOCKER_NGINX_ROOT:-80}'
+        volumes:
+            - ./:/var/www/html
+            - ./docker/nginx:/etc/nginx/conf.d
+
     php:
-        container_name: telegram-bot-php
+        container_name: telegram-client-bot-php
         build:
             context: ./docker/php/
             args:
@@ -21,30 +36,22 @@ services:
             PHP_IDE_CONFIG: 'serverName=Docker'
         volumes:
             - ./:/var/www/html
-    nginx:
-        image: nginx:latest
-        restart: always
-        ports:
-            - 80:80
-        volumes:
-            - ./:/var/www/html
-            - ./docker/nginx:/etc/nginx/conf.d
+
     mysql:
-        container_name: telegram-bot-mysql
+        container_name: telegram-client-bot-mysql
         image: mysql:8.0
         restart: always
         ports:
-            - '${DOCKER_MYSQL_PORT:-3306}:3306' 
+            - '${DOCKER_MYSQL_PORT:-3306}:3306'
         volumes:
             - ./docker/mysql/data/:/var/lib/mysql/
         environment:
             MYSQL_ROOT_PASSWORD: '${DOCKER_MYSQL_ROOT_PASSWORD:-password}'
-            MYSQL_DATABASE: '${DOCKER_MYSQL_DATABASE:-telegram-bot}'
+            MYSQL_DATABASE: '${DOCKER_MYSQL_DATABASE:-telegram-client-bot}'
             MYSQL_USER: '${DOCKER_MYSQL_USER:-user}'
             MYSQL_PASSWORD: '${DOCKER_MYSQL_PASSWORD:-password}'
             TZ: Europe/Moscow
         command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-
     # redis:
     #     container_name: equinar-redis
     #     build: ./docker/redis/

@@ -29,9 +29,9 @@ class Kernel extends AppKernel
 
   public function callServices()
   {
-    $this->type = $this->getRequesMethod($_SERVER['REQUEST_URI']);
+    $this->type = $this->getrequestMethod($_SERVER['REQUEST_URI']);
     if ($this->type === null) {
-      foreach ([\App\Helpers\Sessions\Session::class, \App\Helpers\Sessions\Cokkie::class] as $service) {
+      foreach ([\App\Helpers\Sessions\Session::class, \App\Helpers\Sessions\Cookie::class] as $service) {
         $this->handle($service, 'handle');
       }
       $this->notFound = true;
@@ -57,9 +57,9 @@ class Kernel extends AppKernel
     }
   }
 
-  private function getRequesMethod(string $url): ?string
+  private function getrequestMethod(string $url): ?string
   {
-    return Router::getRequesMethod($url);
+    return Router::getrequestMethod($url);
   }
 
   private function sendErrors()

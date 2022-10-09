@@ -48,7 +48,7 @@ class Router
       self::$instance[$url]->method = $method;
       self::$instance[$url]->class = $class[0];
       self::$instance[$url]->function = $class[1];
-      self::$instance[$url]->requesMethod = $api ? 'api' : 'web';
+      self::$instance[$url]->requestMethod = $api ? 'api' : 'web';
       self::$url = $url;
       return self::$instance[$url];
     }
@@ -105,8 +105,8 @@ class Router
     return self::$instance[self::$url];
   }
 
-  public static function getRequesMethod(string $url): ?string
+  public static function getrequestMethod(string $url): ?string
   {
-    return self::$instance[$url]->requesMethod ?? null;
+    return self::$instance[$url]->requestMethod ?? null;
   }
 }

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Helpers\ArgumentsHelpers;
+use App\Models\UsersModel;
 use App\Services\Bot\TelegramBot;
 use App\Services\Executes\ParserExecute;
 use App\Services\Executes\ParserTelephoneExecute;
@@ -34,6 +35,33 @@ class ParserController
       return response(true);
     } catch (\Exception $e) {
       $telegram->setChatId('365047507')->sendMsg($e->getMessage());
+    }
+  }
+
+  public function parseGroupForTelegram(
+    ArgumentsHelpers $arg,
+    ParserExecute $parser,
+    TelegramBot $telegram,
+    UsersModel $users,
+  ) {
+    $user = $users->where(['name' => $arg->json['message']['from']['id']])->first();
+    if ($user) {
+      try {
+        $link = preg_match("/^https:\/\/t\.me\/\+?[a-z0-9@_]+$/i", trim($arg->json['message']['text']));
+        if ($link) {
+          $filePath = $parser
+            ->channel(trim($arg->json['message']['text']))
+            ->executes()
+            ->save();
+          $telegram->setChatId($arg->json['message']['from']['id'])->sendFile($filePath);
+        } else {
+          $telegram->setChatId($arg->json['message']['from']['id'])->sendMsg('Not correct link');
+        }
+      } catch (\Exception $e) {
+        $telegram->setChatId($arg->json['message']['from']['id'])->sendMsg('Not found error');
+      }
+    } else {
+      $telegram->setChatId($arg->json['message']['from']['id'])->sendMsg('You have not access');
     }
   }
 }
