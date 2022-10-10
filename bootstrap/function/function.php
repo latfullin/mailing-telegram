@@ -26,3 +26,8 @@ function session()
 {
   return Session::intance();
 }
+
+function root($path = ''): string
+{
+  return $path ? "{$_SERVER['DOCUMENT_ROOT']}/$path" : $_SERVER['DOCUMENT_ROOT'];
+}

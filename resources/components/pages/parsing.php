@@ -1,3 +1,3 @@
 <div class="">
-  <? include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/components/form/form-parser.php" ?>
+  <? include_once root("resources/components/form/form-parser.php") ?>
 </div>

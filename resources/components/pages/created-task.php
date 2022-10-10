@@ -9,8 +9,8 @@
 </div>
 
 <div class="">
-  <? include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/components/form/form-created-task-mailing.php" ?>
+  <? include_once root("resources/components/form/form-created-task-mailing.php") ?>
 </div>
 <div class="">
-  <? include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/components/form/form-created-task-invitations.php" ?>
+  <? include_once root("resources/components/form/form-created-task-invitations.php") ?>
 </div>

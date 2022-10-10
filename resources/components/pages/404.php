@@ -54,7 +54,7 @@
   </style>
 </head>
 <body>
-  <? include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/components/menu/menu.php" ?>
+  <? include_once root("resources/components/menu/menu.php") ?>
   
   <div class="error404">
     <div class="container error404__container">

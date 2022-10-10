@@ -9,7 +9,7 @@ use App\Services\Bot\TelegramBot;
 
 class Kernel extends AppKernel
 {
-  private array $router = ['/router/api.php', '/router/web.php'];
+  private array $router = ['router/api.php', 'router/web.php'];
   private ?string $type = null;
   private bool $notFound = false;
 
@@ -52,8 +52,8 @@ class Kernel extends AppKernel
 
   public function include(): void
   {
-    foreach ($this->router as $key => $router) {
-      include_once "{$_SERVER['DOCUMENT_ROOT']}{$router}";
+    foreach ($this->router as $router) {
+      include_once root($router);
     }
   }
 

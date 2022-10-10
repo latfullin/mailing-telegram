@@ -31,6 +31,6 @@ class View
   public function render()
   {
     http_response_code($this->status);
-    include_once "{$_SERVER['DOCUMENT_ROOT']}/resources/components/layouts/{$this->layout}.php";
+    include_once root("resources/components/layouts/{$this->layout}.php");
   }
 }

@@ -1,10 +1,8 @@
 /vendor
-/delete
 /node_modules
 /docker/mysql/data
 /docker/redis/data
 .env
 MadelineProto.log
-/app/Traits/Channels/Array.ini
-/app/Traits/Channels/Array.ini
 ExceptionLog.log
+MadelineProto.log
