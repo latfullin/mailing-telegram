@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Helpers\ArgumentsHelpers;
+use App\Helpers\ErrorHelper;
 use App\Models\PhoneModel;
 use App\Models\ProxyModel;
 use App\Services\Authorization\Telegram;
@@ -13,7 +14,7 @@ class AutorizationController
 
   public function redirectCreateSession(ArgumentsHelpers $argument)
   {
-    return response('true')->redirect("/create-session-init?how={$argument->how}");
+    return response('true')->redirect("/api/create-session-init?how={$argument->how}&phone={$argument->phone}");
   }
 
   public function createSession(ArgumentsHelpers $argument, PhoneModel $phones, ProxyModel $proxies)
@@ -21,7 +22,7 @@ class AutorizationController
     try {
       if (isset($argument->how)) {
         $phone = $phones->last();
-        $telegram = Telegram::instance($phone['id'] + 1);
+        $telegram = Telegram::instance($argument->phone);
         if (!$telegram->getStart()) {
           return response('Error. The client does not start. Please check free proxies for authorization.');
         }
@@ -42,7 +43,7 @@ class AutorizationController
       }
       return response('User not found to whom to send a message for verification');
     } catch (\Exception $e) {
-      print_r($e);
+      ErrorHelper::writeToFile($e);
     }
   }
 
