@@ -43,8 +43,9 @@ class MailingMessagesExecute extends Execute
         'information' => json_encode(['msg' => $msg, 'file' => $this->file], JSON_UNESCAPED_UNICODE),
       ]);
     } catch (\Exception $e) {
-      echo '<pre>';
-      print_r($e);
+      // echo '<pre>';
+      // print_r($e);
+      ErrorHelper::writeToFile($e);
     }
     return $this;
   }

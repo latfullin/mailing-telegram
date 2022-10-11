@@ -43,14 +43,15 @@ class ContinueTaskExecute extends Execute
 
   private function start()
   {
-    $this->initTelegram();
+    // $this->initTelegram();
     foreach ($this->sessionList as $session) {
       if (!$this->users) {
         break;
       }
+      $this->initTelegram($session->phone);
       $iterable = min(self::MAX_MSG - $session->send_message < 0 ? 0 : self::MAX_MSG - $session->send_message, 9);
+      $error = 0;
       for ($i = 0; $i <= $iterable; $i++) {
-        $error = 0;
         try {
           if (!$this->users) {
             break;
@@ -104,14 +105,22 @@ class ContinueTaskExecute extends Execute
     }
   }
 
-  public function initTelegram()
+  public function initTelegram($phone = '')
   {
-    foreach ($this->sessionList as $phone) {
+    if ($phone) {
       try {
-        Telegram::instance($phone->phone);
+        Telegram::instance($phone);
       } catch (\Exception $e) {
         ErrorHelper::writeToFile($e);
-        continue;
+      }
+    } else {
+      foreach ($this->sessionList as $phone) {
+        try {
+          Telegram::instance($phone->phone);
+        } catch (\Exception $e) {
+          ErrorHelper::writeToFile($e);
+          continue;
+        }
       }
     }
   }

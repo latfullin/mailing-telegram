@@ -27,7 +27,11 @@ trait AccountMethodsTelegram
 
   public function start()
   {
-    return $this->telegram->start();
+    try {
+      $this->telegram->start();
+    } catch (\Exception $e) {
+      return false;
+    }
   }
 
   public function getMePhoto()

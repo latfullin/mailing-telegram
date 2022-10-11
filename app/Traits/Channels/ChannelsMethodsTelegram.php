@@ -6,7 +6,7 @@ use danog\MadelineProto\channels;
 
 trait ChannelsMethodsTelegram
 {
-  public function createGroup(string $title, string $description,  bool $megagroup = true): object
+  public function createGroup(string $title, string $description, bool $megagroup = true): object
   {
     $this->telegram->channels->createChannel(megagroup: $megagroup, title: $title, about: $description);
 
@@ -15,7 +15,7 @@ trait ChannelsMethodsTelegram
 
   public function getGroupsForDiscussion(): array
   {
-    print_r($this->telegram->channels->getGroupsForDiscussion());
+    // print_r($this->telegram->channels->getGroupsForDiscussion());
 
     return $this;
   }
@@ -47,7 +47,6 @@ trait ChannelsMethodsTelegram
     return $this->telegram->channels->getChannels(id: $channels);
   }
 
-
   /**
    * @param channel - link for group.
    */
@@ -61,15 +60,19 @@ trait ChannelsMethodsTelegram
     return $this->telegram->channels->getMessages(channel: $channel, id: [1, 400]);
   }
 
-
   /**
-   * @param group need link on the group. Not working with chanells(Issues error - 400). 
+   * @param group need link on the group. Not working with chanells(Issues error - 400).
    * @param offset Start array. Patricals users for group.
-   * @param limit limit length array. 
+   * @param limit limit length array.
    */
   public function getParticipants(string|int $group, int $offset = 0, int $limit = 200, string $q = '', $hash = '')
   {
-    return $this->telegram->channels->getParticipants(channel: $group, filter: ['_' => 'channelParticipantsSearch', 'q' => $q], offset: $offset, limit: $limit);
+    return $this->telegram->channels->getParticipants(
+      channel: $group,
+      filter: ['_' => 'channelParticipantsSearch', 'q' => $q],
+      offset: $offset,
+      limit: $limit,
+    );
   }
 
   public function readHistory($channel): bool

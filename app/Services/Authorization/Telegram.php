@@ -35,23 +35,29 @@ class Telegram
         throw new \Exception('Error proxy');
       }
       $this->phone = $phone;
-      $this->telegram = new \danog\MadelineProto\API($this->pathSession($phone), $this->setting ?? []);
       if ($this->setting instanceof \danog\MadelineProto\Settings\Connection) {
+        $this->telegram = new \danog\MadelineProto\API($this->pathSession($phone), $this->setting);
         $this->telegram->updateSettings($this->setting);
+      } else {
+        $this->telegram = new \danog\MadelineProto\API($this->pathSession($phone, $this->setting));
       }
       $this->params($async);
     } catch (\Exception $e) {
       $this->checkError($e, $phone);
-      return $e->getMessage();
       ErrorHelper::writeToFile($e);
+      TelegramBot::exceptionError($e->getMessage());
     }
   }
 
   private function params($async)
   {
-    $this->telegram->async($async);
-    $this->telegram->start();
-    $this->start = true;
+    try {
+      $this->telegram->async($async);
+      $this->telegram->start();
+      $this->start = true;
+    } catch (\Exception $e) {
+      return;
+    }
   }
 
   public function getMe()
@@ -67,21 +73,25 @@ class Telegram
   /**
    * @param phone session. Kept storage/session.
    */
-  public static function instance($phone, bool $async = false)
+  public static function instance(string|int $phone, bool $async = false)
   {
+    // if (!is_dir(root("storage/session/{$phone}"))) {
+    //   return false;
+    // }
     try {
       return new self($phone, $async);
     } catch (\Exception $e) {
+      ErrorHelper::writeToFile($e);
     }
   }
 
   protected function pathSession()
   {
-    if (is_dir("storage/session/{$this->phone}")) {
-      return "storage/session/{$this->phone}/{$this->phone}";
+    if (is_dir(root("storage/session/{$this->phone}"))) {
+      return root("storage/session/{$this->phone}/{$this->phone}");
     } else {
-      mkdir("storage/session/{$this->phone}", 0755);
-      return "storage/session/{$this->phone}/{$this->phone}";
+      mkdir(root("storage/session/{$this->phone}"), 0755);
+      return root("storage/session/{$this->phone}/{$this->phone}");
     }
   }
 

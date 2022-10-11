@@ -2,6 +2,8 @@
 
 namespace App\Services\Bot;
 
+use App\Helpers\ErrorHelper;
+
 /**
  * @param $typeMsg, default = /sendMessage;
  * @param myid 365047507
@@ -47,7 +49,8 @@ class TelegramBot
         $params = ['chat_id' => $this->chatId, 'document' => $file];
         $this->send($params, '/sendDocument');
       } catch (\Exception $e) {
-        print_r($e);
+        // print_r($e);
+        ErrorHelper::writeToFile($e);
       }
     }
     return false;
