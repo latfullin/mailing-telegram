@@ -6,3 +6,5 @@
 MadelineProto.log
 ExceptionLog.log
 MadelineProto.log
+composer.lock
+/.vscode

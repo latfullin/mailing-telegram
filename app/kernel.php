@@ -15,4 +15,6 @@ class kernel
       'cookie' => \App\Helpers\Sessions\Cookie::class,
     ],
   ];
+
+  protected array $basicServices = [\App\Helpers\Env::class];
 }
