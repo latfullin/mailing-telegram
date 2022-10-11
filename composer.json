@@ -18,7 +18,8 @@
   ],
   "require": {
     "danog/madelineproto": "7.0.114.9999",
-    "nesbot/carbon": "^2.61"
+    "nesbot/carbon": "^2.61",
+    "symfony/dotenv": "^6.1"
   },
   "config": {
     "allow-plugins": {

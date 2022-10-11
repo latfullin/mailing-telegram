@@ -1,9 +1,16 @@
 <?php
 
+use App\Helpers\Env;
 use App\Helpers\LangHelper;
 use App\Helpers\Sessions\Session;
 use App\Helpers\View;
 use App\Response\Response;
+use Symfony\Component\Dotenv\Dotenv;
+
+function env($key)
+{
+  return Env::get($key);
+}
 
 function timeLang($type)
 {
