@@ -17,6 +17,9 @@ class Cache
     if (self::$cache == null) {
       self::$cache = new self();
     }
+    if (in_array($name, \get_class_methods(__CLASS__))) {
+      self::{$name}(...$arguments);
+    }
   }
 
   private static function remove(string $file): void
