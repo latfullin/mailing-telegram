@@ -2,12 +2,12 @@
 
 namespace App\Kernel;
 
-use App\kernel as AppKernel;
+use App\kernel as HttpKernel;
 use App\Providers\Providers;
 use App\Routers\Router;
 use App\Services\Bot\TelegramBot;
 
-class Kernel extends AppKernel
+class Kernel extends HttpKernel
 {
   private array $router = ['router/api.php', 'router/web.php'];
   private ?string $type = null;
@@ -15,6 +15,7 @@ class Kernel extends AppKernel
 
   public function __construct()
   {
+    $this->basicService();
     $this->include();
   }
 
@@ -29,7 +30,7 @@ class Kernel extends AppKernel
 
   public function callServices()
   {
-    $this->type = $this->getrequestMethod($_SERVER['REQUEST_URI']);
+    $this->type = $this->getrequestMethod(strtok($_SERVER['REQUEST_URI'], '?'));
     if ($this->type === null) {
       foreach ([\App\Helpers\Sessions\Session::class, \App\Helpers\Sessions\Cookie::class] as $service) {
         $this->handle($service, 'handle');
@@ -68,5 +69,12 @@ class Kernel extends AppKernel
     $method = $_SERVER['REQUEST_METHOD'] ?? 'NO DATA';
     $path = $_SERVER['REQUEST_URI'] ?? 'NO PATH';
     TelegramBot::exceptionError("Error 404. Page: {$path}. Methods: {$method}. \nInformation: {$data}.");
+  }
+
+  private function basicService()
+  {
+    foreach ($this->basicServices as $service) {
+      $this->handle($service, 'handle');
+    }
   }
 }
