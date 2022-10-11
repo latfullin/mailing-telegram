@@ -17,6 +17,9 @@
     </div>
     <? if ($this->data['session']['auth'] === true ?? false) : ?>
       <div class="col-1">
+       Здравствуйте, <? $this->data['session']['name'] ?? '' ?>
+      </div>
+      <div class="col-1">
         <form action="/api/logout" method="POST">
           <button class="btn btn-secondary" type="submit">Выход</button>
         </form>

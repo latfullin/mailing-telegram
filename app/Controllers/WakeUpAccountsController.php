@@ -3,10 +3,9 @@
 namespace App\Controllers;
 
 use App\Helpers\ArgumentsHelpers;
+use App\Helpers\ErrorHelper;
 use App\Models\PhoneModel;
 use App\Services\Authorization\Telegram;
-use App\Services\WarmingUp\AccountWarmingUp;
-use danog\MadelineProto\phone;
 
 class WakeUpAccountsController
 {
@@ -74,13 +73,14 @@ class WakeUpAccountsController
         $inGroup = [];
         $inGroup = array_filter($dialogs, fn($i) => ($i['channel_id'] ?? false) == $channelId);
         if (!$inGroup) {
-          print_r($inGroup);
+          // print_r($inGroup);
           $telegram->joinChannel($arguments->channel);
           $session->where(['phone' => $phone->phone])->update(['ban' => 0, 'flood_wait' => 0]);
         }
         sleep(10);
       } catch (\Exception $e) {
-        print_r($e);
+        // print_r($e);
+        ErrorHelper::writeToFile($e);
       }
     }
   }

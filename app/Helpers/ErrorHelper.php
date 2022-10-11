@@ -6,15 +6,13 @@ class ErrorHelper
 {
   public static function writeToFileAndDie($e)
   {
-    file_put_contents("ExceptionLog.log", $e, FILE_APPEND);
-
-    print_r($e);
+    file_put_contents(root('ExceptionLog.log'), $e, FILE_APPEND);
     die();
   }
 
   public static function writeToFile($e)
   {
-    file_put_contents("ExceptionLog.log", $e, FILE_APPEND);
+    file_put_contents(root('ExceptionLog.log'), $e, FILE_APPEND);
   }
 }
 
