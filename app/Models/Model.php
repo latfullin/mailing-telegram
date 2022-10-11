@@ -22,9 +22,9 @@ class Model
 
   public function __construct(string $table)
   {
-    $dsn = 'mysql:dbname=telegram-bot;host=mysql';
-    $user = 'kilkenny';
-    $password = 'password';
+    $dsn = env('DB_CONNECT') . ':dbname=' . env('DOCKER_MYSQL_DATABASE') . ';host=' . env('DB_HOST');
+    $user = env('DOCKER_MYSQL_USER');
+    $password = env('DOCKER_MYSQL_PASSWORD');
     $this->table = $table;
     $this->connect = new PDO($dsn, $user, $password);
   }
