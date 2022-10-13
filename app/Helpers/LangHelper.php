@@ -6,7 +6,7 @@ class LangHelper
 {
   public static function init($type)
   {
-    $time = include 'lang/ru/time.php';
+    $time = include root('lang/ru/time.php');
     return $time[$type] ?? false;
   }
 }

@@ -1,23 +1,27 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Phone</th>
-      <th scope="col">Status</th>
-      <th scope="col">Last active</th>
-      <th scope="col">Ban</th>
-      <th scope="col">Validate</th>
+      <th scope="col">Номер</th>
+      <th scope="col">Тип</th>
+      <th scope="col">Последняя активность</th>
+      <th scope="col">Блокировка</th>
+      <th scope="col">Проверка</th>
     </tr>
   </thead>
   <tbody>
-    <? foreach ($this->data['phones'] as $phone) : ?>
+    <?
+
+use App\Helpers\Enum\EnumStatusPhone;
+
+ foreach ($this->data['phones'] as $phone) : ?>
       <tr>
         <th scope="row"><?= $phone->phone ?></th>
-        <td><?= $phone->status ?></td>
+        <td><?= EnumStatusPhone::getValue($phone->status) ?></td>
         <td>
           <?= $phone->updated_at ?? 'No data' ?>
         </td>
         <td>
-          <?= $phone->ban ?>
+          <?= EnumStatusPhone::getValue($phone->ban) ?>
         </td>
         <td>
           <form action="/api/send-message" method="POST">

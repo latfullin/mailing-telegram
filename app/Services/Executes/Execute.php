@@ -2,7 +2,7 @@
 
 namespace App\Services\Executes;
 
-use App\Helpers\Enum\EnumStatus;
+use App\Helpers\Enum\EnumStatusPhone;
 use App\Helpers\ErrorHelper;
 use App\Helpers\WorkingFileHelper;
 use App\Models\PhoneModel;
@@ -88,7 +88,7 @@ class Execute
   {
     $this->sessionList = $this->sessionConnect
       ->limit(20)
-      ->sessionList($this->typeAction, EnumStatus::getStatus($howUsed), $this->limitActions);
+      ->sessionList($this->typeAction, EnumStatusPhone::getStatus($howUsed), $this->limitActions);
   }
 
   protected function methodsWithChallen(string $session, string $method, string $link): void
@@ -156,6 +156,10 @@ class Execute
   // start client in process cpu. If need look, write in sh console command "top".
   protected function startClient(string $phone): void
   {
-    Telegram::instance($phone);
+    try {
+      Telegram::instance($phone);
+    } catch (\Exception $e) {
+      ErrorHelper::writeToFile($e);
+    }
   }
 }

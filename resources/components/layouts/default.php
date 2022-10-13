@@ -8,11 +8,13 @@
 <body>
   <head>
     <? include_once root("resources/components/menu/menu.php") ?>
-    
-    <div class="container">
-      <? include_once root("resources/components/pages/{$this->data['page']}.php") ?>
-    </div>
   </head>
+    <main>
+      <div class="container">
+        <? include_once root("resources/components/pages/{$this->data['page']}.php") ?>
+      </div>
+      <div class="notification"></div>
+    </main>
 </body>
 
 </html>

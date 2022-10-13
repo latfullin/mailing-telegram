@@ -8,3 +8,7 @@ ExceptionLog.log
 MadelineProto.log
 composer.lock
 /.vscode
+mix-manifest.json
+package-lock.json
+public/js/app.js
+public/css/app.css

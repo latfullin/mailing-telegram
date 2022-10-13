@@ -1,3 +1,3 @@
-<form action="/api/proxy-check-active" method="POST">
+<form class="check-proxy" >
   <button class="btn btn-info" type="submit">Обновить</button>
 </form>

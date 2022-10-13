@@ -7,7 +7,7 @@ class Cache
   private static string $path = './../storage/cache';
   private static ?Cache $cache = null;
 
-  private function __construct()
+  protected function __construct()
   {
     self::$path = root('storage/cache');
   }
@@ -22,27 +22,27 @@ class Cache
     }
   }
 
-  private static function remove(string $file): void
+  protected static function remove(string $file): void
   {
     unlink(self::$path . "/$file.cache.txt");
   }
 
-  private static function save(string $file, $data): void
+  protected static function save(string $file, $data): void
   {
     file_put_contents(self::$path . "/{$file}.cache.txt", $data);
   }
 
-  private static function unserialize(string $file): mixed
+  protected static function unserialize(string $file): mixed
   {
     return unserialize(file_get_contents(self::$path . "/{$file}.cache.txt"));
   }
 
-  private static function issetCache(string $file): bool
+  protected static function issetCache(string $file): bool
   {
     return is_file(self::$path . "/{$file}.cache.txt");
   }
 
-  private static function serialize($file, $contents): void
+  protected static function serialize($file, $contents): void
   {
     if (is_object($contents)) {
       file_put_contents(self::$path . "/{$file}.cache.txt", serialize(get_object_vars($contents)));
