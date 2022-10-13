@@ -2,7 +2,9 @@
 
 namespace App\Helpers\Enum;
 
-enum EnumStatus: int
+use App\Contracts\Enum\EnumContract;
+
+enum EnumStatusPhone: int implements EnumContract
 {
   case NotHired = 0;
   case TakenToWork = 1;
@@ -20,6 +22,18 @@ enum EnumStatus: int
       'ErrorAtWork' => 3,
       'AllUsed' => 10,
       'Technical' => 11,
+    };
+  }
+
+  public static function getValue(int $status)
+  {
+    return match ($status) {
+      0 => 'Доступен',
+      1 => 'Заблокирован',
+      3 => 'Временные бан',
+      10 => 'Общий',
+      11 => 'Технический',
+      default => 'Не известно',
     };
   }
 }

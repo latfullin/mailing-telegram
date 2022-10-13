@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Helpers\ArgumentsHelpers;
 use App\Models\ProxyModel;
+use App\Services\Bot\TelegramBot;
 use App\Services\Proxy\Ipv6Proxy;
 use Carbon\Carbon;
 
@@ -63,15 +64,19 @@ class ProxyController
 
   public function checkActiveProxy(ProxyModel $model)
   {
-    $proxies = $model->get();
-    foreach ($proxies as $proxy) {
-      if ($proxy->active_ad < Carbon::now()) {
-        $model->where(['numeric_id' => $proxy->numeric_id])->update(['active' => 0]);
-      } else {
-        $model->where(['numeric_id' => $proxy->numeric_id])->update(['active' => 1]);
+    try {
+      $proxies = $model->get();
+      foreach ($proxies as $proxy) {
+        if ($proxy->active_ad < Carbon::now()) {
+          $model->where(['numeric_id' => $proxy->numeric_id])->update(['active' => 0]);
+        } else {
+          $model->where(['numeric_id' => $proxy->numeric_id])->update(['active' => 1]);
+        }
       }
+      return response('Обновлено');
+    } catch (\Exception $e) {
+      TelegramBot::exceptionError($e);
+      return response('Ошибка', status: 404);
     }
-
-    return response($proxies);
   }
 }

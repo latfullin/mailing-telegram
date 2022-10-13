@@ -97,4 +97,11 @@ class ViewController
 
     view('default', ['page' => '404', 'title' => 'Not found', 'menu' => $menu], 404);
   }
+
+  public function checkPhones(Menu $menu)
+  {
+    $menu = $menu->getMenu();
+
+    view('default', ['page' => 'check-phones', 'title' => 'Check phones', 'menu' => $menu]);
+  }
 }
