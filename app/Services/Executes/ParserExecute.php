@@ -205,10 +205,10 @@ class ParserExecute extends Execute
    */
   protected bool $saveData = false;
 
-  public function __construct(ParserModel $conntect, bool $needUsersId = false, bool $needBreakTime = true)
+  public function __construct(ParserModel $connect, bool $needUsersId = false, bool $needBreakTime = true)
   {
     parent::__construct(self::ACTION_FIELD, self::TASK_NAME, self::LIMIT_ACTIONS, self::HOW_USED);
-    $this->parserModel = $conntect;
+    $this->parserModel = $connect;
     $this->needUsersId = $needUsersId;
     $this->needBreakTime = $needBreakTime;
     $this->now = time();
