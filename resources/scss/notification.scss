@@ -1,0 +1,23 @@
+.notification {
+  position: absolute;
+  top: 0;
+  right: 0;
+  &__message {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #fff;
+    opacity: 1;
+    transition: opacity 0.5s;
+  }
+  &__error {
+    background-color: red;
+  }
+  &__success {
+    background-color: green;
+  }
+  &__neutral {
+    background-color: aqua;
+  }
+}
