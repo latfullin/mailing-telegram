@@ -13,4 +13,5 @@ Router::get('/login', [ViewController::class, 'login']);
 Router::get('/registration', [ViewController::class, 'registration']);
 Router::get('/', [ViewController::class, 'home'])->middleware(['auth']);
 Router::get('/create-session', [ViewController::class, 'createSession']);
+Router::get('/check-phones', [ViewController::class, 'checkPhones']);
 // Router::get('/404', [ViewController::class, 'notFound']);

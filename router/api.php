@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\AutorizationController;
+use App\Controllers\CheckItPhonesController;
 use App\Controllers\InvitationsController;
 use App\Controllers\LoginController;
 use App\Controllers\MailingMessagesController;
@@ -29,5 +30,6 @@ Router::post('/api/registration', [LoginController::class, 'registration'])->mid
 Router::post('/api/logout', [LoginController::class, 'logout'])->middleware('auth');
 Router::post('/api/redirect-create-session', [AutorizationController::class, 'redirectCreateSession']);
 Router::get('/api/create-session-init', [AutorizationController::class, 'createSession']);
+Router::post('/api/check-it-phones', [CheckItPhonesController::class, 'checkItPhones']);
 
 // Router::get('/api/edit-profile', [PrepareAccountController::class, 'prepareAccount']);
