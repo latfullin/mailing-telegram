@@ -2,6 +2,7 @@
 
 namespace App\Traits\Account;
 
+use App\Helpers\ErrorHelper;
 use App\Services\Bot\TelegramBot;
 
 trait AccountMethodsTelegram
@@ -78,7 +79,12 @@ trait AccountMethodsTelegram
 
   public function getInformationByNumber($phone)
   {
-    return $this->telegram->contacts->resolvePhone(phone: $phone);
+    try {
+      return $this->telegram->contacts->resolvePhone(phone: $phone);
+    } catch (\Exception $e) {
+      ErrorHelper::writeToFile($e);
+      return false;
+    }
   }
 
   public function getMeInformations()
@@ -90,6 +96,22 @@ trait AccountMethodsTelegram
         $this->getMe();
         return $this->me;
       }
+    } catch (\Exception $e) {
+      TelegramBot::exceptionError($e->getMessage());
+    }
+  }
+
+  public function addContact(string $phone)
+  {
+    try {
+      $input = [
+        '_' => 'inputPhoneContact',
+        'client_id' => mt_rand(),
+        'phone' => $phone,
+        'first_name' => 'Hellodsa',
+        'last_name' => 'fsajdiasjod',
+      ];
+      return $this->telegram->contacts->importContacts(contacts: [$input]);
     } catch (\Exception $e) {
       TelegramBot::exceptionError($e->getMessage());
     }
