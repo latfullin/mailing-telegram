@@ -6,6 +6,7 @@ use App\Helpers\ArgumentsHelpers;
 use App\Models\PhoneModel;
 use App\Models\ProxyModel;
 use App\Models\TasksModel;
+use App\Services\Authorization\Telegram;
 use App\View\Components\Menu\Menu;
 
 class ViewController
@@ -103,5 +104,18 @@ class ViewController
     $menu = $menu->getMenu();
 
     view('default', ['page' => 'check-phones', 'title' => 'Check phones', 'menu' => $menu]);
+  }
+
+  public function test(Menu $menu)
+  {
+    $menu = $menu->getMenu();
+    // $a = [79035626639, 79153150777, 79266888060, 79773899014, 79263207415];
+    try {
+      Telegram::instance(79874018497);
+    } catch (\Exception $e) {
+    }
+    $data = Telegram::instance(79874018497)->getInfo('1147860595');
+
+    view('default', ['page' => 'test', 'title' => 'Check phones', 'menu' => $menu, 'data' => $data]);
   }
 }
