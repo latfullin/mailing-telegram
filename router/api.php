@@ -16,6 +16,7 @@ Router::post('/api/parser-channel', [ParserController::class, 'parseGroup'])->mi
 Router::post('/api/parser-channel-for-telegram', [ParserController::class, 'parseGroupForTelegram']);
 Router::post('/api/buy-proxy', [ProxyController::class, 'buyProxy'])->middleware(['isAdmin', 'auth']);
 Router::post('/api/proxy-check-active', [ProxyController::class, 'checkActiveProxy'])->middleware(['token', 'auth']);
+Router::post('/api/check-proxy', [ProxyController::class, 'checkProxy'])->middleware(['token', 'auth']);
 Router::post('/api/created-task-mailing', [MailingMessagesController::class, 'createTaskMailingMessages'])->middleware([
   'isAdmin',
   'auth',

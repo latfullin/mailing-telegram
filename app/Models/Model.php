@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use PDO;
-
 class Model
 {
   protected $connect;
@@ -26,13 +24,15 @@ class Model
     $user = env('DOCKER_MYSQL_USER');
     $password = env('DOCKER_MYSQL_PASSWORD');
     $this->table = $table;
-    $this->connect = new PDO($dsn, $user, $password);
+    $this->connect = new \PDO($dsn, $user, $password);
   }
 
   public function insert(array $values)
   {
     ['column' => $column, 'value' => $value] = $this->splitData($values);
-    $this->connect->query("INSERT INTO {$this->table} ({$column}, `created_at`) VALUES ({$value}, now())");
+    $this->connect
+      ->query("INSERT INTO {$this->table} ({$column}, `created_at`) VALUES ({$value}, now())")
+      ->fetch(\PDO::FETCH_ASSOC);
   }
 
   public function delete(string $column, string $separator, string $value)
@@ -70,7 +70,7 @@ class Model
           ($this->limit !== null ? " LIMIT {$this->limit}" : '') .
           ($this->order !== null ? " {$this->order}" : ''),
       )
-      ->fetchAll(PDO::FETCH_CLASS);
+      ->fetchAll(\PDO::FETCH_CLASS);
   }
 
   public function first()

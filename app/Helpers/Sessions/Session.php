@@ -25,6 +25,9 @@ class Session
       if (empty($_SESSION['access'])) {
         $_SESSION['access'] = 0;
       }
+      if (empty($_SESSION['login'])) {
+        $_SESSION['login'] = false;
+      }
     }
   }
 

@@ -136,4 +136,9 @@ class Telegram
   {
     return $this->start;
   }
+
+  public function getInfo(string $link)
+  {
+    return $this->telegram->getInfo($link);
+  }
 }

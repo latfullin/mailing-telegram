@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { notification } from './notification'
 
 export default function (form) {
   const sendMessages = document.querySelectorAll(form)
@@ -24,11 +25,11 @@ export default function (form) {
       e.preventDefault()
       if (!validate()) {
         axios
-          .post('api/send-message', new FormData(element))
-          .then((e) => console.log(e))
-          .catch((error) => console.log(error))
+          .post('/api/send-message', new FormData(element))
+          .then((e) => notification(e.data, e.status))
+          .catch((error) => notification(error.response.data, error.response.status))
       } else {
-        console.log('error')
+        notification('Проверьте поля на наличие ошибок', 7)
       }
     }
 

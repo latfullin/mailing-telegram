@@ -7,7 +7,9 @@
 
 namespace App\Services\Executes;
 
+use App\Helpers\ErrorHelper;
 use App\Helpers\Storage;
+use App\Models\CheckItPhonesModel;
 use App\Models\ParserModel;
 use App\Services\Authorization\Telegram;
 
@@ -15,28 +17,68 @@ class ParserTelephoneExecute extends ParserExecute
 {
   protected array $users = [];
   protected array $notFoundPhone = [];
+  protected array $notEnd = [];
+  protected $model = null;
 
-  public function __construct(ParserModel $connect)
+  public function __construct(ParserModel $connect, CheckItPhonesModel $model)
   {
+    $this->model = $model;
     parent::__construct($connect);
   }
 
-  public function checkPhones(array $phonesNumbers): object
+  public function checkPhones(array $users): object
   {
-    $this->startClient($this->sessionList[0]->phone);
+    $phonesNumbers = $users;
     if ($phonesNumbers) {
       $result = [];
-      foreach ($phonesNumbers as $phone) {
-        try {
-          $result[] = Telegram::instance($this->sessionList[0]->phone)->getInformationByNumber($phone);
-        } catch (\Exception $e) {
-          if ($e->getMessage() == 'PHONE_NOT_OCCUPIED') {
-            $this->notFoundPhone[$phone] = $phone;
+      foreach ($this->sessionList as $phone) {
+        if (!$phonesNumbers) {
+          break;
+        }
+        $error = 0;
+        $this->startClient($phone->phone);
+        for ($i = 0; $i < 5; $i++) {
+          sleep(2);
+          $user = array_pop($phonesNumbers);
+          if (!$user) {
+            break;
           }
-          continue;
+          $this->incrementActions($phone->phone);
+          try {
+            $data = Telegram::instance($phone->phone)->getInformationByNumber($user);
+            if ($data) {
+              $this->model->insert([
+                'user_name' => $data['users'][0]['username'] ?? '',
+                'user_id' => $data['users'][0]['id'],
+                'phone' => $user,
+              ]);
+              $result[] = $data;
+            } else {
+              $this->notFoundPhone[] = $data;
+              $this->model->insert([
+                'user_id' => 0,
+                'phone' => $user,
+              ]);
+            }
+          } catch (\Exception $e) {
+            ErrorHelper::writeToFile($e);
+            if ($e->getMessage() == 'PHONE_NOT_OCCUPIED') {
+              $this->notFoundPhone[$phone] = $user;
+              $this->model->insert([
+                'user_id' => 0,
+                'phone' => $user,
+              ]);
+            }
+            $error++;
+            if ($error >= 2) {
+              continue 2;
+            }
+            continue;
+          }
         }
       }
       $this->treatmentPhones($result);
+      $this->notEnd = $phonesNumbers;
       return $this;
     }
 
@@ -51,8 +93,15 @@ class ParserTelephoneExecute extends ParserExecute
     foreach ($this->notFoundPhone as $notPhone) {
       Storage::disk('task')->put($this->task, [$notPhone]);
     }
-
+    $this->notEnd();
     return $path;
+  }
+
+  public function notEnd()
+  {
+    foreach ($this->notEnd as $phone) {
+      Storage::disk('task')->put("{$this->task}-not-work", $phone);
+    }
   }
 
   // public function test()
