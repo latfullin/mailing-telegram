@@ -1,0 +1,16 @@
+.popup-closed {
+  transition: max-height 5s;
+  max-height: 0;
+  overflow-y: hidden;
+}
+
+.popup-open {
+  transition: max-height 5s;
+  max-height: 900px;
+  overflow-y: hidden;
+}
+
+.popup-form {
+  display: flex;
+  flex-direction: column;
+}

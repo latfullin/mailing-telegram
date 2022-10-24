@@ -2,15 +2,18 @@
   Тип задания:
 </label>
 <div class="input-group mb-1">
-  <select class="form-select" id="type">
-    <option value="send_message">Рассылка сообщений</option>
-    <option value="invitations_channel">Инвайтинг</option>
+  <select class="form-select" id="created-task">
+    <option value="send-message">Рассылка сообщений</option>
+    <option value="invitations-channel">Инвайтинг</option>
   </select>
 </div>
 
-<div class="">
-  <? include_once root("resources/components/form/form-created-task-mailing.php") ?>
+<div class="created-task">
+
+  <div class="send-message popup-closed">
+    <? include_once root("resources/components/form/form-created-task-mailing.php") ?>
 </div>
-<div class="">
+<div class="invitations-channel popup-closed">
   <? include_once root("resources/components/form/form-created-task-invitations.php") ?>
+</div>
 </div>

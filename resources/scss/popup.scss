@@ -1,0 +1,12 @@
+.popup {
+  &-closed {
+    transition: max-height 0.5s;
+    max-height: 0;
+    overflow-y: hidden;
+  }
+
+  &-open {
+    max-height: 900px;
+    overflow-y: hidden;
+  }
+}
