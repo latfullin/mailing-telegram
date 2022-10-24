@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Helpers\ArgumentsHelpers;
 use App\Models\UsersModel;
+use App\Response\Response;
 use App\Services\Bot\TelegramBot;
 use App\Services\Executes\ParserExecute;
 use App\Services\Executes\ParserTelephoneExecute;
@@ -20,11 +21,11 @@ class ParserController
     $telegram->setChatId($arg->userId)->sendFile($filePath);
   }
 
-  public function parseGroup(ArgumentsHelpers $arg, ParserExecute $parser, TelegramBot $telegram): bool
+  public function parseGroup(ArgumentsHelpers $arg, ParserExecute $parser, TelegramBot $telegram): Response
   {
     try {
       if (!$arg->userId || !$arg->channel) {
-        return false;
+        return response(false);
       }
       $filePath = $parser
         ->channel($arg->channel)
@@ -35,6 +36,8 @@ class ParserController
       return response(true);
     } catch (\Exception $e) {
       $telegram->setChatId('365047507')->sendMsg($e->getMessage());
+
+      return response('Неизвестная ошибка');
     }
   }
 

@@ -2,7 +2,7 @@
   <label for="msg">
     Сообщение:
   </label>
-  <input class="form-control" type="text" name="msg" id="msg">
+  <textarea class="form-control" type="text" name="msg" id="msg"></textarea>
   <label for="period">
     Список пользователей:
   </label>

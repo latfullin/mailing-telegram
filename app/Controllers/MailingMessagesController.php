@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Helpers\ArgumentsHelpers;
 use App\Models\TasksModel;
+use App\Services\Authorization\Telegram;
 use App\Services\Executes\ContinueTaskExecute;
 use App\Services\Executes\MailingMessagesExecute;
 
@@ -13,8 +14,9 @@ class MailingMessagesController
   {
     $users = preg_split('/[\r\n]+/', $arguments->users, -1, PREG_SPLIT_NO_EMPTY);
     $users = count($users) === 0 ? $arguments->users : $users;
+    $message = preg_replace('/[\r\n]+/', '\n', $arguments->msg);
     $execute
-      ->setMsg($arguments->msg)
+      ->setMsg($message)
       ->setFile($arguments->file ?? false)
       ->setUsers($users);
   }

@@ -39,7 +39,7 @@ class Telegram
         $this->telegram = new \danog\MadelineProto\API($this->pathSession($phone), $this->setting);
         $this->telegram->updateSettings($this->setting);
       } else {
-        $this->telegram = new \danog\MadelineProto\API($this->pathSession($phone, $this->setting));
+        $this->telegram = new \danog\MadelineProto\API($this->pathSession($phone, []));
       }
       $this->params($async);
     } catch (\Exception $e) {

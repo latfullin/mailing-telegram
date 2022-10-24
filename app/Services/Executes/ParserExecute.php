@@ -212,7 +212,7 @@ class ParserExecute extends Execute
     $this->needUsersId = $needUsersId;
     $this->needBreakTime = $needBreakTime;
     $this->now = time();
-
+    $this->startClient($this->sessionList[0]->phone);
     if ($this->needBreakTime) {
       $this->data = [
         'oneDay' => [],

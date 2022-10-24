@@ -23,19 +23,19 @@ trait MessageMethodsTelegram
 
   public function sendFoto(string $peer, string $pathFoto, string $msg = ''): object
   {
-    if (is_file($pathFoto)) {
-      $this->telegram->messages->sendMedia([
-        'peer' => $peer,
-        'media' => [
-          '_' => 'inputMediaUploadedPhoto',
-          'file' => $pathFoto,
-        ],
-        'message' => $msg,
-        'parse_mode' => 'Markdown',
-      ]);
-    } else {
-      echo 'Need actual path!. Error';
-    }
+    // if (is_file($pathFoto)) {
+    $this->telegram->messages->sendMedia([
+      'peer' => $peer,
+      'media' => [
+        '_' => 'inputMediaUploadedPhoto',
+        'file' => $pathFoto,
+      ],
+      'message' => $msg,
+      'parse_mode' => 'Markdown',
+    ]);
+    // } else {
+    //   echo 'Need actual path!. Error';
+    // }
 
     return $this;
   }

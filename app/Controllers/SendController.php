@@ -11,11 +11,16 @@ class SendController
 {
   public function sendMessage(ArgumentsHelpers $arg, TaskSendMessagesModel $sendTask, PhoneModel $phones)
   {
+    // Telegram::instance('79874018497')->sendMessage(
+    //   '@hitThat',
+    //   'helsad asdasdasasd asdasdas dasdoasdas djnasjikd nasllo',
+    // );
+    // return;
     $phone = $phones->where(['login' => session()->get('login'), 'phone' => $arg->phone])->first();
     if (!$phone) {
       return response('Не найден данный телефон');
     }
-    $task = $sendTask->where(['user_id' => session()->get('login'), 'status' => 1])->last();
+    $task = $sendTask->where(['user_id' => session()->get('login'), 'status' => 10])->last();
     if ($task) {
       return response('Прошлое задание в статусе выполнения!', status: 300);
     }
@@ -27,7 +32,7 @@ class SendController
     ]);
     $this->startClient($arg->phone);
     try {
-      $result = Telegram::instance($arg->phone)?->sendMessage($arg->how, $arg->msg);
+      $result = Telegram::instance($arg->phone)->sendMessage($arg->how, $arg->msg);
       if ($result) {
         @$sendTask->where(['user_id' => session()->get('login'), 'status' => 1])->update(['status' => 2]);
         return response('Сообщение успешно отправлено');
