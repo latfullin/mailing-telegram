@@ -14,7 +14,7 @@ class TelegramBot
 {
   protected $url = 'https://api.telegram.org/bot';
   private $chatId;
-  private $token = '5425154420:AAF_bDkwaXo-OcoA6bZlXHVeE1vQkurzT5Q';
+  private $token = '';
 
   public function __construct($chatId = '')
   {
